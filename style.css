@@ -86,6 +86,7 @@ h1, h2 {
 
 /* Sweets Section */
 .sweet-card {
+    height: 400px  !important; /* Set the height of the cards */
     background-color: #ff6f61; /* Orange */
     color: white;
     border: none;
@@ -100,7 +101,7 @@ h1, h2 {
 }
 
 .sweet-card img {
-    height: 200px;
+    height: 200px !important;
     object-fit: cover;
 }
 
