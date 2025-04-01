@@ -9,40 +9,73 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <!-- Navigation Bar (Sticky) -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container">
-            <!-- Logo and Brand Name -->
-            <div class="d-flex flex-column align-items-center">
+<body style="background-color: #FFF5EE;">
+    <!-- Navigation Bar with Background Image -->
+    <section id="landing" class="position-relative" style="background-image: url('img/image (1).jpg'); background-size: cover; background-position: center; height: 100vh;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-absolute top-0 start-0 w-100">
+            <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="img/logo.jpg" class="img-fluid" alt="Darna Logo" style="max-width: 150px;">
+                    <img src="img/logo darna.png" alt="Darna Logo" style="max-width: 350px;">
                 </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-light fw-bold" href="#home" style="color: #FFF;">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light fw-bold" href="#sweets" style="color: #FFF;">Offerings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light fw-bold" href="#initiatives" style="color: #FFF;">Initiatives</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light fw-bold" href="#contact" style="color: #FFF;">Contact Us</a>
+                        </li>
+                    </ul>
+                    <a href="#offers" class="btn btn-sm ms-3" style="background-color: #A0522D; color: #FFF5EE;">Take Action</a>
+                </div>
             </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sweets">Sweets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#offers">Offers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Zellige and Tea Section (Hero Section) -->
-    <section id="zellige-tea" class="position-relative">
-        <img src="img/image.jpg" class="w-100 hero-img" alt="Moroccan Zellige and Tea">
-        <div class="hero-overlay text-center">
-            <h1 class="display-4 text-white">Experience Moroccan Culture</h1>
-            <p class="lead text-white">Immerse yourself in the beauty of Moroccan zellige and tea, paired with our delicious sweets.</p>
-            <a href="#offers" class="btn btn-primary btn-lg">Discover Our Sweets</a>
+        </nav>
+        <div class="d-flex flex-column justify-content-end align-items-center h-100 text-light text-center px-5 pb-5" style="background: rgba(0, 0, 0, 0.6);">
+            <h1 class="mb-4 animated-text" style="font-family: 'Scheherazade New', serif; font-size: 3rem; font-weight: bold; color: #FFF5EE;">Discover the Finest Moroccan Sweets</h1>
+            <p class="mb-4 animated-text" style="font-family: 'Amiri', serif; font-size: 1.2rem; color: #FFF5EE;">Crafted with love and tradition, indulge in the sweetness of Morocco.</p>
+            <a href="#sweets" class="btn btn-lg mt-3 animate-btn" style="background-color: #A0522D; color: #FFF5EE; font-family: 'Scheherazade New', serif; font-size: 1.5rem; padding: 15px 40px; border-radius: 50px;">Explore Now</a>
         </div>
     </section>
 
+    <style>
+    .animate-btn {
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+    .animate-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        background-color: #8B4513;
+    }
+    .animated-text {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 2s ease forwards;
+    }
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    </style>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const textElements = document.querySelectorAll(".animated-text");
+        textElements.forEach((el, index) => {
+            el.style.animationDelay = `${index * 0.1}s`;
+        });
+    });
+    </script>
     <!-- Slideshow Section (Centered with Shadow) -->
     <section id="home" class="container col-md-7 my-5">
         <div id="sweetSlideshow" class="carousel slide shadow-lg" data-bs-ride="carousel">
@@ -129,11 +162,28 @@
         </div>
     </section>
 
-    <!-- Sweets Section (Enhanced) -->
+    <!-- Sweets Section (Enhanced with Image and Text Alignment) -->
     <section id="sweets" class="container my-5">
-        <h2 class="text-center text-danger mb-5">Our Sweets</h2>
-        <div class="row" id="sweets-list">
-            <!-- Sweets will be added dynamically via JavaScript -->
+        <h2 class="text-center text-danger mb-5" style="font-family: 'Georgia', serif;">Our Sweets</h2>
+        <div class="row align-items-center mb-5">
+            <div class="col-md-6">
+                <img src="img/gettyimages-689087120-612x612.jpg" class="img-fluid rounded shadow" alt="Sweet Image">
+            </div>
+            <div class="col-md-6 text-center">
+                <h3 class="fw-bold" style="font-family: 'Georgia', serif;">We're sweet for you.</h3>
+                <p style="font-family: 'Georgia', serif;">Discover the art of Moroccan sweets.</p>
+                <a href="#offers" class="btn btn-custom" style="font-family: 'Georgia', serif;">Learn More</a>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-md-6 order-md-2">
+                <img src="img/gettyimages-2156187804-612x612.jpg" class="img-fluid rounded shadow" alt="Sweet Image">
+            </div>
+            <div class="col-md-6 order-md-1 text-center">
+                <h3 class="fw-bold" style="font-family: 'Georgia', serif;">Ready to take the next step?</h3>
+                <p style="font-family: 'Georgia', serif;">Indulge in goodness worth sharing.</p>
+                <a href="#offers" class="btn btn-custom" style="font-family: 'Georgia', serif;">Take Action</a>
+            </div>
         </div>
     </section>
 
@@ -147,7 +197,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Sweet Starter Box</h5>
                         <p class="card-text">10 pieces of mixed Moroccan sweets - $15</p>
-                        <a href="#contact" class="btn btn-primary">Order Now</a>
+                        <a href="#contact"  class="btn" style="background-color: #8B4513; color: #FFF5EE;">Order Now</a>
                     </div>
                 </div>
             </div>
@@ -157,7 +207,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Family Delight Box</h5>
                         <p class="card-text">25 pieces of assorted sweets - $35</p>
-                        <a href="#contact" class="btn btn-primary">Order Now</a>
+                        <a href="#contact"  class="btn" style="background-color: #8B4513; color: #FFF5EE;">Order Now</a>
                     </div>
                 </div>
             </div>
@@ -167,12 +217,16 @@
                     <div class="card-body">
                         <h5 class="card-title">Celebration Pack</h5>
                         <p class="card-text">50 pieces with free delivery - $60</p>
-                        <a href="#contact" class="btn btn-primary">Order Now</a>
+                        <a href="#contact" class="btn" style="background-color: #8B4513; color: #FFF5EE; ">Order Now</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <section id="home">...</section>
+    <section id="sweets">...</section>
+    <section id="offers">...</section>
+    <section id="contact">...</section>
 
     <!-- Contact Section -->
     <section id="contact" class="container text-center my-5">
