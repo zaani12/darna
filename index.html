@@ -233,7 +233,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Sweet Starter Box</h5>
                         <p class="card-text">10 pieces of mixed Moroccan sweets - $15</p>
-                        <a href="https://wa.me/212708898226?text=I%20am%20interested%20in%20the%20Sweet%20Starter%20Box%20(10%20pieces%20of%20mixed%20Moroccan%20sweets%20-%20$15)%20from%20user%20{{userName}}" class="btn" style="background-color: #8B4513; color: #FFF5EE;">Order via WhatsApp</a>
+                        <a href="#" class="btn order-btn" style="background-color: #8B4513; color: #FFF5EE;" data-product="Sweet Starter Box" data-description="10 pieces of mixed Moroccan sweets" data-price="$15">Order via WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -243,7 +243,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Family Delight Box</h5>
                         <p class="card-text">25 pieces of assorted sweets - $35</p>
-                        <a href="https://wa.me/212708898226?text=I%20am%20interested%20in%20the%20Family%20Delight%20Box%20(25%20pieces%20of%20assorted%20sweets%20-%20$35)%20from%20user%20{{userName}}" class="btn" style="background-color: #8B4513; color: #FFF5EE;">Order via WhatsApp</a>
+                        <a href="#" class="btn order-btn" style="background-color: #8B4513; color: #FFF5EE;" data-product="Family Delight Box" data-description="25 pieces of assorted sweets" data-price="$35">Order via WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -253,12 +253,72 @@
                     <div class="card-body">
                         <h5 class="card-title">Celebration Pack</h5>
                         <p class="card-text">50 pieces with free delivery - $60</p>
-                        <a href="https://wa.me/212708898226?text=I%20am%20interested%20in%20the%20Celebration%20Pack%20(50%20pieces%20with%20free%20delivery%20-%20$60)%20from%20user%20{{userName}}" class="btn" style="background-color: #8B4513; color: #FFF5EE;">Order via WhatsApp</a>
+                        <a href="#" class="btn order-btn" style="background-color: #8B4513; color: #FFF5EE;" data-product="Celebration Pack" data-description="50 pieces with free delivery" data-price="$60">Order via WhatsApp</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const orderButtons = document.querySelectorAll(".order-btn");
+
+    orderButtons.forEach(button => {
+        button.addEventListener("click", async (event) => {
+            event.preventDefault();
+            const product = button.getAttribute("data-product");
+            const description = button.getAttribute("data-description");
+            const price = button.getAttribute("data-price");
+
+            // Headers for Infobip API
+            const myHeaders = new Headers();
+            myHeaders.append("Authorization", "App ae815067195972f8b7177e83691d79f5-51e8a722-2b0c-4e4f-832e-9673e0ba75a1");
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("Accept", "application/json");
+
+            // Message Data (Dynamic placeholders)
+            const raw = JSON.stringify({
+                "messages": [
+                    {
+                        "from": "447860099299",  // Your WhatsApp Business Number
+                        "to": "212708898226",  // Customer's Number
+                        "messageId": "5ec1c68e-3a04-4e55-94af-6d58d95a464e",
+                        "content": {
+                            "templateName": "test_whatsapp_template_en",
+                            "templateData": {
+                                "body": {
+                                    "placeholders": [product, description, price] // Dynamic placeholders
+                                }
+                            },
+                            "language": "en"
+                        }
+                    }
+                ]
+            });
+
+            // Fetch API Request
+            const requestOptions = {
+                method: "POST",
+                headers: myHeaders,
+                body: raw,
+                redirect: "follow"
+            };
+
+            try {
+                const response = await fetch("https://v3d9de.api.infobip.com/whatsapp/1/message/template", requestOptions);
+                const result = await response.json();
+                console.log("WhatsApp API Response:", result);
+                alert("Order sent successfully via WhatsApp Business!");
+            } catch (error) {
+                console.error("WhatsApp API Error:", error);
+                alert("Failed to send order.");
+            }
+        });
+    });
+});
+
+    </script>
     <section id="home">...</section>
     <section id="sweets">...</section>
     <section id="offers">...</section>
