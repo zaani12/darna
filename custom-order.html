@@ -21,24 +21,24 @@
             --luxury-success: #5a7d3c;
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Lato', sans-serif;
-            --transition-speed-fast: 0.3s;
-            --transition-speed-med: 0.5s;
-            --transition-speed-slow: 0.7s;
-            --shadow-soft: 0 5px 15px rgba(0, 0, 0, 0.07);
-            --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.09);
-            --shadow-strong: 0 10px 30px rgba(0, 0, 0, 0.12);
+            --transition-speed-fast: 0.25s;
+            --transition-speed-med: 0.4s;
+            --transition-speed-slow: 0.6s;
+            --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --shadow-medium: 0 6px 16px rgba(0, 0, 0, 0.08);
+            --shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.10);
         }
 
         /* --- Animations --- */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeOutDown { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(15px); } }
-        @keyframes slideInRight { from { transform: translateX(30px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        @keyframes slideOutLeft { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-30px); opacity: 0; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeOutDown { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(12px); } }
+        @keyframes slideInRight { from { transform: translateX(25px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideOutLeft { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-25px); opacity: 0; } }
         @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
-        @keyframes shrinkOutFade { from { transform: scale(1); opacity: 1; } to { transform: scale(0.9); opacity: 0; } }
-        @keyframes pulseSubtle { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
-        @keyframes checkmarkFadeIn { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: scale(1); } }
+        @keyframes shrinkOutFade { from { transform: scale(1); opacity: 1; } to { transform: scale(0.95); opacity: 0; } }
+        @keyframes pulseSubtle { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+        @keyframes checkmarkFadeIn { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
 
         /* --- Base & Body --- */
         body {
@@ -46,147 +46,188 @@
             font-family: var(--font-body);
             color: var(--luxury-dark);
             margin: 0;
-            padding-top: 85px; /* Slightly reduced for smaller screens potentially */
-            font-size: 16px; /* Base font size */
+            padding-top: 70px;
+            font-size: 14.5px;
             animation: fadeIn var(--transition-speed-slow) ease-out;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* --- Navbar --- */
-        .navbar { background-color: var(--luxury-dark); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); padding: 0.8rem 1rem; transition: background-color var(--transition-speed-med) ease; }
-        .navbar .navbar-brand img { max-width: 160px; height: auto; transition: transform var(--transition-speed-fast) ease; } /* Slightly smaller logo */
-        .navbar .navbar-brand:hover img { transform: scale(1.05); }
-        .navbar .nav-link { color: var(--luxury-cream) !important; font-weight: 400; text-transform: uppercase; letter-spacing: 0.8px; font-size: 0.85em; margin: 0 0.5rem; transition: color var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease; position: relative; padding-bottom: 4px; }
+        .navbar { background-color: var(--luxury-dark); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18); padding: 0.5rem 1rem; }
+        .navbar .navbar-brand img { max-width: 140px; height: auto; transition: transform var(--transition-speed-fast) ease; }
+        .navbar .navbar-brand:hover img { transform: scale(1.04); }
+        .navbar .nav-link { color: var(--luxury-cream) !important; font-weight: 400; text-transform: uppercase; letter-spacing: 0.6px; font-size: 0.78em; margin: 0 0.35rem; transition: color var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease; position: relative; padding-bottom: 3px; }
         .navbar .nav-link::after { content: ''; position: absolute; bottom: 0px; left: 50%; transform: translateX(-50%); width: 0; height: 1.5px; background-color: var(--luxury-gold); transition: width var(--transition-speed-fast) ease; }
-        .navbar .nav-link:hover::after, .navbar .nav-link.active::after { width: 50%; }
+        .navbar .nav-link:hover::after, .navbar .nav-link.active::after { width: 45%; }
         .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--luxury-gold) !important; transform: translateY(-1px); }
-        .navbar-toggler { border-color: rgba(255,255,255,0.2); }
-        .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+        .navbar-toggler { padding: .2rem .5rem; font-size: 0.9rem; border-color: rgba(255,255,255,0.15); }
+        .navbar-toggler-icon { width: 1.1em; height: 1.1em; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
 
         /* --- Main Content Area --- */
-        /* Use .main-container on the <section> */
-        .main-container {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-        }
+        .main-container { padding-top: 2rem; padding-bottom: 2rem; }
 
         /* --- Main Title & Wizard Progress --- */
-        .main-title { font-family: var(--font-heading); font-style: italic; color: var(--luxury-brown); font-size: 3.0em; text-align: center; margin-bottom: 2rem; animation: fadeInUp 1s ease-out 0.2s backwards; }
-        #wizard-progress { display: flex; justify-content: space-around; margin-bottom: 2.5rem; padding: 15px 10px; background-color: rgba(255, 255, 255, 0.75); border-radius: 50px; box-shadow: var(--shadow-soft); max-width: 750px; margin-left: auto; margin-right: auto; animation: fadeInUp 1s ease-out 0.4s backwards; }
-        .progress-step { text-align: center; color: var(--luxury-brown); opacity: 0.55; font-weight: 700; font-size: 0.85em; flex: 1; padding: 8px 5px; border-bottom: 3px solid transparent; transition: all var(--transition-speed-med) ease-out; cursor: default; position: relative; line-height: 1.3; }
-        .progress-step span { display: inline-block; margin-right: 3px;} /* Keep number inline */
-        .progress-step::after { content: ''; position: absolute; top: 50%; right: -50%; width: 90%; height: 1px; background-color: rgba(138, 109, 90, 0.15); transform: translateY(-50%); z-index: -1; }
-        .progress-step:last-child::after { display: none; }
-        .progress-step.active { color: var(--luxury-gold); opacity: 1; border-bottom-color: var(--luxury-gold); transform: scale(1.05); }
+        .main-title { font-family: var(--font-heading); font-style: italic; color: var(--luxury-brown); font-size: 2.4em; text-align: center; margin-bottom: 1.6rem; animation: fadeInUp 1s ease-out 0.2s backwards; }
+        #wizard-progress { display: flex; justify-content: space-around; margin-bottom: 2.0rem; padding: 10px 6px; background-color: rgba(255, 255, 255, 0.8); border-radius: 50px; box-shadow: var(--shadow-soft); max-width: 650px; margin-left: auto; margin-right: auto; animation: fadeInUp 1s ease-out 0.4s backwards; }
+        .progress-step { text-align: center; color: var(--luxury-brown); opacity: 0.6; font-weight: 600; font-size: 0.75em; flex: 1; padding: 6px 3px; border-bottom: 2px solid transparent; transition: all var(--transition-speed-med) ease-out; cursor: default; position: relative; line-height: 1.2; }
+        .progress-step span { display: inline-block; margin-right: 2px;}
+        .progress-step::after { display: none; }
+        .progress-step.active { color: var(--luxury-gold); opacity: 1; border-bottom-color: var(--luxury-gold); transform: scale(1.03); }
         .progress-step.completed { color: var(--luxury-accent); opacity: 1; cursor: pointer; }
-        .progress-step.completed::before { content: '✓'; margin-right: 4px; color: var(--luxury-accent); display: inline-block; animation: checkmarkFadeIn 0.5s ease-out; }
-        .progress-step:not(.active):hover { opacity: 0.8; transform: translateY(-2px); }
+        .progress-step.completed::before { content: '✓'; margin-right: 2px; color: var(--luxury-accent); display: inline-block; animation: checkmarkFadeIn 0.4s ease-out; }
+        .progress-step:not(.active):hover { opacity: 0.9; transform: translateY(-1px); }
 
         /* --- Wizard Steps --- */
-        #wizard { max-width: 850px; margin: 20px auto 35px auto; position: relative; overflow: visible; /* Allow shadows */ min-height: 420px; } /* Adjusted max-width and min-height */
-        .step { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; visibility: hidden; padding: 30px 35px; border: 1px solid rgba(0, 0, 0, 0.04); border-radius: 18px; margin-bottom: 30px; background: linear-gradient(155deg, var(--luxury-light), #fcfaf6); box-shadow: var(--shadow-medium); transition: opacity var(--transition-speed-med) ease-out, transform var(--transition-speed-med) ease-out, visibility var(--transition-speed-med); transform: translateX(30px); }
-        .step.active-step { display: block; position: relative; opacity: 1; visibility: visible; transform: translateX(0); z-index: 10; }
-        .step.exiting-step { transform: translateX(-30px); }
-        .step h2 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; font-weight: 700; margin-top: 0; margin-bottom: 2rem; font-size: 2.0em; }
-        .step .form-check { margin-bottom: 1.1rem; font-size: 1.0em; padding-left: 2.1em; }
+        #wizard { max-width: 750px; margin: 15px auto 30px auto; position: relative; overflow: visible; min-height: 380px; }
+        .step {
+            position: absolute; top: 0; left: 0; width: 100%;
+            opacity: 0; visibility: hidden;
+            display: flex; flex-direction: column;
+            height: 100%; max-height: 75vh;
+            border: 1px solid rgba(0, 0, 0, 0.03); border-radius: 14px;
+            margin-bottom: 25px; background: linear-gradient(155deg, var(--luxury-light), #fdfaf7);
+            box-shadow: var(--shadow-medium);
+            transition: opacity var(--transition-speed-med) ease-out, transform var(--transition-speed-med) ease-out, visibility var(--transition-speed-med);
+            transform: translateX(25px);
+        }
+        .step.active-step { display: flex; position: relative; opacity: 1; visibility: visible; transform: translateX(0); z-index: 10; }
+        .step.exiting-step { transform: translateX(-25px); }
+
+        /* Scrollable content area WITHIN the step */
+        .step-scrollable-content {
+            padding: 20px 25px;
+            overflow-y: auto;
+            flex-grow: 1;
+            min-height: 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--luxury-accent) rgba(0,0,0,0.05);
+        }
+        .step-scrollable-content::-webkit-scrollbar { width: 6px; }
+        .step-scrollable-content::-webkit-scrollbar-track { background: rgba(0,0,0,0.03); border-radius: 3px; }
+        .step-scrollable-content::-webkit-scrollbar-thumb { background-color: var(--luxury-accent); border-radius: 3px; border: 1px solid transparent; background-clip: content-box; }
+        .step-scrollable-content::-webkit-scrollbar-thumb:hover { background-color: var(--luxury-gold); }
+
+        .step-scrollable-content h2 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; font-weight: 700; margin-top: 0; margin-bottom: 1.6rem; font-size: 1.65em; }
+
+        .step .form-check { margin-bottom: 0.9rem; font-size: 0.9em; padding-left: 1.9em; }
         .step .form-check-label { cursor: pointer; color: var(--luxury-dark); font-weight: 400; transition: color var(--transition-speed-fast) ease; }
-        .step .form-check-input { cursor: pointer; border-color: var(--luxury-accent); transition: background-color var(--transition-speed-fast) ease, border-color var(--transition-speed-fast) ease; height: 1.1em; width: 1.1em; margin-top: 0.25em; }
+        .step .form-check-input { cursor: pointer; border-color: #c8b077b8; transition: background-color var(--transition-speed-fast) ease, border-color var(--transition-speed-fast) ease; height: 1.0em; width: 1.0em; margin-top: 0.2em; }
         .step .form-check-input:checked { background-color: var(--luxury-gold); border-color: var(--luxury-gold); }
-        .step .form-check-input:focus { box-shadow: 0 0 0 0.2rem rgba(218, 165, 32, 0.2); }
+        .step .form-check-input:focus { box-shadow: 0 0 0 0.15rem rgba(218, 165, 32, 0.2); }
         .step .form-check:hover .form-check-label { color: var(--luxury-gold); }
-        .step button { font-family: var(--font-body); font-weight: 700; padding: 10px 25px; border: none; border-radius: 50px; cursor: pointer; transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft); letter-spacing: 0.6px; text-transform: uppercase; font-size: 0.85em; }
+        .step button { font-family: var(--font-body); font-weight: 600; padding: 8px 20px; border: none; border-radius: 50px; cursor: pointer; transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft); letter-spacing: 0.4px; text-transform: uppercase; font-size: 0.75em; }
         .step button:hover { box-shadow: var(--shadow-medium); transform: translateY(-2px); }
         .step button:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .step .btn-primary { background: linear-gradient(100deg, var(--luxury-gold), var(--luxury-accent)); color: var(--luxury-light); }
         .step .btn-primary:hover { background: linear-gradient(100deg, var(--luxury-accent), var(--luxury-gold)); }
-        .step .btn-secondary { background-color: #f0f0f0; color: var(--luxury-dark); border: 1px solid #e0e0e0; }
-        .step .btn-secondary:hover { background-color: #e5e5e5; }
+        .step .btn-secondary { background-color: #f5f5f5; color: #555; border: 1px solid #e8e8e8; }
+        .step .btn-secondary:hover { background-color: #e9e9e9; }
         .step .btn-success { background-color: var(--luxury-success); color: var(--luxury-light); }
         .step .btn-success:hover { background-color: #4a6b2a; }
-        .button-group { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.3rem; border-top: 1px solid rgba(0,0,0,0.05); }
+
+        /* Button Group fixed at the bottom */
+        .button-group {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: auto;
+            padding: 1.0rem 25px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            background-color: #fdfaf7;
+            border-bottom-left-radius: 14px;
+             border-bottom-right-radius: 14px;
+             flex-shrink: 0;
+        }
         #quantityStep .prevStep { visibility: hidden; }
         #reviewStep .nextStep { display: none; }
         #quantityStep .button-group { justify-content: flex-end; }
 
+
         /* --- Sweet Card Styling --- */
-        .sweet-card-column { margin-bottom: 20px; }
-        /* Adjusted max-width for better fit on medium screens */
-        .sweet-card { border: 1.5px solid transparent; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-soft); transition: transform var(--transition-speed-fast) ease, box-shadow var(--transition-speed-fast) ease, border-color var(--transition-speed-fast) ease; background-color: var(--luxury-light); animation: fadeInUp var(--transition-speed-med) ease-out backwards; height: 100%; display: flex; flex-direction: column; max-width: 240px; margin-left: auto; margin-right: auto; cursor: pointer; }
-        .sweet-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-medium); }
-        .sweet-card.card-in-cart { border-color: var(--luxury-gold); background-color: #fffef9; }
-        .sweet-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-bottom: 1px solid rgba(0,0,0,0.05); background-color: #f8f8f8; }
-        .sweet-card .card-body { padding: 12px; display: flex; flex-direction: column; flex-grow: 1; }
-        .sweet-card .card-title { font-family: var(--font-heading); font-size: 1.05em; color: var(--luxury-brown); margin-bottom: 5px; }
-        .sweet-variations { font-size: 0.7em; color: var(--luxury-accent); margin-bottom: 8px; opacity: 0.9; font-weight: 400; line-height: 1.4; }
-        .sweet-variations i { margin-right: 3px; font-size: 0.9em; vertical-align: middle; opacity: 0.8; }
-        .sweet-card .card-text { font-size: 0.8em; color: #666; line-height: 1.45; flex-grow: 1; margin-bottom: 10px; max-height: 50px; /* Slightly reduced max-height */ overflow: hidden; }
+        .sweet-card-column { margin-bottom: 15px; }
+        .sweet-card { border: 1px solid transparent; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft); transition: transform var(--transition-speed-fast) ease, box-shadow var(--transition-speed-fast) ease, border-color var(--transition-speed-fast) ease; background-color: var(--luxury-light); animation: fadeInUp var(--transition-speed-med) ease-out backwards; height: 100%; display: flex; flex-direction: column; max-width: 210px; margin-left: auto; margin-right: auto; cursor: default; }
+        .sweet-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-medium); }
+        .sweet-card.card-in-cart { border-color: var(--luxury-gold); background-color: #fffdf7; }
+        .sweet-card img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; border-bottom: 1px solid rgba(0,0,0,0.04); background-color: #f8f8f8; cursor: pointer; }
+        .sweet-card .card-body { padding: 9px; display: flex; flex-direction: column; flex-grow: 1; }
+        .sweet-card .card-title { font-family: var(--font-heading); font-size: 0.95em; color: var(--luxury-brown); margin-bottom: 3px; }
+        .sweet-variations { font-size: 0.6em; color: var(--luxury-accent); margin-bottom: 5px; opacity: 0.9; font-weight: 400; line-height: 1.3; }
+        .sweet-variations i { margin-right: 2px; font-size: 0.85em; vertical-align: middle; opacity: 0.8; }
+        .sweet-card .card-text { font-size: 0.72em; color: #707070; line-height: 1.35; flex-grow: 1; margin-bottom: 6px; max-height: 38px; overflow: hidden; }
         .sweet-card .form-group { margin-top: auto; }
-        .sweet-card .form-group label { font-size: 0.7em; margin-bottom: 3px; font-weight: 700; color: var(--luxury-accent); text-transform: uppercase; letter-spacing: 0.4px; }
-        .sweet-card .form-control-sm { border-radius: 15px; padding: .2rem .45rem; font-size: .75rem; border-color: #ddd; }
-        .sweet-card .btn-add-update { font-weight: 600; border-radius: 15px; padding: 6px 12px; font-size: 0.7em; width: 100%; margin-top: 8px; transition: all var(--transition-speed-fast) ease; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid transparent; }
+        /* Quantity Control Styling */
+        .quantity-control-wrapper label { font-size: 0.65em; margin-bottom: 2px; font-weight: 600; color: var(--luxury-accent); text-transform: uppercase; letter-spacing: 0.4px; display: block; }
+        .quantity-control { display: flex; align-items: center; justify-content: space-between; border: 1px solid #e0e0e0; border-radius: 15px; overflow: hidden; background-color: #fff; max-width: 100px; margin-left: auto; margin-right: auto; }
+        .quantity-control .btn-qty { background-color: #f8f8f8; border: none; color: var(--luxury-brown); font-size: 1.1em; font-weight: 600; line-height: 1; padding: 4px 8px; cursor: pointer; transition: background-color 0.2s ease; }
+        .quantity-control .btn-qty:hover { background-color: #eee; }
+        .quantity-control .btn-qty:active { background-color: #e5e5e5; }
+        .quantity-control .qty-display { font-size: 0.85em; font-weight: 600; color: var(--luxury-dark); padding: 0 5px; min-width: 25px; text-align: center; }
+        .sweet-card .quantity-input { display: none !important; } /* Hide original input */
+
+        .sweet-card .btn-add-update { font-weight: 600; border-radius: 12px; padding: 5px 10px; font-size: 0.65em; width: 100%; margin-top: 8px; transition: all var(--transition-speed-fast) ease; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid transparent; }
         .sweet-card .btn-add { background-color: var(--luxury-brown); color: var(--luxury-light); border-color: var(--luxury-brown); }
         .sweet-card .btn-add:hover { background-color: var(--luxury-dark); border-color: var(--luxury-dark); transform: scale(1.02); }
         .sweet-card .btn-update { background-color: transparent; color: var(--luxury-gold); border: 1px solid var(--luxury-gold); }
-        .sweet-card .btn-update:hover { background-color: rgba(218, 165, 32, 0.1); color: var(--luxury-gold); transform: scale(1.02); }
+        .sweet-card .btn-update:hover { background-color: rgba(218, 165, 32, 0.08); color: var(--luxury-gold); transform: scale(1.02); }
         .sweet-card .btn-add-update.added-pulse { animation: pulseSubtle var(--transition-speed-med) ease-out; }
 
         /* --- Loading Overlay --- */
-        #cardLoadingOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.85); z-index: 20; display: flex; align-items: center; justify-content: center; border-radius: 18px; transition: opacity var(--transition-speed-fast) ease, visibility 0s linear var(--transition-speed-fast); opacity: 0; visibility: hidden; }
+        #cardLoadingOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.9); z-index: 20; display: flex; align-items: center; justify-content: center; border-radius: 14px; transition: opacity var(--transition-speed-fast) ease, visibility 0s linear var(--transition-speed-fast); opacity: 0; visibility: hidden; }
         #cardLoadingOverlay.visible { opacity: 1; visibility: visible; transition: opacity var(--transition-speed-fast) ease, visibility 0s linear 0s; }
-        #cardLoadingOverlay .spinner-border { width: 2.5rem; height: 2.5rem; color: var(--luxury-gold); }
+        #cardLoadingOverlay .spinner-border { width: 2.0rem; height: 2.0rem; color: var(--luxury-gold); }
 
         /* --- Cart Box --- */
-        #cartBox { position: fixed; bottom: 20px; right: 20px; width: 90%; max-width: 360px; max-height: 50vh; overflow-y: auto; background: linear-gradient(to bottom, #4a4646, var(--luxury-dark)); color: var(--luxury-cream); padding: 20px 25px; z-index: 1050; box-shadow: var(--shadow-strong); border-radius: 15px; border: 1px solid var(--luxury-accent); transition: transform var(--transition-speed-med) ease-out, opacity var(--transition-speed-med) ease-out, visibility var(--transition-speed-med) step-end; transform: translateY(15px); opacity: 0; visibility: hidden; }
+        #cartBox { position: fixed; bottom: 15px; right: 15px; width: 90%; max-width: 320px; max-height: 40vh; overflow-y: auto; background: linear-gradient(to bottom, #4a4646, var(--luxury-dark)); color: var(--luxury-cream); padding: 15px 18px; z-index: 1050; box-shadow: var(--shadow-strong); border-radius: 10px; border: 1px solid var(--luxury-accent); transition: transform var(--transition-speed-med) ease-out, opacity var(--transition-speed-med) ease-out, visibility var(--transition-speed-med) step-end; transform: translateY(15px); opacity: 0; visibility: hidden; }
         #cartBox.cart-visible { transform: translateY(0); opacity: 1; visibility: visible; transition: transform var(--transition-speed-med) ease-out, opacity var(--transition-speed-med) ease-out, visibility var(--transition-speed-med) step-start; }
-        #cartBox h3 { font-family: var(--font-heading); text-align: center; margin-top: 0; margin-bottom: 18px; color: var(--luxury-gold); border-bottom: 1px solid rgba(218, 165, 32, 0.3); padding-bottom: 12px; font-size: 1.4em; }
-        #cartBox::-webkit-scrollbar { width: 7px; }
-        #cartBox::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.08); border-radius: 4px; }
-        #cartBox::-webkit-scrollbar-thumb { background-color: var(--luxury-accent); border-radius: 4px; border: 2px solid transparent; background-clip: content-box; }
+        #cartBox h3 { font-family: var(--font-heading); text-align: center; margin-top: 0; margin-bottom: 12px; color: var(--luxury-gold); border-bottom: 1px solid rgba(218, 165, 32, 0.2); padding-bottom: 8px; font-size: 1.2em; }
+        #cartBox::-webkit-scrollbar { width: 5px; }
+        #cartBox::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 2.5px; }
+        #cartBox::-webkit-scrollbar-thumb { background-color: var(--luxury-accent); border-radius: 2.5px; border: 1px solid transparent; background-clip: content-box; }
         #cartBox::-webkit-scrollbar-thumb:hover { background-color: var(--luxury-gold); }
-        .cart-item { display: flex; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(218, 165, 32, 0.15); padding-bottom: 12px; position: relative; animation: slideInRight 0.5s ease-out backwards; }
-        .cart-item.removing { animation: shrinkOutFade 0.4s ease-out forwards; }
-        .cart-item:nth-child(1) { animation-delay: 0.06s; } .cart-item:nth-child(2) { animation-delay: 0.12s; } .cart-item:nth-child(3) { animation-delay: 0.18s; }
+        .cart-item { display: flex; align-items: center; margin-bottom: 8px; border-bottom: 1px solid rgba(218, 165, 32, 0.1); padding-bottom: 8px; position: relative; animation: slideInRight 0.4s ease-out backwards; }
+        .cart-item.removing { animation: shrinkOutFade 0.3s ease-out forwards; }
+        .cart-item:nth-child(1) { animation-delay: 0.04s; } .cart-item:nth-child(2) { animation-delay: 0.08s; } .cart-item:nth-child(3) { animation-delay: 0.12s; }
         .cart-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .cart-item img { width: 50px; height: 50px; object-fit: cover; border-radius: 8px; margin-right: 15px; box-shadow: 0 3px 8px rgba(0,0,0,0.25); background-color: #eee; flex-shrink: 0; }
-        .cart-item-details { flex-grow: 1; margin-right: 8px; }
-        .cart-item-details h5 { margin-bottom: 4px; color: var(--luxury-light); font-size: 0.95em; font-weight: 600; }
-        .cart-item-details span { font-size: 0.85em; color: var(--luxury-cream); opacity: 0.8; display: block; }
-        .remove-item-btn { background: none; border: none; color: var(--luxury-accent); font-size: 1.5em; line-height: 1; cursor: pointer; padding: 0 4px; margin-left: auto; opacity: 0.75; transition: all var(--transition-speed-fast) ease; align-self: center; flex-shrink: 0;}
-        .remove-item-btn:hover { color: var(--luxury-gold); opacity: 1; transform: scale(1.15); }
-        #emptyCartMsg { padding: 25px 0; color: var(--luxury-cream); opacity: 0.65; text-align: center; font-style: italic; font-size: 0.85em; }
+        .cart-item img { width: 40px; height: 40px; object-fit: cover; border-radius: 5px; margin-right: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.18); background-color: #eee; flex-shrink: 0; }
+        .cart-item-details { flex-grow: 1; margin-right: 5px; }
+        .cart-item-details h5 { margin-bottom: 2px; color: var(--luxury-light); font-size: 0.85em; font-weight: 600; }
+        .cart-item-details span { font-size: 0.75em; color: var(--luxury-cream); opacity: 0.8; display: block; }
+        .remove-item-btn { background: none; border: none; color: var(--luxury-accent); font-size: 1.3em; line-height: 1; cursor: pointer; padding: 0 2px; margin-left: auto; opacity: 0.7; transition: all var(--transition-speed-fast) ease; align-self: center; flex-shrink: 0;}
+        .remove-item-btn:hover { color: var(--luxury-gold); opacity: 1; transform: scale(1.1); }
+        #emptyCartMsg { padding: 18px 0; color: var(--luxury-cream); opacity: 0.6; text-align: center; font-style: italic; font-size: 0.75em; }
 
         /* --- Review Step --- */
-        #reviewDetails { display: flex; flex-wrap: wrap; gap: 25px; }
-        #reviewTextSummary { flex: 1 1 300px; }
-        #packagingPreviewContainer { flex: 1 1 320px; padding: 20px; border: 1px solid rgba(0,0,0,0.07); border-radius: 15px; background-color: rgba(255, 255, 255, 0.65); }
-        #packagingPreviewContainer h5 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; margin-bottom: 20px; font-size: 1.3em; }
-        #visualBoxRepresentation { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 15px; padding: 20px; border-radius: 10px; min-height: 200px; align-content: start; transition: background-color var(--transition-speed-med) ease, border var(--transition-speed-med) ease; border: 2px solid transparent; }
-        #visualBoxRepresentation.visual-box { background-color: #fffbf2; border-color: var(--luxury-brown); }
-        #visualBoxRepresentation.visual-tray { background: linear-gradient(135deg, #e8d1b0, #d1bc8a); border: 2px dashed var(--luxury-gold); box-shadow: inset 0 0 10px rgba(0,0,0,0.08); }
-        .sweet-icon-placeholder { text-align: center; animation: fadeInUp 0.5s ease-out backwards; }
-        .sweet-icon-placeholder img { width: 50px; height: 50px; object-fit: cover; border-radius: 50%; border: 2px solid var(--luxury-accent); box-shadow: 0 3px 6px rgba(0,0,0,0.15); margin-bottom: 6px; background-color: #eee; }
-        .sweet-icon-placeholder span { display: block; font-size: 0.75em; font-weight: 600; color: var(--luxury-dark); line-height: 1.2; }
-        #emptyBoxVisualMsg { grid-column: 1 / -1; text-align: center; padding: 25px; color: var(--luxury-brown); font-style: italic; opacity: 0.7; font-size: 0.9em; }
-        #reviewTextSummary .list-group-item { background-color: transparent; border-color: rgba(0, 0, 0, 0.06); padding: 8px 0px; color: var(--luxury-dark); font-size: 0.9em; }
-        #reviewTextSummary h4 { font-family: var(--font-heading); color: var(--luxury-brown); margin-bottom: 1.2rem; font-size: 1.4em; border-bottom: 1px solid rgba(0,0,0,0.07); padding-bottom: 0.6rem; }
-        #reviewTextSummary p { margin-top: 1.2rem; font-size: 1.0em; color: var(--luxury-dark); }
-        #reviewTextSummary .badge { background-color: var(--luxury-accent); color: var(--luxury-light); font-size: 0.85em; padding: 5px 9px; border-radius: 10px; }
-        #reviewTextSummary img { border: 1px solid rgba(0,0,0,0.08); background-color: #eee; }
+        #reviewDetails { display: flex; flex-wrap: wrap; gap: 18px; }
+        #reviewTextSummary { flex: 1 1 260px; }
+        #packagingPreviewContainer { flex: 1 1 280px; padding: 15px; border: 1px solid rgba(0,0,0,0.05); border-radius: 10px; background-color: rgba(255, 255, 255, 0.7); }
+        #packagingPreviewContainer h5 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; margin-bottom: 15px; font-size: 1.15em; }
+        #visualBoxRepresentation { display: grid; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 10px; padding: 12px; border-radius: 6px; min-height: 160px; align-content: start; transition: background-color var(--transition-speed-med) ease, border var(--transition-speed-med) ease; border: 1.5px solid transparent; }
+        #visualBoxRepresentation.visual-box { background-color: #fffcf5; border-color: var(--luxury-brown); }
+        #visualBoxRepresentation.visual-tray { background: linear-gradient(135deg, #ecdcc6, #d7c497); border: 1.5px dashed var(--luxury-gold); box-shadow: inset 0 0 6px rgba(0,0,0,0.05); }
+        .sweet-icon-placeholder { text-align: center; animation: fadeInUp 0.4s ease-out backwards; }
+        .sweet-icon-placeholder img { width: 40px; height: 40px; object-fit: cover; border-radius: 50%; border: 1.5px solid var(--luxury-accent); box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 4px; background-color: #eee; }
+        .sweet-icon-placeholder span { display: block; font-size: 0.65em; font-weight: 600; color: var(--luxury-dark); line-height: 1.1; }
+        #emptyBoxVisualMsg { grid-column: 1 / -1; text-align: center; padding: 18px; color: var(--luxury-brown); font-style: italic; opacity: 0.7; font-size: 0.8em; }
+        #reviewTextSummary .list-group-item { background-color: transparent; border-color: rgba(0, 0, 0, 0.04); padding: 6px 0px; color: var(--luxury-dark); font-size: 0.85em; }
+        #reviewTextSummary h4 { font-family: var(--font-heading); color: var(--luxury-brown); margin-bottom: 0.9rem; font-size: 1.2em; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 0.4rem; }
+        #reviewTextSummary p { margin-top: 0.9rem; font-size: 0.9em; color: var(--luxury-dark); }
+        #reviewTextSummary .badge { background-color: var(--luxury-accent); color: var(--luxury-light); font-size: 0.75em; padding: 3px 7px; border-radius: 6px; }
+        #reviewTextSummary img { border: 1px solid rgba(0,0,0,0.05); background-color: #eee; }
 
         /* --- Success Message --- */
-        #orderSuccessMessage { display: none; padding: 35px; margin: 30px auto; max-width: 600px; background-color: var(--luxury-light); border-radius: 15px; text-align: center; box-shadow: var(--shadow-medium); border: 1px solid var(--luxury-gold); animation: fadeInUp 0.8s ease-out; }
-        #orderSuccessMessage h2 { font-family: var(--font-heading); color: var(--luxury-success); margin-bottom: 15px; font-size: 2.0em; }
-        #orderSuccessMessage h2 i { margin-right: 8px; font-size: 0.9em; }
-        #orderSuccessMessage p { color: var(--luxury-dark); line-height: 1.6; margin-bottom: 10px; font-size: 1.0em; }
-        #orderSuccessMessage #successOrderSummary { font-size: 0.9em; text-align: left; max-width: 400px; margin: 18px auto 25px auto; padding: 18px; border-radius: 8px; background-color: #f8f9fa; border: 1px solid #eee;}
-        #orderSuccessMessage #successOrderSummary ul { list-style: none; padding-left: 0; margin-bottom: 10px;}
-        #orderSuccessMessage #successOrderSummary li { margin-bottom: 6px; }
-        #orderSuccessMessage .btn-new-order { font-family: var(--font-body); font-weight: 700; padding: 11px 28px; border: none; border-radius: 50px; cursor: pointer; transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft); background: linear-gradient(100deg, var(--luxury-gold), var(--luxury-accent)); color: var(--luxury-light); text-transform: uppercase; letter-spacing: 0.7px; font-size: 0.9em; }
+        #orderSuccessMessage { display: none; padding: 25px; margin: 20px auto; max-width: 500px; background-color: var(--luxury-light); border-radius: 10px; text-align: center; box-shadow: var(--shadow-medium); border: 1px solid var(--luxury-gold); animation: fadeInUp 0.6s ease-out; }
+        #orderSuccessMessage h2 { font-family: var(--font-heading); color: var(--luxury-success); margin-bottom: 10px; font-size: 1.6em; }
+        #orderSuccessMessage h2 i { margin-right: 6px; font-size: 0.9em; }
+        #orderSuccessMessage p { color: var(--luxury-dark); line-height: 1.5; margin-bottom: 8px; font-size: 0.9em; }
+        #orderSuccessMessage #successOrderSummary { font-size: 0.8em; text-align: left; max-width: 350px; margin: 12px auto 18px auto; padding: 12px; border-radius: 5px; background-color: #f9fafa; border: 1px solid #f0f0f0;}
+        #orderSuccessMessage #successOrderSummary ul { list-style: none; padding-left: 0; margin-bottom: 6px;}
+        #orderSuccessMessage #successOrderSummary li { margin-bottom: 4px; }
+        #orderSuccessMessage .btn-new-order { font-family: var(--font-body); font-weight: 600; padding: 9px 22px; border: none; border-radius: 50px; cursor: pointer; transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft); background: linear-gradient(100deg, var(--luxury-gold), var(--luxury-accent)); color: var(--luxury-light); text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.8em; }
         #orderSuccessMessage .btn-new-order:hover { box-shadow: var(--shadow-medium); transform: translateY(-2px); }
         #orderSuccessMessage .btn-new-order:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
          /* --- Error Message Styling --- */
-        #errorMessage { display: none; padding: 15px; margin: 25px auto; max-width: 650px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 8px; text-align: center; font-size: 0.9em;}
-        #errorMessage h4 { color: #721c24; margin-bottom: 8px; font-size: 1.1em; }
+        #errorMessage { display: none; padding: 10px; margin: 18px auto; max-width: 550px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 5px; text-align: center; font-size: 0.8em;}
+        #errorMessage h4 { color: #721c24; margin-bottom: 5px; font-size: 0.95em; }
 
         /* --- =========================== --- */
         /* ---    RESPONSIVE ADJUSTMENTS   --- */
@@ -194,76 +235,81 @@
 
         /* Medium devices (tablets, less than 992px) */
         @media (max-width: 991.98px) {
-            .main-title { font-size: 2.6em; margin-bottom: 1.8rem; }
-            #wizard { max-width: 720px; }
-            #wizard-progress { max-width: 680px; padding: 12px 8px; }
-            .step { padding: 25px 30px; }
-            .step h2 { font-size: 1.8em; margin-bottom: 1.8rem; }
-            /* Make review section stack earlier */
+            .main-title { font-size: 2.1em; margin-bottom: 1.5rem; }
+            #wizard { max-width: 680px; }
+            #wizard-progress { max-width: 95%; padding: 9px 5px; }
+            .step { padding-left: 20px; padding-right: 20px; }
+             .step-scrollable-content { padding: 18px 20px; }
+             .button-group { padding: 0.8rem 20px; }
+            .step h2 { font-size: 1.5em; margin-bottom: 1.5rem; }
             #reviewDetails { flex-direction: column; }
-            #packagingPreviewContainer { flex-basis: auto; } /* Reset flex-basis */
+            #packagingPreviewContainer { flex-basis: auto; }
         }
 
         /* Small devices (landscape phones, less than 768px) */
         @media (max-width: 767.98px) {
-            body { padding-top: 75px; font-size: 15px; } /* Slightly smaller base font */
-             .main-container { padding-top: 2rem; padding-bottom: 2rem;}
-            .navbar .navbar-brand img { max-width: 140px; }
-             .navbar-collapse { background-color: var(--luxury-dark); /* Add background for mobile menu */ padding: 1rem; margin-top: 0.5rem; border-radius: 5px; }
-            .main-title { font-size: 2.2em; margin-bottom: 1.5rem; }
-            #wizard { max-width: 100%; margin-left: 10px; margin-right: 10px; min-height: auto; } /* Allow full width */
-            #wizard-progress { max-width: 95%; padding: 10px 5px; margin-bottom: 2rem;}
-            .progress-step { font-size: 0.75em; padding: 6px 4px; }
-             .progress-step span { margin-right: 2px; } /* Smaller margin for number */
-             .progress-step.completed::before { margin-right: 3px; }
-            .step { padding: 20px 20px; }
-            .step h2 { font-size: 1.6em; margin-bottom: 1.5rem; }
-            .step button { padding: 9px 20px; font-size: 0.8em; }
-             .button-group { flex-direction: column; gap: 10px; align-items: stretch; } /* Stack buttons */
-             .button-group .prevStep { order: 2; } /* Put back button below next */
-             .button-group .nextStep, .button-group #finishOrder, .button-group #confirmOrderBtn { order: 1; width: 100%; }
-             #quantityStep .button-group { flex-direction: row; justify-content: flex-end; } /* Keep first step button inline */
-
-             #cartBox { max-width: 300px; padding: 15px 20px; bottom: 15px; right: 15px; max-height: 45vh;}
-             #cartBox h3 { font-size: 1.25em; margin-bottom: 15px; padding-bottom: 10px;}
-             .cart-item img { width: 45px; height: 45px; margin-right: 12px; }
-             .cart-item-details h5 { font-size: 0.9em; }
-             .cart-item-details span { font-size: 0.8em; }
-             .remove-item-btn { font-size: 1.4em; }
-
-             #reviewTextSummary h4 { font-size: 1.3em; }
-             #packagingPreviewContainer h5 { font-size: 1.2em; }
-             #visualBoxRepresentation { gap: 12px; padding: 15px; grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));} /* Smaller icons/gap */
-             .sweet-icon-placeholder img { width: 45px; height: 45px; margin-bottom: 5px; }
-             .sweet-icon-placeholder span { font-size: 0.7em; }
-
-             #orderSuccessMessage { padding: 25px; }
-             #orderSuccessMessage h2 { font-size: 1.8em; }
-             #orderSuccessMessage p { font-size: 0.95em; }
-             #orderSuccessMessage #successOrderSummary { padding: 15px; }
-             #orderSuccessMessage .btn-new-order { padding: 10px 25px; font-size: 0.85em; }
-        }
-
-         /* Extra small devices (portrait phones, less than 576px) */
-        @media (max-width: 575.98px) {
-            body { font-size: 14px; padding-top: 70px; }
-             .main-container { padding-top: 1.5rem; padding-bottom: 1.5rem;}
-            .main-title { font-size: 1.9em; }
+            body { padding-top: 60px; font-size: 14px; }
+            .main-container { padding-top: 1.5rem; padding-bottom: 1.5rem;}
             .navbar .navbar-brand img { max-width: 120px; }
-            #wizard-progress { display: none; } /* Optionally hide progress bar on very small screens */
-            .step h2 { font-size: 1.4em; }
-             #cartBox { right: 10px; bottom: 10px; max-width: 95%; /* Almost full width */ width: auto; }
-             /* Further reduce sweet card sizes if needed */
-             .sweet-card { max-width: 90%; } /* Allow cards to take more width */
-             .sweet-card .card-body { padding: 10px; }
-             .sweet-card .card-title { font-size: 1.0em; }
-             .sweet-card .card-text { font-size: 0.75em; line-height: 1.4; max-height: 45px; }
-             .sweet-card .btn-add-update { padding: 5px 10px; font-size: 0.65em; }
-
-            /* Ensure Bootstrap grid adapts well on smallest screens */
-            #sweetCards.row { --bs-gutter-x: 0.8rem; --bs-gutter-y: 0.8rem; } /* Reduce gutters */
+            .navbar-collapse { background-color: rgba(51, 46, 46, 0.98); backdrop-filter: blur(5px); padding: 0.8rem; margin-top: 0.3rem; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+            .main-title { font-size: 1.8em; margin-bottom: 1.2rem; }
+            #wizard { max-width: 100%; margin-left: 6px; margin-right: 6px; min-height: auto; }
+            #wizard-progress { max-width: 100%; padding: 7px 3px; margin-bottom: 1.5rem;}
+            .progress-step { font-size: 0.65em; padding: 4px 2px; font-weight: 500;}
+            .progress-step span { display: none; }
+            .progress-step.completed::before { font-size: 1.0em; }
+            .step { border-radius: 10px; max-height: 80vh; }
+             .step-scrollable-content { padding: 15px 15px; }
+             .button-group { padding: 0.7rem 15px; }
+            .step h2 { font-size: 1.35em; margin-bottom: 1.2rem; }
+            .step button { padding: 7px 16px; font-size: 0.7em; }
+            .button-group { flex-direction: column; gap: 7px; align-items: stretch; margin-top: 1.2rem; }
+            .button-group .prevStep { order: 2; background-color: #eee; border: 1px solid #ddd; }
+            .button-group .nextStep, .button-group #finishOrder, .button-group #confirmOrderBtn { order: 1; width: 100%; }
+            #quantityStep .button-group { flex-direction: row; justify-content: flex-end; }
+            #cartBox { max-width: 260px; padding: 10px 12px; bottom: 10px; right: 10px; max-height: 38vh; border-radius: 8px;}
+            #cartBox h3 { font-size: 1.1em; margin-bottom: 10px; padding-bottom: 7px;}
+            .cart-item img { width: 35px; height: 35px; margin-right: 8px; border-radius: 4px; }
+            .cart-item-details h5 { font-size: 0.8em; }
+            .cart-item-details span { font-size: 0.7em; }
+            .remove-item-btn { font-size: 1.2em; }
+            .quantity-control { max-width: 90px; }
+            .quantity-control .btn-qty { padding: 3px 7px; font-size: 1em; }
+            .quantity-control .qty-display { font-size: 0.8em; min-width: 22px;}
+            #reviewTextSummary h4 { font-size: 1.1em; }
+            #packagingPreviewContainer h5 { font-size: 1.0em; }
+            #visualBoxRepresentation { gap: 8px; padding: 10px; grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));}
+            .sweet-icon-placeholder img { width: 35px; height: 35px; margin-bottom: 3px; }
+            .sweet-icon-placeholder span { font-size: 0.6em; }
+            #orderSuccessMessage { padding: 18px; }
+            #orderSuccessMessage h2 { font-size: 1.4em; }
+            #orderSuccessMessage p { font-size: 0.85em; }
+            #orderSuccessMessage #successOrderSummary { padding: 10px; }
+            #orderSuccessMessage .btn-new-order { padding: 8px 20px; font-size: 0.75em; }
         }
 
+        /* Extra small devices (portrait phones, less than 576px) */
+        @media (max-width: 575.98px) {
+            body { font-size: 13px; padding-top: 55px; }
+            .main-container { padding-top: 1.0rem; padding-bottom: 1.0rem;}
+            .main-title { font-size: 1.5em; }
+            .navbar .navbar-brand img { max-width: 100px; }
+            #wizard-progress { display: none; }
+            .step h2 { font-size: 1.2em; }
+            #cartBox { right: 6px; bottom: 6px; max-width: calc(100% - 12px); width: auto; border-radius: 6px; }
+            .sweet-card { max-width: 100%; }
+            #sweetCards.row { --bs-gutter-x: 0.5rem; --bs-gutter-y: 0.5rem; }
+            .sweet-card .card-body { padding: 7px; }
+            .sweet-card .card-title { font-size: 0.9em; }
+            .sweet-card .card-text { font-size: 0.68em; line-height: 1.3; max-height: 35px; }
+            .sweet-card .btn-add-update { padding: 4px 8px; font-size: 0.6em; }
+            .quantity-control { max-width: 80px; }
+            .quantity-control .btn-qty { padding: 2px 6px; font-size: 0.9em; }
+            .quantity-control .qty-display { font-size: 0.75em; min-width: 20px;}
+            #reviewTextSummary { min-width: 180px; }
+            #visualBoxRepresentation { grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); gap: 6px; }
+            .button-group { padding: 0.6rem 15px; }
+        }
     </style>
 </head>
 <body>
@@ -289,7 +335,6 @@
     </nav>
 
     <!-- Main Content -->
-    <!-- Added main-container class for consistent padding -->
     <section class="container main-container">
         <h1 class="main-title">Compose Your Exquisite Sweet Box</h1>
 
@@ -311,49 +356,59 @@
             <div id="wizard">
                 <!-- Step 1: Quantity Type -->
                 <div id="quantityStep" class="step">
-                     <h2>Choose Your Preference</h2>
-                     <div class="form-check"><input class="form-check-input" type="radio" name="quantityType" id="quantityUnit" value="unit" checked><label class="form-check-label" for="quantityUnit">Order by Unit</label></div>
-                     <div class="form-check"><input class="form-check-input" type="radio" name="quantityType" id="quantityWeight" value="weight"><label class="form-check-label" for="quantityWeight">Order by Weight</label></div>
+                    <div class="step-scrollable-content">
+                         <h2>Choose Your Preference</h2>
+                         <div class="form-check"><input class="form-check-input" type="radio" name="quantityType" id="quantityUnit" value="unit" checked><label class="form-check-label" for="quantityUnit">Order by Unit</label></div>
+                         <div class="form-check"><input class="form-check-input" type="radio" name="quantityType" id="quantityWeight" value="weight"><label class="form-check-label" for="quantityWeight">Order by Weight</label></div>
+                    </div>
                      <div class="button-group">
                         <button type="button" class="btn btn-secondary prevStep" style="visibility: hidden;">Back</button>
                         <button type="button" class="btn btn-primary nextStep">Next: Delicacies</button>
                     </div>
                 </div>
+
                 <!-- Step 2: Sweet Selection -->
                 <div id="sweetSelectionStep" class="step">
-                    <h2>Select Your Delicacies</h2>
-                    <div id="cardLoadingOverlay"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>
-                    <!-- Using Bootstrap's responsive grid columns -->
-                    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 justify-content-center" id="sweetCards">
-                        <p class="text-muted text-center col-12">Loading delicacies...</p>
+                    <div class="step-scrollable-content">
+                        <h2>Select Your Delicacies</h2>
+                        <div id="cardLoadingOverlay"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>
+                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 justify-content-center" id="sweetCards">
+                            <p class="text-muted text-center col-12">Loading delicacies...</p>
+                        </div>
                     </div>
                      <div class="button-group">
                          <button type="button" class="btn btn-secondary prevStep">Back: Preference</button>
                          <button type="button" class="btn btn-primary nextStep">Next: Presentation</button>
                      </div>
                 </div>
+
                 <!-- Step 3: Packaging -->
                 <div id="packagingStep" class="step">
-                     <h2>Choose Presentation</h2>
-                     <div class="form-check"><input class="form-check-input" type="radio" name="packaging" id="box" value="box" checked><label class="form-check-label" for="box">Signature Darna Box</label></div>
-                     <div class="form-check"><input class="form-check-input" type="radio" name="packaging" id="tray" value="tray"><label class="form-check-label" for="tray">Ornate Keepsake Tray (+$8.00)</label></div>
+                     <div class="step-scrollable-content">
+                         <h2>Choose Presentation</h2>
+                         <div class="form-check"><input class="form-check-input" type="radio" name="packaging" id="box" value="box" checked><label class="form-check-label" for="box">Signature Darna Box</label></div>
+                         <div class="form-check"><input class="form-check-input" type="radio" name="packaging" id="tray" value="tray"><label class="form-check-label" for="tray">Ornate Keepsake Tray (+$8.00)</label></div>
+                     </div>
                      <div class="button-group">
                         <button type="button" class="btn btn-secondary prevStep">Back: Delicacies</button>
                         <button type="button" class="btn btn-primary" id="finishOrder">Next: Review</button>
                     </div>
                 </div>
+
                  <!-- Step 4: Review -->
                  <div id="reviewStep" class="step">
-                    <h2>Review Your Creation</h2>
-                    <div id="reviewDetails">
-                        <div id="reviewTextSummary"></div>
-                        <div id="packagingPreviewContainer">
-                             <h5>Visual Preview</h5>
-                             <div id="visualBoxRepresentation"></div>
+                    <div class="step-scrollable-content">
+                        <h2>Review Your Creation</h2>
+                        <div id="reviewDetails">
+                            <div id="reviewTextSummary"></div>
+                            <div id="packagingPreviewContainer">
+                                 <h5>Visual Preview</h5>
+                                 <div id="visualBoxRepresentation"></div>
+                            </div>
                         </div>
-                    </div>
-                     <div class="alert alert-light border-warning mt-4 small" style="background-color: #fffaf0;">
-                        <i class="bi bi-info-circle-fill text-warning me-2"></i>Review selections. This is a demo.
+                         <div class="alert alert-light border-warning mt-3 small py-2" style="background-color: #fffaf0;">
+                            <i class="bi bi-info-circle-fill text-warning me-1"></i>Review selections. This is a demo.
+                        </div>
                     </div>
                      <div class="button-group">
                          <button type="button" class="btn btn-secondary prevStep">Back: Presentation</button>
@@ -384,15 +439,15 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Wrap entire script in a try...catch for basic error handling
+        // Wrap entire script in a try...catch
         try {
             $(document).ready(function() {
-                console.log("Document ready. Initializing Darna Wizard (v8 - Responsive)...");
+                console.log("Document ready. Initializing Darna Wizard (v11 - Debugging Next Step)...");
 
                 // --- Global State Variables ---
                 let cart = [];
                 let currentStep = 0;
-                let sweets = []; // Empty initially, loaded from JSON
+                let sweets = [];
                 let chosenQuantityType = 'unit';
                 let chosenPackaging = 'box';
                 const packagingCost = { box: 0, tray: 8.00 };
@@ -410,7 +465,7 @@
                 const errorMessageContainer = $("#errorMessage");
 
                 // --- Utility ---
-                const placeholderImg = 'img/placeholder.png'; // Optional placeholder in img/
+                const placeholderImg = 'img/placeholder.png'; // Make sure this exists if you want a local fallback
                 function getSweetById(id) {
                     if (!sweets || sweets.length === 0) return null;
                     return sweets.find(s => s.id === id);
@@ -421,27 +476,27 @@
                 function showCart() {
                     if (!cartBox.hasClass('cart-visible')) {
                          cartBox.addClass('cart-visible');
-                         console.log("Cart shown.");
+                         console.log("DEBUG: Cart shown.");
                     }
                 }
                 function hideCart() {
                     if (cartBox.hasClass('cart-visible')) {
                         cartBox.removeClass('cart-visible');
-                        console.log("Cart hidden.");
+                        console.log("DEBUG: Cart hidden.");
                     }
                 }
                  function updateCartDisplay() {
                     cartItemsContainer.empty();
                     if (cart.length === 0) {
                         cartItemsContainer.append(emptyCartMsg);
-                        if (currentStep === 1) { hideCart(); } // Hide if empty on step 2
+                        hideCart();
                     } else {
                         cart.forEach((item, index) => {
-                            const delay = index * 0.07;
+                            const delay = index * 0.05;
                             const itemImagePath = item.img || placeholderImg;
                             cartItemsContainer.append(`<div class="cart-item" style="animation-delay: ${delay}s;"><img src="${itemImagePath}" alt="${item.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('Cart Img Error: ${itemImagePath}')"><div class="cart-item-details"><h5>${item.name}</h5><span>${formatQuantity(item.quantity, item.quantityType)}</span></div><button class="remove-item-btn" data-sweet-id="${item.sweetId}" aria-label="Remove ${item.name}">×</button></div>`);
                         });
-                        if (currentStep === 1) { showCart(); } // Ensure shown if items exist on step 2
+                        if (currentStep === 1) { showCart(); }
                     }
                 }
 
@@ -455,70 +510,86 @@
                     });
                 }
 
-                function showStep(stepIndex) { // Handles cart visibility
-                    console.log(`Navigating to step: ${stepIndex}`);
-                    if (stepIndex < 0 || stepIndex >= steps.length) { console.error(`Invalid step index: ${stepIndex}`); return; }
+                function showStep(stepIndex) {
+                    console.log(`DEBUG: showStep called for index: ${stepIndex}`);
+                    if (stepIndex < 0 || stepIndex >= steps.length) { console.error(`ERROR: Invalid step index requested: ${stepIndex}`); return; }
                     const $currentStep = $(steps[currentStep]);
                     const $nextStep = $(steps[stepIndex]);
                     if (stepIndex !== currentStep) { $currentStep.addClass('exiting-step'); }
 
                     setTimeout(() => {
-                        steps.removeClass('active-step exiting-step');
-                        $nextStep.addClass('active-step');
-                        currentStep = stepIndex; // Update currentStep *before* deciding on cart visibility
-                        updateWizardProgress(currentStep);
+                        try {
+                            steps.removeClass('active-step exiting-step');
+                            $nextStep.addClass('active-step');
+                            const previousStep = currentStep;
+                            currentStep = stepIndex; // Update global state
+                            console.log(`DEBUG: currentStep is now ${currentStep}`);
+                            updateWizardProgress(currentStep);
 
-                        // --- Cart Visibility Logic ---
-                        if (currentStep === 1) { // Step 2: Delicacies (index 1)
-                            if (cart.length > 0) { showCart(); }
+                            // Cart Visibility
+                            if (currentStep === 1) { if (cart.length > 0) showCart(); else hideCart(); }
                             else { hideCart(); }
-                        } else { // Hide cart on ALL other steps (0, 2, 3)
-                            hideCart();
-                        }
-                        // --- End Cart Visibility Logic ---
 
-                        if (currentStep === 1) { // Generate cards for Step 2
-                            console.log("Showing Step 2 - Delicacies (Type: " + chosenQuantityType + ")");
-                            if (sweets && sweets.length > 0) {
-                                showLoadingOverlay(); updateQuantityLabelsAndInputs();
-                                setTimeout(() => {
-                                    try { generateSweetCards(); }
-                                    catch (e) { console.error("Err generating cards:", e); sweetCardsContainer.html('<p class="text-danger text-center col-12">Error generating delicacies display.</p>'); }
-                                    finally { hideLoadingOverlay(); }
-                                }, 50);
-                            } else {
-                                console.warn("Sweet data not yet available for step 2."); sweetCardsContainer.html('<p class="text-warning text-center col-12">Delicacy data is loading or failed to load.</p>');
+                            // Content Generation
+                            if (currentStep === 1) {
+                                console.log("DEBUG: Generating content for Step 2 (Delicacies)");
+                                if (sweets && sweets.length > 0) {
+                                    if (previousStep !== 1 || sweetCardsContainer.children().length <= 1) {
+                                        showLoadingOverlay(); updateQuantityLabelsAndInputs();
+                                        setTimeout(() => {
+                                            try { generateSweetCards(); }
+                                            catch (e) { console.error("ERROR generating cards:", e); sweetCardsContainer.html('<p class="text-danger text-center col-12">Error generating delicacies display.</p>'); }
+                                            finally { hideLoadingOverlay(); }
+                                        }, 50);
+                                    } else { updateQuantityLabelsAndInputs(); }
+                                } else {
+                                    console.warn("DEBUG: Sweet data not available when trying to show step 2."); sweetCardsContainer.html('<p class="text-warning text-center col-12">Delicacy data loading or failed.</p>');
+                                }
+                            } else if (currentStep === 3) {
+                                console.log("DEBUG: Generating content for Step 4 (Review)");
+                                try { populateReview(); }
+                                catch (e) { console.error("ERROR populating review:", e); $("#reviewDetails").html('<p class="text-danger text-center col-12">Could not generate review.</p>'); }
                             }
-                        } else if (currentStep === 3) { // Populate review for Step 4
-                            console.log("Showing Step 4 - Review");
-                            try { populateReview(); }
-                            catch (e) { console.error("Err populating review:", e); $("#reviewDetails").html('<p class="text-danger text-center col-12">Could not generate review.</p>'); }
-                        }
-                    }, stepIndex === currentStep ? 0 : 400);
+                            console.log(`DEBUG: Successfully displayed step ${currentStep}`);
+                         } catch (e) {
+                              console.error(`ERROR inside showStep timeout for step ${stepIndex}:`, e);
+                         }
+                    }, stepIndex === currentStep ? 0 : 350);
                  }
 
                 function showLoadingOverlay() { cardLoadingOverlay.addClass('visible'); }
                 function hideLoadingOverlay() { cardLoadingOverlay.removeClass('visible'); }
-                function updateQuantityLabelsAndInputs() {
+
+                function updateQuantityLabelsAndInputs(container = sweetCardsContainer) {
                     const quantityLabelText = chosenQuantityType === 'unit' ? 'Units:' : 'Grams:';
                     const minQuantity = chosenQuantityType === 'unit' ? 1 : 50;
                     const stepQuantity = chosenQuantityType === 'unit' ? 1 : 10;
-                    sweetCardsContainer.find(".quantity-label").text(quantityLabelText);
-                    sweetCardsContainer.find(".quantity-input").each(function() { $(this).attr('min', minQuantity).attr('step', stepQuantity); });
+
+                    container.find(".quantity-control-wrapper label.visually-hidden").text(quantityLabelText);
+                    container.find(".quantity-input").each(function() {
+                         const $input = $(this);
+                         $input.attr('min', minQuantity).attr('step', stepQuantity);
+                         const currentVal = parseInt($input.val(), 10);
+                         if (!isNaN(currentVal) && currentVal < minQuantity) {
+                              $input.val(minQuantity);
+                              $input.closest('.quantity-control-wrapper').find('.qty-display').text(minQuantity);
+                         }
+                    });
                 }
 
                 // --- Sweet Card Generation ---
                 function generateSweetCards() {
                     sweetCardsContainer.empty();
-                    if (!sweets || sweets.length === 0) { sweetCardsContainer.append('<p class="text-center text-danger col-12">No delicacies data found.</p>'); console.error("generateSweetCards called but sweets data is missing or empty."); return; }
+                    if (!sweets || sweets.length === 0) { console.error("ERROR: generateSweetCards - No sweets data available."); sweetCardsContainer.append('<p class="text-center text-danger col-12">No delicacies data found.</p>'); return; }
                     const quantityLabelText = chosenQuantityType === 'unit' ? 'Units:' : 'Grams:';
                     const minQuantity = chosenQuantityType === 'unit' ? 1 : 50;
                     const stepQuantity = chosenQuantityType === 'unit' ? 1 : 10;
+
                     sweets.forEach((sweet, index) => {
                         const existingCartItem = cart.find(item => item.sweetId === sweet.id);
                         const isInCart = !!existingCartItem;
                         const currentQuantity = isInCart ? existingCartItem.quantity : minQuantity;
-                        const buttonText = isInCart ? 'Update' : 'Add';
+                        const buttonText = isInCart ? 'Update In Cart' : 'Add To Box';
                         const buttonClass = isInCart ? 'btn-update' : 'btn-add';
                         const cardClass = isInCart ? 'card-in-cart' : '';
                         const imagePath = sweet.img || placeholderImg;
@@ -529,88 +600,180 @@
                              if (sweet.variations.length > 1) variationsHtml += ` (+)`;
                             variationsHtml += `</div>`;
                         }
-                        // Use sweet-card-column which is targeted by row-cols-* in the HTML
                         sweetCardsContainer.append(`
                             <div class="sweet-card-column d-flex align-items-stretch">
-                                <div class="card sweet-card selectable-card ${cardClass}" style="animation-delay: ${index * 0.05}s;" data-sweet-id="${sweet.id}">
-                                    <img src="${imagePath}" class="card-img-top" alt="${sweet.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('IMAGE LOAD ERROR: Path=\\'${imagePath}\\' for ${sweet.name}');">
+                                <div class="card sweet-card ${cardClass}" style="animation-delay: ${index * 0.04}s;" data-sweet-id="${sweet.id}">
+                                    <img src="${imagePath}" class="card-img-top selectable-card-img" alt="${sweet.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('IMAGE LOAD ERROR: Path=\\'${imagePath}\\' for ${sweet.name}');">
                                     <div class="card-body">
                                         <h5 class="card-title">${sweet.name}</h5>
                                         ${variationsHtml}
                                         <p class="card-text">${sweet.description}</p>
                                         <div class="form-group mt-auto">
-                                            <label for="quantity_${sweet.id}" class="quantity-label d-block">${quantityLabelText}</label>
-                                            <input type="number" class="form-control form-control-sm quantity-input" id="quantity_${sweet.id}" value="${currentQuantity}" min="${minQuantity}" step="${stepQuantity}" data-sweet-id="${sweet.id}" aria-label="Qty ${sweet.name}">
-                                        </div>
-                                        <button class="btn btn-sm btn-add-update ${buttonClass}" data-sweet-id="${sweet.id}" data-sweet-name="${sweet.name}" data-img="${imagePath}">${buttonText}</button>
+                                            <div class="quantity-control-wrapper mb-2">
+                                                 <label for="quantity_${sweet.id}" class="visually-hidden">${quantityLabelText}</label>
+                                                 <div class="quantity-control">
+                                                      <button type="button" class="btn-qty btn-qty-decrease" data-action="decrease" aria-label="Decrease quantity for ${sweet.name}">-</button>
+                                                      <span class="qty-display" aria-live="polite">${currentQuantity}</span>
+                                                      <button type="button" class="btn-qty btn-qty-increase" data-action="increase" aria-label="Increase quantity for ${sweet.name}">+</button>
+                                                 </div>
+                                                 <input type="number" class="quantity-input" id="quantity_${sweet.id}" value="${currentQuantity}" min="${minQuantity}" step="${stepQuantity}" data-sweet-id="${sweet.id}" aria-label="Qty ${sweet.name}">
+                                             </div>
+                                             <button class="btn btn-sm btn-add-update ${buttonClass}" data-sweet-id="${sweet.id}" data-sweet-name="${sweet.name}" data-img="${imagePath}">${buttonText}</button>
+                                         </div>
                                     </div>
                                 </div>
                             </div>`);
                     });
-                    console.log("Sweet cards generated from loaded JSON data.");
+                    updateQuantityLabelsAndInputs();
+                    console.log("DEBUG: Sweet cards generated.");
                  }
 
-                function updateCardState(sweetId) {
+                function updateCardState(sweetId) { // Updates card border and Add/Update button text
                     const card = sweetCardsContainer.find(`.sweet-card[data-sweet-id="${sweetId}"]`);
                     if (!card.length) return;
                     const existingCartItem = cart.find(item => item.sweetId === sweetId);
                     const isInCart = !!existingCartItem;
+                    const button = card.find('.btn-add-update');
                     const minQuantity = chosenQuantityType === 'unit' ? 1 : 50;
                     const quantityInput = card.find('.quantity-input');
-                    const button = card.find('.btn-add-update');
-                    if (isInCart) { card.addClass('card-in-cart'); button.removeClass('btn-add').addClass('btn-update').text('Update'); quantityInput.val(existingCartItem.quantity); }
-                    else { card.removeClass('card-in-cart'); button.removeClass('btn-update').addClass('btn-add').text('Add'); if (!quantityInput.is(':focus')) { quantityInput.val(minQuantity); } }
+                    const quantityDisplay = card.find('.qty-display');
+
+                    if (isInCart) {
+                        card.addClass('card-in-cart'); button.removeClass('btn-add').addClass('btn-update').text('Update In Cart');
+                        quantityInput.val(existingCartItem.quantity); quantityDisplay.text(existingCartItem.quantity);
+                    } else {
+                        card.removeClass('card-in-cart'); button.removeClass('btn-update').addClass('btn-add').text('Add To Box');
+                        quantityInput.val(minQuantity); quantityDisplay.text(minQuantity);
+                    }
                  }
                  function updateAllCardStates() { sweetCardsContainer.find(".sweet-card").each(function() { updateCardState($(this).data('sweet-id')); }); }
 
-                // --- Step Navigation Buttons ---
+                // --- Step Navigation Buttons --- (With Debugging)
                 $(".nextStep").click(function() {
+                    console.log(`DEBUG: Next button clicked. Current step: ${currentStep}`);
                     let canProceed = true;
-                    if (currentStep === 0) {
-                        const newQuantityType = $('input[name="quantityType"]:checked').val();
-                        if (newQuantityType !== chosenQuantityType && cart.length > 0) {
-                            if (confirm("Changing preference type will clear selections. Proceed?")) { cart = []; updateCartDisplay(); chosenQuantityType = newQuantityType; console.log("Cart cleared."); }
-                            else { $(`input[name="quantityType"][value="${chosenQuantityType}"]`).prop('checked', true); canProceed = false; console.log("Type change cancelled."); }
-                        } else { if (newQuantityType !== chosenQuantityType) { chosenQuantityType = newQuantityType; updateQuantityLabelsAndInputs(); } console.log("Qty type set/confirmed:", chosenQuantityType); }
-                    } else if (currentStep === 1) { if (cart.length === 0) { alert("Your box is empty! Please select some delicacies."); canProceed = false; } }
-                    if (canProceed && currentStep < steps.length - 1) { showStep(currentStep + 1); }
+                    try {
+                        if (currentStep === 0) {
+                            const newQuantityType = $('input[name="quantityType"]:checked').val();
+                            console.log(`DEBUG: Step 0 Check. Current Type: ${chosenQuantityType}, New Type: ${newQuantityType}, Cart Length: ${cart.length}`);
+                            if (newQuantityType !== chosenQuantityType && cart.length > 0) {
+                                console.log("DEBUG: Type changed with items in cart, showing confirmation.");
+                                if (confirm("Changing preference type will clear selections. Proceed?")) {
+                                    console.log("DEBUG: User confirmed type change. Clearing cart.");
+                                    cart = []; updateCartDisplay(); chosenQuantityType = newQuantityType;
+                                } else {
+                                    console.log("DEBUG: User cancelled type change.");
+                                    $(`input[name="quantityType"][value="${chosenQuantityType}"]`).prop('checked', true);
+                                    canProceed = false;
+                                }
+                            } else {
+                                if (newQuantityType !== chosenQuantityType) {
+                                    console.log("DEBUG: Updating quantity type without clearing cart.");
+                                    chosenQuantityType = newQuantityType;
+                                    updateQuantityLabelsAndInputs();
+                                }
+                            }
+                        } else if (currentStep === 1) {
+                            console.log(`DEBUG: Step 1 Check. Cart Length: ${cart.length}`);
+                            if (cart.length === 0) {
+                                alert("Your box is empty! Please select some delicacies.");
+                                console.log("DEBUG: Proceed blocked on Step 1 (cart empty).");
+                                canProceed = false;
+                            }
+                        }
+
+                        console.log(`DEBUG: Checking conditions to proceed. canProceed: ${canProceed}, currentStep: ${currentStep}, steps.length-1: ${steps.length - 1}`);
+                        if (canProceed && currentStep < steps.length - 1) {
+                            console.log(`DEBUG: Conditions met. Calling showStep(${currentStep + 1})`);
+                            showStep(currentStep + 1);
+                        } else {
+                             console.log("DEBUG: Conditions not met or already on last step. Not proceeding.");
+                        }
+
+                    } catch(e) {
+                         console.error("ERROR in nextStep click handler:", e);
+                         alert("An error occurred while trying to proceed. Please check the console.");
+                         canProceed = false;
+                    }
                 });
-                $(".prevStep").click(function() { if (currentStep > 0) { showStep(currentStep - 1); } });
-                $(document).on('click', '#wizard-progress .progress-step.completed', function() { const targetStep = parseInt($(this).data('step'), 10); if (!isNaN(targetStep) && targetStep < currentStep) { showStep(targetStep); } });
 
-                // --- Click Handler for Selectable Cards ---
-                $(document).on('click', '.selectable-card', function(event) { if ($(event.target).is('input, label, button, .btn-add-update, .form-control, .form-check-label') || $(event.target).closest('.btn-add-update').length > 0) { return; } $(this).find('.btn-add-update').trigger('click'); });
+                $(".prevStep").click(function() {
+                     console.log(`DEBUG: Prev button clicked. Current step: ${currentStep}`);
+                     if (currentStep > 0) { showStep(currentStep - 1); }
+                 });
+                $(document).on('click', '#wizard-progress .progress-step.completed', function() {
+                    const targetStep = parseInt($(this).data('step'), 10);
+                    console.log(`DEBUG: Completed progress step clicked for step: ${targetStep}`);
+                    if (!isNaN(targetStep) && targetStep < currentStep) { showStep(targetStep); }
+                 });
 
-                // --- Add/Update To Cart (Handles cart visibility) ---
-                $(document).on("click", ".btn-add-update", function() {
-                    const $button = $(this); const sweetId = $button.data('sweet-id'); const sweetName = $button.data('sweet-name'); const sweetImg = $button.data('img') || placeholderImg;
-                    const quantityInput = $(`#quantity_${sweetId}`); let quantity = parseInt(quantityInput.val(), 10);
-                    const minQuantity = parseInt(quantityInput.attr('min'), 10); const stepQuantity = parseInt(quantityInput.attr('step'), 10);
-                    if (isNaN(quantity) || quantity < minQuantity) { quantity = minQuantity; quantityInput.val(quantity); alert(`Minimum quantity is ${formatQuantity(minQuantity, chosenQuantityType)}.`); return; }
-                    if(chosenQuantityType === 'weight' && quantity % stepQuantity !== 0) { quantity = Math.max(minQuantity, Math.round(quantity / stepQuantity) * stepQuantity); quantityInput.val(quantity); alert(`Quantity should be multiple of ${stepQuantity}g.`); }
+                // --- Click Handler for Card Image ---
+                $(document).on('click', '.selectable-card-img', function(event) {
+                     console.log("DEBUG: Card image clicked.");
+                     $(this).closest('.sweet-card').find('.btn-add-update').trigger('click');
+                 });
+
+                // --- Event Listener for Quantity Buttons (+/-) ---
+                sweetCardsContainer.on('click', '.btn-qty', function() {
+                    const $button = $(this); const action = $button.data('action');
+                    const $formGroup = $button.closest('.form-group'); const $input = $formGroup.find('.quantity-input');
+                    const $display = $formGroup.find('.qty-display'); const $addUpdateButton = $formGroup.find('.btn-add-update');
+                    const currentVal = parseInt($input.val(), 10); const min = parseInt($input.attr('min'), 10); const step = parseInt($input.attr('step'), 10);
+                    let newVal = currentVal;
+                    if (isNaN(currentVal) || isNaN(min) || isNaN(step)) { console.error("ERROR: Invalid quantity values in +/- handler."); return; }
+                    if (action === 'increase') { newVal += step; } else if (action === 'decrease') { newVal -= step; }
+                    newVal = Math.max(min, newVal);
+                    $input.val(newVal); $display.text(newVal);
+                    $addUpdateButton.trigger('click');
+                });
+
+                // --- Add/Update To Cart (Triggered by +/- or button click) ---
+                $(document).on("click", ".btn-add-update", function(event) {
+                    const isUserClick = event.originalEvent !== undefined;
+                    const $button = $(this); const sweetId = $button.data('sweet-id');
+                    console.log(`DEBUG: Add/Update logic triggered for ${sweetId}. User click: ${isUserClick}`);
+                    const sweetName = $button.data('sweet-name'); const sweetImg = $button.data('img') || placeholderImg;
+                    const quantityInput = $button.closest('.form-group').find('.quantity-input');
+                    let quantity = parseInt(quantityInput.val(), 10);
+                    const minQuantity = parseInt(quantityInput.attr('min'), 10);
+
+                    if (isNaN(quantity) || quantity < minQuantity) { console.warn(`WARN: Correcting quantity for ${sweetId} to min ${minQuantity}`); quantity = minQuantity; quantityInput.val(quantity); $button.closest('.form-group').find('.qty-display').text(quantity); }
+
                     const existingCartItemIndex = cart.findIndex(item => item.sweetId === sweetId);
-                    if (existingCartItemIndex > -1) { cart[existingCartItemIndex].quantity = quantity; cart[existingCartItemIndex].quantityType = chosenQuantityType; console.log(`Updated ${sweetName}`); }
-                    else { cart.push({ sweetId: sweetId, name: sweetName, quantity: quantity, quantityType: chosenQuantityType, img: sweetImg }); console.log(`Added ${sweetName}`); }
-                    $button.addClass('added-pulse'); setTimeout(() => $button.removeClass('added-pulse'), 500);
-                    updateCartDisplay(); updateCardState(sweetId);
-                    if (currentStep === 1 && cart.length > 0) { showCart(); } // Show cart if on step 2 and items exist
+                    let itemUpdated = false;
+
+                    if (existingCartItemIndex > -1) {
+                        if (cart[existingCartItemIndex].quantity !== quantity) {
+                            cart[existingCartItemIndex].quantity = quantity; cart[existingCartItemIndex].quantityType = chosenQuantityType;
+                            console.log(`DEBUG: Updated ${sweetName} to ${quantity}`); itemUpdated = true;
+                        }
+                    } else {
+                        cart.push({ sweetId: sweetId, name: sweetName, quantity: quantity, quantityType: chosenQuantityType, img: sweetImg });
+                        console.log(`DEBUG: Added ${sweetName} with ${quantity}`); itemUpdated = true;
+                    }
+
+                    if(itemUpdated) { $button.addClass('added-pulse'); setTimeout(() => $button.removeClass('added-pulse'), 400); updateCartDisplay(); }
+                    updateCardState(sweetId);
                 });
 
-                // --- Remove From Cart (Handles cart visibility) ---
+                // --- Remove From Cart ---
                 $(document).on('click', '.remove-item-btn', function() {
                     const $button = $(this); const sweetIdToRemove = $button.data('sweet-id'); const cartItemElement = $button.closest('.cart-item');
+                    console.log(`DEBUG: Remove button clicked for ${sweetIdToRemove}`);
                     cartItemElement.addClass('removing');
                     setTimeout(() => {
-                        cart = cart.filter(item => item.sweetId !== sweetIdToRemove); updateCartDisplay(); updateCardState(sweetIdToRemove); console.log(`Removed ${sweetIdToRemove}`);
-                        if (cart.length === 0) { hideCart(); } // Hide cart if it becomes empty
-                    }, 400);
+                        cart = cart.filter(item => item.sweetId !== sweetIdToRemove);
+                        updateCartDisplay(); updateCardState(sweetIdToRemove);
+                        console.log(`DEBUG: Removed ${sweetIdToRemove}`);
+                    }, 350);
                 });
 
                 // --- Go To Review Step Button ---
-                $("#finishOrder").click(function() { chosenPackaging = $('input[name="packaging"]:checked').val(); console.log("Packaging selected:", chosenPackaging); if (chosenPackaging) { showStep(3); } else { alert("Please select a presentation option."); } });
+                $("#finishOrder").click(function() { chosenPackaging = $('input[name="packaging"]:checked').val(); console.log(`DEBUG: Finish Order clicked. Packaging: ${chosenPackaging}`); if (chosenPackaging) { showStep(3); } else { alert("Please select a presentation option."); } });
 
                 // --- Populate Review Step ---
                 function populateReview() {
+                     console.log("DEBUG: Populating review step.");
                     const reviewTextSummary = $("#reviewTextSummary"); const visualBox = $("#visualBoxRepresentation"); reviewTextSummary.empty(); visualBox.empty();
                     let summaryHtml = `<h4>Selections:</h4><ul class="list-group list-group-flush mb-3">`;
                     if (cart.length > 0) { cart.forEach(item => { summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">${item.name}<span class="badge rounded-pill">${formatQuantity(item.quantity, item.quantityType)}</span></li>`; }); } else { summaryHtml += `<li class="list-group-item">No delicacies selected yet.</li>`; }
@@ -619,50 +782,62 @@
                     const cost = packagingCost[chosenPackaging]; if (cost > 0) { summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">Additional Cost<span>+$${cost.toFixed(2)}</span></li>`; }
                     summaryHtml += `</ul><p class="mt-3 fst-italic text-muted small">Note: Pricing shown is indicative for this demo.</p>`; reviewTextSummary.html(summaryHtml);
                     visualBox.removeClass('visual-box visual-tray').addClass(chosenPackaging === 'box' ? 'visual-box' : 'visual-tray');
-                    if (cart.length > 0) { let iconCounter = 0; cart.forEach(item => { let iconsToShow = 1; if (item.quantityType === 'unit') { iconsToShow = Math.min(item.quantity, 10); } for (let i = 0; i < iconsToShow; i++) { const delay = iconCounter * 0.06; const itemImagePath = item.img || placeholderImg; const iconLabel = (iconsToShow > 1 && i > 0) ? item.name : `${item.name} (${formatQuantity(item.quantity, item.quantityType)})`; visualBox.append(`<div class="sweet-icon-placeholder" style="animation-delay: ${delay}s;"><img src="${itemImagePath}" alt="${item.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('Review Img Error: ${itemImagePath}')"><span>${iconLabel}</span></div>`); iconCounter++; } }); }
+                    if (cart.length > 0) { let iconCounter = 0; cart.forEach(item => { let iconsToShow = 1; if (item.quantityType === 'unit') { iconsToShow = Math.min(item.quantity, 8); } for (let i = 0; i < iconsToShow; i++) { const delay = iconCounter * 0.04; const itemImagePath = item.img || placeholderImg; const iconLabel = (iconsToShow > 1 && i > 0) ? item.name : `${item.name} (${formatQuantity(item.quantity, item.quantityType)})`; visualBox.append(`<div class="sweet-icon-placeholder" style="animation-delay: ${delay}s;"><img src="${itemImagePath}" alt="${item.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('Review Img Error: ${itemImagePath}')"><span>${iconLabel}</span></div>`); iconCounter++; } }); }
                     else { visualBox.html('<p id="emptyBoxVisualMsg" class="col-12">Your presentation awaits your selections!</p>'); }
-                    console.log("Review populated. Items:", cart.length, "Packaging:", chosenPackaging);
                  }
 
                 // --- Confirm Order ---
                 $("#confirmOrderBtn").click(function() {
-                    console.log("Confirm Order button clicked."); const $button = $(this); if ($button.prop('disabled')) { return; }
+                    console.log("DEBUG: Confirm Order clicked."); const $button = $(this); if ($button.prop('disabled')) { return; }
                     $button.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>Confirming...');
                     setTimeout(() => {
-                        console.log("Simulating order confirmation..."); const successSummary = $("#successOrderSummary"); successSummary.empty(); let successHtml = `<p><strong>Your Order Summary:</strong></p><ul>`;
+                        console.log("DEBUG: Simulating order confirmation..."); const successSummary = $("#successOrderSummary"); successSummary.empty(); let successHtml = `<p><strong>Your Order Summary:</strong></p><ul>`;
                         if (cart.length > 0) { cart.forEach(item => { successHtml += `<li>${item.name}: ${formatQuantity(item.quantity, item.quantityType)}</li>`; }); } else { successHtml += `<li>No items were selected.</li>`; } successHtml += `</ul>`;
                         const packagingName = chosenPackaging === 'box' ? 'Signature Darna Box' : 'Ornate Keepsake Tray'; successHtml += `<p><strong>Presentation:</strong> ${packagingName}</p>`; const orderId = Math.floor(10000 + Math.random() * 90000); successHtml += `<p><strong>Order ID:</strong> #${orderId}</p>`; successSummary.html(successHtml);
                         wizardContainer.fadeOut(300, function() { successMessageContainer.fadeIn(500); $('html, body').animate({ scrollTop: successMessageContainer.offset().top - 100 }, 500); }); hideCart();
-                        $button.prop('disabled', false).html('<i class="bi bi-check-lg me-1"></i>Confirm'); console.log("Order confirmation display complete.");
-                    }, 1200);
+                        $button.prop('disabled', false).html('<i class="bi bi-check-lg me-1"></i>Confirm'); console.log("DEBUG: Order confirmation display complete.");
+                    }, 1000);
                 });
 
                 // --- Start New Order ---
                 $("#startNewOrderBtn").click(function() {
-                    console.log("Start New Order button clicked."); cart = []; currentStep = 0; chosenQuantityType = 'unit'; chosenPackaging = 'box';
+                    console.log("DEBUG: Start New Order clicked."); cart = []; currentStep = 0; chosenQuantityType = 'unit'; chosenPackaging = 'box';
                     $('input[name="quantityType"][value="unit"]').prop('checked', true); $('input[name="packaging"][value="box"]').prop('checked', true); updateCartDisplay(); hideCart();
-                    successMessageContainer.fadeOut(300, function() { showStep(0); wizardContainer.fadeIn(500); updateAllCardStates(); $('html, body').animate({ scrollTop: 0 }, 500); console.log("State reset for new order."); });
+                    successMessageContainer.fadeOut(300, function() { showStep(0); wizardContainer.fadeIn(500); updateAllCardStates(); $('html, body').animate({ scrollTop: 0 }, 500); console.log("DEBUG: State reset for new order."); });
                 });
-
 
                 // --- LOAD DATA & INITIALIZE ---
                 function initializeApp() {
-                    console.log("Sweet data loaded successfully. Initializing application...");
+                    console.log("DEBUG: Initializing application...");
                     errorMessageContainer.hide(); wizardContainer.show(); successMessageContainer.hide(); hideLoadingOverlay();
-                    showStep(0); // Start at step 0 (cart will be hidden by showStep logic)
+                    showStep(0);
                     updateCartDisplay();
-                    console.log("Initial setup complete.");
+                    console.log("DEBUG: Initialization complete.");
                 }
 
+                console.log("DEBUG: Attempting to fetch sweets.json...");
                 fetch('sweets.json')
-                    .then(response => { if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); } return response.json(); })
-                    .then(data => { sweets = data; initializeApp(); }) // Initialize only after data is loaded
-                    .catch(error => { console.error("Error loading sweet data:", error); errorMessageContainer.show(); wizardContainer.hide(); });
+                    .then(response => {
+                        console.log(`DEBUG: Fetch response status: ${response.status}`);
+                        if (!response.ok) { throw new Error(`HTTP error! status: ${response.status} - Could not fetch sweets.json`); }
+                        return response.json();
+                    })
+                    .then(data => {
+                         console.log("DEBUG: sweets.json loaded and parsed successfully.");
+                        sweets = data;
+                        initializeApp();
+                    })
+                    .catch(error => {
+                        console.error("ERROR loading or parsing sweet data:", error);
+                        errorMessageContainer.find('p').first().text(error.message || "We couldn't load the delicacy data. Please ensure 'sweets.json' exists, is valid JSON, and is accessible, then refresh the page.");
+                        errorMessageContainer.show();
+                        wizardContainer.hide();
+                    });
 
             }); // End document ready
         } catch (error) { // --- Fallback Error Handling ---
-             console.error("A critical error occurred during script initialization:", error);
-             const errorDiv = document.createElement('div'); errorDiv.style.position = 'fixed'; errorDiv.style.top = '0'; errorDiv.style.left = '0'; errorDiv.style.width = '100%'; errorDiv.style.padding = '10px'; errorDiv.style.backgroundColor = '#dc3545'; errorDiv.style.color = 'white'; errorDiv.style.textAlign = 'center'; errorDiv.style.zIndex = '9999'; errorDiv.style.fontSize = '0.9em'; errorDiv.textContent = 'Oops! A critical problem occurred while setting up the page. Please try refreshing.'; document.body.prepend(errorDiv);
+             console.error("CRITICAL ERROR during script initialization:", error);
+             const errorDiv = document.createElement('div'); errorDiv.style.position = 'fixed'; errorDiv.style.top = '0'; errorDiv.style.left = '0'; errorDiv.style.width = '100%'; errorDiv.style.padding = '10px'; errorDiv.style.backgroundColor = '#dc3545'; errorDiv.style.color = 'white'; errorDiv.style.textAlign = 'center'; errorDiv.style.zIndex = '9999'; errorDiv.style.fontSize = '0.9em'; errorDiv.textContent = 'Oops! A critical problem occurred setting up the page. Check console (F12) & Refresh.'; document.body.prepend(errorDiv);
         }
     </script>
 
