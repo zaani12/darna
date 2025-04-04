@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Darna - Exquisite Custom Sweet Boxes</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Custom Styles -->
     <style>
         :root {
             /* --- Colors and Fonts --- */
@@ -46,32 +50,54 @@
             font-family: var(--font-body);
             color: var(--luxury-dark);
             margin: 0;
-            padding-top: 70px;
-            font-size: 14.5px;
+            padding-top: 65px; /* Further reduced */
+            font-size: 14px; /* Base for desktop, adjusted down for mobile */
             animation: fadeIn var(--transition-speed-slow) ease-out;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
         /* --- Navbar --- */
-        .navbar { background-color: var(--luxury-dark); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18); padding: 0.5rem 1rem; }
-        .navbar .navbar-brand img { max-width: 140px; height: auto; transition: transform var(--transition-speed-fast) ease; }
+        .navbar { background-color: var(--luxury-dark); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18); padding: 0.4rem 1rem; /* Reduced padding */ }
+        .navbar .navbar-brand img { max-width: 130px; /* Smaller logo */ height: auto; transition: transform var(--transition-speed-fast) ease; }
         .navbar .navbar-brand:hover img { transform: scale(1.04); }
-        .navbar .nav-link { color: var(--luxury-cream) !important; font-weight: 400; text-transform: uppercase; letter-spacing: 0.6px; font-size: 0.78em; margin: 0 0.35rem; transition: color var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease; position: relative; padding-bottom: 3px; }
+        .navbar .nav-link { color: var(--luxury-cream) !important; font-weight: 400; text-transform: uppercase; letter-spacing: 0.6px; font-size: 0.75em; margin: 0 0.3rem; transition: color var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease; position: relative; padding-bottom: 3px; }
         .navbar .nav-link::after { content: ''; position: absolute; bottom: 0px; left: 50%; transform: translateX(-50%); width: 0; height: 1.5px; background-color: var(--luxury-gold); transition: width var(--transition-speed-fast) ease; }
         .navbar .nav-link:hover::after, .navbar .nav-link.active::after { width: 45%; }
         .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--luxury-gold) !important; transform: translateY(-1px); }
-        .navbar-toggler { padding: .2rem .5rem; font-size: 0.9rem; border-color: rgba(255,255,255,0.15); }
-        .navbar-toggler-icon { width: 1.1em; height: 1.1em; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+        .navbar-toggler { padding: .2rem .4rem; font-size: 0.8rem; border-color: rgba(255,255,255,0.15); }
+        .navbar-toggler-icon { width: 1.0em; height: 1.0em; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); } /* Thicker lines */
+        /* Mobile Cart Indicator - Hidden by default */
+        #nav-cart-indicator {
+             display: none; /* Hidden on desktop */
+             color: var(--luxury-cream);
+             font-size: 1.4em; /* Icon size */
+             position: relative;
+             margin-right: 0.75rem; /* Space before toggler */
+             cursor: default; /* Indicate it's not clickable (yet) */
+         }
+         #nav-cart-indicator .badge {
+             position: absolute;
+             top: -5px;
+             right: -10px;
+             font-size: 0.6em;
+             padding: 2px 4px;
+             line-height: 1;
+             background-color: var(--luxury-gold);
+             color: var(--luxury-dark);
+             border-radius: 50%;
+         }
+
 
         /* --- Main Content Area --- */
-        .main-container { padding-top: 2rem; padding-bottom: 2rem; }
+        .main-container { padding-top: 1.8rem; padding-bottom: 1.8rem; } /* Reduced padding */
 
         /* --- Main Title & Wizard Progress --- */
-        .main-title { font-family: var(--font-heading); font-style: italic; color: var(--luxury-brown); font-size: 2.4em; text-align: center; margin-bottom: 1.6rem; animation: fadeInUp 1s ease-out 0.2s backwards; }
-        #wizard-progress { display: flex; justify-content: space-around; margin-bottom: 2.0rem; padding: 10px 6px; background-color: rgba(255, 255, 255, 0.8); border-radius: 50px; box-shadow: var(--shadow-soft); max-width: 650px; margin-left: auto; margin-right: auto; animation: fadeInUp 1s ease-out 0.4s backwards; }
-        .progress-step { text-align: center; color: var(--luxury-brown); opacity: 0.6; font-weight: 600; font-size: 0.75em; flex: 1; padding: 6px 3px; border-bottom: 2px solid transparent; transition: all var(--transition-speed-med) ease-out; cursor: default; position: relative; line-height: 1.2; }
+        .main-title { font-family: var(--font-heading); font-style: italic; color: var(--luxury-brown); font-size: 2.2em; text-align: center; margin-bottom: 1.5rem; animation: fadeInUp 1s ease-out 0.2s backwards; }
+        #wizard-progress { display: flex; justify-content: space-around; margin-bottom: 1.8rem; padding: 9px 5px; background-color: rgba(255, 255, 255, 0.8); border-radius: 50px; box-shadow: var(--shadow-soft); max-width: 600px; margin-left: auto; margin-right: auto; animation: fadeInUp 1s ease-out 0.4s backwards; }
+        .progress-step { text-align: center; color: var(--luxury-brown); opacity: 0.6; font-weight: 600; font-size: 0.7em; flex: 1; padding: 5px 2px; border-bottom: 2px solid transparent; transition: all var(--transition-speed-med) ease-out; cursor: default; position: relative; line-height: 1.2; }
         .progress-step span { display: inline-block; margin-right: 2px;}
+        .progress-step .step-text { display: inline; } /* Text description */
         .progress-step::after { display: none; }
         .progress-step.active { color: var(--luxury-gold); opacity: 1; border-bottom-color: var(--luxury-gold); transform: scale(1.03); }
         .progress-step.completed { color: var(--luxury-accent); opacity: 1; cursor: pointer; }
@@ -79,13 +105,13 @@
         .progress-step:not(.active):hover { opacity: 0.9; transform: translateY(-1px); }
 
         /* --- Wizard Steps --- */
-        #wizard { max-width: 750px; margin: 15px auto 30px auto; position: relative; overflow: visible; min-height: 380px; }
+        #wizard { max-width: 700px; /* Reduced width */ margin: 15px auto 30px auto; position: relative; overflow: visible; min-height: 360px; }
         .step {
             position: absolute; top: 0; left: 0; width: 100%;
             opacity: 0; visibility: hidden;
             display: flex; flex-direction: column;
-            height: 100%; max-height: 75vh;
-            border: 1px solid rgba(0, 0, 0, 0.03); border-radius: 14px;
+            height: 100%; max-height: 70vh; /* Limit height */
+            border: 1px solid rgba(0, 0, 0, 0.03); border-radius: 12px; /* Softer radius */
             margin-bottom: 25px; background: linear-gradient(155deg, var(--luxury-light), #fdfaf7);
             box-shadow: var(--shadow-medium);
             transition: opacity var(--transition-speed-med) ease-out, transform var(--transition-speed-med) ease-out, visibility var(--transition-speed-med);
@@ -96,27 +122,27 @@
 
         /* Scrollable content area WITHIN the step */
         .step-scrollable-content {
-            padding: 20px 25px;
+            padding: 18px 22px; /* Reduced padding */
             overflow-y: auto;
             flex-grow: 1;
             min-height: 0;
             scrollbar-width: thin;
             scrollbar-color: var(--luxury-accent) rgba(0,0,0,0.05);
         }
-        .step-scrollable-content::-webkit-scrollbar { width: 6px; }
-        .step-scrollable-content::-webkit-scrollbar-track { background: rgba(0,0,0,0.03); border-radius: 3px; }
-        .step-scrollable-content::-webkit-scrollbar-thumb { background-color: var(--luxury-accent); border-radius: 3px; border: 1px solid transparent; background-clip: content-box; }
+        .step-scrollable-content::-webkit-scrollbar { width: 5px; } /* Thinner scrollbar */
+        .step-scrollable-content::-webkit-scrollbar-track { background: rgba(0,0,0,0.03); border-radius: 2.5px; }
+        .step-scrollable-content::-webkit-scrollbar-thumb { background-color: var(--luxury-accent); border-radius: 2.5px; border: 1px solid transparent; background-clip: content-box; }
         .step-scrollable-content::-webkit-scrollbar-thumb:hover { background-color: var(--luxury-gold); }
 
-        .step-scrollable-content h2 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; font-weight: 700; margin-top: 0; margin-bottom: 1.6rem; font-size: 1.65em; }
+        .step-scrollable-content h2 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; font-weight: 700; margin-top: 0; margin-bottom: 1.4rem; font-size: 1.55em; } /* Smaller heading */
 
-        .step .form-check { margin-bottom: 0.9rem; font-size: 0.9em; padding-left: 1.9em; }
+        .step .form-check { margin-bottom: 0.8rem; font-size: 0.88em; padding-left: 1.8em; }
         .step .form-check-label { cursor: pointer; color: var(--luxury-dark); font-weight: 400; transition: color var(--transition-speed-fast) ease; }
-        .step .form-check-input { cursor: pointer; border-color: #c8b077b8; transition: background-color var(--transition-speed-fast) ease, border-color var(--transition-speed-fast) ease; height: 1.0em; width: 1.0em; margin-top: 0.2em; }
+        .step .form-check-input { cursor: pointer; border-color: #c8b077b8; transition: background-color var(--transition-speed-fast) ease, border-color var(--transition-speed-fast) ease; height: 0.95em; width: 0.95em; margin-top: 0.18em; }
         .step .form-check-input:checked { background-color: var(--luxury-gold); border-color: var(--luxury-gold); }
         .step .form-check-input:focus { box-shadow: 0 0 0 0.15rem rgba(218, 165, 32, 0.2); }
         .step .form-check:hover .form-check-label { color: var(--luxury-gold); }
-        .step button { font-family: var(--font-body); font-weight: 600; padding: 8px 20px; border: none; border-radius: 50px; cursor: pointer; transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft); letter-spacing: 0.4px; text-transform: uppercase; font-size: 0.75em; }
+        .step button { font-family: var(--font-body); font-weight: 600; padding: 7px 18px; border: none; border-radius: 50px; cursor: pointer; transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft); letter-spacing: 0.4px; text-transform: uppercase; font-size: 0.72em; } /* Smaller buttons */
         .step button:hover { box-shadow: var(--shadow-medium); transform: translateY(-2px); }
         .step button:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .step .btn-primary { background: linear-gradient(100deg, var(--luxury-gold), var(--luxury-accent)); color: var(--luxury-light); }
@@ -130,11 +156,11 @@
         .button-group {
             display: flex; justify-content: space-between; align-items: center;
             margin-top: auto;
-            padding: 1.0rem 25px;
+            padding: 0.8rem 22px; /* Reduced padding */
             border-top: 1px solid rgba(0,0,0,0.05);
             background-color: #fdfaf7;
-            border-bottom-left-radius: 14px;
-             border-bottom-right-radius: 14px;
+            border-bottom-left-radius: 12px; /* Match step radius */
+             border-bottom-right-radius: 12px;
              flex-shrink: 0;
         }
         #quantityStep .prevStep { visibility: hidden; }
@@ -143,27 +169,27 @@
 
 
         /* --- Sweet Card Styling --- */
-        .sweet-card-column { margin-bottom: 15px; }
-        .sweet-card { border: 1px solid transparent; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft); transition: transform var(--transition-speed-fast) ease, box-shadow var(--transition-speed-fast) ease, border-color var(--transition-speed-fast) ease; background-color: var(--luxury-light); animation: fadeInUp var(--transition-speed-med) ease-out backwards; height: 100%; display: flex; flex-direction: column; max-width: 210px; margin-left: auto; margin-right: auto; cursor: default; }
+        .sweet-card-column { margin-bottom: 12px; } /* Reduced margin */
+        .sweet-card { border: 1px solid transparent; border-radius: 7px; /* Sharper radius */ overflow: hidden; box-shadow: var(--shadow-soft); transition: transform var(--transition-speed-fast) ease, box-shadow var(--transition-speed-fast) ease, border-color var(--transition-speed-fast) ease; background-color: var(--luxury-light); animation: fadeInUp var(--transition-speed-med) ease-out backwards; height: 100%; display: flex; flex-direction: column; max-width: 200px; /* Further reduced max-width */ margin-left: auto; margin-right: auto; cursor: default; }
         .sweet-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-medium); }
         .sweet-card.card-in-cart { border-color: var(--luxury-gold); background-color: #fffdf7; }
         .sweet-card img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; border-bottom: 1px solid rgba(0,0,0,0.04); background-color: #f8f8f8; cursor: pointer; }
-        .sweet-card .card-body { padding: 9px; display: flex; flex-direction: column; flex-grow: 1; }
-        .sweet-card .card-title { font-family: var(--font-heading); font-size: 0.95em; color: var(--luxury-brown); margin-bottom: 3px; }
-        .sweet-variations { font-size: 0.6em; color: var(--luxury-accent); margin-bottom: 5px; opacity: 0.9; font-weight: 400; line-height: 1.3; }
+        .sweet-card .card-body { padding: 8px; display: flex; flex-direction: column; flex-grow: 1; }
+        .sweet-card .card-title { font-family: var(--font-heading); font-size: 0.9em; color: var(--luxury-brown); margin-bottom: 2px; }
+        .sweet-variations { font-size: 0.58em; color: var(--luxury-accent); margin-bottom: 4px; opacity: 0.9; font-weight: 400; line-height: 1.25; }
         .sweet-variations i { margin-right: 2px; font-size: 0.85em; vertical-align: middle; opacity: 0.8; }
-        .sweet-card .card-text { font-size: 0.72em; color: #707070; line-height: 1.35; flex-grow: 1; margin-bottom: 6px; max-height: 38px; overflow: hidden; }
+        .sweet-card .card-text { font-size: 0.7em; color: #707070; line-height: 1.3; flex-grow: 1; margin-bottom: 5px; max-height: 35px; /* Reduced height */ overflow: hidden; }
         .sweet-card .form-group { margin-top: auto; }
         /* Quantity Control Styling */
-        .quantity-control-wrapper label { font-size: 0.65em; margin-bottom: 2px; font-weight: 600; color: var(--luxury-accent); text-transform: uppercase; letter-spacing: 0.4px; display: block; }
-        .quantity-control { display: flex; align-items: center; justify-content: space-between; border: 1px solid #e0e0e0; border-radius: 15px; overflow: hidden; background-color: #fff; max-width: 100px; margin-left: auto; margin-right: auto; }
-        .quantity-control .btn-qty { background-color: #f8f8f8; border: none; color: var(--luxury-brown); font-size: 1.1em; font-weight: 600; line-height: 1; padding: 4px 8px; cursor: pointer; transition: background-color 0.2s ease; }
-        .quantity-control .btn-qty:hover { background-color: #eee; }
+        .quantity-control-wrapper label { font-size: 0.6em; margin-bottom: 2px; font-weight: 600; color: var(--luxury-accent); text-transform: uppercase; letter-spacing: 0.3px; display: block; }
+        .quantity-control { display: flex; align-items: center; justify-content: space-between; border: 1px solid #e5e5e5; border-radius: 12px; overflow: hidden; background-color: #fff; max-width: 90px; /* Smaller control */ margin-left: auto; margin-right: auto; }
+        .quantity-control .btn-qty { background-color: #f9f9f9; border: none; color: var(--luxury-brown); font-size: 1.0em; font-weight: 500; line-height: 1; padding: 3px 7px; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease; }
+        .quantity-control .btn-qty:hover { background-color: #eee; color: var(--luxury-dark); }
         .quantity-control .btn-qty:active { background-color: #e5e5e5; }
-        .quantity-control .qty-display { font-size: 0.85em; font-weight: 600; color: var(--luxury-dark); padding: 0 5px; min-width: 25px; text-align: center; }
-        .sweet-card .quantity-input { display: none !important; } /* Hide original input */
+        .quantity-control .qty-display { font-size: 0.8em; font-weight: 600; color: var(--luxury-dark); padding: 0 4px; min-width: 22px; text-align: center; }
+        .sweet-card .quantity-input { display: none !important; }
 
-        .sweet-card .btn-add-update { font-weight: 600; border-radius: 12px; padding: 5px 10px; font-size: 0.65em; width: 100%; margin-top: 8px; transition: all var(--transition-speed-fast) ease; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid transparent; }
+        .sweet-card .btn-add-update { font-weight: 600; border-radius: 10px; padding: 4px 9px; font-size: 0.62em; width: 100%; margin-top: 6px; transition: all var(--transition-speed-fast) ease; text-transform: uppercase; letter-spacing: 0.4px; border: 1px solid transparent; }
         .sweet-card .btn-add { background-color: var(--luxury-brown); color: var(--luxury-light); border-color: var(--luxury-brown); }
         .sweet-card .btn-add:hover { background-color: var(--luxury-dark); border-color: var(--luxury-dark); transform: scale(1.02); }
         .sweet-card .btn-update { background-color: transparent; color: var(--luxury-gold); border: 1px solid var(--luxury-gold); }
@@ -171,57 +197,57 @@
         .sweet-card .btn-add-update.added-pulse { animation: pulseSubtle var(--transition-speed-med) ease-out; }
 
         /* --- Loading Overlay --- */
-        #cardLoadingOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.9); z-index: 20; display: flex; align-items: center; justify-content: center; border-radius: 14px; transition: opacity var(--transition-speed-fast) ease, visibility 0s linear var(--transition-speed-fast); opacity: 0; visibility: hidden; }
+        #cardLoadingOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.9); z-index: 20; display: flex; align-items: center; justify-content: center; border-radius: 12px; transition: opacity var(--transition-speed-fast) ease, visibility 0s linear var(--transition-speed-fast); opacity: 0; visibility: hidden; }
         #cardLoadingOverlay.visible { opacity: 1; visibility: visible; transition: opacity var(--transition-speed-fast) ease, visibility 0s linear 0s; }
-        #cardLoadingOverlay .spinner-border { width: 2.0rem; height: 2.0rem; color: var(--luxury-gold); }
+        #cardLoadingOverlay .spinner-border { width: 1.8rem; height: 1.8rem; color: var(--luxury-gold); }
 
-        /* --- Cart Box --- */
-        #cartBox { position: fixed; bottom: 15px; right: 15px; width: 90%; max-width: 320px; max-height: 40vh; overflow-y: auto; background: linear-gradient(to bottom, #4a4646, var(--luxury-dark)); color: var(--luxury-cream); padding: 15px 18px; z-index: 1050; box-shadow: var(--shadow-strong); border-radius: 10px; border: 1px solid var(--luxury-accent); transition: transform var(--transition-speed-med) ease-out, opacity var(--transition-speed-med) ease-out, visibility var(--transition-speed-med) step-end; transform: translateY(15px); opacity: 0; visibility: hidden; }
+        /* --- Cart Box --- WEB ONLY */
+        #cartBox { position: fixed; bottom: 15px; right: 15px; width: 85%; /* Smaller relative width */ max-width: 290px; /* Smaller max width */ max-height: 38vh; /* Smaller max height */ overflow-y: auto; background: linear-gradient(to bottom, #4a4646, var(--luxury-dark)); color: var(--luxury-cream); padding: 12px 15px; /* Reduced padding */ z-index: 1050; box-shadow: var(--shadow-strong); border-radius: 8px; /* Smaller radius */ border: 1px solid var(--luxury-accent); transition: transform var(--transition-speed-med) ease-out, opacity var(--transition-speed-med) ease-out, visibility var(--transition-speed-med) step-end; transform: translateY(15px); opacity: 0; visibility: hidden; }
         #cartBox.cart-visible { transform: translateY(0); opacity: 1; visibility: visible; transition: transform var(--transition-speed-med) ease-out, opacity var(--transition-speed-med) ease-out, visibility var(--transition-speed-med) step-start; }
-        #cartBox h3 { font-family: var(--font-heading); text-align: center; margin-top: 0; margin-bottom: 12px; color: var(--luxury-gold); border-bottom: 1px solid rgba(218, 165, 32, 0.2); padding-bottom: 8px; font-size: 1.2em; }
-        #cartBox::-webkit-scrollbar { width: 5px; }
-        #cartBox::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 2.5px; }
-        #cartBox::-webkit-scrollbar-thumb { background-color: var(--luxury-accent); border-radius: 2.5px; border: 1px solid transparent; background-clip: content-box; }
+        #cartBox h3 { font-family: var(--font-heading); text-align: center; margin-top: 0; margin-bottom: 10px; color: var(--luxury-gold); border-bottom: 1px solid rgba(218, 165, 32, 0.2); padding-bottom: 7px; font-size: 1.1em; }
+        #cartBox::-webkit-scrollbar { width: 4px; }
+        #cartBox::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 2px; }
+        #cartBox::-webkit-scrollbar-thumb { background-color: var(--luxury-accent); border-radius: 2px; border: 1px solid transparent; background-clip: content-box; }
         #cartBox::-webkit-scrollbar-thumb:hover { background-color: var(--luxury-gold); }
-        .cart-item { display: flex; align-items: center; margin-bottom: 8px; border-bottom: 1px solid rgba(218, 165, 32, 0.1); padding-bottom: 8px; position: relative; animation: slideInRight 0.4s ease-out backwards; }
+        .cart-item { display: flex; align-items: center; margin-bottom: 7px; border-bottom: 1px solid rgba(218, 165, 32, 0.1); padding-bottom: 7px; position: relative; animation: slideInRight 0.4s ease-out backwards; }
         .cart-item.removing { animation: shrinkOutFade 0.3s ease-out forwards; }
         .cart-item:nth-child(1) { animation-delay: 0.04s; } .cart-item:nth-child(2) { animation-delay: 0.08s; } .cart-item:nth-child(3) { animation-delay: 0.12s; }
         .cart-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .cart-item img { width: 40px; height: 40px; object-fit: cover; border-radius: 5px; margin-right: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.18); background-color: #eee; flex-shrink: 0; }
-        .cart-item-details { flex-grow: 1; margin-right: 5px; }
-        .cart-item-details h5 { margin-bottom: 2px; color: var(--luxury-light); font-size: 0.85em; font-weight: 600; }
-        .cart-item-details span { font-size: 0.75em; color: var(--luxury-cream); opacity: 0.8; display: block; }
-        .remove-item-btn { background: none; border: none; color: var(--luxury-accent); font-size: 1.3em; line-height: 1; cursor: pointer; padding: 0 2px; margin-left: auto; opacity: 0.7; transition: all var(--transition-speed-fast) ease; align-self: center; flex-shrink: 0;}
+        .cart-item img { width: 38px; height: 38px; /* Smaller image */ object-fit: cover; border-radius: 4px; margin-right: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.18); background-color: #eee; flex-shrink: 0; }
+        .cart-item-details { flex-grow: 1; margin-right: 4px; }
+        .cart-item-details h5 { margin-bottom: 1px; color: var(--luxury-light); font-size: 0.8em; /* Smaller font */ font-weight: 600; }
+        .cart-item-details span { font-size: 0.7em; /* Smaller font */ color: var(--luxury-cream); opacity: 0.8; display: block; }
+        .remove-item-btn { background: none; border: none; color: var(--luxury-accent); font-size: 1.2em; line-height: 1; cursor: pointer; padding: 0 2px; margin-left: auto; opacity: 0.7; transition: all var(--transition-speed-fast) ease; align-self: center; flex-shrink: 0;}
         .remove-item-btn:hover { color: var(--luxury-gold); opacity: 1; transform: scale(1.1); }
-        #emptyCartMsg { padding: 18px 0; color: var(--luxury-cream); opacity: 0.6; text-align: center; font-style: italic; font-size: 0.75em; }
+        #emptyCartMsg { padding: 15px 0; color: var(--luxury-cream); opacity: 0.6; text-align: center; font-style: italic; font-size: 0.7em; }
 
         /* --- Review Step --- */
-        #reviewDetails { display: flex; flex-wrap: wrap; gap: 18px; }
-        #reviewTextSummary { flex: 1 1 260px; }
-        #packagingPreviewContainer { flex: 1 1 280px; padding: 15px; border: 1px solid rgba(0,0,0,0.05); border-radius: 10px; background-color: rgba(255, 255, 255, 0.7); }
-        #packagingPreviewContainer h5 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; margin-bottom: 15px; font-size: 1.15em; }
-        #visualBoxRepresentation { display: grid; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 10px; padding: 12px; border-radius: 6px; min-height: 160px; align-content: start; transition: background-color var(--transition-speed-med) ease, border var(--transition-speed-med) ease; border: 1.5px solid transparent; }
+        #reviewDetails { display: flex; flex-wrap: wrap; gap: 15px; }
+        #reviewTextSummary { flex: 1 1 250px; }
+        #packagingPreviewContainer { flex: 1 1 270px; padding: 12px; border: 1px solid rgba(0,0,0,0.05); border-radius: 8px; background-color: rgba(255, 255, 255, 0.7); }
+        #packagingPreviewContainer h5 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; margin-bottom: 12px; font-size: 1.1em; }
+        #visualBoxRepresentation { display: grid; grid-template-columns: repeat(auto-fill, minmax(45px, 1fr)); gap: 8px; padding: 10px; border-radius: 5px; min-height: 150px; align-content: start; transition: background-color var(--transition-speed-med) ease, border var(--transition-speed-med) ease; border: 1.5px solid transparent; }
         #visualBoxRepresentation.visual-box { background-color: #fffcf5; border-color: var(--luxury-brown); }
-        #visualBoxRepresentation.visual-tray { background: linear-gradient(135deg, #ecdcc6, #d7c497); border: 1.5px dashed var(--luxury-gold); box-shadow: inset 0 0 6px rgba(0,0,0,0.05); }
+        #visualBoxRepresentation.visual-tray { background: linear-gradient(135deg, #ecdcc6, #d7c497); border: 1.5px dashed var(--luxury-gold); box-shadow: inset 0 0 5px rgba(0,0,0,0.05); }
         .sweet-icon-placeholder { text-align: center; animation: fadeInUp 0.4s ease-out backwards; }
-        .sweet-icon-placeholder img { width: 40px; height: 40px; object-fit: cover; border-radius: 50%; border: 1.5px solid var(--luxury-accent); box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 4px; background-color: #eee; }
-        .sweet-icon-placeholder span { display: block; font-size: 0.65em; font-weight: 600; color: var(--luxury-dark); line-height: 1.1; }
-        #emptyBoxVisualMsg { grid-column: 1 / -1; text-align: center; padding: 18px; color: var(--luxury-brown); font-style: italic; opacity: 0.7; font-size: 0.8em; }
-        #reviewTextSummary .list-group-item { background-color: transparent; border-color: rgba(0, 0, 0, 0.04); padding: 6px 0px; color: var(--luxury-dark); font-size: 0.85em; }
-        #reviewTextSummary h4 { font-family: var(--font-heading); color: var(--luxury-brown); margin-bottom: 0.9rem; font-size: 1.2em; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 0.4rem; }
-        #reviewTextSummary p { margin-top: 0.9rem; font-size: 0.9em; color: var(--luxury-dark); }
-        #reviewTextSummary .badge { background-color: var(--luxury-accent); color: var(--luxury-light); font-size: 0.75em; padding: 3px 7px; border-radius: 6px; }
+        .sweet-icon-placeholder img { width: 38px; height: 38px; object-fit: cover; border-radius: 50%; border: 1.5px solid var(--luxury-accent); box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 3px; background-color: #eee; }
+        .sweet-icon-placeholder span { display: block; font-size: 0.62em; font-weight: 600; color: var(--luxury-dark); line-height: 1.1; }
+        #emptyBoxVisualMsg { grid-column: 1 / -1; text-align: center; padding: 15px; color: var(--luxury-brown); font-style: italic; opacity: 0.7; font-size: 0.75em; }
+        #reviewTextSummary .list-group-item { background-color: transparent; border-color: rgba(0, 0, 0, 0.04); padding: 5px 0px; color: var(--luxury-dark); font-size: 0.82em; }
+        #reviewTextSummary h4 { font-family: var(--font-heading); color: var(--luxury-brown); margin-bottom: 0.8rem; font-size: 1.15em; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 0.3rem; }
+        #reviewTextSummary p { margin-top: 0.8rem; font-size: 0.88em; color: var(--luxury-dark); }
+        #reviewTextSummary .badge { background-color: var(--luxury-accent); color: var(--luxury-light); font-size: 0.72em; padding: 3px 6px; border-radius: 5px; }
         #reviewTextSummary img { border: 1px solid rgba(0,0,0,0.05); background-color: #eee; }
 
         /* --- Success Message --- */
-        #orderSuccessMessage { display: none; padding: 25px; margin: 20px auto; max-width: 500px; background-color: var(--luxury-light); border-radius: 10px; text-align: center; box-shadow: var(--shadow-medium); border: 1px solid var(--luxury-gold); animation: fadeInUp 0.6s ease-out; }
-        #orderSuccessMessage h2 { font-family: var(--font-heading); color: var(--luxury-success); margin-bottom: 10px; font-size: 1.6em; }
-        #orderSuccessMessage h2 i { margin-right: 6px; font-size: 0.9em; }
-        #orderSuccessMessage p { color: var(--luxury-dark); line-height: 1.5; margin-bottom: 8px; font-size: 0.9em; }
-        #orderSuccessMessage #successOrderSummary { font-size: 0.8em; text-align: left; max-width: 350px; margin: 12px auto 18px auto; padding: 12px; border-radius: 5px; background-color: #f9fafa; border: 1px solid #f0f0f0;}
-        #orderSuccessMessage #successOrderSummary ul { list-style: none; padding-left: 0; margin-bottom: 6px;}
-        #orderSuccessMessage #successOrderSummary li { margin-bottom: 4px; }
-        #orderSuccessMessage .btn-new-order { font-family: var(--font-body); font-weight: 600; padding: 9px 22px; border: none; border-radius: 50px; cursor: pointer; transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft); background: linear-gradient(100deg, var(--luxury-gold), var(--luxury-accent)); color: var(--luxury-light); text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.8em; }
+        #orderSuccessMessage { display: none; padding: 22px; margin: 18px auto; max-width: 480px; background-color: var(--luxury-light); border-radius: 8px; text-align: center; box-shadow: var(--shadow-medium); border: 1px solid var(--luxury-gold); animation: fadeInUp 0.6s ease-out; }
+        #orderSuccessMessage h2 { font-family: var(--font-heading); color: var(--luxury-success); margin-bottom: 9px; font-size: 1.5em; }
+        #orderSuccessMessage h2 i { margin-right: 5px; font-size: 0.9em; }
+        #orderSuccessMessage p { color: var(--luxury-dark); line-height: 1.45; margin-bottom: 7px; font-size: 0.88em; }
+        #orderSuccessMessage #successOrderSummary { font-size: 0.78em; text-align: left; max-width: 330px; margin: 10px auto 15px auto; padding: 10px; border-radius: 4px; background-color: #f9fafa; border: 1px solid #f0f0f0;}
+        #orderSuccessMessage #successOrderSummary ul { list-style: none; padding-left: 0; margin-bottom: 5px;}
+        #orderSuccessMessage #successOrderSummary li { margin-bottom: 3px; }
+        #orderSuccessMessage .btn-new-order { font-family: var(--font-body); font-weight: 600; padding: 8px 20px; border: none; border-radius: 50px; cursor: pointer; transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft); background: linear-gradient(100deg, var(--luxury-gold), var(--luxury-accent)); color: var(--luxury-light); text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.75em; }
         #orderSuccessMessage .btn-new-order:hover { box-shadow: var(--shadow-medium); transform: translateY(-2px); }
         #orderSuccessMessage .btn-new-order:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
@@ -233,59 +259,79 @@
         /* ---    RESPONSIVE ADJUSTMENTS   --- */
         /* --- =========================== --- */
 
-        /* Medium devices (tablets, less than 992px) */
-        @media (max-width: 991.98px) {
-            .main-title { font-size: 2.1em; margin-bottom: 1.5rem; }
-            #wizard { max-width: 680px; }
-            #wizard-progress { max-width: 95%; padding: 9px 5px; }
-            .step { padding-left: 20px; padding-right: 20px; }
-             .step-scrollable-content { padding: 18px 20px; }
-             .button-group { padding: 0.8rem 20px; }
-            .step h2 { font-size: 1.5em; margin-bottom: 1.5rem; }
-            #reviewDetails { flex-direction: column; }
-            #packagingPreviewContainer { flex-basis: auto; }
+        /* Medium devices (tablets, 768px and up) */
+        @media (min-width: 768px) {
+            /* Ensure desktop styles apply above mobile breakpoint */
+             body { font-size: 14.5px; padding-top: 70px; }
+             .main-container { padding-top: 2rem; padding-bottom: 2rem;}
+             .main-title { font-size: 2.4em; }
+             .navbar .navbar-brand img { max-width: 140px; }
         }
 
-        /* Small devices (landscape phones, less than 768px) */
+        /* Small devices (landscape phones, less than 768px) - MOBILE STYLES START HERE */
         @media (max-width: 767.98px) {
-            body { padding-top: 60px; font-size: 14px; }
-            .main-container { padding-top: 1.5rem; padding-bottom: 1.5rem;}
-            .navbar .navbar-brand img { max-width: 120px; }
-            .navbar-collapse { background-color: rgba(51, 46, 46, 0.98); backdrop-filter: blur(5px); padding: 0.8rem; margin-top: 0.3rem; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+            body { padding-top: 60px; font-size: 13.5px; } /* Further reduce base font for mobile */
+             .main-container { padding-top: 1.5rem; padding-bottom: 1.5rem;}
+            .navbar .container { justify-content: space-between; } /* Space out brand and controls */
+             .navbar .navbar-brand { margin-right: auto; } /* Push brand left */
+             .navbar .navbar-nav { display: none; } /* Hide desktop nav links */
+             .navbar-collapse { /* Mobile menu */
+                 position: fixed; top: 60px; /* Position below navbar */ right: 0; left: 0;
+                 background-color: rgba(40, 36, 36, 0.98); /* Darker */
+                 backdrop-filter: blur(6px);
+                 padding: 1rem;
+                 box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+                 border-bottom-left-radius: 8px;
+                 border-bottom-right-radius: 8px;
+                 z-index: 1040; /* Below navbar but above content */
+             }
+             .navbar-collapse .navbar-nav { display: block; /* Show links in mobile menu */ }
+             .navbar .nav-link { font-size: 0.9em; margin: 0.5rem 0; display: block; text-align: center;} /* Style mobile links */
+             .navbar .nav-link::after { display: none; } /* Hide underlines in mobile menu */
+
+             /* Show mobile cart indicator and position it */
+             #nav-cart-indicator { display: inline-block; } /* Show it */
+             .navbar-controls { display: flex; align-items: center; } /* Group indicator and toggler */
+
             .main-title { font-size: 1.8em; margin-bottom: 1.2rem; }
             #wizard { max-width: 100%; margin-left: 6px; margin-right: 6px; min-height: auto; }
             #wizard-progress { max-width: 100%; padding: 7px 3px; margin-bottom: 1.5rem;}
             .progress-step { font-size: 0.65em; padding: 4px 2px; font-weight: 500;}
-            .progress-step span { display: none; }
-            .progress-step.completed::before { font-size: 1.0em; }
-            .step { border-radius: 10px; max-height: 80vh; }
+            .progress-step span, .progress-step .step-text { display: none; } /* Hide number and text */
+            .progress-step::before { margin-right: 0; font-size: 1.1em; } /* Just show checkmark */
+            .progress-step.completed { flex-grow: 0; padding: 4px 8px; } /* Make completed steps smaller */
+             .progress-step.active .step-text { display: inline; margin-left: 4px; } /* Show text only for active step */
+
+
+            .step { border-radius: 10px; max-height: calc(100vh - 120px); /* Limit height relative to viewport */ }
              .step-scrollable-content { padding: 15px 15px; }
              .button-group { padding: 0.7rem 15px; }
             .step h2 { font-size: 1.35em; margin-bottom: 1.2rem; }
-            .step button { padding: 7px 16px; font-size: 0.7em; }
-            .button-group { flex-direction: column; gap: 7px; align-items: stretch; margin-top: 1.2rem; }
+            .step button { padding: 8px 18px; font-size: 0.75em; } /* Slightly larger mobile buttons */
+            .button-group { flex-direction: column; gap: 8px; align-items: stretch; margin-top: 1.2rem; }
             .button-group .prevStep { order: 2; background-color: #eee; border: 1px solid #ddd; }
             .button-group .nextStep, .button-group #finishOrder, .button-group #confirmOrderBtn { order: 1; width: 100%; }
             #quantityStep .button-group { flex-direction: row; justify-content: flex-end; }
-            #cartBox { max-width: 260px; padding: 10px 12px; bottom: 10px; right: 10px; max-height: 38vh; border-radius: 8px;}
-            #cartBox h3 { font-size: 1.1em; margin-bottom: 10px; padding-bottom: 7px;}
-            .cart-item img { width: 35px; height: 35px; margin-right: 8px; border-radius: 4px; }
-            .cart-item-details h5 { font-size: 0.8em; }
-            .cart-item-details span { font-size: 0.7em; }
-            .remove-item-btn { font-size: 1.2em; }
-            .quantity-control { max-width: 90px; }
-            .quantity-control .btn-qty { padding: 3px 7px; font-size: 1em; }
-            .quantity-control .qty-display { font-size: 0.8em; min-width: 22px;}
+
+             /* Hide floating cart on mobile */
+             #cartBox { display: none !important; }
+
+            .quantity-control { max-width: 95px; } /* Slightly larger touch target */
+            .quantity-control .btn-qty { padding: 4px 9px; font-size: 1.1em; }
+            .quantity-control .qty-display { font-size: 0.85em; min-width: 24px;}
+
+            #reviewDetails { gap: 12px; } /* Tighter gap */
             #reviewTextSummary h4 { font-size: 1.1em; }
             #packagingPreviewContainer h5 { font-size: 1.0em; }
-            #visualBoxRepresentation { gap: 8px; padding: 10px; grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));}
-            .sweet-icon-placeholder img { width: 35px; height: 35px; margin-bottom: 3px; }
+            #visualBoxRepresentation { gap: 8px; padding: 10px; grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));} /* Slightly larger icons */
+            .sweet-icon-placeholder img { width: 40px; height: 40px; margin-bottom: 3px; }
             .sweet-icon-placeholder span { font-size: 0.6em; }
+
             #orderSuccessMessage { padding: 18px; }
             #orderSuccessMessage h2 { font-size: 1.4em; }
             #orderSuccessMessage p { font-size: 0.85em; }
             #orderSuccessMessage #successOrderSummary { padding: 10px; }
-            #orderSuccessMessage .btn-new-order { padding: 8px 20px; font-size: 0.75em; }
+            #orderSuccessMessage .btn-new-order { padding: 9px 22px; font-size: 0.8em; }
         }
 
         /* Extra small devices (portrait phones, less than 576px) */
@@ -296,18 +342,17 @@
             .navbar .navbar-brand img { max-width: 100px; }
             #wizard-progress { display: none; }
             .step h2 { font-size: 1.2em; }
-            #cartBox { right: 6px; bottom: 6px; max-width: calc(100% - 12px); width: auto; border-radius: 6px; }
             .sweet-card { max-width: 100%; }
             #sweetCards.row { --bs-gutter-x: 0.5rem; --bs-gutter-y: 0.5rem; }
             .sweet-card .card-body { padding: 7px; }
             .sweet-card .card-title { font-size: 0.9em; }
             .sweet-card .card-text { font-size: 0.68em; line-height: 1.3; max-height: 35px; }
-            .sweet-card .btn-add-update { padding: 4px 8px; font-size: 0.6em; }
-            .quantity-control { max-width: 80px; }
-            .quantity-control .btn-qty { padding: 2px 6px; font-size: 0.9em; }
-            .quantity-control .qty-display { font-size: 0.75em; min-width: 20px;}
+            .sweet-card .btn-add-update { padding: 5px 10px; font-size: 0.65em; } /* Slightly larger button text */
+            .quantity-control { max-width: 85px; }
+            .quantity-control .btn-qty { padding: 3px 7px; font-size: 1.0em; }
+            .quantity-control .qty-display { font-size: 0.8em; min-width: 22px;}
             #reviewTextSummary { min-width: 180px; }
-            #visualBoxRepresentation { grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); gap: 6px; }
+            #visualBoxRepresentation { grid-template-columns: repeat(auto-fill, minmax(42px, 1fr)); gap: 6px; } /* Smaller review icons */
             .button-group { padding: 0.6rem 15px; }
         }
     </style>
@@ -320,9 +365,20 @@
                 <img src="img/10.png" alt="Darna Logo"
                      onerror="console.error('LOGO LOAD ERROR: Path=\'img/10.png\''); this.onerror=null; this.style.display='none'; const brandText = document.createElement('span'); brandText.textContent='Darna'; brandText.style.color='var(--luxury-gold)'; brandText.style.fontFamily='var(--font-heading)'; brandText.style.fontSize='1.5em'; this.parentNode.appendChild(brandText);">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
+            <!-- Mobile Controls Group -->
+            <div class="navbar-controls d-flex align-items-center d-lg-none">
+                 <!-- Mobile Cart Indicator (Initially Hidden) -->
+                 <a href="#" id="nav-cart-indicator" class="nav-link" aria-label="View Selections">
+                    <i class="bi bi-box-seam"></i>
+                    <span class="badge">0</span>
+                 </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <!-- Desktop Nav Links & Mobile Menu Content -->
              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                  <ul class="navbar-nav">
                      <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
@@ -348,10 +404,10 @@
         <!-- Wizard Area -->
         <div id="wizardContainer">
             <div id="wizard-progress">
-                <div class="progress-step" data-step="0"><span>1.</span> Preference</div>
-                <div class="progress-step" data-step="1"><span>2.</span> Delicacies</div>
-                <div class="progress-step" data-step="2"><span>3.</span> Presentation</div>
-                <div class="progress-step" data-step="3"><span>4.</span> Review</div>
+                <div class="progress-step" data-step="0"><span>1.</span><span class="step-text"> Preference</span></div>
+                <div class="progress-step" data-step="1"><span>2.</span><span class="step-text"> Delicacies</span></div>
+                <div class="progress-step" data-step="2"><span>3.</span><span class="step-text"> Presentation</span></div>
+                <div class="progress-step" data-step="3"><span>4.</span><span class="step-text"> Review</span></div>
             </div>
             <div id="wizard">
                 <!-- Step 1: Quantity Type -->
@@ -372,7 +428,7 @@
                     <div class="step-scrollable-content">
                         <h2>Select Your Delicacies</h2>
                         <div id="cardLoadingOverlay"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>
-                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 justify-content-center" id="sweetCards">
+                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2 g-md-3 justify-content-center" id="sweetCards"> {/* Reduced gutters */}
                             <p class="text-muted text-center col-12">Loading delicacies...</p>
                         </div>
                     </div>
@@ -427,7 +483,7 @@
          </div>
     </section>
 
-    <!-- Cart Box -->
+    <!-- Cart Box (Hidden on Mobile via CSS) -->
     <div id="cartBox">
         <h3>Your Bespoke Box</h3>
         <div id="cartItems">
@@ -442,7 +498,7 @@
         // Wrap entire script in a try...catch
         try {
             $(document).ready(function() {
-                console.log("Document ready. Initializing Darna Wizard (v11 - Debugging Next Step)...");
+                console.log("Document ready. Initializing Darna Wizard (v11 - Mobile Cart Indicator)...");
 
                 // --- Global State Variables ---
                 let cart = [];
@@ -458,47 +514,66 @@
                 const wizardContainer = $("#wizardContainer");
                 const successMessageContainer = $("#orderSuccessMessage");
                 const cardLoadingOverlay = $("#cardLoadingOverlay");
-                const cartBox = $("#cartBox");
+                const cartBox = $("#cartBox"); // Desktop floating cart
                 const cartItemsContainer = $("#cartItems");
                 const emptyCartMsg = $("#emptyCartMsg");
                 const sweetCardsContainer = $("#sweetCards");
                 const errorMessageContainer = $("#errorMessage");
+                const navCartIndicator = $("#nav-cart-indicator"); // Mobile navbar indicator
+                const navCartBadge = navCartIndicator.find(".badge"); // Mobile badge
 
                 // --- Utility ---
-                const placeholderImg = 'img/placeholder.png'; // Make sure this exists if you want a local fallback
+                const placeholderImg = 'img/placeholder.png';
                 function getSweetById(id) {
                     if (!sweets || sweets.length === 0) return null;
                     return sweets.find(s => s.id === id);
                 }
                 function formatQuantity(quantity, type) { return type === 'unit' ? `${quantity} pc${quantity !== 1 ? 's' : ''}` : `${quantity}g`; }
 
-                // --- Cart Display & Visibility ---
-                function showCart() {
+                 // --- Mobile Navbar Cart Indicator Update ---
+                 function updateNavbarCartIndicator() {
+                    const itemCount = cart.reduce((sum, item) => sum + (item.quantityType === 'unit' ? item.quantity : 1), 0); // Count units or 1 per weight item
+                    // console.log("DEBUG: Updating navbar indicator. Count:", itemCount); // Can be noisy
+                    if (itemCount > 0) {
+                        navCartBadge.text(itemCount).show();
+                        navCartIndicator.show(); // Ensure icon is visible if badge has count
+                    } else {
+                        navCartBadge.hide();
+                        // Optional: Hide icon completely if cart is empty
+                        // navCartIndicator.hide();
+                    }
+                }
+
+                // --- Cart Display & Visibility (Handles Desktop Cart AND Mobile Indicator) ---
+                function showCart() { // Only affects desktop cart visibility
                     if (!cartBox.hasClass('cart-visible')) {
                          cartBox.addClass('cart-visible');
-                         console.log("DEBUG: Cart shown.");
+                         console.log("DEBUG: Desktop Cart shown.");
                     }
                 }
-                function hideCart() {
+                function hideCart() { // Only affects desktop cart visibility
                     if (cartBox.hasClass('cart-visible')) {
                         cartBox.removeClass('cart-visible');
-                        console.log("DEBUG: Cart hidden.");
+                        console.log("DEBUG: Desktop Cart hidden.");
                     }
                 }
-                 function updateCartDisplay() {
-                    cartItemsContainer.empty();
+                 function updateCartDisplay() { // Updates both desktop cart items and mobile indicator
+                    cartItemsContainer.empty(); // Clear desktop cart items
                     if (cart.length === 0) {
                         cartItemsContainer.append(emptyCartMsg);
-                        hideCart();
+                        hideCart(); // Hide desktop cart
                     } else {
                         cart.forEach((item, index) => {
                             const delay = index * 0.05;
                             const itemImagePath = item.img || placeholderImg;
                             cartItemsContainer.append(`<div class="cart-item" style="animation-delay: ${delay}s;"><img src="${itemImagePath}" alt="${item.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('Cart Img Error: ${itemImagePath}')"><div class="cart-item-details"><h5>${item.name}</h5><span>${formatQuantity(item.quantity, item.quantityType)}</span></div><button class="remove-item-btn" data-sweet-id="${item.sweetId}" aria-label="Remove ${item.name}">×</button></div>`);
                         });
-                        if (currentStep === 1) { showCart(); }
+                        // Show desktop cart only if on step 2
+                        if (currentStep === 1) { showCart(); } else { hideCart();}
                     }
+                    updateNavbarCartIndicator(); // Update mobile indicator regardless of step
                 }
+
 
                 // --- Wizard Navigation & Animation ---
                 function updateWizardProgress(targetStepIndex) {
@@ -522,11 +597,11 @@
                             steps.removeClass('active-step exiting-step');
                             $nextStep.addClass('active-step');
                             const previousStep = currentStep;
-                            currentStep = stepIndex; // Update global state
+                            currentStep = stepIndex;
                             console.log(`DEBUG: currentStep is now ${currentStep}`);
                             updateWizardProgress(currentStep);
 
-                            // Cart Visibility
+                            // Cart Visibility (Desktop only)
                             if (currentStep === 1) { if (cart.length > 0) showCart(); else hideCart(); }
                             else { hideCart(); }
 
@@ -763,7 +838,8 @@
                     cartItemElement.addClass('removing');
                     setTimeout(() => {
                         cart = cart.filter(item => item.sweetId !== sweetIdToRemove);
-                        updateCartDisplay(); updateCardState(sweetIdToRemove);
+                        updateCartDisplay(); // Handles hiding cart & updating indicator
+                        updateCardState(sweetIdToRemove); // Update the corresponding card
                         console.log(`DEBUG: Removed ${sweetIdToRemove}`);
                     }, 350);
                 });
@@ -810,8 +886,9 @@
                 function initializeApp() {
                     console.log("DEBUG: Initializing application...");
                     errorMessageContainer.hide(); wizardContainer.show(); successMessageContainer.hide(); hideLoadingOverlay();
-                    showStep(0);
-                    updateCartDisplay();
+                    updateNavbarCartIndicator(); // Initial indicator update
+                    showStep(0); // Start at step 0
+                    updateCartDisplay(); // Update desktop cart (will be hidden)
                     console.log("DEBUG: Initialization complete.");
                 }
 
@@ -824,6 +901,7 @@
                     })
                     .then(data => {
                          console.log("DEBUG: sweets.json loaded and parsed successfully.");
+                        if(!Array.isArray(data)){ throw new Error("sweets.json did not contain a valid JSON array."); } // Add check
                         sweets = data;
                         initializeApp();
                     })
