@@ -1,0 +1,58 @@
+[
+  {
+    "id": "sw001",
+    "name": "Chebakia",
+    "description": "Iconic sesame cookie fried & coated in honey.",
+    "img": "img/1.jpg",
+    "variations": ["Classic Sesame", "Almond Dust"]
+  },
+  {
+    "id": "sw002",
+    "name": "Kaab el Ghzal",
+    "description": "'Gazelle horn' pastry with almond paste.",
+    "img": "img/2.jpg",
+    "variations": ["Orange Blossom", "Cinnamon"]
+  },
+  {
+    "id": "sw003",
+    "name": "Briouat",
+    "description": "Crispy triangle pastry filled with almonds.",
+    "img": "img/3.jpg",
+    "variations": ["Almond", "Pistachio"]
+  },
+  {
+    "id": "sw004",
+    "name": "Ghriba Bahla",
+    "description": "Cracked 'silly' cookies, crumbly texture.",
+    "img": "img/4.jpg",
+    "variations": ["Classic", "Coconut"]
+  },
+  {
+    "id": "sw005",
+    "name": "Almond Maamoul",
+    "description": "Semolina butter cookies with almond paste.",
+    "img": "img/5.jpg",
+    "variations": ["Classic", "Date Filled"]
+  },
+  {
+    "id": "sw006",
+    "name": "Sellou",
+    "description": "Nutty, spiced sweet mixture.",
+    "img": "img/6.jpg",
+    "variations": ["Traditional", "Crunchy"]
+  },
+  {
+    "id": "sw007",
+    "name": "Fekkas",
+    "description": "Twice-baked crunchy cookies, like biscotti.",
+    "img": "img/7.jpg",
+    "variations": ["Almond/Anise", "Fig/Walnut"]
+  },
+  {
+    "id": "sw008",
+    "name": "M'hencha",
+    "description": "'Snake' coil pastry with almond paste.",
+    "img": "img/8.jpg",
+    "variations": ["Classic Large", "Mini Bites"]
+  }
+]

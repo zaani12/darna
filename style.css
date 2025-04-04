@@ -13,14 +13,14 @@ h1, h2 {
     padding: 10px 0;
 }
 
-.navbar-brand {
+navbar-brand {
     color: #fff !important;
     font-size: 1.2rem;
     text-align: center;
     padding: 0;
 }
 
-.navbar-brand img {
+navbar-brand img {
     max-width: 150px;
     width: 100%;
 }
