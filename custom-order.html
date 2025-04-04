@@ -40,40 +40,60 @@
         @keyframes pulseSubtle { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
         @keyframes checkmarkFadeIn { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: scale(1); } }
 
-        /* --- Base & Navbar --- */
-        body { background: linear-gradient(180deg, var(--luxury-cream) 0%, #f7f3eb 100%); font-family: var(--font-body); color: var(--luxury-dark); margin: 0; padding-top: 95px; animation: fadeIn var(--transition-speed-slow) ease-out; }
-        .navbar { background-color: var(--luxury-dark); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); padding: 1rem 1.5rem; transition: background-color var(--transition-speed-med) ease; }
-        .navbar .navbar-brand img { max-width: 180px; height: auto; transition: transform var(--transition-speed-fast) ease; }
+        /* --- Base & Body --- */
+        body {
+            background: linear-gradient(180deg, var(--luxury-cream) 0%, #f7f3eb 100%);
+            font-family: var(--font-body);
+            color: var(--luxury-dark);
+            margin: 0;
+            padding-top: 85px; /* Slightly reduced for smaller screens potentially */
+            font-size: 16px; /* Base font size */
+            animation: fadeIn var(--transition-speed-slow) ease-out;
+        }
+
+        /* --- Navbar --- */
+        .navbar { background-color: var(--luxury-dark); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); padding: 0.8rem 1rem; transition: background-color var(--transition-speed-med) ease; }
+        .navbar .navbar-brand img { max-width: 160px; height: auto; transition: transform var(--transition-speed-fast) ease; } /* Slightly smaller logo */
         .navbar .navbar-brand:hover img { transform: scale(1.05); }
-        .navbar .nav-link { color: var(--luxury-cream) !important; font-weight: 400; text-transform: uppercase; letter-spacing: 0.8px; font-size: 0.88em; margin: 0 0.5rem; transition: color var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease; position: relative; padding-bottom: 4px; }
+        .navbar .nav-link { color: var(--luxury-cream) !important; font-weight: 400; text-transform: uppercase; letter-spacing: 0.8px; font-size: 0.85em; margin: 0 0.5rem; transition: color var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease; position: relative; padding-bottom: 4px; }
         .navbar .nav-link::after { content: ''; position: absolute; bottom: 0px; left: 50%; transform: translateX(-50%); width: 0; height: 1.5px; background-color: var(--luxury-gold); transition: width var(--transition-speed-fast) ease; }
         .navbar .nav-link:hover::after, .navbar .nav-link.active::after { width: 50%; }
         .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--luxury-gold) !important; transform: translateY(-1px); }
+        .navbar-toggler { border-color: rgba(255,255,255,0.2); }
+        .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+
+        /* --- Main Content Area --- */
+        /* Use .main-container on the <section> */
+        .main-container {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
 
         /* --- Main Title & Wizard Progress --- */
-        .main-title { font-family: var(--font-heading); font-style: italic; color: var(--luxury-brown); font-size: 3.5em; text-align: center; margin-bottom: 2.5rem; animation: fadeInUp 1s ease-out 0.2s backwards; }
-        #wizard-progress { display: flex; justify-content: space-around; margin-bottom: 3rem; padding: 18px 0; background-color: rgba(255, 255, 255, 0.75); border-radius: 50px; box-shadow: var(--shadow-soft); max-width: 800px; margin-left: auto; margin-right: auto; animation: fadeInUp 1s ease-out 0.4s backwards; }
-        .progress-step { text-align: center; color: var(--luxury-brown); opacity: 0.55; font-weight: 700; font-size: 0.9em; flex: 1; padding: 9px 6px; border-bottom: 3px solid transparent; transition: all var(--transition-speed-med) ease-out; cursor: default; position: relative; }
+        .main-title { font-family: var(--font-heading); font-style: italic; color: var(--luxury-brown); font-size: 3.0em; text-align: center; margin-bottom: 2rem; animation: fadeInUp 1s ease-out 0.2s backwards; }
+        #wizard-progress { display: flex; justify-content: space-around; margin-bottom: 2.5rem; padding: 15px 10px; background-color: rgba(255, 255, 255, 0.75); border-radius: 50px; box-shadow: var(--shadow-soft); max-width: 750px; margin-left: auto; margin-right: auto; animation: fadeInUp 1s ease-out 0.4s backwards; }
+        .progress-step { text-align: center; color: var(--luxury-brown); opacity: 0.55; font-weight: 700; font-size: 0.85em; flex: 1; padding: 8px 5px; border-bottom: 3px solid transparent; transition: all var(--transition-speed-med) ease-out; cursor: default; position: relative; line-height: 1.3; }
+        .progress-step span { display: inline-block; margin-right: 3px;} /* Keep number inline */
         .progress-step::after { content: ''; position: absolute; top: 50%; right: -50%; width: 90%; height: 1px; background-color: rgba(138, 109, 90, 0.15); transform: translateY(-50%); z-index: -1; }
         .progress-step:last-child::after { display: none; }
         .progress-step.active { color: var(--luxury-gold); opacity: 1; border-bottom-color: var(--luxury-gold); transform: scale(1.05); }
         .progress-step.completed { color: var(--luxury-accent); opacity: 1; cursor: pointer; }
-        .progress-step.completed::before { content: '✓'; margin-right: 5px; color: var(--luxury-accent); display: inline-block; animation: checkmarkFadeIn 0.5s ease-out; }
+        .progress-step.completed::before { content: '✓'; margin-right: 4px; color: var(--luxury-accent); display: inline-block; animation: checkmarkFadeIn 0.5s ease-out; }
         .progress-step:not(.active):hover { opacity: 0.8; transform: translateY(-2px); }
 
         /* --- Wizard Steps --- */
-        #wizard { max-width: 900px; margin: 20px auto 35px auto; position: relative; overflow: hidden; min-height: 460px; }
-        .step { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; visibility: hidden; padding: 35px 40px; border: 1px solid rgba(0, 0, 0, 0.04); border-radius: 18px; margin-bottom: 30px; background: linear-gradient(155deg, var(--luxury-light), #fcfaf6); box-shadow: var(--shadow-medium); transition: opacity var(--transition-speed-med) ease-out, transform var(--transition-speed-med) ease-out, visibility var(--transition-speed-med); transform: translateX(40px); }
+        #wizard { max-width: 850px; margin: 20px auto 35px auto; position: relative; overflow: visible; /* Allow shadows */ min-height: 420px; } /* Adjusted max-width and min-height */
+        .step { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; visibility: hidden; padding: 30px 35px; border: 1px solid rgba(0, 0, 0, 0.04); border-radius: 18px; margin-bottom: 30px; background: linear-gradient(155deg, var(--luxury-light), #fcfaf6); box-shadow: var(--shadow-medium); transition: opacity var(--transition-speed-med) ease-out, transform var(--transition-speed-med) ease-out, visibility var(--transition-speed-med); transform: translateX(30px); }
         .step.active-step { display: block; position: relative; opacity: 1; visibility: visible; transform: translateX(0); z-index: 10; }
-        .step.exiting-step { transform: translateX(-40px); }
-        .step h2 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; font-weight: 700; margin-top: 0; margin-bottom: 2.5rem; font-size: 2.2em; }
-        .step .form-check { margin-bottom: 1.3rem; font-size: 1.1em; padding-left: 2.3em; }
+        .step.exiting-step { transform: translateX(-30px); }
+        .step h2 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; font-weight: 700; margin-top: 0; margin-bottom: 2rem; font-size: 2.0em; }
+        .step .form-check { margin-bottom: 1.1rem; font-size: 1.0em; padding-left: 2.1em; }
         .step .form-check-label { cursor: pointer; color: var(--luxury-dark); font-weight: 400; transition: color var(--transition-speed-fast) ease; }
-        .step .form-check-input { cursor: pointer; border-color: var(--luxury-accent); transition: background-color var(--transition-speed-fast) ease, border-color var(--transition-speed-fast) ease; height: 1.2em; width: 1.2em; margin-top: 0.2em; }
+        .step .form-check-input { cursor: pointer; border-color: var(--luxury-accent); transition: background-color var(--transition-speed-fast) ease, border-color var(--transition-speed-fast) ease; height: 1.1em; width: 1.1em; margin-top: 0.25em; }
         .step .form-check-input:checked { background-color: var(--luxury-gold); border-color: var(--luxury-gold); }
         .step .form-check-input:focus { box-shadow: 0 0 0 0.2rem rgba(218, 165, 32, 0.2); }
         .step .form-check:hover .form-check-label { color: var(--luxury-gold); }
-        .step button { font-family: var(--font-body); font-weight: 700; padding: 12px 28px; border: none; border-radius: 50px; cursor: pointer; transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft); letter-spacing: 0.6px; text-transform: uppercase; font-size: 0.9em; }
+        .step button { font-family: var(--font-body); font-weight: 700; padding: 10px 25px; border: none; border-radius: 50px; cursor: pointer; transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft); letter-spacing: 0.6px; text-transform: uppercase; font-size: 0.85em; }
         .step button:hover { box-shadow: var(--shadow-medium); transform: translateY(-2px); }
         .step button:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .step .btn-primary { background: linear-gradient(100deg, var(--luxury-gold), var(--luxury-accent)); color: var(--luxury-light); }
@@ -82,26 +102,27 @@
         .step .btn-secondary:hover { background-color: #e5e5e5; }
         .step .btn-success { background-color: var(--luxury-success); color: var(--luxury-light); }
         .step .btn-success:hover { background-color: #4a6b2a; }
-        .button-group { display: flex; justify-content: space-between; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.05); }
+        .button-group { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.3rem; border-top: 1px solid rgba(0,0,0,0.05); }
         #quantityStep .prevStep { visibility: hidden; }
         #reviewStep .nextStep { display: none; }
         #quantityStep .button-group { justify-content: flex-end; }
 
         /* --- Sweet Card Styling --- */
         .sweet-card-column { margin-bottom: 20px; }
-        .sweet-card { border: 1.5px solid transparent; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-soft); transition: transform var(--transition-speed-fast) ease, box-shadow var(--transition-speed-fast) ease, border-color var(--transition-speed-fast) ease; background-color: var(--luxury-light); animation: fadeInUp var(--transition-speed-med) ease-out backwards; height: 100%; display: flex; flex-direction: column; max-width: 230px; margin-left: auto; margin-right: auto; cursor: pointer; }
+        /* Adjusted max-width for better fit on medium screens */
+        .sweet-card { border: 1.5px solid transparent; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-soft); transition: transform var(--transition-speed-fast) ease, box-shadow var(--transition-speed-fast) ease, border-color var(--transition-speed-fast) ease; background-color: var(--luxury-light); animation: fadeInUp var(--transition-speed-med) ease-out backwards; height: 100%; display: flex; flex-direction: column; max-width: 240px; margin-left: auto; margin-right: auto; cursor: pointer; }
         .sweet-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-medium); }
         .sweet-card.card-in-cart { border-color: var(--luxury-gold); background-color: #fffef9; }
         .sweet-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-bottom: 1px solid rgba(0,0,0,0.05); background-color: #f8f8f8; }
         .sweet-card .card-body { padding: 12px; display: flex; flex-direction: column; flex-grow: 1; }
-        .sweet-card .card-title { font-family: var(--font-heading); font-size: 1.1em; color: var(--luxury-brown); margin-bottom: 5px; }
+        .sweet-card .card-title { font-family: var(--font-heading); font-size: 1.05em; color: var(--luxury-brown); margin-bottom: 5px; }
         .sweet-variations { font-size: 0.7em; color: var(--luxury-accent); margin-bottom: 8px; opacity: 0.9; font-weight: 400; line-height: 1.4; }
         .sweet-variations i { margin-right: 3px; font-size: 0.9em; vertical-align: middle; opacity: 0.8; }
-        .sweet-card .card-text { font-size: 0.8em; color: #666; line-height: 1.5; flex-grow: 1; margin-bottom: 10px; max-height: 55px; overflow: hidden; }
+        .sweet-card .card-text { font-size: 0.8em; color: #666; line-height: 1.45; flex-grow: 1; margin-bottom: 10px; max-height: 50px; /* Slightly reduced max-height */ overflow: hidden; }
         .sweet-card .form-group { margin-top: auto; }
-        .sweet-card .form-group label { font-size: 0.75em; margin-bottom: 3px; font-weight: 700; color: var(--luxury-accent); text-transform: uppercase; letter-spacing: 0.4px; }
-        .sweet-card .form-control-sm { border-radius: 15px; padding: .25rem .5rem; font-size: .8rem; border-color: #ddd; }
-        .sweet-card .btn-add-update { font-weight: 600; border-radius: 15px; padding: 7px 14px; font-size: 0.75em; width: 100%; margin-top: 8px; transition: all var(--transition-speed-fast) ease; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid transparent; }
+        .sweet-card .form-group label { font-size: 0.7em; margin-bottom: 3px; font-weight: 700; color: var(--luxury-accent); text-transform: uppercase; letter-spacing: 0.4px; }
+        .sweet-card .form-control-sm { border-radius: 15px; padding: .2rem .45rem; font-size: .75rem; border-color: #ddd; }
+        .sweet-card .btn-add-update { font-weight: 600; border-radius: 15px; padding: 6px 12px; font-size: 0.7em; width: 100%; margin-top: 8px; transition: all var(--transition-speed-fast) ease; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid transparent; }
         .sweet-card .btn-add { background-color: var(--luxury-brown); color: var(--luxury-light); border-color: var(--luxury-brown); }
         .sweet-card .btn-add:hover { background-color: var(--luxury-dark); border-color: var(--luxury-dark); transform: scale(1.02); }
         .sweet-card .btn-update { background-color: transparent; color: var(--luxury-gold); border: 1px solid var(--luxury-gold); }
@@ -111,71 +132,137 @@
         /* --- Loading Overlay --- */
         #cardLoadingOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.85); z-index: 20; display: flex; align-items: center; justify-content: center; border-radius: 18px; transition: opacity var(--transition-speed-fast) ease, visibility 0s linear var(--transition-speed-fast); opacity: 0; visibility: hidden; }
         #cardLoadingOverlay.visible { opacity: 1; visibility: visible; transition: opacity var(--transition-speed-fast) ease, visibility 0s linear 0s; }
-        #cardLoadingOverlay .spinner-border { width: 3rem; height: 3rem; color: var(--luxury-gold); }
+        #cardLoadingOverlay .spinner-border { width: 2.5rem; height: 2.5rem; color: var(--luxury-gold); }
 
         /* --- Cart Box --- */
-        #cartBox { position: fixed; bottom: 25px; right: 25px; width: 90%; max-width: 380px; max-height: 55vh; overflow-y: auto; background: linear-gradient(to bottom, #4a4646, var(--luxury-dark)); color: var(--luxury-cream); padding: 25px 30px; z-index: 1050; box-shadow: var(--shadow-strong); border-radius: 18px; border: 1px solid var(--luxury-accent); transition: transform var(--transition-speed-med) ease-out, opacity var(--transition-speed-med) ease-out, visibility var(--transition-speed-med) step-end; transform: translateY(15px); opacity: 0; visibility: hidden; }
+        #cartBox { position: fixed; bottom: 20px; right: 20px; width: 90%; max-width: 360px; max-height: 50vh; overflow-y: auto; background: linear-gradient(to bottom, #4a4646, var(--luxury-dark)); color: var(--luxury-cream); padding: 20px 25px; z-index: 1050; box-shadow: var(--shadow-strong); border-radius: 15px; border: 1px solid var(--luxury-accent); transition: transform var(--transition-speed-med) ease-out, opacity var(--transition-speed-med) ease-out, visibility var(--transition-speed-med) step-end; transform: translateY(15px); opacity: 0; visibility: hidden; }
         #cartBox.cart-visible { transform: translateY(0); opacity: 1; visibility: visible; transition: transform var(--transition-speed-med) ease-out, opacity var(--transition-speed-med) ease-out, visibility var(--transition-speed-med) step-start; }
-        #cartBox h3 { font-family: var(--font-heading); text-align: center; margin-top: 0; margin-bottom: 20px; color: var(--luxury-gold); border-bottom: 1px solid rgba(218, 165, 32, 0.3); padding-bottom: 15px; font-size: 1.6em; }
-        #cartBox::-webkit-scrollbar { width: 8px; }
+        #cartBox h3 { font-family: var(--font-heading); text-align: center; margin-top: 0; margin-bottom: 18px; color: var(--luxury-gold); border-bottom: 1px solid rgba(218, 165, 32, 0.3); padding-bottom: 12px; font-size: 1.4em; }
+        #cartBox::-webkit-scrollbar { width: 7px; }
         #cartBox::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.08); border-radius: 4px; }
         #cartBox::-webkit-scrollbar-thumb { background-color: var(--luxury-accent); border-radius: 4px; border: 2px solid transparent; background-clip: content-box; }
         #cartBox::-webkit-scrollbar-thumb:hover { background-color: var(--luxury-gold); }
-        .cart-item { display: flex; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(218, 165, 32, 0.15); padding-bottom: 15px; position: relative; animation: slideInRight 0.5s ease-out backwards; }
+        .cart-item { display: flex; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(218, 165, 32, 0.15); padding-bottom: 12px; position: relative; animation: slideInRight 0.5s ease-out backwards; }
         .cart-item.removing { animation: shrinkOutFade 0.4s ease-out forwards; }
         .cart-item:nth-child(1) { animation-delay: 0.06s; } .cart-item:nth-child(2) { animation-delay: 0.12s; } .cart-item:nth-child(3) { animation-delay: 0.18s; }
         .cart-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .cart-item img { width: 55px; height: 55px; object-fit: cover; border-radius: 10px; margin-right: 18px; box-shadow: 0 3px 8px rgba(0,0,0,0.25); background-color: #eee; }
-        .cart-item-details { flex-grow: 1; margin-right: 10px; }
-        .cart-item-details h5 { margin-bottom: 5px; color: var(--luxury-light); font-size: 1em; font-weight: 600; }
-        .cart-item-details span { font-size: 0.88em; color: var(--luxury-cream); opacity: 0.8; display: block; }
-        .remove-item-btn { background: none; border: none; color: var(--luxury-accent); font-size: 1.6em; line-height: 1; cursor: pointer; padding: 0 5px; margin-left: auto; opacity: 0.75; transition: all var(--transition-speed-fast) ease; align-self: center; }
+        .cart-item img { width: 50px; height: 50px; object-fit: cover; border-radius: 8px; margin-right: 15px; box-shadow: 0 3px 8px rgba(0,0,0,0.25); background-color: #eee; flex-shrink: 0; }
+        .cart-item-details { flex-grow: 1; margin-right: 8px; }
+        .cart-item-details h5 { margin-bottom: 4px; color: var(--luxury-light); font-size: 0.95em; font-weight: 600; }
+        .cart-item-details span { font-size: 0.85em; color: var(--luxury-cream); opacity: 0.8; display: block; }
+        .remove-item-btn { background: none; border: none; color: var(--luxury-accent); font-size: 1.5em; line-height: 1; cursor: pointer; padding: 0 4px; margin-left: auto; opacity: 0.75; transition: all var(--transition-speed-fast) ease; align-self: center; flex-shrink: 0;}
         .remove-item-btn:hover { color: var(--luxury-gold); opacity: 1; transform: scale(1.15); }
-        #emptyCartMsg { padding: 30px 0; color: var(--luxury-cream); opacity: 0.65; text-align: center; font-style: italic; font-size: 0.9em; }
+        #emptyCartMsg { padding: 25px 0; color: var(--luxury-cream); opacity: 0.65; text-align: center; font-style: italic; font-size: 0.85em; }
 
         /* --- Review Step --- */
-        #reviewDetails { display: flex; flex-wrap: wrap; gap: 30px; }
+        #reviewDetails { display: flex; flex-wrap: wrap; gap: 25px; }
         #reviewTextSummary { flex: 1 1 300px; }
-        #packagingPreviewContainer { flex: 1 1 350px; padding: 25px; border: 1px solid rgba(0,0,0,0.07); border-radius: 15px; background-color: rgba(255, 255, 255, 0.65); }
-        #packagingPreviewContainer h5 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; margin-bottom: 25px; font-size: 1.4em; }
-        #visualBoxRepresentation { display: grid; grid-template-columns: repeat(auto-fill, minmax(65px, 1fr)); gap: 18px; padding: 25px; border-radius: 12px; min-height: 220px; align-content: start; transition: background-color var(--transition-speed-med) ease, border var(--transition-speed-med) ease; border: 2px solid transparent; }
+        #packagingPreviewContainer { flex: 1 1 320px; padding: 20px; border: 1px solid rgba(0,0,0,0.07); border-radius: 15px; background-color: rgba(255, 255, 255, 0.65); }
+        #packagingPreviewContainer h5 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; margin-bottom: 20px; font-size: 1.3em; }
+        #visualBoxRepresentation { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 15px; padding: 20px; border-radius: 10px; min-height: 200px; align-content: start; transition: background-color var(--transition-speed-med) ease, border var(--transition-speed-med) ease; border: 2px solid transparent; }
         #visualBoxRepresentation.visual-box { background-color: #fffbf2; border-color: var(--luxury-brown); }
         #visualBoxRepresentation.visual-tray { background: linear-gradient(135deg, #e8d1b0, #d1bc8a); border: 2px dashed var(--luxury-gold); box-shadow: inset 0 0 10px rgba(0,0,0,0.08); }
         .sweet-icon-placeholder { text-align: center; animation: fadeInUp 0.5s ease-out backwards; }
-        .sweet-icon-placeholder img { width: 55px; height: 55px; object-fit: cover; border-radius: 50%; border: 2px solid var(--luxury-accent); box-shadow: 0 3px 6px rgba(0,0,0,0.15); margin-bottom: 7px; background-color: #eee; }
-        .sweet-icon-placeholder span { display: block; font-size: 0.78em; font-weight: 600; color: var(--luxury-dark); line-height: 1.2; }
-        #emptyBoxVisualMsg { grid-column: 1 / -1; text-align: center; padding: 30px; color: var(--luxury-brown); font-style: italic; opacity: 0.7; }
-        #reviewTextSummary .list-group-item { background-color: transparent; border-color: rgba(0, 0, 0, 0.06); padding: 10px 0px; color: var(--luxury-dark); font-size: 0.95em; }
-        #reviewTextSummary h4 { font-family: var(--font-heading); color: var(--luxury-brown); margin-bottom: 1.5rem; font-size: 1.5em; border-bottom: 1px solid rgba(0,0,0,0.07); padding-bottom: 0.7rem; }
-        #reviewTextSummary p { margin-top: 1.5rem; font-size: 1.1em; color: var(--luxury-dark); }
-        #reviewTextSummary .badge { background-color: var(--luxury-accent); color: var(--luxury-light); font-size: 0.9em; padding: 6px 10px; border-radius: 12px; }
+        .sweet-icon-placeholder img { width: 50px; height: 50px; object-fit: cover; border-radius: 50%; border: 2px solid var(--luxury-accent); box-shadow: 0 3px 6px rgba(0,0,0,0.15); margin-bottom: 6px; background-color: #eee; }
+        .sweet-icon-placeholder span { display: block; font-size: 0.75em; font-weight: 600; color: var(--luxury-dark); line-height: 1.2; }
+        #emptyBoxVisualMsg { grid-column: 1 / -1; text-align: center; padding: 25px; color: var(--luxury-brown); font-style: italic; opacity: 0.7; font-size: 0.9em; }
+        #reviewTextSummary .list-group-item { background-color: transparent; border-color: rgba(0, 0, 0, 0.06); padding: 8px 0px; color: var(--luxury-dark); font-size: 0.9em; }
+        #reviewTextSummary h4 { font-family: var(--font-heading); color: var(--luxury-brown); margin-bottom: 1.2rem; font-size: 1.4em; border-bottom: 1px solid rgba(0,0,0,0.07); padding-bottom: 0.6rem; }
+        #reviewTextSummary p { margin-top: 1.2rem; font-size: 1.0em; color: var(--luxury-dark); }
+        #reviewTextSummary .badge { background-color: var(--luxury-accent); color: var(--luxury-light); font-size: 0.85em; padding: 5px 9px; border-radius: 10px; }
         #reviewTextSummary img { border: 1px solid rgba(0,0,0,0.08); background-color: #eee; }
 
         /* --- Success Message --- */
-        #orderSuccessMessage { display: none; padding: 45px; margin: 35px auto; max-width: 650px; background-color: var(--luxury-light); border-radius: 18px; text-align: center; box-shadow: var(--shadow-medium); border: 1px solid var(--luxury-gold); animation: fadeInUp 0.8s ease-out; }
-        #orderSuccessMessage h2 { font-family: var(--font-heading); color: var(--luxury-success); margin-bottom: 18px; font-size: 2.3em; }
+        #orderSuccessMessage { display: none; padding: 35px; margin: 30px auto; max-width: 600px; background-color: var(--luxury-light); border-radius: 15px; text-align: center; box-shadow: var(--shadow-medium); border: 1px solid var(--luxury-gold); animation: fadeInUp 0.8s ease-out; }
+        #orderSuccessMessage h2 { font-family: var(--font-heading); color: var(--luxury-success); margin-bottom: 15px; font-size: 2.0em; }
         #orderSuccessMessage h2 i { margin-right: 8px; font-size: 0.9em; }
-        #orderSuccessMessage p { color: var(--luxury-dark); line-height: 1.7; margin-bottom: 12px; font-size: 1.05em; }
-        #orderSuccessMessage #successOrderSummary { font-size: 0.95em; text-align: left; max-width: 450px; margin: 20px auto 30px auto; padding: 20px; border-radius: 10px; background-color: #f8f9fa; border: 1px solid #eee;}
-        #orderSuccessMessage #successOrderSummary ul { list-style: none; padding-left: 0; margin-bottom: 12px;}
-        #orderSuccessMessage #successOrderSummary li { margin-bottom: 7px; }
-        #orderSuccessMessage .btn-new-order { font-family: var(--font-body); font-weight: 700; padding: 13px 30px; border: none; border-radius: 50px; cursor: pointer; transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft); background: linear-gradient(100deg, var(--luxury-gold), var(--luxury-accent)); color: var(--luxury-light); text-transform: uppercase; letter-spacing: 0.7px; font-size: 0.95em; }
+        #orderSuccessMessage p { color: var(--luxury-dark); line-height: 1.6; margin-bottom: 10px; font-size: 1.0em; }
+        #orderSuccessMessage #successOrderSummary { font-size: 0.9em; text-align: left; max-width: 400px; margin: 18px auto 25px auto; padding: 18px; border-radius: 8px; background-color: #f8f9fa; border: 1px solid #eee;}
+        #orderSuccessMessage #successOrderSummary ul { list-style: none; padding-left: 0; margin-bottom: 10px;}
+        #orderSuccessMessage #successOrderSummary li { margin-bottom: 6px; }
+        #orderSuccessMessage .btn-new-order { font-family: var(--font-body); font-weight: 700; padding: 11px 28px; border: none; border-radius: 50px; cursor: pointer; transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft); background: linear-gradient(100deg, var(--luxury-gold), var(--luxury-accent)); color: var(--luxury-light); text-transform: uppercase; letter-spacing: 0.7px; font-size: 0.9em; }
         #orderSuccessMessage .btn-new-order:hover { box-shadow: var(--shadow-medium); transform: translateY(-2px); }
         #orderSuccessMessage .btn-new-order:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
          /* --- Error Message Styling --- */
-        #errorMessage {
-             display: none; /* Hidden by default */
-             padding: 20px;
-             margin: 30px auto;
-             max-width: 700px;
-             background-color: #f8d7da; /* Light red */
-             color: #721c24; /* Dark red */
-             border: 1px solid #f5c6cb; /* Reddish border */
-             border-radius: 8px;
-             text-align: center;
-         }
-        #errorMessage h4 { color: #721c24; margin-bottom: 10px; }
+        #errorMessage { display: none; padding: 15px; margin: 25px auto; max-width: 650px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 8px; text-align: center; font-size: 0.9em;}
+        #errorMessage h4 { color: #721c24; margin-bottom: 8px; font-size: 1.1em; }
+
+        /* --- =========================== --- */
+        /* ---    RESPONSIVE ADJUSTMENTS   --- */
+        /* --- =========================== --- */
+
+        /* Medium devices (tablets, less than 992px) */
+        @media (max-width: 991.98px) {
+            .main-title { font-size: 2.6em; margin-bottom: 1.8rem; }
+            #wizard { max-width: 720px; }
+            #wizard-progress { max-width: 680px; padding: 12px 8px; }
+            .step { padding: 25px 30px; }
+            .step h2 { font-size: 1.8em; margin-bottom: 1.8rem; }
+            /* Make review section stack earlier */
+            #reviewDetails { flex-direction: column; }
+            #packagingPreviewContainer { flex-basis: auto; } /* Reset flex-basis */
+        }
+
+        /* Small devices (landscape phones, less than 768px) */
+        @media (max-width: 767.98px) {
+            body { padding-top: 75px; font-size: 15px; } /* Slightly smaller base font */
+             .main-container { padding-top: 2rem; padding-bottom: 2rem;}
+            .navbar .navbar-brand img { max-width: 140px; }
+             .navbar-collapse { background-color: var(--luxury-dark); /* Add background for mobile menu */ padding: 1rem; margin-top: 0.5rem; border-radius: 5px; }
+            .main-title { font-size: 2.2em; margin-bottom: 1.5rem; }
+            #wizard { max-width: 100%; margin-left: 10px; margin-right: 10px; min-height: auto; } /* Allow full width */
+            #wizard-progress { max-width: 95%; padding: 10px 5px; margin-bottom: 2rem;}
+            .progress-step { font-size: 0.75em; padding: 6px 4px; }
+             .progress-step span { margin-right: 2px; } /* Smaller margin for number */
+             .progress-step.completed::before { margin-right: 3px; }
+            .step { padding: 20px 20px; }
+            .step h2 { font-size: 1.6em; margin-bottom: 1.5rem; }
+            .step button { padding: 9px 20px; font-size: 0.8em; }
+             .button-group { flex-direction: column; gap: 10px; align-items: stretch; } /* Stack buttons */
+             .button-group .prevStep { order: 2; } /* Put back button below next */
+             .button-group .nextStep, .button-group #finishOrder, .button-group #confirmOrderBtn { order: 1; width: 100%; }
+             #quantityStep .button-group { flex-direction: row; justify-content: flex-end; } /* Keep first step button inline */
+
+             #cartBox { max-width: 300px; padding: 15px 20px; bottom: 15px; right: 15px; max-height: 45vh;}
+             #cartBox h3 { font-size: 1.25em; margin-bottom: 15px; padding-bottom: 10px;}
+             .cart-item img { width: 45px; height: 45px; margin-right: 12px; }
+             .cart-item-details h5 { font-size: 0.9em; }
+             .cart-item-details span { font-size: 0.8em; }
+             .remove-item-btn { font-size: 1.4em; }
+
+             #reviewTextSummary h4 { font-size: 1.3em; }
+             #packagingPreviewContainer h5 { font-size: 1.2em; }
+             #visualBoxRepresentation { gap: 12px; padding: 15px; grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));} /* Smaller icons/gap */
+             .sweet-icon-placeholder img { width: 45px; height: 45px; margin-bottom: 5px; }
+             .sweet-icon-placeholder span { font-size: 0.7em; }
+
+             #orderSuccessMessage { padding: 25px; }
+             #orderSuccessMessage h2 { font-size: 1.8em; }
+             #orderSuccessMessage p { font-size: 0.95em; }
+             #orderSuccessMessage #successOrderSummary { padding: 15px; }
+             #orderSuccessMessage .btn-new-order { padding: 10px 25px; font-size: 0.85em; }
+        }
+
+         /* Extra small devices (portrait phones, less than 576px) */
+        @media (max-width: 575.98px) {
+            body { font-size: 14px; padding-top: 70px; }
+             .main-container { padding-top: 1.5rem; padding-bottom: 1.5rem;}
+            .main-title { font-size: 1.9em; }
+            .navbar .navbar-brand img { max-width: 120px; }
+            #wizard-progress { display: none; } /* Optionally hide progress bar on very small screens */
+            .step h2 { font-size: 1.4em; }
+             #cartBox { right: 10px; bottom: 10px; max-width: 95%; /* Almost full width */ width: auto; }
+             /* Further reduce sweet card sizes if needed */
+             .sweet-card { max-width: 90%; } /* Allow cards to take more width */
+             .sweet-card .card-body { padding: 10px; }
+             .sweet-card .card-title { font-size: 1.0em; }
+             .sweet-card .card-text { font-size: 0.75em; line-height: 1.4; max-height: 45px; }
+             .sweet-card .btn-add-update { padding: 5px 10px; font-size: 0.65em; }
+
+            /* Ensure Bootstrap grid adapts well on smallest screens */
+            #sweetCards.row { --bs-gutter-x: 0.8rem; --bs-gutter-y: 0.8rem; } /* Reduce gutters */
+        }
 
     </style>
 </head>
@@ -184,7 +271,6 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <!-- Logo uses img/10.png -->
                 <img src="img/10.png" alt="Darna Logo"
                      onerror="console.error('LOGO LOAD ERROR: Path=\'img/10.png\''); this.onerror=null; this.style.display='none'; const brandText = document.createElement('span'); brandText.textContent='Darna'; brandText.style.color='var(--luxury-gold)'; brandText.style.fontFamily='var(--font-heading)'; brandText.style.fontSize='1.5em'; this.parentNode.appendChild(brandText);">
             </a>
@@ -203,7 +289,8 @@
     </nav>
 
     <!-- Main Content -->
-    <section class="container my-5">
+    <!-- Added main-container class for consistent padding -->
+    <section class="container main-container">
         <h1 class="main-title">Compose Your Exquisite Sweet Box</h1>
 
         <!-- Error Message Placeholder -->
@@ -236,8 +323,8 @@
                 <div id="sweetSelectionStep" class="step">
                     <h2>Select Your Delicacies</h2>
                     <div id="cardLoadingOverlay"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>
-                    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 g-3 justify-content-center" id="sweetCards">
-                        <!-- Cards generated here by JS after loading JSON -->
+                    <!-- Using Bootstrap's responsive grid columns -->
+                    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 justify-content-center" id="sweetCards">
                         <p class="text-muted text-center col-12">Loading delicacies...</p>
                     </div>
                      <div class="button-group">
@@ -300,12 +387,12 @@
         // Wrap entire script in a try...catch for basic error handling
         try {
             $(document).ready(function() {
-                console.log("Document ready. Initializing Darna Wizard (v6 - Dynamic JSON Data)...");
+                console.log("Document ready. Initializing Darna Wizard (v8 - Responsive)...");
 
                 // --- Global State Variables ---
                 let cart = [];
                 let currentStep = 0;
-                let sweets = []; // <<<< SWEETS ARRAY IS NOW EMPTY INITIALLY
+                let sweets = []; // Empty initially, loaded from JSON
                 let chosenQuantityType = 'unit';
                 let chosenPackaging = 'box';
                 const packagingCost = { box: 0, tray: 8.00 };
@@ -323,16 +410,43 @@
                 const errorMessageContainer = $("#errorMessage");
 
                 // --- Utility ---
-                const placeholderImg = 'img/placeholder.png'; // Optional placeholder
+                const placeholderImg = 'img/placeholder.png'; // Optional placeholder in img/
                 function getSweetById(id) {
-                    // Ensure sweets is loaded before trying to find
                     if (!sweets || sweets.length === 0) return null;
                     return sweets.find(s => s.id === id);
                 }
                 function formatQuantity(quantity, type) { return type === 'unit' ? `${quantity} pc${quantity !== 1 ? 's' : ''}` : `${quantity}g`; }
 
-                // --- Wizard Navigation & Animation (Functions remain the same) ---
-                function updateWizardProgress(targetStepIndex) { /* ... unchanged ... */
+                // --- Cart Display & Visibility ---
+                function showCart() {
+                    if (!cartBox.hasClass('cart-visible')) {
+                         cartBox.addClass('cart-visible');
+                         console.log("Cart shown.");
+                    }
+                }
+                function hideCart() {
+                    if (cartBox.hasClass('cart-visible')) {
+                        cartBox.removeClass('cart-visible');
+                        console.log("Cart hidden.");
+                    }
+                }
+                 function updateCartDisplay() {
+                    cartItemsContainer.empty();
+                    if (cart.length === 0) {
+                        cartItemsContainer.append(emptyCartMsg);
+                        if (currentStep === 1) { hideCart(); } // Hide if empty on step 2
+                    } else {
+                        cart.forEach((item, index) => {
+                            const delay = index * 0.07;
+                            const itemImagePath = item.img || placeholderImg;
+                            cartItemsContainer.append(`<div class="cart-item" style="animation-delay: ${delay}s;"><img src="${itemImagePath}" alt="${item.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('Cart Img Error: ${itemImagePath}')"><div class="cart-item-details"><h5>${item.name}</h5><span>${formatQuantity(item.quantity, item.quantityType)}</span></div><button class="remove-item-btn" data-sweet-id="${item.sweetId}" aria-label="Remove ${item.name}">×</button></div>`);
+                        });
+                        if (currentStep === 1) { showCart(); } // Ensure shown if items exist on step 2
+                    }
+                }
+
+                // --- Wizard Navigation & Animation ---
+                function updateWizardProgress(targetStepIndex) {
                     progressSteps.each(function(index) {
                         const $step = $(this);
                         $step.removeClass('active completed');
@@ -341,7 +455,7 @@
                     });
                 }
 
-                function showStep(stepIndex) { /* ... Minor modification for step 2 ... */
+                function showStep(stepIndex) { // Handles cart visibility
                     console.log(`Navigating to step: ${stepIndex}`);
                     if (stepIndex < 0 || stepIndex >= steps.length) { console.error(`Invalid step index: ${stepIndex}`); return; }
                     const $currentStep = $(steps[currentStep]);
@@ -351,29 +465,33 @@
                     setTimeout(() => {
                         steps.removeClass('active-step exiting-step');
                         $nextStep.addClass('active-step');
-                        currentStep = stepIndex;
+                        currentStep = stepIndex; // Update currentStep *before* deciding on cart visibility
                         updateWizardProgress(currentStep);
 
-                        // Generate cards only when needed and if data is loaded
-                        if (stepIndex === 1) {
+                        // --- Cart Visibility Logic ---
+                        if (currentStep === 1) { // Step 2: Delicacies (index 1)
+                            if (cart.length > 0) { showCart(); }
+                            else { hideCart(); }
+                        } else { // Hide cart on ALL other steps (0, 2, 3)
+                            hideCart();
+                        }
+                        // --- End Cart Visibility Logic ---
+
+                        if (currentStep === 1) { // Generate cards for Step 2
                             console.log("Showing Step 2 - Delicacies (Type: " + chosenQuantityType + ")");
-                            // Only generate cards if sweets data is available
                             if (sweets && sweets.length > 0) {
-                                showLoadingOverlay();
-                                updateQuantityLabelsAndInputs(); // Ensure inputs match type
+                                showLoadingOverlay(); updateQuantityLabelsAndInputs();
                                 setTimeout(() => {
-                                    try { generateSweetCards(); } // Generate cards using loaded data
+                                    try { generateSweetCards(); }
                                     catch (e) { console.error("Err generating cards:", e); sweetCardsContainer.html('<p class="text-danger text-center col-12">Error generating delicacies display.</p>'); }
                                     finally { hideLoadingOverlay(); }
-                                }, 50); // Shorter delay now, data is ready
+                                }, 50);
                             } else {
-                                // Handle case where sweets data hasn't loaded yet (shouldn't happen if init is correct, but good fallback)
-                                console.warn("Sweet data not yet available for step 2.");
-                                sweetCardsContainer.html('<p class="text-warning text-center col-12">Delicacy data is loading or failed to load.</p>');
+                                console.warn("Sweet data not yet available for step 2."); sweetCardsContainer.html('<p class="text-warning text-center col-12">Delicacy data is loading or failed to load.</p>');
                             }
-                        } else if (stepIndex === 3) {
+                        } else if (currentStep === 3) { // Populate review for Step 4
                             console.log("Showing Step 4 - Review");
-                            try { populateReview(); } // Generate review
+                            try { populateReview(); }
                             catch (e) { console.error("Err populating review:", e); $("#reviewDetails").html('<p class="text-danger text-center col-12">Could not generate review.</p>'); }
                         }
                     }, stepIndex === currentStep ? 0 : 400);
@@ -381,25 +499,18 @@
 
                 function showLoadingOverlay() { cardLoadingOverlay.addClass('visible'); }
                 function hideLoadingOverlay() { cardLoadingOverlay.removeClass('visible'); }
-                function updateQuantityLabelsAndInputs() { /* ... unchanged ... */
+                function updateQuantityLabelsAndInputs() {
                     const quantityLabelText = chosenQuantityType === 'unit' ? 'Units:' : 'Grams:';
                     const minQuantity = chosenQuantityType === 'unit' ? 1 : 50;
                     const stepQuantity = chosenQuantityType === 'unit' ? 1 : 10;
-                    // Update existing labels/inputs in the card container
                     sweetCardsContainer.find(".quantity-label").text(quantityLabelText);
-                    sweetCardsContainer.find(".quantity-input").each(function() {
-                        $(this).attr('min', minQuantity).attr('step', stepQuantity);
-                    });
+                    sweetCardsContainer.find(".quantity-input").each(function() { $(this).attr('min', minQuantity).attr('step', stepQuantity); });
                 }
 
-                // --- Sweet Card Generation (Unchanged logic, relies on global 'sweets') ---
-                function generateSweetCards() { /* ... unchanged function body ... */
-                    sweetCardsContainer.empty(); // Clear previous/loading message
-                    if (!sweets || sweets.length === 0) {
-                        sweetCardsContainer.append('<p class="text-center text-danger col-12">No delicacies data found.</p>');
-                        console.error("generateSweetCards called but sweets data is missing or empty.");
-                        return;
-                     }
+                // --- Sweet Card Generation ---
+                function generateSweetCards() {
+                    sweetCardsContainer.empty();
+                    if (!sweets || sweets.length === 0) { sweetCardsContainer.append('<p class="text-center text-danger col-12">No delicacies data found.</p>'); console.error("generateSweetCards called but sweets data is missing or empty."); return; }
                     const quantityLabelText = chosenQuantityType === 'unit' ? 'Units:' : 'Grams:';
                     const minQuantity = chosenQuantityType === 'unit' ? 1 : 50;
                     const stepQuantity = chosenQuantityType === 'unit' ? 1 : 10;
@@ -418,11 +529,11 @@
                              if (sweet.variations.length > 1) variationsHtml += ` (+)`;
                             variationsHtml += `</div>`;
                         }
+                        // Use sweet-card-column which is targeted by row-cols-* in the HTML
                         sweetCardsContainer.append(`
-                            <div class="col sweet-card-column d-flex align-items-stretch">
+                            <div class="sweet-card-column d-flex align-items-stretch">
                                 <div class="card sweet-card selectable-card ${cardClass}" style="animation-delay: ${index * 0.05}s;" data-sweet-id="${sweet.id}">
-                                    <img src="${imagePath}" class="card-img-top" alt="${sweet.name}"
-                                         onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('IMAGE LOAD ERROR: Path=\\'${imagePath}\\' for ${sweet.name}');">
+                                    <img src="${imagePath}" class="card-img-top" alt="${sweet.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('IMAGE LOAD ERROR: Path=\\'${imagePath}\\' for ${sweet.name}');">
                                     <div class="card-body">
                                         <h5 class="card-title">${sweet.name}</h5>
                                         ${variationsHtml}
@@ -431,9 +542,7 @@
                                             <label for="quantity_${sweet.id}" class="quantity-label d-block">${quantityLabelText}</label>
                                             <input type="number" class="form-control form-control-sm quantity-input" id="quantity_${sweet.id}" value="${currentQuantity}" min="${minQuantity}" step="${stepQuantity}" data-sweet-id="${sweet.id}" aria-label="Qty ${sweet.name}">
                                         </div>
-                                        <button class="btn btn-sm btn-add-update ${buttonClass}" data-sweet-id="${sweet.id}" data-sweet-name="${sweet.name}" data-img="${imagePath}">
-                                            ${buttonText}
-                                        </button>
+                                        <button class="btn btn-sm btn-add-update ${buttonClass}" data-sweet-id="${sweet.id}" data-sweet-name="${sweet.name}" data-img="${imagePath}">${buttonText}</button>
                                     </div>
                                 </div>
                             </div>`);
@@ -441,7 +550,7 @@
                     console.log("Sweet cards generated from loaded JSON data.");
                  }
 
-                function updateCardState(sweetId) { /* ... unchanged ... */
+                function updateCardState(sweetId) {
                     const card = sweetCardsContainer.find(`.sweet-card[data-sweet-id="${sweetId}"]`);
                     if (!card.length) return;
                     const existingCartItem = cart.find(item => item.sweetId === sweetId);
@@ -449,82 +558,64 @@
                     const minQuantity = chosenQuantityType === 'unit' ? 1 : 50;
                     const quantityInput = card.find('.quantity-input');
                     const button = card.find('.btn-add-update');
-                    if (isInCart) {
-                        card.addClass('card-in-cart');
-                        button.removeClass('btn-add').addClass('btn-update').text('Update');
-                        quantityInput.val(existingCartItem.quantity);
-                    } else {
-                        card.removeClass('card-in-cart');
-                        button.removeClass('btn-update').addClass('btn-add').text('Add');
-                        if (!quantityInput.is(':focus')) { quantityInput.val(minQuantity); }
-                    }
-                    // No need to call updateQuantityLabelsAndInputs here, it's called on step change
+                    if (isInCart) { card.addClass('card-in-cart'); button.removeClass('btn-add').addClass('btn-update').text('Update'); quantityInput.val(existingCartItem.quantity); }
+                    else { card.removeClass('card-in-cart'); button.removeClass('btn-update').addClass('btn-add').text('Add'); if (!quantityInput.is(':focus')) { quantityInput.val(minQuantity); } }
                  }
+                 function updateAllCardStates() { sweetCardsContainer.find(".sweet-card").each(function() { updateCardState($(this).data('sweet-id')); }); }
 
-                 function updateAllCardStates() { /* ... unchanged ... */
-                     console.log("Updating all card states based on cart.");
-                     sweetCardsContainer.find(".sweet-card").each(function() {
-                         updateCardState($(this).data('sweet-id'));
-                     });
-                 }
-
-                // --- Step Navigation Buttons (Unchanged) ---
-                $(".nextStep").click(function() { /* ... unchanged ... */
+                // --- Step Navigation Buttons ---
+                $(".nextStep").click(function() {
                     let canProceed = true;
                     if (currentStep === 0) {
                         const newQuantityType = $('input[name="quantityType"]:checked').val();
                         if (newQuantityType !== chosenQuantityType && cart.length > 0) {
-                            if (confirm("Changing preference type will clear your current selections. Proceed?")) {
-                                cart = []; updateCartDisplay(); chosenQuantityType = newQuantityType; console.log("Cart cleared due to preference type change.");
-                            } else {
-                                $(`input[name="quantityType"][value="${chosenQuantityType}"]`).prop('checked', true); canProceed = false; console.log("Preference type change cancelled.");
-                            }
-                        } else {
-                             if (newQuantityType !== chosenQuantityType) { chosenQuantityType = newQuantityType; updateQuantityLabelsAndInputs(); } // Update inputs if type changed
-                            console.log("Qty type set/confirmed:", chosenQuantityType);
-                        }
+                            if (confirm("Changing preference type will clear selections. Proceed?")) { cart = []; updateCartDisplay(); chosenQuantityType = newQuantityType; console.log("Cart cleared."); }
+                            else { $(`input[name="quantityType"][value="${chosenQuantityType}"]`).prop('checked', true); canProceed = false; console.log("Type change cancelled."); }
+                        } else { if (newQuantityType !== chosenQuantityType) { chosenQuantityType = newQuantityType; updateQuantityLabelsAndInputs(); } console.log("Qty type set/confirmed:", chosenQuantityType); }
                     } else if (currentStep === 1) { if (cart.length === 0) { alert("Your box is empty! Please select some delicacies."); canProceed = false; } }
                     if (canProceed && currentStep < steps.length - 1) { showStep(currentStep + 1); }
                 });
                 $(".prevStep").click(function() { if (currentStep > 0) { showStep(currentStep - 1); } });
                 $(document).on('click', '#wizard-progress .progress-step.completed', function() { const targetStep = parseInt($(this).data('step'), 10); if (!isNaN(targetStep) && targetStep < currentStep) { showStep(targetStep); } });
 
-                // --- Click Handler for Selectable Cards (Unchanged) ---
-                $(document).on('click', '.selectable-card', function(event) { /* ... unchanged ... */ if ($(event.target).is('input, label, button, .btn-add-update, .form-control, .form-check-label') || $(event.target).closest('.btn-add-update').length > 0) { return; } $(this).find('.btn-add-update').trigger('click'); });
+                // --- Click Handler for Selectable Cards ---
+                $(document).on('click', '.selectable-card', function(event) { if ($(event.target).is('input, label, button, .btn-add-update, .form-control, .form-check-label') || $(event.target).closest('.btn-add-update').length > 0) { return; } $(this).find('.btn-add-update').trigger('click'); });
 
-                // --- Add/Update To Cart (Unchanged) ---
-                $(document).on("click", ".btn-add-update", function() { /* ... unchanged ... */
-                    const $button = $(this);
-                    const sweetId = $button.data('sweet-id');
-                    const sweetName = $button.data('sweet-name');
-                    const sweetImg = $button.data('img') || placeholderImg;
-                    const quantityInput = $(`#quantity_${sweetId}`);
-                    let quantity = parseInt(quantityInput.val(), 10);
-                    const minQuantity = parseInt(quantityInput.attr('min'), 10);
-                    const stepQuantity = parseInt(quantityInput.attr('step'), 10);
+                // --- Add/Update To Cart (Handles cart visibility) ---
+                $(document).on("click", ".btn-add-update", function() {
+                    const $button = $(this); const sweetId = $button.data('sweet-id'); const sweetName = $button.data('sweet-name'); const sweetImg = $button.data('img') || placeholderImg;
+                    const quantityInput = $(`#quantity_${sweetId}`); let quantity = parseInt(quantityInput.val(), 10);
+                    const minQuantity = parseInt(quantityInput.attr('min'), 10); const stepQuantity = parseInt(quantityInput.attr('step'), 10);
                     if (isNaN(quantity) || quantity < minQuantity) { quantity = minQuantity; quantityInput.val(quantity); alert(`Minimum quantity is ${formatQuantity(minQuantity, chosenQuantityType)}.`); return; }
-                    if(chosenQuantityType === 'weight' && quantity % stepQuantity !== 0) { quantity = Math.max(minQuantity, Math.round(quantity / stepQuantity) * stepQuantity); quantityInput.val(quantity); alert(`Quantity for weighted items should be in multiples of ${stepQuantity}g.`); }
+                    if(chosenQuantityType === 'weight' && quantity % stepQuantity !== 0) { quantity = Math.max(minQuantity, Math.round(quantity / stepQuantity) * stepQuantity); quantityInput.val(quantity); alert(`Quantity should be multiple of ${stepQuantity}g.`); }
                     const existingCartItemIndex = cart.findIndex(item => item.sweetId === sweetId);
-                    if (existingCartItemIndex > -1) { cart[existingCartItemIndex].quantity = quantity; cart[existingCartItemIndex].quantityType = chosenQuantityType; console.log(`Updated ${sweetName} in cart to ${quantity}`); }
-                    else { cart.push({ sweetId: sweetId, name: sweetName, quantity: quantity, quantityType: chosenQuantityType, img: sweetImg }); console.log(`Added ${sweetName} to cart`); }
+                    if (existingCartItemIndex > -1) { cart[existingCartItemIndex].quantity = quantity; cart[existingCartItemIndex].quantityType = chosenQuantityType; console.log(`Updated ${sweetName}`); }
+                    else { cart.push({ sweetId: sweetId, name: sweetName, quantity: quantity, quantityType: chosenQuantityType, img: sweetImg }); console.log(`Added ${sweetName}`); }
                     $button.addClass('added-pulse'); setTimeout(() => $button.removeClass('added-pulse'), 500);
-                    updateCartDisplay(); updateCardState(sweetId); showCart();
+                    updateCartDisplay(); updateCardState(sweetId);
+                    if (currentStep === 1 && cart.length > 0) { showCart(); } // Show cart if on step 2 and items exist
                 });
 
-                // --- Remove From Cart (Unchanged) ---
-                $(document).on('click', '.remove-item-btn', function() { /* ... unchanged ... */ const $button = $(this); const sweetIdToRemove = $button.data('sweet-id'); const cartItemElement = $button.closest('.cart-item'); cartItemElement.addClass('removing'); setTimeout(() => { cart = cart.filter(item => item.sweetId !== sweetIdToRemove); updateCartDisplay(); updateCardState(sweetIdToRemove); console.log(`Removed item ${sweetIdToRemove} from cart.`); if (cart.length === 0) { hideCart(); } }, 400); });
+                // --- Remove From Cart (Handles cart visibility) ---
+                $(document).on('click', '.remove-item-btn', function() {
+                    const $button = $(this); const sweetIdToRemove = $button.data('sweet-id'); const cartItemElement = $button.closest('.cart-item');
+                    cartItemElement.addClass('removing');
+                    setTimeout(() => {
+                        cart = cart.filter(item => item.sweetId !== sweetIdToRemove); updateCartDisplay(); updateCardState(sweetIdToRemove); console.log(`Removed ${sweetIdToRemove}`);
+                        if (cart.length === 0) { hideCart(); } // Hide cart if it becomes empty
+                    }, 400);
+                });
 
-                // --- Go To Review Step Button (Unchanged) ---
-                $("#finishOrder").click(function() { /* ... unchanged ... */ chosenPackaging = $('input[name="packaging"]:checked').val(); console.log("Packaging selected:", chosenPackaging); if (chosenPackaging) { showStep(3); } else { alert("Please select a presentation option."); } });
+                // --- Go To Review Step Button ---
+                $("#finishOrder").click(function() { chosenPackaging = $('input[name="packaging"]:checked').val(); console.log("Packaging selected:", chosenPackaging); if (chosenPackaging) { showStep(3); } else { alert("Please select a presentation option."); } });
 
-                // --- Populate Review Step (Unchanged) ---
-                function populateReview() { /* ... unchanged ... */
+                // --- Populate Review Step ---
+                function populateReview() {
                     const reviewTextSummary = $("#reviewTextSummary"); const visualBox = $("#visualBoxRepresentation"); reviewTextSummary.empty(); visualBox.empty();
                     let summaryHtml = `<h4>Selections:</h4><ul class="list-group list-group-flush mb-3">`;
                     if (cart.length > 0) { cart.forEach(item => { summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">${item.name}<span class="badge rounded-pill">${formatQuantity(item.quantity, item.quantityType)}</span></li>`; }); } else { summaryHtml += `<li class="list-group-item">No delicacies selected yet.</li>`; }
                     summaryHtml += `</ul><h4>Presentation:</h4><ul class="list-group list-group-flush">`;
-                    const packagingName = chosenPackaging === 'box' ? 'Signature Darna Box' : 'Ornate Keepsake Tray';
-                    summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">Style<span>${packagingName}</span></li>`;
+                    const packagingName = chosenPackaging === 'box' ? 'Signature Darna Box' : 'Ornate Keepsake Tray'; summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">Style<span>${packagingName}</span></li>`;
                     const cost = packagingCost[chosenPackaging]; if (cost > 0) { summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">Additional Cost<span>+$${cost.toFixed(2)}</span></li>`; }
                     summaryHtml += `</ul><p class="mt-3 fst-italic text-muted small">Note: Pricing shown is indicative for this demo.</p>`; reviewTextSummary.html(summaryHtml);
                     visualBox.removeClass('visual-box visual-tray').addClass(chosenPackaging === 'box' ? 'visual-box' : 'visual-tray');
@@ -533,77 +624,45 @@
                     console.log("Review populated. Items:", cart.length, "Packaging:", chosenPackaging);
                  }
 
-                // --- Confirm Order (Unchanged) ---
-                $("#confirmOrderBtn").click(function() { /* ... unchanged ... */ console.log("Confirm Order button clicked."); const $button = $(this); if ($button.prop('disabled')) { return; } $button.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>Confirming...'); setTimeout(() => { console.log("Simulating order confirmation..."); const successSummary = $("#successOrderSummary"); successSummary.empty(); let successHtml = `<p><strong>Your Order Summary:</strong></p><ul>`; if (cart.length > 0) { cart.forEach(item => { successHtml += `<li>${item.name}: ${formatQuantity(item.quantity, item.quantityType)}</li>`; }); } else { successHtml += `<li>No items were selected.</li>`; } successHtml += `</ul>`; const packagingName = chosenPackaging === 'box' ? 'Signature Darna Box' : 'Ornate Keepsake Tray'; successHtml += `<p><strong>Presentation:</strong> ${packagingName}</p>`; const orderId = Math.floor(10000 + Math.random() * 90000); successHtml += `<p><strong>Order ID:</strong> #${orderId}</p>`; successSummary.html(successHtml); wizardContainer.fadeOut(300, function() { successMessageContainer.fadeIn(500); $('html, body').animate({ scrollTop: successMessageContainer.offset().top - 100 }, 500); }); hideCart(); $button.prop('disabled', false).html('<i class="bi bi-check-lg me-1"></i>Confirm'); console.log("Order confirmation display complete."); }, 1200); });
+                // --- Confirm Order ---
+                $("#confirmOrderBtn").click(function() {
+                    console.log("Confirm Order button clicked."); const $button = $(this); if ($button.prop('disabled')) { return; }
+                    $button.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>Confirming...');
+                    setTimeout(() => {
+                        console.log("Simulating order confirmation..."); const successSummary = $("#successOrderSummary"); successSummary.empty(); let successHtml = `<p><strong>Your Order Summary:</strong></p><ul>`;
+                        if (cart.length > 0) { cart.forEach(item => { successHtml += `<li>${item.name}: ${formatQuantity(item.quantity, item.quantityType)}</li>`; }); } else { successHtml += `<li>No items were selected.</li>`; } successHtml += `</ul>`;
+                        const packagingName = chosenPackaging === 'box' ? 'Signature Darna Box' : 'Ornate Keepsake Tray'; successHtml += `<p><strong>Presentation:</strong> ${packagingName}</p>`; const orderId = Math.floor(10000 + Math.random() * 90000); successHtml += `<p><strong>Order ID:</strong> #${orderId}</p>`; successSummary.html(successHtml);
+                        wizardContainer.fadeOut(300, function() { successMessageContainer.fadeIn(500); $('html, body').animate({ scrollTop: successMessageContainer.offset().top - 100 }, 500); }); hideCart();
+                        $button.prop('disabled', false).html('<i class="bi bi-check-lg me-1"></i>Confirm'); console.log("Order confirmation display complete.");
+                    }, 1200);
+                });
 
-                // --- Start New Order (Unchanged) ---
-                $("#startNewOrderBtn").click(function() { /* ... unchanged ... */ console.log("Start New Order button clicked."); cart = []; currentStep = 0; chosenQuantityType = 'unit'; chosenPackaging = 'box'; $('input[name="quantityType"][value="unit"]').prop('checked', true); $('input[name="packaging"][value="box"]').prop('checked', true); updateCartDisplay(); hideCart(); successMessageContainer.fadeOut(300, function() { showStep(0); wizardContainer.fadeIn(500); /* Update cards if needed when returning to step 2 */ updateAllCardStates(); $('html, body').animate({ scrollTop: 0 }, 500); console.log("State reset for new order."); }); });
-
-                // --- Cart Display & Visibility (Unchanged) ---
-                function updateCartDisplay() { /* ... unchanged ... */
-                    cartItemsContainer.empty();
-                    if (cart.length === 0) { cartItemsContainer.append(emptyCartMsg); } else { cart.forEach((item, index) => { const delay = index * 0.07; const itemImagePath = item.img || placeholderImg; cartItemsContainer.append(`<div class="cart-item" style="animation-delay: ${delay}s;"><img src="${itemImagePath}" alt="${item.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('Cart Img Error: ${itemImagePath}')"><div class="cart-item-details"><h5>${item.name}</h5><span>${formatQuantity(item.quantity, item.quantityType)}</span></div><button class="remove-item-btn" data-sweet-id="${item.sweetId}" aria-label="Remove ${item.name}">×</button></div>`); }); }
-                }
-                function showCart() { if (cart.length > 0 && !cartBox.hasClass('cart-visible')) { cartBox.addClass('cart-visible'); console.log("Cart shown."); } }
-                function hideCart() { if (cartBox.hasClass('cart-visible')) { cartBox.removeClass('cart-visible'); console.log("Cart hidden."); } }
+                // --- Start New Order ---
+                $("#startNewOrderBtn").click(function() {
+                    console.log("Start New Order button clicked."); cart = []; currentStep = 0; chosenQuantityType = 'unit'; chosenPackaging = 'box';
+                    $('input[name="quantityType"][value="unit"]').prop('checked', true); $('input[name="packaging"][value="box"]').prop('checked', true); updateCartDisplay(); hideCart();
+                    successMessageContainer.fadeOut(300, function() { showStep(0); wizardContainer.fadeIn(500); updateAllCardStates(); $('html, body').animate({ scrollTop: 0 }, 500); console.log("State reset for new order."); });
+                });
 
 
-                // --- ======================================== ---
-                // ---           LOAD DATA & INITIALIZE         ---
-                // --- ======================================== ---
-
-                // Function to initialize the application AFTER data is loaded
+                // --- LOAD DATA & INITIALIZE ---
                 function initializeApp() {
                     console.log("Sweet data loaded successfully. Initializing application...");
-                    errorMessageContainer.hide(); // Ensure error message is hidden
-                    wizardContainer.show();       // Show the main wizard
-                    successMessageContainer.hide(); // Ensure success message is hidden
-                    hideLoadingOverlay();         // Ensure loading overlay is hidden
-                    showStep(0);                  // Initialize wizard to the first step
-                    updateCartDisplay();          // Initialize cart display (will show empty)
-                    hideCart();                   // Ensure cart is hidden initially
+                    errorMessageContainer.hide(); wizardContainer.show(); successMessageContainer.hide(); hideLoadingOverlay();
+                    showStep(0); // Start at step 0 (cart will be hidden by showStep logic)
+                    updateCartDisplay();
                     console.log("Initial setup complete.");
                 }
 
-                // Fetch the sweet data from the JSON file
-                fetch('sweets.json') // Assumes sweets.json is in the same directory as the HTML
-                    .then(response => {
-                        if (!response.ok) {
-                            // If response is not OK (e.g., 404 Not Found)
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        return response.json(); // Parse the JSON data from the response body
-                    })
-                    .then(data => {
-                        // Data successfully fetched and parsed
-                        sweets = data; // Assign the loaded data to the global sweets variable
-                        initializeApp(); // <<<< CALL INITIALIZATION FUNCTION HERE
-                    })
-                    .catch(error => {
-                        // Handle errors during fetch or JSON parsing
-                        console.error("Error loading sweet data:", error);
-                        errorMessageContainer.show(); // Show the error message div
-                        wizardContainer.hide();       // Hide the wizard container
-                        // Optionally disable parts of the UI or provide more specific feedback
-                    });
+                fetch('sweets.json')
+                    .then(response => { if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); } return response.json(); })
+                    .then(data => { sweets = data; initializeApp(); }) // Initialize only after data is loaded
+                    .catch(error => { console.error("Error loading sweet data:", error); errorMessageContainer.show(); wizardContainer.hide(); });
 
             }); // End document ready
-        } catch (error) {
-            console.error("A critical error occurred during script initialization:", error);
-            // Display a fallback error message if jQuery/DOM ready fails catastrophically
-            const errorDiv = document.createElement('div');
-            errorDiv.style.position = 'fixed';
-            errorDiv.style.top = '0';
-            errorDiv.style.left = '0';
-            errorDiv.style.width = '100%';
-            errorDiv.style.padding = '10px';
-            errorDiv.style.backgroundColor = '#dc3545';
-            errorDiv.style.color = 'white';
-            errorDiv.style.textAlign = 'center';
-            errorDiv.style.zIndex = '9999';
-            errorDiv.style.fontSize = '0.9em';
-            errorDiv.textContent = 'Oops! A critical problem occurred while setting up the page. Please try refreshing.';
-            document.body.prepend(errorDiv);
+        } catch (error) { // --- Fallback Error Handling ---
+             console.error("A critical error occurred during script initialization:", error);
+             const errorDiv = document.createElement('div'); errorDiv.style.position = 'fixed'; errorDiv.style.top = '0'; errorDiv.style.left = '0'; errorDiv.style.width = '100%'; errorDiv.style.padding = '10px'; errorDiv.style.backgroundColor = '#dc3545'; errorDiv.style.color = 'white'; errorDiv.style.textAlign = 'center'; errorDiv.style.zIndex = '9999'; errorDiv.style.fontSize = '0.9em'; errorDiv.textContent = 'Oops! A critical problem occurred while setting up the page. Please try refreshing.'; document.body.prepend(errorDiv);
         }
     </script>
 
