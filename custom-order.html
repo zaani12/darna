@@ -307,18 +307,18 @@
         #reviewTextSummary { flex: 1 1 250px; }
         #packagingPreviewContainer { flex: 1 1 270px; padding: 12px; border: 1px solid rgba(0,0,0,0.05); border-radius: 8px; background-color: rgba(255, 255, 255, 0.7); }
         #packagingPreviewContainer h5 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; margin-bottom: 12px; font-size: 1.1em; }
-        #visualBoxRepresentation { display: grid; grid-template-columns: repeat(auto-fill, minmax(45px, 1fr)); gap: 8px; padding: 10px; border-radius: 5px; min-height: 150px; align-content: start; transition: background-color var(--transition-speed-med) ease, border var(--transition-speed-med) ease; border: 1.5px solid transparent; }
+        #visualBoxRepresentation { display: grid; grid-template-columns: repeat(auto-fill, minmax(55px, 1fr)); /* Slightly wider grid items */ gap: 10px; /* More gap */ padding: 10px; border-radius: 5px; min-height: 150px; align-content: start; transition: background-color var(--transition-speed-med) ease, border var(--transition-speed-med) ease; border: 1.5px solid transparent; }
         #visualBoxRepresentation.visual-box { background-color: #fffcf5; border-color: var(--luxury-brown); }
         #visualBoxRepresentation.visual-tray { background: linear-gradient(135deg, #ecdcc6, #d7c497); border: 1.5px dashed var(--luxury-gold); box-shadow: inset 0 0 5px rgba(0,0,0,0.05); }
-        .sweet-icon-placeholder { text-align: center; animation: fadeInUp 0.4s ease-out backwards; }
-        .sweet-icon-placeholder img { width: 38px; height: 38px; object-fit: cover; border-radius: 50%; border: 1.5px solid var(--luxury-accent); box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 3px; background-color: #eee; }
-        .sweet-icon-placeholder span { display: block; font-size: 0.62em; font-weight: 600; color: var(--luxury-dark); line-height: 1.1; }
+        .sweet-icon-placeholder { text-align: center; animation: fadeInUp 0.4s ease-out backwards; display: flex; flex-direction: column; align-items: center; /* Center content vertically */}
+        .sweet-icon-placeholder img { width: 45px; height: 45px; /* Slightly larger image */ object-fit: cover; border-radius: 50%; border: 1.5px solid var(--luxury-accent); box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 4px; /* More space */ background-color: #eee; }
+        .sweet-icon-placeholder span { display: block; font-size: 0.65em; /* Slightly larger text */ font-weight: 600; color: var(--luxury-dark); line-height: 1.15; max-width: 100%; word-wrap: break-word; /* Prevent long names overflowing */ }
         #emptyBoxVisualMsg { grid-column: 1 / -1; text-align: center; padding: 15px; color: var(--luxury-brown); font-style: italic; opacity: 0.7; font-size: 0.75em; }
         #reviewTextSummary .list-group-item { background-color: transparent; border-color: rgba(0, 0, 0, 0.04); padding: 5px 0px; color: var(--luxury-dark); font-size: 0.82em; }
         #reviewTextSummary h4 { font-family: var(--font-heading); color: var(--luxury-brown); margin-bottom: 0.8rem; font-size: 1.15em; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 0.3rem; }
         #reviewTextSummary p { margin-top: 0.8rem; font-size: 0.88em; color: var(--luxury-dark); }
         #reviewTextSummary .badge { background-color: var(--luxury-accent); color: var(--luxury-light); font-size: 0.72em; padding: 3px 6px; border-radius: 5px; }
-        #reviewTextSummary img { border: 1px solid rgba(0,0,0,0.05); background-color: #eee; }
+        #reviewTextSummary img { border: 1px solid rgba(0,0,0,0.05); background-color: #eee; } /* Keep potential img style */
 
         /* --- Success Message --- */
         #orderSuccessMessage { display: none; padding: 22px; margin: 18px auto; max-width: 480px; background-color: var(--luxury-light); border-radius: 8px; text-align: center; box-shadow: var(--shadow-medium); border: 1px solid var(--luxury-gold); animation: fadeInUp 0.6s ease-out; }
@@ -379,6 +379,9 @@
              .main-title { font-size: 2.4em; }
              .navbar .navbar-brand img { max-width: 140px; }
              .footer { padding: 2rem 1.5rem 1.5rem; }
+             #visualBoxRepresentation { grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 12px;} /* Wider grid on desktop */
+             .sweet-icon-placeholder img { width: 50px; height: 50px; }
+             .sweet-icon-placeholder span { font-size: 0.7em;}
         }
 
         /* Small devices (landscape phones, less than 768px) - MOBILE STYLES START HERE */
@@ -434,9 +437,9 @@
             #reviewDetails { gap: 12px; }
             #reviewTextSummary h4 { font-size: 1.1em; }
             #packagingPreviewContainer h5 { font-size: 1.0em; }
-            #visualBoxRepresentation { gap: 8px; padding: 10px; grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));}
-            .sweet-icon-placeholder img { width: 40px; height: 40px; margin-bottom: 3px; }
-            .sweet-icon-placeholder span { font-size: 0.6em; }
+            #visualBoxRepresentation { gap: 8px; padding: 10px; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));} /* Mobile icon grid */
+            .sweet-icon-placeholder img { width: 42px; height: 42px; margin-bottom: 3px; }
+            .sweet-icon-placeholder span { font-size: 0.62em; }
 
             #orderSuccessMessage { padding: 18px; }
             #orderSuccessMessage h2 { font-size: 1.4em; }
@@ -466,11 +469,11 @@
             .quantity-control { max-width: 90px; } /* Adjusted */
             .quantity-control .btn-qty { padding: 4px 8px; font-size: 1.0em; }
             .quantity-control .qty-display { font-size: 0.8em; min-width: 22px;}
-            #reviewTextSummary { min-width: 100%; } /* Stack review items */
-            #packagingPreviewContainer { min-width: 100%; }
-            #visualBoxRepresentation { grid-template-columns: repeat(auto-fill, minmax(45px, 1fr)); gap: 6px; } /* Adjusted */
-             .sweet-icon-placeholder img { width: 38px; height: 38px; }
-             .sweet-icon-placeholder span { font-size: 0.58em; }
+            #reviewTextSummary { min-width: 100%; flex-basis: 100%; order: 1;} /* Stack review items */
+            #packagingPreviewContainer { min-width: 100%; flex-basis: 100%; order: 2;}
+            #visualBoxRepresentation { grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); gap: 8px; } /* Smaller review icons */
+             .sweet-icon-placeholder img { width: 40px; height: 40px; }
+             .sweet-icon-placeholder span { font-size: 0.6em; }
             .button-group { padding: 0.6rem 15px; }
             .footer { font-size: 0.7em; }
             .footer .social-icons a { font-size: 1.2em; }
@@ -576,10 +579,14 @@
                     <div class="step-scrollable-content">
                         <h2>Review Your Creation</h2>
                         <div id="reviewDetails">
-                            <div id="reviewTextSummary"></div>
+                            <div id="reviewTextSummary">
+                                <!-- Populated by JS -->
+                            </div>
                             <div id="packagingPreviewContainer">
                                  <h5>Visual Preview</h5>
-                                 <div id="visualBoxRepresentation"></div>
+                                 <div id="visualBoxRepresentation">
+                                     <!-- Populated by JS -->
+                                 </div>
                             </div>
                         </div>
                          <div class="alert alert-light border-warning mt-3 small py-2" style="background-color: #fffaf0;">
@@ -652,7 +659,7 @@
         // Wrap entire script in a try...catch
         try {
             $(document).ready(function() {
-                console.log("Document ready. Initializing Darna Wizard (v12 - Mobile Modal & Footer)...");
+                console.log("Document ready. Initializing Darna Wizard (v13 - Single Review Icon)...");
 
                 // --- Global State Variables ---
                 let cart = [];
@@ -676,7 +683,7 @@
                 const navCartIndicator = $("#nav-cart-indicator"); // Mobile navbar icon link
                 const navCartBadge = navCartIndicator.find(".badge"); // Mobile badge element
                 const mobileCartModalElement = document.getElementById('mobileCartModal'); // Raw element for BS instance
-                const mobileCartModal = new bootstrap.Modal(mobileCartModalElement); // BS Modal Instance
+                const mobileCartModal = mobileCartModalElement ? new bootstrap.Modal(mobileCartModalElement) : null; // BS Modal Instance
                 const mobileCartItemsContainer = $("#mobileCartItems"); // Mobile modal body
                 const emptyMobileCartMsg = $("#emptyMobileCartMsg"); // Mobile empty msg
 
@@ -725,7 +732,7 @@
                                         <h5>${item.name}</h5>
                                         <span>${formatQuantity(item.quantity, item.quantityType)}</span>
                                     </div>
-                                    <button class="remove-item-btn desktop-remove-item-btn" data-sweet-id="${item.sweetId}" aria-label="Remove ${item.name}">×</button>
+                                    <button class="remove-item-btn desktop-remove-item-btn" data-sweet-id="${item.sweetId}" data-quantity-type="${item.quantityType}" aria-label="Remove ${item.name}">×</button>
                                 </div>`);
                         });
                         // Show desktop cart only if on step 2 AND not empty
@@ -763,7 +770,11 @@
                         setTimeout(() => { $currentActiveStep.removeClass('exiting-step'); }, 500); // Match transition duration
                     }
 
-                    $nextStep.removeClass('exiting-step').addClass('active-step');
+                    // Ensure correct classes are applied for entering step
+                     $nextStep.removeClass('exiting-step');
+                     // Use a tiny delay before adding active-step to ensure transition plays if it was recently hidden
+                     setTimeout(() => { $nextStep.addClass('active-step'); }, 10);
+
 
                     const previousStep = currentStep;
                     currentStep = stepIndex;
@@ -778,15 +789,16 @@
                         if (currentStep === 1) { // Delicacies
                             if (sweets && sweets.length > 0) {
                                 // Regenerate cards if type changed or first time viewing
-                                if (previousStep !== 1 || sweetCardsContainer.children().length <= 1) {
+                                if (previousStep !== 1 || sweetCardsContainer.children().length <= 1 || sweetCardsContainer.find('.quantity-input').first().attr('step') !== (chosenQuantityType === 'unit' ? '1' : '10')) { // Also check if step unit changed
                                     showLoadingOverlay();
                                     setTimeout(() => {
-                                        updateQuantityLabelsAndInputs(); // Update first
-                                        generateSweetCards();
+                                        // updateQuantityLabelsAndInputs(); // Update first // NO - generate handles this now
+                                        generateSweetCards(); // Regenerates with correct values/labels
                                         hideLoadingOverlay();
                                     }, 50); // Short delay for overlay
                                 } else {
-                                    updateQuantityLabelsAndInputs(); // Just update labels if returning
+                                    // If returning and type hasn't changed, maybe just update quantities if needed?
+                                    // updateAllCardStates(); // Re-sync quantities shown? Less efficient but safe.
                                 }
                             } else {
                                 sweetCardsContainer.html('<p class="text-warning text-center col-12">Delicacy data loading or failed.</p>');
@@ -804,23 +816,7 @@
                 function showLoadingOverlay() { cardLoadingOverlay.addClass('visible'); }
                 function hideLoadingOverlay() { cardLoadingOverlay.removeClass('visible'); }
 
-                function updateQuantityLabelsAndInputs(container = sweetCardsContainer) {
-                    const quantityLabelText = chosenQuantityType === 'unit' ? 'Units:' : 'Grams:';
-                    const minQuantity = chosenQuantityType === 'unit' ? 1 : 50;
-                    const stepQuantity = chosenQuantityType === 'unit' ? 1 : 10;
-
-                    container.find(".quantity-control-wrapper label.visually-hidden").text(quantityLabelText);
-                    container.find(".quantity-input").each(function() {
-                         const $input = $(this);
-                         const currentCardId = $input.data('sweet-id');
-                         const cartItem = cart.find(item => item.sweetId === currentCardId && item.quantityType === chosenQuantityType);
-                         const displayValue = cartItem ? cartItem.quantity : minQuantity;
-
-                         $input.attr('min', minQuantity).attr('step', stepQuantity).val(displayValue);
-                         $input.closest('.quantity-control-wrapper').find('.qty-display').text(displayValue);
-                    });
-                    console.log("DEBUG: Quantity labels/inputs updated for type:", chosenQuantityType);
-                }
+                // Removed updateQuantityLabelsAndInputs as a standalone - integrated into generateSweetCards
 
                 // --- Sweet Card Generation ---
                 function generateSweetCards() {
@@ -829,12 +825,18 @@
 
                     const minQuantity = chosenQuantityType === 'unit' ? 1 : 50;
                     const stepQuantity = chosenQuantityType === 'unit' ? 1 : 10;
+                    const quantityLabelText = chosenQuantityType === 'unit' ? 'Units:' : 'Grams:';
+
 
                     sweets.forEach((sweet, index) => {
                         const existingCartItem = cart.find(item => item.sweetId === sweet.id && item.quantityType === chosenQuantityType);
                         const isInCart = !!existingCartItem;
                         const currentQuantity = isInCart ? existingCartItem.quantity : minQuantity;
+                        const buttonText = isInCart ? 'Update In Cart' : 'Add To Box';
+                        const buttonClass = isInCart ? 'btn-update' : 'btn-add';
+                        const cardClass = isInCart ? 'card-in-cart' : '';
                         const imagePath = sweet.img || placeholderImg;
+
                         let variationsHtml = '';
                         if (sweet.variations && sweet.variations.length > 0) {
                             variationsHtml = `<div class="sweet-variations">`;
@@ -844,7 +846,7 @@
                         }
                         sweetCardsContainer.append(`
                             <div class="sweet-card-column">
-                                <div class="card sweet-card" style="animation-delay: ${index * 0.04}s;" data-sweet-id="${sweet.id}">
+                                <div class="card sweet-card ${cardClass}" style="animation-delay: ${index * 0.04}s;" data-sweet-id="${sweet.id}">
                                     <img src="${imagePath}" class="card-img-top selectable-card-img" alt="${sweet.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('Card Img Error: Path=\\'${imagePath}\\' for ${sweet.name}');">
                                     <div class="card-body">
                                         <h5 class="card-title">${sweet.name}</h5>
@@ -852,7 +854,7 @@
                                         <p class="card-text">${sweet.description}</p>
                                         <div class="form-group mt-auto">
                                             <div class="quantity-control-wrapper mb-2">
-                                                 <label for="quantity_${sweet.id}" class="visually-hidden">Quantity</label> <!-- Label updated by JS -->
+                                                 <label for="quantity_${sweet.id}" class="visually-hidden">${quantityLabelText}</label>
                                                  <div class="quantity-control">
                                                       <button type="button" class="btn-qty btn-qty-decrease" data-action="decrease" aria-label="Decrease quantity for ${sweet.name}">-</button>
                                                       <span class="qty-display" aria-live="polite">${currentQuantity}</span>
@@ -860,40 +862,52 @@
                                                  </div>
                                                  <input type="number" class="quantity-input" id="quantity_${sweet.id}" value="${currentQuantity}" min="${minQuantity}" step="${stepQuantity}" data-sweet-id="${sweet.id}" aria-label="Qty ${sweet.name}">
                                              </div>
-                                             <button class="btn btn-sm btn-add-update" data-sweet-id="${sweet.id}" data-sweet-name="${sweet.name}" data-img="${imagePath}">Add/Update</button> <!-- Text/Class updated by JS -->
+                                             <button class="btn btn-sm btn-add-update ${buttonClass}" data-sweet-id="${sweet.id}" data-sweet-name="${sweet.name}" data-img="${imagePath}">${buttonText}</button>
                                          </div>
                                     </div>
                                 </div>
                             </div>`);
                     });
-                    updateQuantityLabelsAndInputs(); // Set initial labels correctly
-                    updateAllCardStates(); // Set initial button text/styles
-                    console.log("DEBUG: Sweet cards generated/regenerated.");
+                    // No need to call updateQuantityLabelsAndInputs separately
+                    // No need to call updateAllCardStates separately
+                    console.log("DEBUG: Sweet cards generated/regenerated with type:", chosenQuantityType);
                  }
 
                 function updateCardState(sweetId) { // Updates card border and Add/Update button text/class
                     const card = sweetCardsContainer.find(`.sweet-card[data-sweet-id="${sweetId}"]`);
                     if (!card.length) return;
+                    // Check cart based on the CURRENTLY selected quantity type
                     const existingCartItem = cart.find(item => item.sweetId === sweetId && item.quantityType === chosenQuantityType);
                     const isInCart = !!existingCartItem;
                     const button = card.find('.btn-add-update');
                     const quantityInput = card.find('.quantity-input');
                     const quantityDisplay = card.find('.qty-display');
                     const minQuantity = chosenQuantityType === 'unit' ? 1 : 50;
+                    const stepQuantity = chosenQuantityType === 'unit' ? 1 : 10;
+
+                    // Also update the input's min/step attributes based on current type
+                    quantityInput.attr('min', minQuantity).attr('step', stepQuantity);
+                     quantityInput.closest('.quantity-control-wrapper').find('label.visually-hidden').text(chosenQuantityType === 'unit' ? 'Units:' : 'Grams:');
+
 
                     if (isInCart) {
                         card.addClass('card-in-cart');
                         button.removeClass('btn-add').addClass('btn-update').text('Update In Cart');
-                        quantityInput.val(existingCartItem.quantity);
-                        quantityDisplay.text(existingCartItem.quantity);
+                        quantityInput.val(existingCartItem.quantity); // Set input value from cart
+                        quantityDisplay.text(existingCartItem.quantity); // Set display from cart
                     } else {
                         card.removeClass('card-in-cart');
                         button.removeClass('btn-update').addClass('btn-add').text('Add To Box');
-                        quantityInput.val(minQuantity);
-                        quantityDisplay.text(minQuantity);
+                        quantityInput.val(minQuantity); // Reset input value to min
+                        quantityDisplay.text(minQuantity); // Reset display to min
                     }
                  }
-                 function updateAllCardStates() { sweetCardsContainer.find(".sweet-card").each(function() { updateCardState($(this).data('sweet-id')); }); }
+                 function updateAllCardStates() {
+                     console.log("Updating all card states based on current cart and type:", chosenQuantityType);
+                     sweetCardsContainer.find(".sweet-card").each(function() {
+                         updateCardState($(this).data('sweet-id'));
+                    });
+                 }
 
                 // --- Step Navigation Buttons ---
                 $(".nextStep").click(function() {
@@ -908,6 +922,7 @@
                                     cart = [];
                                     chosenQuantityType = newQuantityType;
                                     updateAllCartDisplays(); // Update indicators after clearing
+                                    // Cards will be regenerated on showStep(1)
                                 } else {
                                     console.log("User cancelled type change.");
                                     $(`input[name="quantityType"][value="${chosenQuantityType}"]`).prop('checked', true); // Revert radio button
@@ -916,7 +931,7 @@
                             } else if (newQuantityType !== chosenQuantityType) {
                                 console.log("Updating quantity type (cart is empty or type was same).");
                                 chosenQuantityType = newQuantityType;
-                                // No need to update labels here, showStep for step 1 will handle it.
+                                // Cards will be regenerated/updated on showStep(1)
                             }
                         } else if (currentStep === 1) {
                             if (cart.length === 0) {
@@ -986,6 +1001,7 @@
                         $button.closest('.form-group').find('.qty-display').text(quantity);
                     }
 
+                    // Modify cart based on CURRENT chosenQuantityType
                     const existingCartItemIndex = cart.findIndex(item => item.sweetId === sweetId && item.quantityType === chosenQuantityType);
                     let itemChanged = false;
 
@@ -996,8 +1012,10 @@
                             itemChanged = true;
                         }
                     } else { // New item for this type
+                        // Before adding, remove any existing item with the same ID but DIFFERENT type
+                        cart = cart.filter(item => !(item.sweetId === sweetId && item.quantityType !== chosenQuantityType));
                         cart.push({ sweetId: sweetId, name: sweetName, quantity: quantity, quantityType: chosenQuantityType, img: sweetImg });
-                        console.log(`Added ${sweetName} (${chosenQuantityType}) with ${quantity}`);
+                        console.log(`Added ${sweetName} (${chosenQuantityType}) with ${quantity}. Removed other type if existed.`);
                         itemChanged = true;
                     }
 
@@ -1008,24 +1026,28 @@
                         }
                         updateAllCartDisplays(); // Update desktop cart and mobile badge
                         updateCardState(sweetId); // Update the specific card's appearance
+                         // If adding/updating removes an item of the other type, update those cards too
+                         updateAllCardStates(); // Ensure all cards reflect the current cart state correctly
                     } else if (!isUserClick) {
-                        // If triggered by +/- and value didn't change (e.g., already at min and clicked decrease)
-                        // we might still need to ensure card state is correct if types were switched
-                        updateCardState(sweetId);
+                         // Triggered by +/- but value didn't change. Still ensure card state is right.
+                         updateCardState(sweetId);
                     }
                 });
 
                 // --- Remove From Desktop Cart ---
                 $(document).on('click', '.desktop-remove-item-btn', function() {
-                    const $button = $(this); const sweetIdToRemove = $button.data('sweet-id');
+                    const $button = $(this);
+                    const sweetIdToRemove = $button.data('sweet-id');
+                    const quantityTypeToRemove = $button.data('quantity-type'); // Get type from button
                     const cartItemElement = $button.closest('.cart-item');
-                    console.log(`Remove clicked (Desktop) for ${sweetIdToRemove}`);
+                    console.log(`Remove clicked (Desktop) for ${sweetIdToRemove} (${quantityTypeToRemove})`);
                     cartItemElement.addClass('removing'); // Add class for animation
                     setTimeout(() => {
-                        cart = cart.filter(item => !(item.sweetId === sweetIdToRemove && item.quantityType === chosenQuantityType)); // Match type too
+                        // Filter based on both ID and Type
+                        cart = cart.filter(item => !(item.sweetId === sweetIdToRemove && item.quantityType === quantityTypeToRemove));
                         updateAllCartDisplays(); // Update desktop cart + mobile badge
-                        updateCardState(sweetIdToRemove); // Update the corresponding card
-                        console.log(`Removed ${sweetIdToRemove} (${chosenQuantityType}) from cart.`);
+                        updateCardState(sweetIdToRemove); // Update the corresponding card (now reflects removal for this type)
+                        console.log(`Removed ${sweetIdToRemove} (${quantityTypeToRemove}) from cart.`);
                     }, 350); // Match animation duration
                 });
 
@@ -1033,7 +1055,7 @@
                 function populateAndShowMobileCartModal() {
                     mobileCartItemsContainer.empty(); // Clear previous items
                     if (cart.length === 0) {
-                        mobileCartItemsContainer.append(emptyMobileCartMsg);
+                        mobileCartItemsContainer.append(emptyMobileCartMsg.clone()); // Clone to avoid removing original
                     } else {
                         cart.forEach((item, index) => {
                             const itemImagePath = item.img || placeholderImg;
@@ -1053,10 +1075,15 @@
                 }
 
                 // Trigger population when modal is about to be shown
-                mobileCartModalElement.addEventListener('show.bs.modal', function (event) {
-                    console.log("Mobile cart modal showing, populating content...");
-                    populateAndShowMobileCartModal();
-                });
+                 if (mobileCartModalElement) {
+                     mobileCartModalElement.addEventListener('show.bs.modal', function (event) {
+                         console.log("Mobile cart modal showing, populating content...");
+                         populateAndShowMobileCartModal();
+                     });
+                 } else {
+                     console.warn("Mobile Cart Modal element not found.");
+                 }
+
 
                 // --- Remove From Mobile Cart Modal ---
                 $(document).on('click', '.mobile-remove-item-btn', function() {
@@ -1069,7 +1096,7 @@
                     cartItemElement.addClass('removing'); // Add class for animation
 
                     setTimeout(() => {
-                         // Filter the main cart array
+                         // Filter the main cart array based on ID and Type
                         cart = cart.filter(item => !(item.sweetId === sweetIdToRemove && item.quantityType === quantityTypeToRemove));
                         console.log(`Removed ${sweetIdToRemove} (${quantityTypeToRemove}) from cart.`);
 
@@ -1097,25 +1124,56 @@
                  });
 
 
-                // --- Populate Review Step ---
+                // --- Populate Review Step --- (UPDATED FOR SINGLE ICON)
                 function populateReview() {
-                     console.log("DEBUG: Populating review step.");
-                    const reviewTextSummary = $("#reviewTextSummary"); const visualBox = $("#visualBoxRepresentation"); reviewTextSummary.empty(); visualBox.empty();
+                     console.log("Populating review step (Single Icon per Sweet).");
+                    const reviewTextSummary = $("#reviewTextSummary");
+                    const visualBox = $("#visualBoxRepresentation");
+                    reviewTextSummary.empty();
+                    visualBox.empty();
+
+                    // --- Populate Text Summary (No change needed here) ---
                     let summaryHtml = `<h4>Selections:</h4><ul class="list-group list-group-flush mb-3">`;
-                    if (cart.length > 0) { cart.forEach(item => { summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">${item.name}<span class="badge rounded-pill">${formatQuantity(item.quantity, item.quantityType)}</span></li>`; }); } else { summaryHtml += `<li class="list-group-item">No delicacies selected yet.</li>`; }
+                    if (cart.length > 0) {
+                        cart.forEach(item => {
+                            summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">${item.name}<span class="badge rounded-pill">${formatQuantity(item.quantity, item.quantityType)}</span></li>`;
+                        });
+                    } else {
+                        summaryHtml += `<li class="list-group-item">No delicacies selected yet.</li>`;
+                    }
                     summaryHtml += `</ul><h4>Presentation:</h4><ul class="list-group list-group-flush">`;
-                    const packagingName = chosenPackaging === 'box' ? 'Signature Darna Box' : 'Ornate Keepsake Tray'; summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">Style<span>${packagingName}</span></li>`;
-                    const cost = packagingCost[chosenPackaging]; if (cost > 0) { summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">Additional Cost<span>+$${cost.toFixed(2)}</span></li>`; }
-                    summaryHtml += `</ul><p class="mt-3 fst-italic text-muted small">Note: Pricing shown is indicative for this demo.</p>`; reviewTextSummary.html(summaryHtml);
+                    const packagingName = chosenPackaging === 'box' ? 'Signature Darna Box' : 'Ornate Keepsake Tray';
+                    summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">Style<span>${packagingName}</span></li>`;
+                    const cost = packagingCost[chosenPackaging];
+                    if (cost > 0) {
+                        summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">Additional Cost<span>+$${cost.toFixed(2)}</span></li>`;
+                    }
+                    summaryHtml += `</ul><p class="mt-3 fst-italic text-muted small">Note: Pricing shown is indicative for this demo.</p>`;
+                    reviewTextSummary.html(summaryHtml);
+
+                    // --- Populate Visual Preview (MODIFIED PART) ---
                     visualBox.removeClass('visual-box visual-tray').addClass(chosenPackaging === 'box' ? 'visual-box' : 'visual-tray');
-                    if (cart.length > 0) { let iconCounter = 0; cart.forEach(item => { let iconsToShow = 1; if (item.quantityType === 'unit') { iconsToShow = Math.min(item.quantity, 8); } // Limit icons for high unit counts
-                        for (let i = 0; i < iconsToShow; i++) { const delay = iconCounter * 0.04; const itemImagePath = item.img || placeholderImg;
-                         // Show quantity only for the first icon of a specific item if multiple icons are shown
-                         const iconLabel = (iconsToShow > 1 && i === 0) ? `${item.name} (${formatQuantity(item.quantity, item.quantityType)})` : item.name;
-                         const fullLabel = (iconsToShow === 1) ? `${item.name} (${formatQuantity(item.quantity, item.quantityType)})` : iconLabel; // For single icon items
-                         visualBox.append(`<div class="sweet-icon-placeholder" style="animation-delay: ${delay}s;" title="${item.name} - ${formatQuantity(item.quantity, item.quantityType)}"><img src="${itemImagePath}" alt="${item.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('Review Img Error: ${itemImagePath}')"><span>${fullLabel}</span></div>`); iconCounter++; } }); }
-                    else { visualBox.html('<p id="emptyBoxVisualMsg" class="col-12">Your presentation awaits your selections!</p>'); }
-                 }
+                    if (cart.length > 0) {
+                        let iconCounter = 0; // For animation delay
+                        cart.forEach(item => {
+                            // Create exactly one icon per item in the cart.
+                            const delay = iconCounter * 0.04;
+                            const itemImagePath = item.img || placeholderImg;
+                            // The label now always includes the item name and its full quantity.
+                            const fullLabel = `${item.name} (${formatQuantity(item.quantity, item.quantityType)})`;
+
+                            visualBox.append(`
+                                <div class="sweet-icon-placeholder" style="animation-delay: ${delay}s;" title="${item.name} - ${formatQuantity(item.quantity, item.quantityType)}">
+                                    <img src="${itemImagePath}" alt="${item.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('Review Img Error: ${itemImagePath}')">
+                                    <span>${fullLabel}</span>
+                                </div>
+                            `);
+                            iconCounter++; // Increment counter once per cart item
+                        });
+                    } else {
+                        visualBox.html('<p id="emptyBoxVisualMsg" class="col-12">Your presentation awaits your selections!</p>');
+                    }
+                 } // --- End of populateReview function ---
 
                 // --- Confirm Order ---
                 $("#confirmOrderBtn").click(function() {
@@ -1144,9 +1202,18 @@
                     $('input[name="quantityType"][value="unit"]').prop('checked', true); $('input[name="packaging"][value="box"]').prop('checked', true);
                     updateAllCartDisplays(); // Clear indicators/desktop cart
                     successMessageContainer.fadeOut(300, function() {
-                        showStep(0); wizardContainer.fadeIn(500);
-                        // We need to ensure cards are regenerated or states updated correctly for the new default settings
-                        if(sweets && sweets.length > 0) { updateAllCardStates(); } // Reset card states visually
+                        wizardContainer.fadeIn(500);
+                        // No need to explicitly call showStep(0) if fadeOut/fadeIn handles visibility.
+                        // However, explicitly setting currentStep and updating progress is good practice.
+                        currentStep = 0;
+                        updateWizardProgress(currentStep);
+                        // Ensure the first step div is marked as active again
+                        steps.removeClass('active-step exiting-step');
+                        $(steps[0]).addClass('active-step');
+
+                        if(sweets && sweets.length > 0) {
+                             updateAllCardStates(); // Reset card states visually for the default 'unit' type
+                        }
                         $('html, body').animate({ scrollTop: 0 }, 500); console.log("State reset for new order.");
                     });
                 });
