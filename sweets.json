@@ -2,57 +2,54 @@
   {
     "id": "sw001",
     "name": "Chebakia",
-    "description": "Iconic sesame cookie fried & coated in honey.",
+    "description": "Classic Moroccan sesame and honey cookie, fried and coated in syrup. A Ramadan staple.",
     "img": "img/1.jpg",
-    "variations": ["Classic Sesame", "Almond Dust"]
+    "images": ["img/1.jpg", "img/1_detail.jpg"],
+    "variations": ["With Almonds", "Classic Sesame"]
   },
   {
     "id": "sw002",
     "name": "Kaab el Ghzal",
-    "description": "'Gazelle horn' pastry with almond paste.",
+    "description": "Delicate crescent-shaped pastries filled with almond paste and flavored with orange blossom water.",
     "img": "img/2.jpg",
-    "variations": ["Orange Blossom", "Cinnamon"]
+    "images": ["img/2.jpg"]
   },
   {
     "id": "sw003",
     "name": "Briouat",
-    "description": "Crispy triangle pastry filled with almonds.",
+    "description": "Crispy fried or baked triangles of phyllo dough filled with sweet almond paste or other fillings, often soaked in honey.",
     "img": "img/3.jpg",
-    "variations": ["Almond", "Pistachio"]
+    "images": ["img/3.jpg"],
+     "variations": ["Almond", "Peanut", "Coconut"]
   },
-  {
+   {
     "id": "sw004",
     "name": "Ghriba Bahla",
-    "description": "Cracked 'silly' cookies, crumbly texture.",
+    "description": "Cracked Moroccan shortbread cookies, known for their sandy texture and melt-in-your-mouth quality.",
     "img": "img/4.jpg",
-    "variations": ["Classic", "Coconut"]
-  },
-  {
+    "images": ["img/4.jpg"]
+   },
+   {
     "id": "sw005",
-    "name": "Almond Maamoul",
-    "description": "Semolina butter cookies with almond paste.",
+    "name": "Assorted Mix",
+    "description": "A delightful selection of various traditional Moroccan sweets.",
     "img": "img/5.jpg",
-    "variations": ["Classic", "Date Filled"]
-  },
-  {
-    "id": "sw006",
-    "name": "Sellou",
-    "description": "Nutty, spiced sweet mixture.",
-    "img": "img/6.jpg",
-    "variations": ["Traditional", "Crunchy"]
-  },
-  {
+    "images": ["img/5.jpg", "img/6.jpg"]
+   },
+   {
     "id": "sw007",
     "name": "Fekkas",
-    "description": "Twice-baked crunchy cookies, like biscotti.",
+    "description": "Twice-baked Moroccan biscotti, often flavored with almonds, anise seeds, and sesame seeds.",
     "img": "img/7.jpg",
-    "variations": ["Almond/Anise", "Fig/Walnut"]
-  },
-  {
+    "images": ["img/7.jpg"],
+     "variations": ["Almond & Sesame", "Anise Seed"]
+   },
+   {
     "id": "sw008",
-    "name": "M'hencha",
-    "description": "'Snake' coil pastry with almond paste.",
+    "name": "M'hencha (Snake Cake)",
+    "description": "A visually stunning coiled pastry made with almond paste wrapped in phyllo dough, baked until golden and often drizzled with honey.",
     "img": "img/8.jpg",
-    "variations": ["Classic Large", "Mini Bites"]
-  }
+    "images": ["img/8.jpg", "img/8_slice.jpg"]
+   }
+
 ]
