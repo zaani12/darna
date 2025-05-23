@@ -10,18 +10,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap" rel="stylesheet"> <!-- Added Clicker Script for brand fallback -->
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!-- Custom Styles -->
     <style>
         :root {
-            /* --- Colors and Fonts --- */
-            --luxury-dark: #332e2e;
-            --luxury-brown: #8a6d5a;
-            --luxury-gold: #daa520;
-            --luxury-cream: #fdfbf5;
+            --brand-gold: #9C7945;
+            --brand-cream: #FFF5EE;
+            --brand-dark-brown: #8B4513;
+            --brand-crimson: crimson;
+            --brand-dark-bg: #343a40;
+            --brand-light-text: #f8f9fa;
+            --luxury-dark: var(--brand-dark-bg);
+            --luxury-brown: var(--brand-dark-brown);
+            --luxury-gold: var(--brand-gold);
+            --luxury-cream: var(--brand-cream);
             --luxury-light: #FFFFFF;
-            --luxury-accent: #c8b077;
+            --luxury-accent: #B08D57;
             --luxury-success: #5a7d3c;
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Lato', sans-serif;
@@ -32,451 +38,194 @@
             --shadow-medium: 0 6px 16px rgba(0, 0, 0, 0.08);
             --shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.10);
         }
-
-        /* --- Animations --- */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeOutDown { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(12px); } }
-        @keyframes slideInRight { from { transform: translateX(25px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        @keyframes slideOutLeft { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-25px); opacity: 0; } }
-        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
         @keyframes shrinkOutFade { from { transform: scale(1); opacity: 1; } to { transform: scale(0.95); opacity: 0; } }
-        @keyframes pulseSubtle { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
-        @keyframes checkmarkFadeIn { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
-        /* Mobile Cart Modal Item Animations */
         @keyframes cartItemSlideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes cartItemShrinkOut { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.9); } }
 
-        /* --- Base & Body --- */
         html { scroll-behavior: smooth; }
         body {
             background: linear-gradient(180deg, var(--luxury-cream) 0%, #f7f3eb 100%);
-            font-family: var(--font-body);
-            color: var(--luxury-dark);
-            margin: 0;
-            padding-top: 65px; /* Consistent padding top */
-            font-size: 14px; /* Base for desktop */
-            animation: fadeIn var(--transition-speed-slow) ease-out;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            font-family: var(--font-body); color: var(--brand-dark-brown); margin: 0;
+            padding-top: 70px; font-size: 14px; animation: fadeIn var(--transition-speed-slow) ease-out;
+            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+            display: flex; flex-direction: column; min-height: 100vh;
         }
-
-        /* --- Navbar --- */
-        .navbar { background-color: var(--luxury-dark); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18); padding: 0.4rem 1rem; }
+        .navbar {
+            background-color: var(--brand-dark-bg) !important; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+            padding: 0.6rem 1rem; min-height: 70px;
+        }
         .navbar .navbar-brand img { max-width: 130px; height: auto; transition: transform var(--transition-speed-fast) ease; }
         .navbar .navbar-brand:hover img { transform: scale(1.04); }
-        .navbar .nav-link { color: var(--luxury-cream) !important; font-weight: 400; text-transform: uppercase; letter-spacing: 0.6px; font-size: 0.75em; margin: 0 0.4rem; transition: color var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease; position: relative; padding-bottom: 3px; }
-        .navbar .nav-link::after { content: ''; position: absolute; bottom: 0px; left: 50%; transform: translateX(-50%); width: 0; height: 1.5px; background-color: var(--luxury-gold); transition: width var(--transition-speed-fast) ease; }
+        .navbar .nav-link {
+            color: var(--brand-light-text) !important; font-weight: 500; text-transform: uppercase;
+            letter-spacing: 0.5px; font-size: 0.9em; margin: 0 0.5rem;
+            transition: color var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease;
+            position: relative; padding-bottom: 3px;
+        }
+        .navbar .nav-link::after {
+            content: ''; position: absolute; bottom: 0px; left: 50%; transform: translateX(-50%);
+            width: 0; height: 1.5px; background-color: var(--brand-gold);
+            transition: width var(--transition-speed-fast) ease;
+        }
         .navbar .nav-link:hover::after, .navbar .nav-link.active::after { width: 45%; }
-        .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--luxury-gold) !important; transform: translateY(-1px); }
-        .navbar-toggler { padding: .2rem .4rem; font-size: 0.8rem; border-color: rgba(255,255,255,0.15); }
-        .navbar-toggler-icon { width: 1.0em; height: 1.0em; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
-        /* Mobile Cart Indicator */
+        .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--brand-gold) !important; transform: translateY(-1px); }
+        .navbar-toggler { padding: .25rem .5rem; border-color: rgba(255,255,255,0.3); }
+        .navbar-toggler-icon {
+            width: 1.2em; height: 1.2em;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28248, 249, 250, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
         #nav-cart-indicator {
-             display: none; /* Hidden on desktop */
-             color: var(--luxury-cream);
-             font-size: 1.4em;
-             position: relative;
-             margin-right: 0.75rem;
-             cursor: pointer; /* Make it look clickable */
+             display: none; color: var(--brand-light-text); font-size: 1.4em;
+             position: relative; margin-right: 0.75rem; cursor: pointer;
              transition: color var(--transition-speed-fast) ease;
          }
-         #nav-cart-indicator:hover {
-             color: var(--luxury-gold);
-         }
-         #nav-cart-indicator .badge {
-             position: absolute; top: -5px; right: -10px;
-             font-size: 0.6em; padding: 2px 4px; line-height: 1;
-             background-color: var(--luxury-gold); color: var(--luxury-dark);
-             border-radius: 50%;
+        #nav-cart-indicator:hover { color: var(--brand-gold); }
+        #nav-cart-indicator .badge {
+             position: absolute; top: -5px; right: -10px; font-size: 0.6em;
+             padding: 2px 4px; line-height: 1; background-color: var(--brand-gold);
+             color: var(--brand-dark-bg); border-radius: 50%;
              transition: transform var(--transition-speed-fast) ease;
-         }
-         #nav-cart-indicator:hover .badge {
-             transform: scale(1.1);
-         }
-
-
-        /* --- Main Content Area --- */
-        .main-container { padding: 1.8rem 1rem; flex-grow: 1; /* Makes it push footer down */ }
-
-        /* --- Main Title & Wizard Progress --- */
+        }
+        #nav-cart-indicator:hover .badge { transform: scale(1.1); }
+        .navbar-brand-text-fallback {
+            color: var(--brand-gold); font-family: 'Clicker Script', cursive;
+            font-size: 1.8em; font-weight: bold; display: inline-block;
+            line-height: 1; padding: 5px 0;
+        }
+        .main-container { padding: 1.8rem 1rem; flex-grow: 1; }
         .main-title { font-family: var(--font-heading); font-style: italic; color: var(--luxury-brown); font-size: 2.2em; text-align: center; margin-bottom: 1.5rem; animation: fadeInUp 1s ease-out 0.2s backwards; }
         #wizard-progress { display: flex; justify-content: space-around; margin-bottom: 1.8rem; padding: 9px 5px; background-color: rgba(255, 255, 255, 0.85); border-radius: 50px; box-shadow: var(--shadow-soft); max-width: 600px; margin-left: auto; margin-right: auto; animation: fadeInUp 1s ease-out 0.4s backwards; }
         .progress-step { text-align: center; color: var(--luxury-brown); opacity: 0.6; font-weight: 600; font-size: 0.7em; flex: 1; padding: 5px 2px; border-bottom: 2px solid transparent; transition: all var(--transition-speed-med) ease-out; cursor: default; position: relative; line-height: 1.2; }
-        .progress-step span { display: inline-block; margin-right: 2px;}
-        .progress-step .step-text { display: inline; }
-        .progress-step::after { display: none; }
         .progress-step.active { color: var(--luxury-gold); opacity: 1; border-bottom-color: var(--luxury-gold); transform: scale(1.03); }
         .progress-step.completed { color: var(--luxury-accent); opacity: 1; cursor: pointer; }
-        .progress-step.completed::before { content: '✓'; margin-right: 2px; color: var(--luxury-accent); display: inline-block; animation: checkmarkFadeIn 0.4s ease-out; }
-        .progress-step:not(.active):not(.completed):hover { opacity: 0.9; transform: translateY(-1px); }
-        .progress-step.completed:hover { color: var(--luxury-gold); }
-
-
-        /* --- Wizard Steps --- */
-        #wizard { max-width: 700px; margin: 15px auto 30px auto; position: relative; overflow: visible; min-height: 380px; } /* Slightly increased min-height */
+        .progress-step.completed::before { content: '✓'; margin-right: 2px; color: var(--luxury-accent); display: inline-block; }
+        #wizard { max-width: 700px; margin: 15px auto 30px auto; position: relative; overflow: visible; min-height: 380px; }
         .step {
-            position: absolute; top: 0; left: 0; width: 100%;
-            opacity: 0; visibility: hidden;
-            display: flex; flex-direction: column;
-            height: 100%; max-height: 70vh;
-            border: 1px solid rgba(0, 0, 0, 0.04); border-radius: 12px;
-            margin-bottom: 25px; background: linear-gradient(155deg, var(--luxury-light), #fdfaf7);
-            box-shadow: var(--shadow-medium);
+            position: absolute; top: 0; left: 0; width: 100%; opacity: 0; visibility: hidden;
+            display: flex; flex-direction: column; height: 100%; max-height: 70vh;
+            border: 1px solid rgba(0, 0, 0, 0.04); border-radius: 12px; margin-bottom: 25px;
+            background: linear-gradient(155deg, var(--luxury-light), #fdfaf7); box-shadow: var(--shadow-medium);
             transition: opacity var(--transition-speed-med) ease-out, transform var(--transition-speed-med) ease-out, visibility 0s linear var(--transition-speed-med);
             transform: translateX(25px);
         }
         .step.active-step { display: flex; position: relative; opacity: 1; visibility: visible; transform: translateX(0); z-index: 10; transition-delay: 0s; }
         .step.exiting-step { transform: translateX(-25px); visibility: visible; opacity: 0; }
-
-        /* Scrollable content area WITHIN the step */
-        .step-scrollable-content {
-            padding: 18px 22px;
-            overflow-y: auto;
-            flex-grow: 1;
-            min-height: 0;
-            scrollbar-width: thin;
-            scrollbar-color: var(--luxury-accent) rgba(0,0,0,0.05);
-        }
-        .step-scrollable-content::-webkit-scrollbar { width: 5px; }
-        .step-scrollable-content::-webkit-scrollbar-track { background: rgba(0,0,0,0.03); border-radius: 2.5px; }
-        .step-scrollable-content::-webkit-scrollbar-thumb { background-color: var(--luxury-accent); border-radius: 2.5px; border: 1px solid transparent; background-clip: content-box; }
-        .step-scrollable-content::-webkit-scrollbar-thumb:hover { background-color: var(--luxury-gold); }
-
-        .step-scrollable-content h2 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; font-weight: 700; margin-top: 0; margin-bottom: 1.4rem; font-size: 1.55em; }
-
-        .step .form-check { margin-bottom: 0.8rem; font-size: 0.88em; padding-left: 1.8em; }
-        .step .form-check-label { cursor: pointer; color: var(--luxury-dark); font-weight: 400; transition: color var(--transition-speed-fast) ease; }
-        .step .form-check-input { cursor: pointer; border-color: #c8b077b8; transition: background-color var(--transition-speed-fast) ease, border-color var(--transition-speed-fast) ease; height: 0.95em; width: 0.95em; margin-top: 0.18em; }
+        .step-scrollable-content { padding: 18px 22px; overflow-y: auto; flex-grow: 1; min-height: 0; }
+        .step-scrollable-content h2 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; font-weight: 700; margin-bottom: 1.4rem; font-size: 1.55em; }
         .step .form-check-input:checked { background-color: var(--luxury-gold); border-color: var(--luxury-gold); }
-        .step .form-check-input:focus { box-shadow: 0 0 0 0.15rem rgba(218, 165, 32, 0.2); }
-        .step .form-check:hover .form-check-label { color: var(--luxury-gold); }
-        .step button { font-family: var(--font-body); font-weight: 600; padding: 7px 18px; border: none; border-radius: 50px; cursor: pointer; transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft); letter-spacing: 0.4px; text-transform: uppercase; font-size: 0.72em; }
-        .step button:hover { box-shadow: var(--shadow-medium); transform: translateY(-2px); }
-        .step button:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .step .form-check-input:focus { box-shadow: 0 0 0 0.15rem rgba(156, 121, 69, 0.25); }
         .step .btn-primary { background: linear-gradient(100deg, var(--luxury-gold), var(--luxury-accent)); color: var(--luxury-light); }
-        .step .btn-primary:hover { background: linear-gradient(100deg, var(--luxury-accent), var(--luxury-gold)); }
-        .step .btn-secondary { background-color: #f5f5f5; color: #555; border: 1px solid #e8e8e8; }
-        .step .btn-secondary:hover { background-color: #e9e9e9; }
-        .step .btn-success { background-color: var(--luxury-success); color: var(--luxury-light); }
-        .step .btn-success:hover { background-color: #4a6b2a; }
-
-        /* Button Group fixed at the bottom */
-        .button-group {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0.8rem 22px; border-top: 1px solid rgba(0,0,0,0.05);
-            background-color: #fdfaf7; border-bottom-left-radius: 12px;
-             border-bottom-right-radius: 12px; flex-shrink: 0;
-        }
+        .button-group { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 22px; border-top: 1px solid rgba(0,0,0,0.05); background-color: #fdfaf7; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; flex-shrink: 0; }
         #quantityStep .prevStep { visibility: hidden; }
         #reviewStep .nextStep { display: none; }
         #quantityStep .button-group { justify-content: flex-end; }
-
-
-        /* --- Sweet Card Styling --- */
-        .sweet-card-column { margin-bottom: 12px; display: flex; justify-content: center; } /* Centering columns */
-        .sweet-card { border: 1px solid transparent; border-radius: 7px; overflow: hidden; box-shadow: var(--shadow-soft); transition: transform var(--transition-speed-fast) ease, box-shadow var(--transition-speed-fast) ease, border-color var(--transition-speed-fast) ease; background-color: var(--luxury-light); animation: fadeInUp var(--transition-speed-med) ease-out backwards; height: 100%; display: flex; flex-direction: column; max-width: 200px; margin-left: auto; margin-right: auto; cursor: default; }
+        .sweet-card { border: 1px solid transparent; border-radius: 7px; overflow: hidden; box-shadow: var(--shadow-soft); transition: all var(--transition-speed-fast) ease; background-color: var(--luxury-light); animation: fadeInUp var(--transition-speed-med) ease-out backwards; height: 100%; display: flex; flex-direction: column; max-width: 200px; margin-left: auto; margin-right: auto; }
         .sweet-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-medium); }
         .sweet-card.card-in-cart { border-color: var(--luxury-gold); background-color: #fffdf7; }
         .sweet-card img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; border-bottom: 1px solid rgba(0,0,0,0.04); background-color: #f8f8f8; cursor: pointer; }
         .sweet-card .card-body { padding: 8px; display: flex; flex-direction: column; flex-grow: 1; }
         .sweet-card .card-title { font-family: var(--font-heading); font-size: 0.9em; color: var(--luxury-brown); margin-bottom: 2px; }
-        .sweet-variations { font-size: 0.58em; color: var(--luxury-accent); margin-bottom: 4px; opacity: 0.9; font-weight: 400; line-height: 1.25; }
-        .sweet-variations i { margin-right: 2px; font-size: 0.85em; vertical-align: middle; opacity: 0.8; }
+        .sweet-variations { font-size: 0.58em; color: var(--luxury-accent); margin-bottom: 4px; opacity: 0.9; }
         .sweet-card .card-text { font-size: 0.7em; color: #707070; line-height: 1.3; flex-grow: 1; margin-bottom: 5px; max-height: 35px; overflow: hidden; }
-        .sweet-card .form-group { margin-top: auto; }
-        /* Quantity Control Styling */
-        .quantity-control-wrapper label { font-size: 0.6em; margin-bottom: 2px; font-weight: 600; color: var(--luxury-accent); text-transform: uppercase; letter-spacing: 0.3px; display: block; }
-        .quantity-control { display: flex; align-items: center; justify-content: space-between; border: 1px solid #e5e5e5; border-radius: 12px; overflow: hidden; background-color: #fff; max-width: 90px; margin-left: auto; margin-right: auto; }
-        .quantity-control .btn-qty { background-color: #f9f9f9; border: none; color: var(--luxury-brown); font-size: 1.0em; font-weight: 500; line-height: 1; padding: 3px 7px; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease; }
-        .quantity-control .btn-qty:hover { background-color: #eee; color: var(--luxury-dark); }
-        .quantity-control .btn-qty:active { background-color: #e5e5e5; }
-        .quantity-control .qty-display { font-size: 0.8em; font-weight: 600; color: var(--luxury-dark); padding: 0 4px; min-width: 22px; text-align: center; }
+        .quantity-control { display: flex; align-items: center; justify-content: space-between; border: 1px solid #e5e5e5; border-radius: 12px; overflow: hidden; background-color: #fff; max-width: 90px; margin: 0 auto 4px; }
+        .quantity-control .btn-qty { background-color: #f9f9f9; border: none; color: var(--luxury-brown); font-size: 1.0em; padding: 3px 7px; cursor: pointer; }
+        .quantity-control .qty-display { font-size: 0.8em; font-weight: 600; color: var(--brand-dark-brown); padding: 0 4px; min-width: 22px; text-align: center; }
         .sweet-card .quantity-input { display: none !important; }
-
-        .sweet-card .btn-add-update { font-weight: 600; border-radius: 10px; padding: 4px 9px; font-size: 0.62em; width: 100%; margin-top: 6px; transition: all var(--transition-speed-fast) ease; text-transform: uppercase; letter-spacing: 0.4px; border: 1px solid transparent; }
+        .sweet-card .btn-add-update { font-weight: 600; border-radius: 10px; padding: 4px 9px; font-size: 0.62em; width: 100%; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.4px; border: 1px solid transparent; }
         .sweet-card .btn-add { background-color: var(--luxury-brown); color: var(--luxury-light); border-color: var(--luxury-brown); }
-        .sweet-card .btn-add:hover { background-color: var(--luxury-dark); border-color: var(--luxury-dark); transform: scale(1.02); }
+        .sweet-card .btn-add:hover { background-color: var(--brand-dark-brown); border-color: var(--brand-dark-brown); }
         .sweet-card .btn-update { background-color: transparent; color: var(--luxury-gold); border: 1px solid var(--luxury-gold); }
-        .sweet-card .btn-update:hover { background-color: rgba(218, 165, 32, 0.08); color: var(--luxury-gold); transform: scale(1.02); }
-        .sweet-card .btn-add-update.added-pulse { animation: pulseSubtle var(--transition-speed-med) ease-out; }
+        .sweet-card .price-display { font-size: 0.75em; font-weight: bold; color: var(--luxury-gold); margin-top: 4px; margin-bottom: 2px; text-align: center; }
 
-        /* --- Loading Overlay --- */
-        #cardLoadingOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.9); z-index: 20; display: flex; align-items: center; justify-content: center; border-radius: 12px; transition: opacity var(--transition-speed-fast) ease, visibility 0s linear var(--transition-speed-fast); opacity: 0; visibility: hidden; }
-        #cardLoadingOverlay.visible { opacity: 1; visibility: visible; transition: opacity var(--transition-speed-fast) ease, visibility 0s linear 0s; }
+        #cardLoadingOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.9); z-index: 20; display: flex; align-items: center; justify-content: center; border-radius: 12px; opacity: 0; visibility: hidden; }
+        #cardLoadingOverlay.visible { opacity: 1; visibility: visible; }
         #cardLoadingOverlay .spinner-border { width: 1.8rem; height: 1.8rem; color: var(--luxury-gold); }
 
-        /* --- Cart Box --- WEB ONLY */
-        #cartBox { position: fixed; bottom: 15px; right: 15px; width: 85%; max-width: 290px; max-height: 38vh; overflow-y: auto; background: linear-gradient(to bottom, #4a4646, var(--luxury-dark)); color: var(--luxury-cream); padding: 12px 15px; z-index: 1050; box-shadow: var(--shadow-strong); border-radius: 8px; border: 1px solid var(--luxury-accent); transition: transform var(--transition-speed-med) ease-out, opacity var(--transition-speed-med) ease-out, visibility var(--transition-speed-med) step-end; transform: translateY(15px); opacity: 0; visibility: hidden; }
-        #cartBox.cart-visible { transform: translateY(0); opacity: 1; visibility: visible; transition: transform var(--transition-speed-med) ease-out, opacity var(--transition-speed-med) ease-out, visibility var(--transition-speed-med) step-start; }
-        #cartBox h3 { font-family: var(--font-heading); text-align: center; margin-top: 0; margin-bottom: 10px; color: var(--luxury-gold); border-bottom: 1px solid rgba(218, 165, 32, 0.2); padding-bottom: 7px; font-size: 1.1em; }
-        #cartBox::-webkit-scrollbar { width: 4px; }
-        #cartBox::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 2px; }
-        #cartBox::-webkit-scrollbar-thumb { background-color: var(--luxury-accent); border-radius: 2px; border: 1px solid transparent; background-clip: content-box; }
-        #cartBox::-webkit-scrollbar-thumb:hover { background-color: var(--luxury-gold); }
-        .cart-item { display: flex; align-items: center; margin-bottom: 7px; border-bottom: 1px solid rgba(218, 165, 32, 0.1); padding-bottom: 7px; position: relative; animation: slideInRight 0.4s ease-out backwards; }
-        .cart-item.removing { animation: shrinkOutFade 0.3s ease-out forwards; }
-        .cart-item:nth-child(1) { animation-delay: 0.04s; } .cart-item:nth-child(2) { animation-delay: 0.08s; } .cart-item:nth-child(3) { animation-delay: 0.12s; }
-        .cart-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .cart-item img { width: 38px; height: 38px; object-fit: cover; border-radius: 4px; margin-right: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.18); background-color: #eee; flex-shrink: 0; }
-        .cart-item-details { flex-grow: 1; margin-right: 4px; }
-        .cart-item-details h5 { margin-bottom: 1px; color: var(--luxury-light); font-size: 0.8em; font-weight: 600; }
-        .cart-item-details span { font-size: 0.7em; color: var(--luxury-cream); opacity: 0.8; display: block; }
-        .remove-item-btn { background: none; border: none; color: var(--luxury-accent); font-size: 1.2em; line-height: 1; cursor: pointer; padding: 0 2px; margin-left: auto; opacity: 0.7; transition: all var(--transition-speed-fast) ease; align-self: center; flex-shrink: 0;}
-        .remove-item-btn:hover { color: var(--luxury-gold); opacity: 1; transform: scale(1.1); }
-        #emptyCartMsg { padding: 15px 0; color: var(--luxury-cream); opacity: 0.6; text-align: center; font-style: italic; font-size: 0.7em; }
-
-        /* --- Mobile Cart Modal --- */
-        #mobileCartModal .modal-content {
-            background-color: var(--luxury-dark);
-            color: var(--luxury-cream);
-            border: 1px solid var(--luxury-accent);
-            border-radius: 10px;
+        #cartBox {
+            position: fixed; bottom: 15px; right: 15px; width: 90%; max-width: 320px;
+            max-height: 40vh; background-color: rgba(40, 36, 36, 0.92); color: var(--brand-light-text);
+            padding: 10px 12px; z-index: 1050; box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.25);
+            border-radius: 8px; border: 1px solid var(--luxury-accent);
+            opacity: 0; visibility: hidden; transform: translateY(20px);
+            transition: opacity var(--transition-speed-med) ease-out, transform var(--transition-speed-med) ease-out, visibility 0s linear var(--transition-speed-med);
         }
-        #mobileCartModal .modal-header {
-            border-bottom: 1px solid rgba(218, 165, 32, 0.2);
-            padding: 0.8rem 1rem; /* Adjust padding */
+        #cartBox.cart-visible {
+            opacity: 1; visibility: visible; transform: translateY(0);
+            transition: opacity var(--transition-speed-med) ease-out, transform var(--transition-speed-med) ease-out, visibility 0s linear 0s;
         }
-        #mobileCartModal .modal-title {
-            font-family: var(--font-heading);
-            color: var(--luxury-gold);
-            font-size: 1.2em; /* Adjust size */
-        }
-        #mobileCartModal .btn-close {
-            background: none;
-            border: none;
-            color: var(--luxury-cream);
-            opacity: 0.7;
-            font-size: 1.3rem; /* Adjust size */
-            transition: opacity var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease;
-            filter: brightness(0) invert(1); /* Make default X white */
-        }
-         #mobileCartModal .btn-close:hover {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-        #mobileCartModal .modal-body {
-            padding: 1rem;
-            max-height: 60vh;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--luxury-accent) rgba(255,255,255,0.1);
-        }
-        #mobileCartModal .modal-body::-webkit-scrollbar { width: 5px; }
-        #mobileCartModal .modal-body::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 2.5px; }
-        #mobileCartModal .modal-body::-webkit-scrollbar-thumb { background-color: var(--luxury-accent); border-radius: 2.5px; }
-        #mobileCartModal .modal-body::-webkit-scrollbar-thumb:hover { background-color: var(--luxury-gold); }
-
-        .mobile-cart-item { /* Style similar to desktop, but uses animations */
-            display: flex; align-items: center; margin-bottom: 10px;
-            padding-bottom: 10px; border-bottom: 1px solid rgba(218, 165, 32, 0.15);
-            animation: cartItemSlideIn 0.45s ease-out backwards;
-        }
-        .mobile-cart-item.removing {
-            animation: cartItemShrinkOut 0.35s ease-out forwards;
-        }
-        .mobile-cart-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .mobile-cart-item img { width: 45px; height: 45px; object-fit: cover; border-radius: 5px; margin-right: 10px; background-color: #eee; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-        .mobile-cart-item-details { flex-grow: 1; margin-right: 5px; }
-        .mobile-cart-item-details h5 { margin-bottom: 2px; color: var(--luxury-light); font-size: 0.9em; font-weight: 600; }
-        .mobile-cart-item-details span { font-size: 0.75em; color: var(--luxury-cream); opacity: 0.85; display: block; }
-        .mobile-remove-item-btn { background: none; border: none; color: var(--luxury-accent); font-size: 1.4em; line-height: 1; cursor: pointer; padding: 0 3px; margin-left: auto; opacity: 0.7; transition: all var(--transition-speed-fast) ease; align-self: center; flex-shrink: 0;}
-        .mobile-remove-item-btn:hover { color: var(--luxury-gold); opacity: 1; transform: scale(1.1); }
-        #emptyMobileCartMsg { padding: 20px 0; color: var(--luxury-cream); opacity: 0.6; text-align: center; font-style: italic; font-size: 0.8em; }
-        #mobileCartModal .modal-footer {
-            border-top: 1px solid rgba(218, 165, 32, 0.2);
-            padding: 0.7rem 1rem;
-            justify-content: center; /* Center buttons */
-        }
-        #mobileCartModal .btn-modal-action {
-             font-family: var(--font-body); font-weight: 600; padding: 7px 18px;
-             border: none; border-radius: 50px; cursor: pointer;
-             transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft);
-             letter-spacing: 0.4px; text-transform: uppercase; font-size: 0.75em;
-        }
-        #mobileCartModal .btn-modal-action:hover { box-shadow: var(--shadow-medium); transform: translateY(-2px); }
-        #mobileCartModal .btn-primary { background: linear-gradient(100deg, var(--luxury-gold), var(--luxury-accent)); color: var(--luxury-light); }
-        #mobileCartModal .btn-primary:hover { background: linear-gradient(100deg, var(--luxury-accent), var(--luxury-gold)); }
+        #cartBox h3 { font-family: var(--font-heading); text-align: center; margin-bottom: 8px; color: var(--luxury-gold); font-size: 1.0em; padding-bottom: 5px; border-bottom: 1px solid rgba(156, 121, 69, 0.2); }
+        #cartBox #cartItems { overflow-y: auto; max-height: calc(40vh - 70px); }
+        .cart-item, .mobile-cart-item { display: flex; align-items: flex-start; margin-bottom: 7px; border-bottom: 1px solid rgba(156, 121, 69, 0.1); padding-bottom: 7px; position: relative; animation: slideInRight 0.4s ease-out backwards; }
+        #cartBox .cart-item img { width: 30px; height: 30px; margin-right: 6px; margin-top:2px; }
+        .cart-item img, .mobile-cart-item img { object-fit: cover; border-radius: 4px; background-color: #eee; flex-shrink: 0; }
+        .cart-item-details, .mobile-cart-item-details { flex-grow: 1; margin-right: 4px; }
+        #cartBox .cart-item-details h5 { font-size: 0.75em; }
+        .cart-item-details h5, .mobile-cart-item-details h5 { margin-bottom: 1px; color: var(--brand-light-text); font-weight: 600; }
+        #cartBox .cart-item-pricing { font-size: 0.65em; line-height: 1.1; }
+        .cart-item-pricing, .mobile-cart-item-pricing { color: var(--brand-light-text); opacity: 0.8; line-height: 1.2; }
+        .cart-item-pricing .item-subtotal, .mobile-cart-item-pricing .item-subtotal { font-weight: bold; opacity: 1; }
+        #cartBox .cart-item-quantity-controls { margin-left: 5px; }
+        .cart-item-quantity-controls { display: flex; align-items: center; margin-left: auto; margin-right: 8px; flex-shrink: 0; }
+        .cart-item-quantity-controls .btn-qty-cart { background-color: rgba(255,255,255,0.1); border: none; color: var(--brand-light-text); font-size: 1em; padding: 2px 5px; border-radius: 4px; cursor: pointer; }
+        .cart-item-quantity-controls .qty-display-cart { font-size: 0.8em; font-weight: 600; color: var(--brand-light-text); padding: 0 5px; min-width: 20px; text-align: center; }
+        #cartBox .remove-item-btn { font-size: 1.0em; }
+        .remove-item-btn, .mobile-remove-item-btn { background: none; border: none; color: var(--luxury-accent); cursor: pointer; opacity: 0.7; transition: all var(--transition-speed-fast) ease; align-self: center; flex-shrink: 0; padding:0; margin-left: 5px;}
+        .remove-item-btn:hover, .mobile-remove-item-btn:hover { color: var(--luxury-gold); opacity: 1; }
+        #cartBox .cart-total-price, #mobileCartModal .cart-total-price { text-align: right; margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(156, 121, 69, 0.2); font-weight: bold; color: var(--luxury-gold); }
+        #cartBox .cart-total-price { font-size: 0.85em; }
 
 
-        /* --- Review Step --- */
-        #reviewDetails { display: flex; flex-wrap: wrap; gap: 15px; }
-        #reviewTextSummary { flex: 1 1 250px; }
-        #packagingPreviewContainer { flex: 1 1 270px; padding: 12px; border: 1px solid rgba(0,0,0,0.05); border-radius: 8px; background-color: rgba(255, 255, 255, 0.7); }
-        #packagingPreviewContainer h5 { font-family: var(--font-heading); color: var(--luxury-brown); text-align: center; margin-bottom: 12px; font-size: 1.1em; }
-        #visualBoxRepresentation { display: grid; grid-template-columns: repeat(auto-fill, minmax(55px, 1fr)); /* Slightly wider grid items */ gap: 10px; /* More gap */ padding: 10px; border-radius: 5px; min-height: 150px; align-content: start; transition: background-color var(--transition-speed-med) ease, border var(--transition-speed-med) ease; border: 1.5px solid transparent; }
-        #visualBoxRepresentation.visual-box { background-color: #fffcf5; border-color: var(--luxury-brown); }
-        #visualBoxRepresentation.visual-tray { background: linear-gradient(135deg, #ecdcc6, #d7c497); border: 1.5px dashed var(--luxury-gold); box-shadow: inset 0 0 5px rgba(0,0,0,0.05); }
-        .sweet-icon-placeholder { text-align: center; animation: fadeInUp 0.4s ease-out backwards; display: flex; flex-direction: column; align-items: center; /* Center content vertically */}
-        .sweet-icon-placeholder img { width: 45px; height: 45px; /* Slightly larger image */ object-fit: cover; border-radius: 50%; border: 1.5px solid var(--luxury-accent); box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 4px; /* More space */ background-color: #eee; }
-        .sweet-icon-placeholder span { display: block; font-size: 0.65em; /* Slightly larger text */ font-weight: 600; color: var(--luxury-dark); line-height: 1.15; max-width: 100%; word-wrap: break-word; /* Prevent long names overflowing */ }
+        #mobileCartModal .modal-content { background-color: var(--brand-dark-bg); color: var(--brand-light-text); border: 1px solid var(--luxury-accent); border-radius: 10px; }
+        #mobileCartModal .modal-header { border-bottom: 1px solid rgba(156, 121, 69, 0.2); }
+        #mobileCartModal .modal-title { font-family: var(--font-heading); color: var(--luxury-gold); font-size: 1.2em; }
+        #mobileCartModal .btn-close { filter: brightness(0) invert(1); }
+        #mobileCartModal .modal-body { max-height: 60vh; overflow-y: auto; }
+        .mobile-cart-item img {width: 45px; height: 45px; margin-top:2px;}
+        #mobileCartModal .cart-total-price { font-size: 1em; }
+
+        #reviewDetails { display: flex; flex-wrap: wrap; gap: 20px; }
+        #reviewTextSummary { flex: 1 1 300px; }
+        #packagingPreviewContainer { flex: 1 1 250px; }
+        #reviewTextSummary .list-group-item { background-color: transparent; border-color: rgba(0,0,0,0.04); padding: 6px 0px; font-size: 0.85em;}
+        #reviewTextSummary h4 { font-family: var(--font-heading); color: var(--luxury-brown); margin-bottom: 0.8rem; font-size: 1.2em; border-bottom: 1px solid rgba(0,0,0,0.07); padding-bottom: 0.4rem; }
+        #reviewTextSummary .price-value { font-weight: 600; color: var(--brand-dark-brown); }
+        #reviewTextSummary .total-line strong { color: var(--luxury-brown); font-weight: 700;}
+        #reviewTextSummary .grand-total strong { color: var(--luxury-gold); font-size: 1.15em; }
+        #visualBoxRepresentation { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 10px; padding: 10px; border-radius: 5px; min-height: 150px; align-content: flex-start;}
+        #visualBoxRepresentation.visual-box { background-color: #fffcf5; border: 1.5px solid var(--luxury-brown); }
+        #visualBoxRepresentation.visual-tray { background: linear-gradient(135deg, #ecdcc6, #d7c497); border: 1.5px dashed var(--luxury-gold); }
+        .sweet-icon-placeholder { text-align: center; display: flex; flex-direction: column; align-items: center; animation: fadeInUp 0.4s ease-out backwards; }
+        .sweet-icon-placeholder img { width: 50px; height: 50px; object-fit: cover; border-radius: 50%; border: 1.5px solid var(--luxury-accent); box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 4px; background-color: #eee; }
+        .sweet-icon-placeholder span { display: block; font-size: 0.7em; font-weight: 600; color: var(--brand-dark-brown); line-height: 1.15; max-width: 100%; word-wrap: break-word; }
         #emptyBoxVisualMsg { grid-column: 1 / -1; text-align: center; padding: 15px; color: var(--luxury-brown); font-style: italic; opacity: 0.7; font-size: 0.75em; }
-        #reviewTextSummary .list-group-item { background-color: transparent; border-color: rgba(0, 0, 0, 0.04); padding: 5px 0px; color: var(--luxury-dark); font-size: 0.82em; }
-        #reviewTextSummary h4 { font-family: var(--font-heading); color: var(--luxury-brown); margin-bottom: 0.8rem; font-size: 1.15em; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 0.3rem; }
-        #reviewTextSummary p { margin-top: 0.8rem; font-size: 0.88em; color: var(--luxury-dark); }
-        #reviewTextSummary .badge { background-color: var(--luxury-accent); color: var(--luxury-light); font-size: 0.72em; padding: 3px 6px; border-radius: 5px; }
-        #reviewTextSummary img { border: 1px solid rgba(0,0,0,0.05); background-color: #eee; } /* Keep potential img style */
 
-        /* --- Success Message --- */
-        #orderSuccessMessage { display: none; padding: 22px; margin: 18px auto; max-width: 480px; background-color: var(--luxury-light); border-radius: 8px; text-align: center; box-shadow: var(--shadow-medium); border: 1px solid var(--luxury-gold); animation: fadeInUp 0.6s ease-out; }
-        #orderSuccessMessage h2 { font-family: var(--font-heading); color: var(--luxury-success); margin-bottom: 9px; font-size: 1.5em; }
-        #orderSuccessMessage h2 i { margin-right: 5px; font-size: 0.9em; }
-        #orderSuccessMessage p { color: var(--luxury-dark); line-height: 1.45; margin-bottom: 7px; font-size: 0.88em; }
-        #orderSuccessMessage #successOrderSummary { font-size: 0.78em; text-align: left; max-width: 330px; margin: 10px auto 15px auto; padding: 10px; border-radius: 4px; background-color: #f9fafa; border: 1px solid #f0f0f0;}
-        #orderSuccessMessage #successOrderSummary ul { list-style: none; padding-left: 0; margin-bottom: 5px;}
-        #orderSuccessMessage #successOrderSummary li { margin-bottom: 3px; }
-        #orderSuccessMessage .btn-new-order { font-family: var(--font-body); font-weight: 600; padding: 8px 20px; border: none; border-radius: 50px; cursor: pointer; transition: all var(--transition-speed-fast) ease; box-shadow: var(--shadow-soft); background: linear-gradient(100deg, var(--luxury-gold), var(--luxury-accent)); color: var(--luxury-light); text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.75em; }
-        #orderSuccessMessage .btn-new-order:hover { box-shadow: var(--shadow-medium); transform: translateY(-2px); }
-        #orderSuccessMessage .btn-new-order:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        #orderSuccessMessage #successOrderSummary p { margin-bottom: 4px;}
+        #orderSuccessMessage #successOrderSummary strong { color: var(--luxury-brown); }
+        .footer { background-color: var(--brand-dark-bg); color: rgba(255,255,255,0.7); padding: 1.5rem 1rem 1rem; margin-top: 2rem; font-size: 0.85em; text-align: center; border-top: 2px solid var(--brand-gold); }
+        .footer .social-icons a { color: rgba(255,255,255,0.7); font-size: 1.4rem; margin: 0 0.6rem; }
+        .footer .social-icons a:hover { color: var(--brand-gold); }
+        .footer .contact-info a { color: rgba(255,255,255,0.7); }
+        .footer .contact-info a:hover { color: var(--brand-gold); }
 
-         /* --- Error Message Styling --- */
-        #errorMessage { display: none; padding: 10px; margin: 18px auto; max-width: 550px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 5px; text-align: center; font-size: 0.8em;}
-        #errorMessage h4 { color: #721c24; margin-bottom: 5px; font-size: 0.95em; }
-
-        /* --- Footer --- */
-        .footer {
-            background-color: var(--luxury-dark);
-            color: var(--luxury-cream);
-            padding: 1.5rem 1rem 1rem; /* More padding top */
-            margin-top: 2rem; /* Space above footer */
-            font-size: 0.8em;
-            text-align: center;
-            border-top: 2px solid var(--luxury-gold);
-        }
-        .footer a {
-            color: var(--luxury-accent);
-            text-decoration: none;
-            transition: color var(--transition-speed-fast) ease;
-            margin: 0 0.5rem;
-        }
-        .footer a:hover {
-            color: var(--luxury-gold);
-        }
-        .footer .social-icons a {
-            font-size: 1.4em; /* Larger icons */
-            margin: 0 0.6rem;
-        }
-        .footer p {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .footer .contact-info {
-            margin-top: 0.8rem;
-        }
-
-
-        /* --- =========================== --- */
-        /* ---    RESPONSIVE ADJUSTMENTS   --- */
-        /* --- =========================== --- */
-
-        /* Medium devices (tablets, 768px and up) */
-        @media (min-width: 768px) {
-             body { font-size: 14.5px; padding-top: 70px; }
-             .main-container { padding: 2rem 1.5rem; }
-             .main-title { font-size: 2.4em; }
-             .navbar .navbar-brand img { max-width: 140px; }
-             .footer { padding: 2rem 1.5rem 1.5rem; }
-             #visualBoxRepresentation { grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 12px;} /* Wider grid on desktop */
-             .sweet-icon-placeholder img { width: 50px; height: 50px; }
-             .sweet-icon-placeholder span { font-size: 0.7em;}
-        }
-
-        /* Small devices (landscape phones, less than 768px) - MOBILE STYLES START HERE */
         @media (max-width: 767.98px) {
-            body { padding-top: 60px; font-size: 13.5px; }
-             .main-container { padding: 1.5rem 0.8rem; }
-            .navbar .container { justify-content: space-between; }
-             .navbar .navbar-brand { margin-right: auto; }
-             .navbar .navbar-nav { display: none; }
-             .navbar-collapse { /* Mobile menu */
-                 position: fixed; top: 60px; right: 0; left: 0;
-                 background-color: rgba(40, 36, 36, 0.98);
-                 backdrop-filter: blur(6px);
-                 padding: 1rem; box-shadow: 0 8px 15px rgba(0,0,0,0.25);
-                 border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;
-                 z-index: 1040;
-             }
-             .navbar-collapse .navbar-nav { display: block; }
-             .navbar .nav-link { font-size: 0.9em; margin: 0.5rem 0; display: block; text-align: center;}
-             .navbar .nav-link::after { display: none; }
-
-             /* Show mobile cart indicator and position it */
-             #nav-cart-indicator { display: inline-block; }
-             .navbar-controls { display: flex; align-items: center; }
-
-            .main-title { font-size: 1.8em; margin-bottom: 1.2rem; }
-            #wizard { max-width: 100%; margin-left: 6px; margin-right: 6px; min-height: auto; }
-            #wizard-progress { max-width: 100%; padding: 7px 3px; margin-bottom: 1.5rem;}
-            .progress-step { font-size: 0.65em; padding: 4px 2px; font-weight: 500;}
-            .progress-step span, .progress-step .step-text { display: none; }
-            .progress-step::before { margin-right: 0; font-size: 1.1em; }
-            .progress-step.completed { flex-grow: 0; padding: 4px 8px; }
-             .progress-step.active .step-text { display: inline; margin-left: 4px; }
-
-            .step { border-radius: 10px; max-height: calc(100vh - 130px); } /* Adjusted max-height */
-             .step-scrollable-content { padding: 15px 15px; }
-             .button-group { padding: 0.7rem 15px; }
-            .step h2 { font-size: 1.35em; margin-bottom: 1.2rem; }
-            .step button { padding: 8px 18px; font-size: 0.75em; }
-            .button-group { flex-direction: column; gap: 8px; align-items: stretch; } /* Keep column layout */
-            .button-group .prevStep { order: 2; background-color: #eee; border: 1px solid #ddd; color: #555;} /* Ensure contrast */
+            body { padding-top: 70px; }
+            .navbar-collapse { position: fixed; top: 70px; right: 0; left: 0; background-color: rgba(var(--bs-dark-rgb),0.98); backdrop-filter: blur(6px); padding: 1rem; box-shadow: 0 8px 15px rgba(0,0,0,0.25); border-radius: 0 0 8px 8px; z-index: 1040; border-top: 1px solid rgba(255,255,255,0.1); }
+            #nav-cart-indicator { display: inline-block; }
+            .button-group { flex-direction: column; gap: 8px; align-items: stretch; }
+            .button-group .prevStep { order: 2; }
             .button-group .nextStep, .button-group #finishOrder, .button-group #confirmOrderBtn { order: 1; width: 100%; }
-            #quantityStep .button-group { flex-direction: row; justify-content: flex-end; gap: 10px; } /* Keep row for first step */
-            #quantityStep .button-group .prevStep { visibility: hidden; display: none; } /* Hide fully */
-
-             /* Hide floating cart on mobile */
-             #cartBox { display: none !important; }
-
-            .quantity-control { max-width: 95px; }
-            .quantity-control .btn-qty { padding: 4px 9px; font-size: 1.1em; }
-            .quantity-control .qty-display { font-size: 0.85em; min-width: 24px;}
-
-            #reviewDetails { gap: 12px; }
-            #reviewTextSummary h4 { font-size: 1.1em; }
-            #packagingPreviewContainer h5 { font-size: 1.0em; }
-            #visualBoxRepresentation { gap: 8px; padding: 10px; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));} /* Mobile icon grid */
-            .sweet-icon-placeholder img { width: 42px; height: 42px; margin-bottom: 3px; }
-            .sweet-icon-placeholder span { font-size: 0.62em; }
-
-            #orderSuccessMessage { padding: 18px; }
-            #orderSuccessMessage h2 { font-size: 1.4em; }
-            #orderSuccessMessage p { font-size: 0.85em; }
-            #orderSuccessMessage #successOrderSummary { padding: 10px; }
-            #orderSuccessMessage .btn-new-order { padding: 9px 22px; font-size: 0.8em; }
-
-            .footer { font-size: 0.75em; padding: 1rem 0.8rem 0.8rem; margin-top: 1.5rem; }
-            .footer .social-icons a { font-size: 1.3em; margin: 0 0.5rem; }
+            #quantityStep .button-group { flex-direction: row; justify-content: flex-end; }
+            #quantityStep .button-group .prevStep { display: none; }
+            #cartBox { display: none !important; } /* Hide floating cart on mobile, use modal */
+            #reviewDetails { flex-direction: column; }
+            #reviewTextSummary, #packagingPreviewContainer { flex-basis: auto; }
         }
-
-        /* Extra small devices (portrait phones, less than 576px) */
         @media (max-width: 575.98px) {
-            body { font-size: 13px; padding-top: 55px; }
-            .main-container { padding: 1.0rem 0.5rem; }
-            .main-title { font-size: 1.6em; } /* Adjusted */
-            .navbar .navbar-brand img { max-width: 110px; } /* Adjusted */
-            #wizard-progress { display: none; } /* Keep hidden */
-            .step h2 { font-size: 1.25em; } /* Adjusted */
-            .sweet-card { max-width: 100%; } /* Keep full width */
-            #sweetCards.row { --bs-gutter-x: 0.6rem; --bs-gutter-y: 0.6rem; } /* Adjusted gutters */
-             .row-cols-2 > * { flex: 0 0 auto; width: 50%; } /* Ensure 2 columns */
-            .sweet-card .card-body { padding: 8px; } /* Adjusted */
-            .sweet-card .card-title { font-size: 0.9em; }
-            .sweet-card .card-text { font-size: 0.68em; line-height: 1.3; max-height: 35px; }
-            .sweet-card .btn-add-update { padding: 5px 10px; font-size: 0.7em; } /* Adjusted */
-            .quantity-control { max-width: 90px; } /* Adjusted */
-            .quantity-control .btn-qty { padding: 4px 8px; font-size: 1.0em; }
-            .quantity-control .qty-display { font-size: 0.8em; min-width: 22px;}
-            #reviewTextSummary { min-width: 100%; flex-basis: 100%; order: 1;} /* Stack review items */
-            #packagingPreviewContainer { min-width: 100%; flex-basis: 100%; order: 2;}
-            #visualBoxRepresentation { grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); gap: 8px; } /* Smaller review icons */
-             .sweet-icon-placeholder img { width: 40px; height: 40px; }
-             .sweet-icon-placeholder span { font-size: 0.6em; }
-            .button-group { padding: 0.6rem 15px; }
-            .footer { font-size: 0.7em; }
-            .footer .social-icons a { font-size: 1.2em; }
+            #wizard-progress { display: none; }
+            .sweet-card { max-width: 100%; }
+            #sweetCards.row { --bs-gutter-x: 0.5rem; --bs-gutter-y: 0.5rem; }
         }
     </style>
 </head>
@@ -484,30 +233,22 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="img/10.png" alt="Darna Logo"
-                     onerror="console.error('LOGO LOAD ERROR: Path=\'img/10.png\''); this.onerror=null; this.style.display='none'; const brandText = document.createElement('span'); brandText.textContent='Darna'; brandText.style.color='var(--luxury-gold)'; brandText.style.fontFamily='var(--font-heading)'; brandText.style.fontSize='1.5em'; this.parentNode.appendChild(brandText);">
+            <a class="navbar-brand" href="index.html#landing">
+                <img src="img/logo-no-background.png" alt="Darna Logo"
+                     onerror="this.style.display='none'; const el = document.createElement('span'); el.className='navbar-brand-text-fallback'; el.textContent='Darna'; this.parentNode.insertBefore(el, this.nextSibling); console.error('Logo Error: img/logo-no-background.png')">
             </a>
-
-            <!-- Mobile Controls Group -->
             <div class="navbar-controls d-flex align-items-center d-lg-none">
-                 <!-- Mobile Cart Indicator (Clickable) -->
                  <a href="#" id="nav-cart-indicator" class="nav-link" data-bs-toggle="modal" data-bs-target="#mobileCartModal" aria-label="View Selections">
-                    <i class="bi bi-box-seam"></i>
-                    <span class="badge bg-danger">0</span> <!-- Badge updated by JS -->
+                    <i class="bi bi-box-seam"></i><span class="badge">0</span>
                  </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             </div>
-
-            <!-- Desktop Nav Links & Mobile Menu Content -->
              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                  <ul class="navbar-nav">
-                     <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Custom Box</a></li>
-                     <li class="nav-item"><a class="nav-link" href="#initiatives">Initiatives</a></li>
-                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                     <li class="nav-item"><a class="nav-link" href="index.html#landing">Home</a></li>
+                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="custom-order.html">Offerings</a></li>
+                     <li class="nav-item"><a class="nav-link" href="index.html#initiatives">Initiatives</a></li>
+                     <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact Us</a></li>
                  </ul>
              </div>
         </div>
@@ -516,24 +257,18 @@
     <!-- Main Content -->
     <main class="container main-container">
         <h1 class="main-title">Compose Your Exquisite Sweet Box</h1>
-
-        <!-- Error Message Placeholder -->
-        <div id="errorMessage">
-            <h4>Oops! Something went wrong.</h4>
-            <p>We couldn't load the delicacy data. Please ensure the 'sweets.json' file exists and is accessible, then refresh the page.</p>
-            <p><small>Error details logged to the console.</small></p>
+         <div class="text-center mb-3"> <!-- Optional: Button to clear cart -->
+            <button id="clearAndStartNewOrderBtn" class="btn btn-outline-secondary btn-sm">Clear Selections & Start New Box</button>
         </div>
-
-        <!-- Wizard Area -->
+        <div id="errorMessage" style="display: none;"><h4>Oops!</h4><p></p></div>
         <div id="wizardContainer">
             <div id="wizard-progress">
-                <div class="progress-step" data-step="0"><span>1.</span><span class="step-text"> Preference</span></div>
-                <div class="progress-step" data-step="1"><span>2.</span><span class="step-text"> Delicacies</span></div>
-                <div class="progress-step" data-step="2"><span>3.</span><span class="step-text"> Presentation</span></div>
-                <div class="progress-step" data-step="3"><span>4.</span><span class="step-text"> Review</span></div>
+                <div class="progress-step" data-step="0"><span>1.</span><span class="step-text">Preference</span></div>
+                <div class="progress-step" data-step="1"><span>2.</span><span class="step-text">Delicacies</span></div>
+                <div class="progress-step" data-step="2"><span>3.</span><span class="step-text">Presentation</span></div>
+                <div class="progress-step" data-step="3"><span>4.</span><span class="step-text">Review</span></div>
             </div>
             <div id="wizard">
-                <!-- Step 1: Quantity Type -->
                 <div id="quantityStep" class="step">
                     <div class="step-scrollable-content">
                          <h2>Choose Your Preference</h2>
@@ -541,732 +276,484 @@
                          <div class="form-check"><input class="form-check-input" type="radio" name="quantityType" id="quantityWeight" value="weight"><label class="form-check-label" for="quantityWeight">Order by Weight (grams)</label></div>
                     </div>
                      <div class="button-group">
-                        <button type="button" class="btn btn-secondary prevStep">Back</button> <!-- Kept for structure, hidden by CSS -->
+                        <button type="button" class="btn btn-secondary prevStep">Back</button>
                         <button type="button" class="btn btn-primary nextStep">Next: Delicacies</button>
                     </div>
                 </div>
-
-                <!-- Step 2: Sweet Selection -->
                 <div id="sweetSelectionStep" class="step">
                     <div class="step-scrollable-content">
                         <h2>Select Your Delicacies</h2>
-                        <div id="cardLoadingOverlay"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>
+                        <div id="cardLoadingOverlay"><div class="spinner-border"><span class="visually-hidden">Loading...</span></div></div>
                         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2 g-md-3 justify-content-center" id="sweetCards">
                             <p class="text-muted text-center col-12">Loading delicacies...</p>
                         </div>
                     </div>
                      <div class="button-group">
-                         <button type="button" class="btn btn-secondary prevStep">Back: Preference</button>
-                         <button type="button" class="btn btn-primary nextStep">Next: Presentation</button>
+                         <button type="button" class="btn btn-secondary prevStep">Back</button>
+                         <button type="button" class="btn btn-primary nextStep">Next</button>
                      </div>
                 </div>
-
-                <!-- Step 3: Packaging -->
                 <div id="packagingStep" class="step">
                      <div class="step-scrollable-content">
                          <h2>Choose Presentation</h2>
                          <div class="form-check"><input class="form-check-input" type="radio" name="packaging" id="box" value="box" checked><label class="form-check-label" for="box">Signature Darna Box</label></div>
-                         <div class="form-check"><input class="form-check-input" type="radio" name="packaging" id="tray" value="tray"><label class="form-check-label" for="tray">Ornate Keepsake Tray (+$8.00)</label></div>
+                         <div class="form-check"><input class="form-check-input" type="radio" name="packaging" id="tray" value="tray"><label class="form-check-label" for="tray">Ornate Keepsake Tray (+30 MAD)</label></div>
                      </div>
                      <div class="button-group">
-                        <button type="button" class="btn btn-secondary prevStep">Back: Delicacies</button>
-                        <button type="button" class="btn btn-primary" id="finishOrder">Next: Review</button>
+                        <button type="button" class="btn btn-secondary prevStep">Back</button>
+                        <button type="button" class="btn btn-primary" id="finishOrder">Next</button>
                     </div>
                 </div>
-
-                 <!-- Step 4: Review -->
                  <div id="reviewStep" class="step">
                     <div class="step-scrollable-content">
                         <h2>Review Your Creation</h2>
                         <div id="reviewDetails">
                             <div id="reviewTextSummary">
-                                <!-- Populated by JS -->
+                                <!-- Content generated by JS -->
                             </div>
                             <div id="packagingPreviewContainer">
                                  <h5>Visual Preview</h5>
                                  <div id="visualBoxRepresentation">
-                                     <!-- Populated by JS -->
+                                     <!-- Content generated by JS -->
                                  </div>
                             </div>
                         </div>
-                         <div class="alert alert-light border-warning mt-3 small py-2" style="background-color: #fffaf0;">
-                            <i class="bi bi-info-circle-fill text-warning me-1"></i>Please review your selections. Note: This is a demonstration.
-                        </div>
+                         <div class="alert alert-light border-warning mt-3 small py-2" style="background-color: #fffaf0;"><i class="bi bi-info-circle-fill text-warning me-1"></i>Please review. Demo only.</div>
                     </div>
                      <div class="button-group">
-                         <button type="button" class="btn btn-secondary prevStep">Back: Presentation</button>
-                         <button type="button" class="btn btn-success" id="confirmOrderBtn"><i class="bi bi-check-lg me-1"></i>Confirm Selection</button>
+                         <button type="button" class="btn btn-secondary prevStep">Back</button>
+                         <button type="button" class="btn btn-success" id="confirmOrderBtn"><i class="bi bi-whatsapp me-1"></i>Send Order via WhatsApp</button>
                      </div>
                 </div>
             </div>
         </div>
-
-        <!-- Order Success Message -->
-         <div id="orderSuccessMessage">
-              <h2><i class="bi bi-patch-check-fill"></i> Order Confirmed!</h2>
-              <p>Your exquisite selection is noted. Thank you!</p>
+         <!-- Success Message is no longer used in the primary flow after "Confirm" -->
+         <div id="orderSuccessMessage" style="display: none;">
+              <h2><i class="bi bi-patch-check-fill"></i> Order Confirmed! (Demo)</h2>
+              <p>Your selection is noted. Thank you!</p>
               <div id="successOrderSummary"></div>
               <button id="startNewOrderBtn" class="btn-new-order mt-3">Compose Another</button>
          </div>
     </main>
 
-    <!-- Cart Box (Desktop Only - Hidden on Mobile via CSS) -->
-    <div id="cartBox">
+    <!-- Floating Cart for Desktop -->
+    <div id="cartBox"> <!-- Initially hidden by CSS opacity/visibility/transform -->
         <h3>Your Bespoke Box</h3>
         <div id="cartItems">
-            <p id="emptyCartMsg">Your box awaits selections.</p>
+            <p id="emptyCartMsg" class="empty-cart-placeholder">Awaits selections.</p>
         </div>
     </div>
 
-    <!-- Mobile Cart Modal -->
     <div class="modal fade" id="mobileCartModal" tabindex="-1" aria-labelledby="mobileCartModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="mobileCartModalLabel">Your Selections</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="mobileCartItems">
-                    <!-- Items will be populated by JS -->
-                    <p id="emptyMobileCartMsg">Your box awaits selections.</p>
-                </div>
-                <div class="modal-footer">
-                     <button type="button" class="btn btn-primary btn-modal-action" data-bs-dismiss="modal">Continue Building</button>
-                 </div>
+                <div class="modal-header"><h5 class="modal-title" id="mobileCartModalLabel">Your Selections</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body" id="mobileCartItems"><p id="emptyMobileCartMsg" class="empty-cart-placeholder">Awaits selections.</p></div>
+                <div class="modal-footer"><button type="button" class="btn btn-primary btn-modal-action" data-bs-dismiss="modal">Continue Building</button></div>
             </div>
         </div>
     </div>
-
-
-    <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer text-center">
         <div class="container">
             <div class="social-icons mb-3">
-                <a href="https://www.instagram.com/darna_patisserie?igsh=MTRwcTNtcWkyM3Q4OA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                <a href="https://www.facebook.com/profile.php?id=61575057266959" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/darna_patisserie?igsh=MTRwcTNtcWkyM3Q4OA==" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61575057266959" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook"></i></a>
             </div>
-            <div class="contact-info mb-2">
-                 <a href="mailto:darnapatisserie@gmail.com"><i class="bi bi-envelope-fill me-1"></i> darnapatisserie@gmail.com</a>
-            </div>
+            <div class="contact-info mb-2"><a href="mailto:darnapatisserie@gmail.com"><i class="bi bi-envelope-fill me-1"></i>darnapatisserie@gmail.com</a></div>
             <p>© <span id="currentYear"></span> Darna Patisserie. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Wrap entire script in a try...catch
         try {
             $(document).ready(function() {
-                console.log("Document ready. Initializing Darna Wizard (v13 - Single Review Icon)...");
+                const WHATSAPP_NUMBER = "+212708898226"; // <<< REPLACE THIS WITH YOUR ACTUAL WHATSAPP NUMBER (e.g., "212600000000")
+                console.log("Darna Wizard (v16 - WhatsApp Direct Order)...");
 
-                // --- Global State Variables ---
-                let cart = [];
-                let currentStep = 0;
-                let sweets = [];
-                let chosenQuantityType = 'unit';
-                let chosenPackaging = 'box';
-                const packagingCost = { box: 0, tray: 8.00 };
+                let cart = [], currentStep = 0, sweets = [], chosenQuantityType = 'unit', chosenPackaging = 'box';
+                const packagingCost = { box: 0, tray: 30.00 };
+                const CURRENCY_SYMBOL = " MAD";
 
-                // --- DOM Element References ---
-                const steps = $(".step");
-                const progressSteps = $(".progress-step");
-                const wizardContainer = $("#wizardContainer");
-                const successMessageContainer = $("#orderSuccessMessage");
-                const cardLoadingOverlay = $("#cardLoadingOverlay");
-                const cartBox = $("#cartBox"); // Desktop floating cart
-                const cartItemsContainer = $("#cartItems"); // Desktop cart content
-                const emptyCartMsg = $("#emptyCartMsg"); // Desktop empty msg
-                const sweetCardsContainer = $("#sweetCards");
-                const errorMessageContainer = $("#errorMessage");
-                const navCartIndicator = $("#nav-cart-indicator"); // Mobile navbar icon link
-                const navCartBadge = navCartIndicator.find(".badge"); // Mobile badge element
-                const mobileCartModalElement = document.getElementById('mobileCartModal'); // Raw element for BS instance
-                const mobileCartModal = mobileCartModalElement ? new bootstrap.Modal(mobileCartModalElement) : null; // BS Modal Instance
-                const mobileCartItemsContainer = $("#mobileCartItems"); // Mobile modal body
-                const emptyMobileCartMsg = $("#emptyMobileCartMsg"); // Mobile empty msg
+                const $steps = $(".step"), $progressSteps = $(".progress-step"), $wizardContainer = $("#wizardContainer"),
+                      $successMessage = $("#orderSuccessMessage"), $cardLoadingOverlay = $("#cardLoadingOverlay"),
+                      $cartBox = $("#cartBox"), $cartItemsContainer = $("#cartItems"), $emptyCartMsg = $("#emptyCartMsg"),
+                      $sweetCardsContainer = $("#sweetCards"), $errorMessage = $("#errorMessage"),
+                      $navCartIndicator = $("#nav-cart-indicator"), $navCartBadge = $navCartIndicator.find(".badge"),
+                      mobileCartModalEl = document.getElementById('mobileCartModal'),
+                      mobileCartModal = mobileCartModalEl ? new bootstrap.Modal(mobileCartModalEl) : null,
+                      $mobileCartItemsContainer = $("#mobileCartItems"), $emptyMobileCartMsg = $("#emptyMobileCartMsg");
 
-                // --- Utility ---
-                const placeholderImg = 'img/placeholder.png';
-                function getSweetById(id) {
-                    if (!sweets || sweets.length === 0) return null;
-                    return sweets.find(s => s.id === id);
-                }
-                function formatQuantity(quantity, type) { return type === 'unit' ? `${quantity} pc${quantity !== 1 ? 's' : ''}` : `${quantity}g`; }
+                const placeholderImg = 'img/New img/placeholder_sweet.jpg';
+
+                function getSweetById(id) { return sweets.find(s => s.id === id) || null; }
+                function formatQuantity(qty, type) { return type === 'unit' ? `${qty} pc${qty !== 1 ? 's' : ''}` : `${qty}g`; }
+                function formatPrice(price) { return parseFloat(price).toFixed(2) + CURRENCY_SYMBOL; }
                 function updateCurrentYear() { $('#currentYear').text(new Date().getFullYear()); }
 
-                 // --- Mobile Navbar Cart Indicator Update ---
-                 function updateNavbarCartIndicator() {
-                    // Count based on units, or 1 for each weight selection
-                    const itemCount = cart.reduce((sum, item) => sum + (item.quantityType === 'unit' ? item.quantity : 1), 0);
-                    if (itemCount > 0) {
-                        navCartBadge.text(itemCount).show();
-                        // Ensure icon container is visible ONLY ON MOBILE (CSS handles this)
-                    } else {
-                        navCartBadge.hide();
-                    }
+                function calculateItemTotal(item) {
+                    const price = item.quantityType === 'unit' ? item.price_per_unit_mad : item.price_per_100g_mad;
+                    if (typeof price !== 'number' || typeof item.quantity !== 'number') return 0;
+                    return item.quantityType === 'unit' ? item.quantity * price : (item.quantity / 100) * price;
+                }
+                function calculateCartTotal() { return cart.reduce((total, item) => total + item.itemTotal, 0); }
+                function updateNavbarCartIndicator() {
+                    const count = cart.reduce((sum, item) => sum + (item.quantityType === 'unit' ? item.quantity : 1), 0);
+                    $navCartBadge.text(count > 0 ? count : '0').toggle(count > 0);
                 }
 
-                // --- Cart Display & Visibility (Handles Desktop Cart AND Mobile Indicator) ---
-                function showDesktopCart() { // Only affects desktop cart visibility
-                    if (!cartBox.hasClass('cart-visible')) { cartBox.addClass('cart-visible'); }
-                }
-                function hideDesktopCart() { // Only affects desktop cart visibility
-                    if (cartBox.hasClass('cart-visible')) { cartBox.removeClass('cart-visible'); }
-                }
-                // Updates desktop floating cart items
-                 function updateDesktopCartItems() {
-                    cartItemsContainer.empty();
+                function renderCartItems(container, emptyMsgEl, isMobile) {
+                    container.find('.cart-item, .mobile-cart-item, .cart-total-price, .empty-cart-placeholder').remove();
                     if (cart.length === 0) {
-                        cartItemsContainer.append(emptyCartMsg);
-                        hideDesktopCart(); // Hide desktop cart if empty
+                        container.append(emptyMsgEl.clone().removeAttr('id').addClass('empty-cart-placeholder').show());
+                        if (!isMobile) $cartBox.removeClass('cart-visible');
                     } else {
-                        cart.forEach((item, index) => {
-                            const delay = index * 0.05;
-                            const itemImagePath = item.img || placeholderImg;
-                            cartItemsContainer.append(`
-                                <div class="cart-item" style="animation-delay: ${delay}s;">
-                                    <img src="${itemImagePath}" alt="${item.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('Desktop Cart Img Error: ${itemImagePath}')">
-                                    <div class="cart-item-details">
+                        cart.forEach((item, idx) => {
+                            const priceValue = item.quantityType === 'unit' ? item.price_per_unit_mad : item.price_per_100g_mad;
+                            const priceSuffix = item.quantityType === 'unit' ? 'per unit' : 'per 100g';
+                            container.append(`
+                                <div class="${isMobile ? 'mobile-' : ''}cart-item" style="animation-delay:${idx*0.05}s" data-sweet-id="${item.sweetId}" data-quantity-type="${item.quantityType}">
+                                    <img src="${item.img || placeholderImg}" alt="${item.name}" onerror="this.onerror=null; this.src='${placeholderImg}'">
+                                    <div class="${isMobile ? 'mobile-' : ''}cart-item-details">
                                         <h5>${item.name}</h5>
-                                        <span>${formatQuantity(item.quantity, item.quantityType)}</span>
+                                        <div class="${isMobile ? 'mobile-' : ''}cart-item-pricing">
+                                            <span>${formatPrice(priceValue)} ${priceSuffix}</span><br>
+                                            <span class="item-subtotal">Item Total: ${formatPrice(item.itemTotal)}</span>
+                                        </div>
                                     </div>
-                                    <button class="remove-item-btn desktop-remove-item-btn" data-sweet-id="${item.sweetId}" data-quantity-type="${item.quantityType}" aria-label="Remove ${item.name}">×</button>
+                                    <div class="cart-item-quantity-controls">
+                                        <button class="btn-qty-cart btn-qty-decrease-cart" data-action="decrease">-</button>
+                                        <span class="qty-display-cart">${item.quantity}</span>
+                                        <button class="btn-qty-cart btn-qty-increase-cart" data-action="increase">+</button>
+                                    </div>
+                                    <button class="${isMobile ? 'mobile-' : ''}remove-item-btn">×</button>
                                 </div>`);
                         });
-                        // Show desktop cart only if on step 2 AND not empty
-                        if (currentStep === 1) { showDesktopCart(); } else { hideDesktopCart(); }
+                        container.append(`<div class="cart-total-price">Box Total: ${formatPrice(calculateCartTotal())}</div>`);
+                        if (!isMobile && currentStep < 3 && cart.length > 0) $cartBox.addClass('cart-visible');
+                        else if (!isMobile) $cartBox.removeClass('cart-visible');
                     }
                 }
-                // Central function to update all cart-related displays
                 function updateAllCartDisplays() {
-                    updateDesktopCartItems(); // Update desktop cart content & visibility
-                    updateNavbarCartIndicator(); // Update mobile badge count
-                    // Note: Mobile modal content is updated only when opened or item removed from within it.
+                    renderCartItems($cartItemsContainer, $emptyCartMsg, false);
+                    updateNavbarCartIndicator();
+                    if (mobileCartModalEl && bootstrap.Modal.getInstance(mobileCartModalEl)?.isShown) {
+                        renderCartItems($mobileCartItemsContainer, $emptyMobileCartMsg, true);
+                    }
                 }
 
+                function updateWizardProgress(idx) { $progressSteps.each((i, el) => $(el).removeClass('active completed').toggleClass('completed', i < idx).toggleClass('active', i === idx)); }
+                function showStep(idx) {
+                    if (idx < 0 || idx >= $steps.length) return;
+                    const $currActive = $steps.filter('.active-step'), $next = $($steps[idx]);
+                    if ($currActive.length && $currActive[0] !== $next[0]) {
+                        $currActive.removeClass('active-step').addClass('exiting-step');
+                        setTimeout(() => $currActive.removeClass('exiting-step'), 500);
+                    }
+                    $next.removeClass('exiting-step'); setTimeout(() => $next.addClass('active-step'), 10);
+                    const prevStep = currentStep; currentStep = idx; updateWizardProgress(currentStep);
 
-                // --- Wizard Navigation & Animation ---
-                function updateWizardProgress(targetStepIndex) {
-                    progressSteps.each(function(index) {
-                        const $step = $(this);
-                        $step.removeClass('active completed');
-                        if (index < targetStepIndex) { $step.addClass('completed'); }
-                        else if (index === targetStepIndex) { $step.addClass('active'); }
-                    });
+                    if (cart.length > 0 && currentStep < 3) { $cartBox.addClass('cart-visible'); }
+                    else { $cartBox.removeClass('cart-visible'); }
+
+                    if (currentStep === 1 && (prevStep !== 1 || $sweetCardsContainer.children().length <= 1 || $sweetCardsContainer.find('.quantity-input').first().attr('step') !== (chosenQuantityType === 'unit' ? '1' : '10'))) {
+                        $cardLoadingOverlay.addClass('visible');
+                        setTimeout(() => { generateSweetCards(); $cardLoadingOverlay.removeClass('visible'); }, 50);
+                    } else if (currentStep === 1) updateAllCardStates();
+                    else if (currentStep === 3) populateReview();
                 }
 
-                function showStep(stepIndex) {
-                    console.log(`Navigating to step index: ${stepIndex}`);
-                    if (stepIndex < 0 || stepIndex >= steps.length) { console.error(`Invalid step index: ${stepIndex}`); return; }
-
-                    const $currentActiveStep = steps.filter('.active-step');
-                    const $nextStep = $(steps[stepIndex]);
-
-                    if ($currentActiveStep.length > 0 && $currentActiveStep[0] !== $nextStep[0]) {
-                        $currentActiveStep.removeClass('active-step').addClass('exiting-step');
-                        // Use transitionend event for cleaner removal if needed, but timeout is simpler here
-                        setTimeout(() => { $currentActiveStep.removeClass('exiting-step'); }, 500); // Match transition duration
-                    }
-
-                    // Ensure correct classes are applied for entering step
-                     $nextStep.removeClass('exiting-step');
-                     // Use a tiny delay before adding active-step to ensure transition plays if it was recently hidden
-                     setTimeout(() => { $nextStep.addClass('active-step'); }, 10);
-
-
-                    const previousStep = currentStep;
-                    currentStep = stepIndex;
-                    updateWizardProgress(currentStep);
-
-                    // Desktop Cart Visibility Logic
-                    if (currentStep === 1 && cart.length > 0) { showDesktopCart(); }
-                    else { hideDesktopCart(); }
-
-                    // Content Generation Logic
-                    try {
-                        if (currentStep === 1) { // Delicacies
-                            if (sweets && sweets.length > 0) {
-                                // Regenerate cards if type changed or first time viewing
-                                if (previousStep !== 1 || sweetCardsContainer.children().length <= 1 || sweetCardsContainer.find('.quantity-input').first().attr('step') !== (chosenQuantityType === 'unit' ? '1' : '10')) { // Also check if step unit changed
-                                    showLoadingOverlay();
-                                    setTimeout(() => {
-                                        // updateQuantityLabelsAndInputs(); // Update first // NO - generate handles this now
-                                        generateSweetCards(); // Regenerates with correct values/labels
-                                        hideLoadingOverlay();
-                                    }, 50); // Short delay for overlay
-                                } else {
-                                    // If returning and type hasn't changed, maybe just update quantities if needed?
-                                    // updateAllCardStates(); // Re-sync quantities shown? Less efficient but safe.
-                                }
-                            } else {
-                                sweetCardsContainer.html('<p class="text-warning text-center col-12">Delicacy data loading or failed.</p>');
-                            }
-                        } else if (currentStep === 3) { // Review
-                            populateReview();
-                        }
-                    } catch (e) {
-                        console.error(`Error generating content for step ${currentStep}:`, e);
-                        alert(`An error occurred loading content for step ${currentStep + 1}. Check console.`);
-                    }
-                 }
-
-
-                function showLoadingOverlay() { cardLoadingOverlay.addClass('visible'); }
-                function hideLoadingOverlay() { cardLoadingOverlay.removeClass('visible'); }
-
-                // Removed updateQuantityLabelsAndInputs as a standalone - integrated into generateSweetCards
-
-                // --- Sweet Card Generation ---
                 function generateSweetCards() {
-                    sweetCardsContainer.empty();
-                    if (!sweets || sweets.length === 0) { console.error("No sweets data available for card generation."); sweetCardsContainer.append('<p class="text-center text-danger col-12">No delicacies data found.</p>'); return; }
-
+                    $sweetCardsContainer.empty(); if (!sweets.length) { $sweetCardsContainer.append('<p class="text-center text-danger col-12">No delicacies found.</p>'); return; }
                     const minQuantity = chosenQuantityType === 'unit' ? 1 : 50;
                     const stepQuantity = chosenQuantityType === 'unit' ? 1 : 10;
-                    const quantityLabelText = chosenQuantityType === 'unit' ? 'Units:' : 'Grams:';
-
+                    const priceSuffix = chosenQuantityType === 'unit' ? 'per unit' : 'per 100g';
 
                     sweets.forEach((sweet, index) => {
+                        const sweetPrice = chosenQuantityType === 'unit' ? sweet.price_per_unit_mad : sweet.price_per_100g_mad;
+                        const displayPrice = typeof sweetPrice === 'number' ? sweetPrice : 0;
+
                         const existingCartItem = cart.find(item => item.sweetId === sweet.id && item.quantityType === chosenQuantityType);
                         const isInCart = !!existingCartItem;
                         const currentQuantity = isInCart ? existingCartItem.quantity : minQuantity;
-                        const buttonText = isInCart ? 'Update In Cart' : 'Add To Box';
-                        const buttonClass = isInCart ? 'btn-update' : 'btn-add';
-                        const cardClass = isInCart ? 'card-in-cart' : '';
                         const imagePath = sweet.img || placeholderImg;
 
-                        let variationsHtml = '';
-                        if (sweet.variations && sweet.variations.length > 0) {
-                            variationsHtml = `<div class="sweet-variations">`;
-                            sweet.variations.slice(0, 1).forEach(v => { variationsHtml += `<i class="bi bi-dot"></i> ${v}`; });
-                             if (sweet.variations.length > 1) variationsHtml += ` (+)`;
-                            variationsHtml += `</div>`;
-                        }
-                        sweetCardsContainer.append(`
+                        $sweetCardsContainer.append(`
                             <div class="sweet-card-column">
-                                <div class="card sweet-card ${cardClass}" style="animation-delay: ${index * 0.04}s;" data-sweet-id="${sweet.id}">
-                                    <img src="${imagePath}" class="card-img-top selectable-card-img" alt="${sweet.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('Card Img Error: Path=\\'${imagePath}\\' for ${sweet.name}');">
+                                <div class="card sweet-card ${isInCart ? 'card-in-cart' : ''}" style="animation-delay:${index*0.04}s" data-sweet-id="${sweet.id}">
+                                    <img src="${imagePath}" class="card-img-top selectable-card-img" alt="${sweet.name}" onerror="this.onerror=null; this.src='${placeholderImg}'">
                                     <div class="card-body">
                                         <h5 class="card-title">${sweet.name}</h5>
-                                        ${variationsHtml}
+                                        ${sweet.variations && sweet.variations.length ? `<div class="sweet-variations"><i class="bi bi-dot"></i> ${sweet.variations[0]}${sweet.variations.length > 1 ? ' (+)' : ''}</div>` : ''}
                                         <p class="card-text">${sweet.description}</p>
+                                        <div class="price-display">${formatPrice(displayPrice)} ${priceSuffix}</div>
                                         <div class="form-group mt-auto">
                                             <div class="quantity-control-wrapper mb-2">
-                                                 <label for="quantity_${sweet.id}" class="visually-hidden">${quantityLabelText}</label>
                                                  <div class="quantity-control">
-                                                      <button type="button" class="btn-qty btn-qty-decrease" data-action="decrease" aria-label="Decrease quantity for ${sweet.name}">-</button>
-                                                      <span class="qty-display" aria-live="polite">${currentQuantity}</span>
-                                                      <button type="button" class="btn-qty btn-qty-increase" data-action="increase" aria-label="Increase quantity for ${sweet.name}">+</button>
+                                                      <button type="button" class="btn-qty btn-qty-decrease" data-action="decrease">-</button>
+                                                      <span class="qty-display">${currentQuantity}</span>
+                                                      <button type="button" class="btn-qty btn-qty-increase" data-action="increase">+</button>
                                                  </div>
-                                                 <input type="number" class="quantity-input" id="quantity_${sweet.id}" value="${currentQuantity}" min="${minQuantity}" step="${stepQuantity}" data-sweet-id="${sweet.id}" aria-label="Qty ${sweet.name}">
+                                                 <input type="number" class="quantity-input" value="${currentQuantity}" min="${minQuantity}" step="${stepQuantity}">
                                              </div>
-                                             <button class="btn btn-sm btn-add-update ${buttonClass}" data-sweet-id="${sweet.id}" data-sweet-name="${sweet.name}" data-img="${imagePath}">${buttonText}</button>
+                                             <button class="btn btn-sm btn-add-update ${isInCart ? 'btn-update' : 'btn-add'}" data-unit-price="${displayPrice}">${isInCart ? 'Update' : 'Add'}</button>
                                          </div>
                                     </div>
                                 </div>
                             </div>`);
                     });
-                    // No need to call updateQuantityLabelsAndInputs separately
-                    // No need to call updateAllCardStates separately
-                    console.log("DEBUG: Sweet cards generated/regenerated with type:", chosenQuantityType);
                  }
-
-                function updateCardState(sweetId) { // Updates card border and Add/Update button text/class
-                    const card = sweetCardsContainer.find(`.sweet-card[data-sweet-id="${sweetId}"]`);
+                function updateCardState(sweetId) {
+                    const card = $sweetCardsContainer.find(`.sweet-card[data-sweet-id="${sweetId}"]`);
                     if (!card.length) return;
-                    // Check cart based on the CURRENTLY selected quantity type
+                    const sweetData = getSweetById(sweetId);
+                    if (!sweetData) return;
+
+                    const sweetPrice = chosenQuantityType === 'unit' ? sweetData.price_per_unit_mad : sweetData.price_per_100g_mad;
+                    const displayPrice = typeof sweetPrice === 'number' ? sweetPrice : 0;
+                    const priceSuffix = chosenQuantityType === 'unit' ? 'per unit' : 'per 100g';
+                    card.find('.price-display').text(`${formatPrice(displayPrice)} ${priceSuffix}`);
+                    card.find('.btn-add-update').data('unit-price', displayPrice);
+
                     const existingCartItem = cart.find(item => item.sweetId === sweetId && item.quantityType === chosenQuantityType);
                     const isInCart = !!existingCartItem;
                     const button = card.find('.btn-add-update');
                     const quantityInput = card.find('.quantity-input');
                     const quantityDisplay = card.find('.qty-display');
                     const minQuantity = chosenQuantityType === 'unit' ? 1 : 50;
-                    const stepQuantity = chosenQuantityType === 'unit' ? 1 : 10;
 
-                    // Also update the input's min/step attributes based on current type
-                    quantityInput.attr('min', minQuantity).attr('step', stepQuantity);
-                     quantityInput.closest('.quantity-control-wrapper').find('label.visually-hidden').text(chosenQuantityType === 'unit' ? 'Units:' : 'Grams:');
-
+                    quantityInput.attr('min', minQuantity).attr('step', chosenQuantityType === 'unit' ? 1 : 10);
 
                     if (isInCart) {
-                        card.addClass('card-in-cart');
-                        button.removeClass('btn-add').addClass('btn-update').text('Update In Cart');
-                        quantityInput.val(existingCartItem.quantity); // Set input value from cart
-                        quantityDisplay.text(existingCartItem.quantity); // Set display from cart
+                        card.addClass('card-in-cart'); button.removeClass('btn-add').addClass('btn-update').text('Update');
+                        quantityInput.val(existingCartItem.quantity); quantityDisplay.text(existingCartItem.quantity);
                     } else {
-                        card.removeClass('card-in-cart');
-                        button.removeClass('btn-update').addClass('btn-add').text('Add To Box');
-                        quantityInput.val(minQuantity); // Reset input value to min
-                        quantityDisplay.text(minQuantity); // Reset display to min
+                        card.removeClass('card-in-cart'); button.removeClass('btn-update').addClass('btn-add').text('Add');
+                        quantityInput.val(minQuantity); quantityDisplay.text(minQuantity);
                     }
                  }
-                 function updateAllCardStates() {
-                     console.log("Updating all card states based on current cart and type:", chosenQuantityType);
-                     sweetCardsContainer.find(".sweet-card").each(function() {
-                         updateCardState($(this).data('sweet-id'));
-                    });
-                 }
+                 function updateAllCardStates() { $sweetCardsContainer.find(".sweet-card").each(function() { updateCardState($(this).data('sweet-id')); }); }
 
-                // --- Step Navigation Buttons ---
                 $(".nextStep").click(function() {
-                    console.log(`Next button clicked. Current step: ${currentStep}`);
                     let canProceed = true;
-                    try {
-                        if (currentStep === 0) {
-                            const newQuantityType = $('input[name="quantityType"]:checked').val();
-                            if (newQuantityType !== chosenQuantityType && cart.length > 0) {
-                                if (confirm("Changing your preference (Unit/Weight) will clear your current selections. Proceed?")) {
-                                    console.log("User confirmed type change. Clearing cart.");
-                                    cart = [];
-                                    chosenQuantityType = newQuantityType;
-                                    updateAllCartDisplays(); // Update indicators after clearing
-                                    // Cards will be regenerated on showStep(1)
-                                } else {
-                                    console.log("User cancelled type change.");
-                                    $(`input[name="quantityType"][value="${chosenQuantityType}"]`).prop('checked', true); // Revert radio button
-                                    canProceed = false;
-                                }
-                            } else if (newQuantityType !== chosenQuantityType) {
-                                console.log("Updating quantity type (cart is empty or type was same).");
-                                chosenQuantityType = newQuantityType;
-                                // Cards will be regenerated/updated on showStep(1)
-                            }
-                        } else if (currentStep === 1) {
-                            if (cart.length === 0) {
-                                alert("Your box is empty! Please select some delicacies before proceeding.");
-                                canProceed = false;
-                            }
-                        } else if (currentStep === 2) { // Moving from Packaging to Review
-                             chosenPackaging = $('input[name="packaging"]:checked').val();
-                             if (!chosenPackaging) {
-                                alert("Please select a presentation option.");
-                                canProceed = false;
-                             }
-                        }
-
-                        if (canProceed && currentStep < steps.length - 1) {
-                            showStep(currentStep + 1);
-                        }
-                    } catch(e) {
-                         console.error("Error in nextStep click handler:", e);
-                         alert("An error occurred while trying to proceed. Please check the console.");
-                         canProceed = false;
+                    if (currentStep === 0) {
+                        const newType = $('input[name="quantityType"]:checked').val();
+                        if (newType !== chosenQuantityType && cart.length && !confirm("Change preference clears selections. Proceed?")) {
+                             $(`input[name="quantityType"][value="${chosenQuantityType}"]`).prop('checked', true); canProceed = false;
+                        } else if (newType !== chosenQuantityType) { cart = []; chosenQuantityType = newType; updateAllCartDisplays(); }
+                    } else if (currentStep === 1 && !cart.length) { alert("Box is empty!"); canProceed = false; }
+                    else if (currentStep === 2) {
+                         chosenPackaging = $('input[name="packaging"]:checked').val();
+                         if (!chosenPackaging) { alert("Select presentation."); canProceed = false; }
                     }
+                    if (canProceed && currentStep < $steps.length - 1) showStep(currentStep + 1);
+                });
+                $(".prevStep").click(function() { if (currentStep > 0) showStep(currentStep - 1); });
+                $(document).on('click', '#wizard-progress .progress-step.completed', function() { const step = parseInt($(this).data('step')); if (!isNaN(step) && step < currentStep) showStep(step); });
+                $(document).on('click', '.selectable-card-img', function() { $(this).closest('.sweet-card').find('.btn-add-update').trigger('click'); });
+                $sweetCardsContainer.on('click', '.btn-qty', function() {
+                    const $btn = $(this), action = $btn.data('action'), $group = $btn.closest('.form-group'),
+                          $input = $group.find('.quantity-input'), $display = $group.find('.qty-display');
+                    let val = parseInt($input.val()), min = parseInt($input.attr('min')), step = parseInt($input.attr('step'));
+                    val = (action === 'increase') ? val + step : Math.max(min, val - step);
+                    $input.val(val); $display.text(val); $group.find('.btn-add-update').trigger('click');
                 });
 
-                $(".prevStep").click(function() {
-                     if (currentStep > 0) { showStep(currentStep - 1); }
-                 });
-                $(document).on('click', '#wizard-progress .progress-step.completed', function() {
-                    const targetStep = parseInt($(this).data('step'), 10);
-                    if (!isNaN(targetStep) && targetStep < currentStep) { showStep(targetStep); }
-                 });
+                $(document).on("click", ".btn-add-update", function() {
+                    const $button = $(this), sweetCard = $button.closest('.sweet-card'), sweetId = sweetCard.data('sweet-id'),
+                          sweetData = getSweetById(sweetId);
+                    if (!sweetData) { console.error("Sweet data not found for ID:", sweetId); return; }
 
-                // --- Click Handler for Card Image (Acts like Add/Update button) ---
-                $(document).on('click', '.selectable-card-img', function(event) {
-                     $(this).closest('.sweet-card').find('.btn-add-update').trigger('click', { triggeredByImage: true }); // Pass extra data if needed
-                 });
+                    const unitPrice = parseFloat($button.data('unit-price'));
+                    let quantity = parseInt(sweetCard.find('.quantity-input').val());
+                    const minQuantity = parseInt(sweetCard.find('.quantity-input').attr('min'));
 
-                // --- Event Listener for Quantity Buttons (+/-) ---
-                sweetCardsContainer.on('click', '.btn-qty', function() {
-                    const $button = $(this); const action = $button.data('action');
-                    const $formGroup = $button.closest('.form-group'); const $input = $formGroup.find('.quantity-input');
-                    const $display = $formGroup.find('.qty-display');
-                    const currentVal = parseInt($input.val(), 10); const min = parseInt($input.attr('min'), 10); const step = parseInt($input.attr('step'), 10);
-                    let newVal = currentVal;
-                    if (isNaN(currentVal) || isNaN(min) || isNaN(step)) { console.error("Invalid quantity values in +/- handler."); return; }
-                    if (action === 'increase') { newVal += step; }
-                    else if (action === 'decrease') { newVal = Math.max(min, currentVal - step); } // Ensure not below min
-                    $input.val(newVal).trigger('change'); // Update input and trigger change
-                    $display.text(newVal);
-                    // Automatically trigger add/update after +/- click
-                    $formGroup.find('.btn-add-update').trigger('click');
+                    if (isNaN(quantity) || quantity < minQuantity || isNaN(unitPrice)) {
+                        quantity = minQuantity; sweetCard.find('.quantity-input').val(quantity);
+                        sweetCard.find('.qty-display').text(quantity);
+                    }
+                    const existingIdx = cart.findIndex(i => i.sweetId === sweetId && i.quantityType === chosenQuantityType);
+                    const cartItemData = {
+                        sweetId, name: sweetData.name, quantity, quantityType: chosenQuantityType,
+                        img: sweetData.img, price_per_unit_mad: sweetData.price_per_unit_mad, price_per_100g_mad: sweetData.price_per_100g_mad
+                    };
+                    cartItemData.itemTotal = calculateItemTotal(cartItemData);
+
+                    if (existingIdx > -1) cart[existingIdx] = cartItemData;
+                    else {
+                        cart = cart.filter(i => !(i.sweetId === sweetId && i.quantityType !== chosenQuantityType));
+                        cart.push(cartItemData);
+                    }
+                    $button.addClass('added-pulse'); setTimeout(() => $button.removeClass('added-pulse'), 400);
+                    updateAllCartDisplays(); updateAllCardStates();
                 });
 
-                 // --- Add/Update To Cart (Triggered by +/- or button/image click) ---
-                $(document).on("click", ".btn-add-update", function(event, data) {
-                    const isUserClick = event.originalEvent !== undefined || (data && data.triggeredByImage); // Check if direct click or triggered
-                    const $button = $(this); const sweetId = $button.data('sweet-id');
-                    const sweetName = $button.data('sweet-name'); const sweetImg = $button.data('img') || placeholderImg;
-                    const quantityInput = $button.closest('.form-group').find('.quantity-input');
-                    let quantity = parseInt(quantityInput.val(), 10);
-                    const minQuantity = parseInt(quantityInput.attr('min'), 10);
-
-                    if (isNaN(quantity) || quantity < minQuantity) {
-                        console.warn(`Correcting invalid quantity for ${sweetId} to min ${minQuantity}`);
-                        quantity = minQuantity;
-                        quantityInput.val(quantity);
-                        $button.closest('.form-group').find('.qty-display').text(quantity);
+                function handleCartItemQuantityChange(btnEl, action) {
+                    const $cartItem = $(btnEl).closest('[data-sweet-id]'), sweetId = $cartItem.data('sweet-id'), type = $cartItem.data('quantity-type'),
+                          cartIdx = cart.findIndex(i => i.sweetId === sweetId && i.quantityType === type);
+                    if (cartIdx === -1) return;
+                    let qty = cart[cartIdx].quantity;
+                    const min = type === 'unit' ? 1 : 50, step = type === 'unit' ? 1 : 10;
+                    qty = (action === 'increase') ? qty + step : qty - step;
+                    if (qty < min) {
+                        cart.splice(cartIdx, 1); $cartItem.addClass('removing');
+                        setTimeout(() => { updateAllCartDisplays(); updateAllCardStates(); }, 350); return;
                     }
-
-                    // Modify cart based on CURRENT chosenQuantityType
-                    const existingCartItemIndex = cart.findIndex(item => item.sweetId === sweetId && item.quantityType === chosenQuantityType);
-                    let itemChanged = false;
-
-                    if (existingCartItemIndex > -1) { // Item exists for this type
-                        if (cart[existingCartItemIndex].quantity !== quantity) {
-                            cart[existingCartItemIndex].quantity = quantity;
-                            console.log(`Updated ${sweetName} (${chosenQuantityType}) to ${quantity}`);
-                            itemChanged = true;
-                        }
-                    } else { // New item for this type
-                        // Before adding, remove any existing item with the same ID but DIFFERENT type
-                        cart = cart.filter(item => !(item.sweetId === sweetId && item.quantityType !== chosenQuantityType));
-                        cart.push({ sweetId: sweetId, name: sweetName, quantity: quantity, quantityType: chosenQuantityType, img: sweetImg });
-                        console.log(`Added ${sweetName} (${chosenQuantityType}) with ${quantity}. Removed other type if existed.`);
-                        itemChanged = true;
-                    }
-
-                    if (itemChanged) {
-                        if(isUserClick) { // Only pulse on direct interaction, not +/- trigger
-                            $button.addClass('added-pulse');
-                            setTimeout(() => $button.removeClass('added-pulse'), 400);
-                        }
-                        updateAllCartDisplays(); // Update desktop cart and mobile badge
-                        updateCardState(sweetId); // Update the specific card's appearance
-                         // If adding/updating removes an item of the other type, update those cards too
-                         updateAllCardStates(); // Ensure all cards reflect the current cart state correctly
-                    } else if (!isUserClick) {
-                         // Triggered by +/- but value didn't change. Still ensure card state is right.
-                         updateCardState(sweetId);
-                    }
-                });
-
-                // --- Remove From Desktop Cart ---
-                $(document).on('click', '.desktop-remove-item-btn', function() {
-                    const $button = $(this);
-                    const sweetIdToRemove = $button.data('sweet-id');
-                    const quantityTypeToRemove = $button.data('quantity-type'); // Get type from button
-                    const cartItemElement = $button.closest('.cart-item');
-                    console.log(`Remove clicked (Desktop) for ${sweetIdToRemove} (${quantityTypeToRemove})`);
-                    cartItemElement.addClass('removing'); // Add class for animation
-                    setTimeout(() => {
-                        // Filter based on both ID and Type
-                        cart = cart.filter(item => !(item.sweetId === sweetIdToRemove && item.quantityType === quantityTypeToRemove));
-                        updateAllCartDisplays(); // Update desktop cart + mobile badge
-                        updateCardState(sweetIdToRemove); // Update the corresponding card (now reflects removal for this type)
-                        console.log(`Removed ${sweetIdToRemove} (${quantityTypeToRemove}) from cart.`);
-                    }, 350); // Match animation duration
-                });
-
-                // --- Mobile Cart Modal - Populate & Show ---
-                function populateAndShowMobileCartModal() {
-                    mobileCartItemsContainer.empty(); // Clear previous items
-                    if (cart.length === 0) {
-                        mobileCartItemsContainer.append(emptyMobileCartMsg.clone()); // Clone to avoid removing original
-                    } else {
-                        cart.forEach((item, index) => {
-                            const itemImagePath = item.img || placeholderImg;
-                            const delay = index * 0.06; // Stagger animation slightly
-                            mobileCartItemsContainer.append(`
-                                <div class="mobile-cart-item" style="animation-delay: ${delay}s;" data-sweet-id="${item.sweetId}" data-quantity-type="${item.quantityType}">
-                                    <img src="${itemImagePath}" alt="${item.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('Mobile Cart Img Error: ${itemImagePath}')">
-                                    <div class="mobile-cart-item-details">
-                                        <h5>${item.name}</h5>
-                                        <span>${formatQuantity(item.quantity, item.quantityType)}</span>
-                                    </div>
-                                    <button class="mobile-remove-item-btn" data-sweet-id="${item.sweetId}" data-quantity-type="${item.quantityType}" aria-label="Remove ${item.name}">×</button>
-                                </div>`);
-                        });
-                    }
-                    // mobileCartModal.show(); // Showing is handled by data-bs-toggle attributes now
+                    cart[cartIdx].quantity = qty; cart[cartIdx].itemTotal = calculateItemTotal(cart[cartIdx]);
+                    updateAllCartDisplays(); updateCardState(sweetId);
                 }
-
-                // Trigger population when modal is about to be shown
-                 if (mobileCartModalElement) {
-                     mobileCartModalElement.addEventListener('show.bs.modal', function (event) {
-                         console.log("Mobile cart modal showing, populating content...");
-                         populateAndShowMobileCartModal();
-                     });
-                 } else {
-                     console.warn("Mobile Cart Modal element not found.");
-                 }
-
-
-                // --- Remove From Mobile Cart Modal ---
-                $(document).on('click', '.mobile-remove-item-btn', function() {
-                    const $button = $(this);
-                    const sweetIdToRemove = $button.data('sweet-id');
-                    const quantityTypeToRemove = $button.data('quantity-type'); // Get type from button
-                    const cartItemElement = $button.closest('.mobile-cart-item');
-                    console.log(`Remove clicked (Mobile) for ${sweetIdToRemove} (${quantityTypeToRemove})`);
-
-                    cartItemElement.addClass('removing'); // Add class for animation
-
+                $(document).on('click', '.btn-qty-decrease-cart', function() { handleCartItemQuantityChange(this, 'decrease'); });
+                $(document).on('click', '.btn-qty-increase-cart', function() { handleCartItemQuantityChange(this, 'increase'); });
+                $(document).on('click', '.remove-item-btn, .mobile-remove-item-btn', function() {
+                    const $item = $(this).closest('[data-sweet-id]'), id = $item.data('sweet-id'), type = $item.data('quantity-type');
+                    $item.addClass('removing');
                     setTimeout(() => {
-                         // Filter the main cart array based on ID and Type
-                        cart = cart.filter(item => !(item.sweetId === sweetIdToRemove && item.quantityType === quantityTypeToRemove));
-                        console.log(`Removed ${sweetIdToRemove} (${quantityTypeToRemove}) from cart.`);
-
-                        // Re-populate the modal immediately to reflect the change
-                        populateAndShowMobileCartModal(); // This handles the empty message too
-
-                        // Update other UI elements
-                        updateNavbarCartIndicator(); // Update badge
-                        updateCardState(sweetIdToRemove); // Update the corresponding card state in Step 2
-                        updateDesktopCartItems(); // Update desktop cart (if user switches back)
-
-                    }, 350); // Match animation duration
+                        cart = cart.filter(i => !(i.sweetId === id && i.quantityType === type));
+                        updateAllCartDisplays(); updateAllCardStates();
+                    }, 350);
                 });
 
+                if (mobileCartModalEl) mobileCartModalEl.addEventListener('show.bs.modal', () => renderCartItems($mobileCartItemsContainer, $emptyMobileCartMsg, true));
+                $("#finishOrder").click(function() { chosenPackaging = $('input[name="packaging"]:checked').val(); if (chosenPackaging) showStep(3); else alert("Select presentation."); });
 
-                // --- Go To Review Step Button ---
-                 $("#finishOrder").click(function() {
-                    chosenPackaging = $('input[name="packaging"]:checked').val();
-                    console.log(`Finish Order clicked. Packaging: ${chosenPackaging}`);
-                    if (chosenPackaging) {
-                        showStep(3); // Navigate to review step
-                    } else {
-                        alert("Please select a presentation option.");
-                    }
-                 });
-
-
-                // --- Populate Review Step --- (UPDATED FOR SINGLE ICON)
                 function populateReview() {
-                     console.log("Populating review step (Single Icon per Sweet).");
                     const reviewTextSummary = $("#reviewTextSummary");
                     const visualBox = $("#visualBoxRepresentation");
-                    reviewTextSummary.empty();
-                    visualBox.empty();
+                    reviewTextSummary.empty(); visualBox.empty();
 
-                    // --- Populate Text Summary (No change needed here) ---
                     let summaryHtml = `<h4>Selections:</h4><ul class="list-group list-group-flush mb-3">`;
+                    let sweetsSubtotal = 0;
                     if (cart.length > 0) {
                         cart.forEach(item => {
-                            summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">${item.name}<span class="badge rounded-pill">${formatQuantity(item.quantity, item.quantityType)}</span></li>`;
+                            sweetsSubtotal += item.itemTotal;
+                            summaryHtml += `
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>${item.name} <small>(${formatQuantity(item.quantity, item.quantityType)})</small></span>
+                                    <span class="price-value">${formatPrice(item.itemTotal)}</span>
+                                </li>`;
                         });
                     } else {
                         summaryHtml += `<li class="list-group-item">No delicacies selected yet.</li>`;
                     }
-                    summaryHtml += `</ul><h4>Presentation:</h4><ul class="list-group list-group-flush">`;
+                    summaryHtml += `</ul>`;
+
                     const packagingName = chosenPackaging === 'box' ? 'Signature Darna Box' : 'Ornate Keepsake Tray';
-                    summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">Style<span>${packagingName}</span></li>`;
-                    const cost = packagingCost[chosenPackaging];
-                    if (cost > 0) {
-                        summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">Additional Cost<span>+$${cost.toFixed(2)}</span></li>`;
+                    const packagingPrice = packagingCost[chosenPackaging];
+                    const grandTotal = sweetsSubtotal + packagingPrice;
+
+                    summaryHtml += `<h4>Presentation & Totals:</h4><ul class="list-group list-group-flush">`;
+                    summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center total-line">Style<span>${packagingName}</span></li>`;
+                    summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center total-line">Sweets Subtotal<span class="price-value">${formatPrice(sweetsSubtotal)}</span></li>`;
+                    if (packagingPrice > 0) {
+                        summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center total-line">Packaging Cost<span class="price-value">${formatPrice(packagingPrice)}</span></li>`;
                     }
+                    summaryHtml += `<li class="list-group-item d-flex justify-content-between align-items-center grand-total"><strong>Grand Total</strong><strong>${formatPrice(grandTotal)}</strong></li>`;
                     summaryHtml += `</ul><p class="mt-3 fst-italic text-muted small">Note: Pricing shown is indicative for this demo.</p>`;
                     reviewTextSummary.html(summaryHtml);
 
-                    // --- Populate Visual Preview (MODIFIED PART) ---
                     visualBox.removeClass('visual-box visual-tray').addClass(chosenPackaging === 'box' ? 'visual-box' : 'visual-tray');
                     if (cart.length > 0) {
-                        let iconCounter = 0; // For animation delay
+                        let iconCounter = 0;
                         cart.forEach(item => {
-                            // Create exactly one icon per item in the cart.
                             const delay = iconCounter * 0.04;
                             const itemImagePath = item.img || placeholderImg;
-                            // The label now always includes the item name and its full quantity.
                             const fullLabel = `${item.name} (${formatQuantity(item.quantity, item.quantityType)})`;
-
-                            visualBox.append(`
-                                <div class="sweet-icon-placeholder" style="animation-delay: ${delay}s;" title="${item.name} - ${formatQuantity(item.quantity, item.quantityType)}">
-                                    <img src="${itemImagePath}" alt="${item.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing'; console.error('Review Img Error: ${itemImagePath}')">
+                            visualBox.append(
+                                `<div class="sweet-icon-placeholder" style="animation-delay: ${delay}s;" title="${item.name} - ${formatQuantity(item.quantity, item.quantityType)}">
+                                    <img src="${itemImagePath}" alt="${item.name}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Img missing';">
                                     <span>${fullLabel}</span>
-                                </div>
-                            `);
-                            iconCounter++; // Increment counter once per cart item
+                                </div>`
+                            );
+                            iconCounter++;
                         });
                     } else {
                         visualBox.html('<p id="emptyBoxVisualMsg" class="col-12">Your presentation awaits your selections!</p>');
                     }
-                 } // --- End of populateReview function ---
+                 }
 
-                // --- Confirm Order ---
                 $("#confirmOrderBtn").click(function() {
-                    console.log("Confirm Order clicked."); const $button = $(this); if ($button.prop('disabled')) { return; }
-                    $button.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>Confirming...');
+                    const $button = $(this);
+                    if ($button.prop('disabled')) return;
+                    $button.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-1"></span>Preparing Order...');
+
+                    let orderDetailsForWhatsApp = "Salam Darna Patisserie! I would like to place the following custom order:\n\n";
+                    let sweetsSubtotal = 0;
+
+                    if (cart.length > 0) {
+                        orderDetailsForWhatsApp += "*DELICACIES:*\n";
+                        cart.forEach(item => {
+                            const itemPrice = item.quantityType === 'unit' ? item.price_per_unit_mad : item.price_per_100g_mad;
+                            const priceSuffix = item.quantityType === 'unit' ? 'per unit' : 'per 100g';
+                            orderDetailsForWhatsApp += `- ${item.name}: ${formatQuantity(item.quantity, item.quantityType)} (${formatPrice(itemPrice)} ${priceSuffix}) - Item Total: ${formatPrice(item.itemTotal)}\n`;
+                            sweetsSubtotal += item.itemTotal;
+                        });
+                        orderDetailsForWhatsApp += `\n*Sweets Subtotal:* ${formatPrice(sweetsSubtotal)}\n`;
+                    } else {
+                        orderDetailsForWhatsApp += "No delicacies selected in this custom box.\n";
+                    }
+                    const packagingName = chosenPackaging === 'box' ? 'Signature Darna Box' : 'Ornate Keepsake Tray';
+                    const finalPackagingCost = packagingCost[chosenPackaging];
+                    const grandTotal = sweetsSubtotal + finalPackagingCost;
+                    orderDetailsForWhatsApp += `\n*PRESENTATION:*\n- Style: ${packagingName}`;
+                    if (finalPackagingCost > 0) { orderDetailsForWhatsApp += ` (${formatPrice(finalPackagingCost)})`; }
+                    orderDetailsForWhatsApp += `\n\n*GRAND TOTAL:* ${formatPrice(grandTotal)}\n\n`;
+                    orderDetailsForWhatsApp += "Please confirm availability and next steps.\nThank you!";
+
+                    if (WHATSAPP_NUMBER === "212YOURPHONENUMBER" || !WHATSAPP_NUMBER) { // Added !WHATSAPP_NUMBER
+                        alert("WhatsApp number is not configured. Please contact support or the developer.");
+                        $button.prop('disabled', false).html('<i class="bi bi-whatsapp me-1"></i>Send Order via WhatsApp');
+                        return;
+                    }
+                    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(orderDetailsForWhatsApp)}`;
+                    console.log("WhatsApp URL:", whatsappUrl);
+                    $wizardContainer.fadeOut(200); $cartBox.removeClass('cart-visible');
+                    window.location.href = whatsappUrl;
                     setTimeout(() => {
-                        try {
-                            console.log("Simulating order confirmation..."); const successSummary = $("#successOrderSummary"); successSummary.empty(); let successHtml = `<p><strong>Your Order Summary:</strong></p><ul>`;
-                            if (cart.length > 0) { cart.forEach(item => { successHtml += `<li>${item.name}: ${formatQuantity(item.quantity, item.quantityType)}</li>`; }); } else { successHtml += `<li>No items were selected.</li>`; } successHtml += `</ul>`;
-                            const packagingName = chosenPackaging === 'box' ? 'Signature Darna Box' : 'Ornate Keepsake Tray'; successHtml += `<p><strong>Presentation:</strong> ${packagingName}</p>`; const orderId = Math.floor(10000 + Math.random() * 90000); successHtml += `<p><strong>Order ID:</strong> #${orderId}</p>`; successSummary.html(successHtml);
-                            wizardContainer.fadeOut(300, function() { successMessageContainer.fadeIn(500); $('html, body').animate({ scrollTop: successMessageContainer.offset().top - 100 }, 500); });
-                            hideDesktopCart(); updateNavbarCartIndicator(); // Hide desktop cart, update mobile badge
-                        } catch (e) {
-                             console.error("Error during confirmation display:", e);
-                             alert("An error occurred displaying the confirmation. Please check console.");
-                        } finally {
-                             $button.prop('disabled', false).html('<i class="bi bi-check-lg me-1"></i>Confirm Selection');
-                             console.log("Order confirmation process complete.");
-                        }
-                    }, 1000); // Simulate network delay
+                        $button.prop('disabled', false).html('<i class="bi bi-whatsapp me-1"></i>Send Order via WhatsApp');
+                        // $wizardContainer.fadeIn(200); // Optional: bring wizard back if redirect fails.
+                        // Consider if resetOrderProcess() should be called here or if user explicitly starts new.
+                    }, 3000);
                 });
 
-                // --- Start New Order ---
-                $("#startNewOrderBtn").click(function() {
-                    console.log("Start New Order clicked."); cart = []; currentStep = 0; chosenQuantityType = 'unit'; chosenPackaging = 'box';
-                    $('input[name="quantityType"][value="unit"]').prop('checked', true); $('input[name="packaging"][value="box"]').prop('checked', true);
-                    updateAllCartDisplays(); // Clear indicators/desktop cart
-                    successMessageContainer.fadeOut(300, function() {
-                        wizardContainer.fadeIn(500);
-                        // No need to explicitly call showStep(0) if fadeOut/fadeIn handles visibility.
-                        // However, explicitly setting currentStep and updating progress is good practice.
-                        currentStep = 0;
-                        updateWizardProgress(currentStep);
-                        // Ensure the first step div is marked as active again
-                        steps.removeClass('active-step exiting-step');
-                        $(steps[0]).addClass('active-step');
-
-                        if(sweets && sweets.length > 0) {
-                             updateAllCardStates(); // Reset card states visually for the default 'unit' type
-                        }
-                        $('html, body').animate({ scrollTop: 0 }, 500); console.log("State reset for new order.");
-                    });
+                function resetOrderProcess() {
+                    console.log("Resetting order process...");
+                    cart = []; currentStep = 0; chosenQuantityType = 'unit'; chosenPackaging = 'box';
+                    $('input[name="quantityType"][value="unit"]').prop('checked', true);
+                    $('input[name="packaging"][value="box"]').prop('checked', true);
+                    updateAllCartDisplays();
+                    $successMessage.hide(); $wizardContainer.show(); showStep(0);
+                    if (sweets && sweets.length > 0) { updateAllCardStates(); }
+                    $('html, body').animate({ scrollTop: 0 }, 500);
+                }
+                $("#clearAndStartNewOrderBtn").click(function() {
+                    if (confirm("Clear selections and start a new box?")) { resetOrderProcess(); }
                 });
+                $("#startNewOrderBtn").click(resetOrderProcess); // For the (now unused) success screen button
 
-                // --- LOAD DATA & INITIALIZE ---
+
                 function initializeApp() {
-                    console.log("Initializing application...");
-                    errorMessageContainer.hide(); wizardContainer.show(); successMessageContainer.hide(); hideLoadingOverlay();
-                    updateCurrentYear(); // Set footer year
-                    updateNavbarCartIndicator(); // Initial badge update (will be 0)
-                    showStep(0); // Start at step 0
-                    updateAllCartDisplays(); // Initial cart display update
-                    console.log("Initialization complete.");
+                    $errorMessage.hide(); $wizardContainer.show(); $successMessage.hide(); $cardLoadingOverlay.removeClass('visible');
+                    updateCurrentYear(); updateNavbarCartIndicator(); showStep(0); updateAllCartDisplays();
                 }
 
-                console.log("Attempting to fetch sweets.json...");
                 fetch('sweets.json')
-                    .then(response => {
-                        console.log(`Fetch response status: ${response.status}`);
-                        if (!response.ok) { throw new Error(`HTTP error! status: ${response.status} - Could not fetch sweets.json`); }
-                        return response.json();
-                    })
+                    .then(response => { if (!response.ok) throw new Error(`HTTP error! ${response.status}`); return response.json(); })
                     .then(data => {
-                         console.log("sweets.json loaded and parsed successfully.");
-                        if(!Array.isArray(data)){ throw new Error("sweets.json did not contain a valid JSON array."); }
-                        sweets = data;
-                        initializeApp(); // Initialize AFTER data is ready
+                        if (!Array.isArray(data)) throw new Error("sweets.json not an array.");
+                        data.forEach(s => {
+                            if (typeof s.price_per_unit_mad !== 'number') { s.price_per_unit_mad = 0; }
+                            if (typeof s.price_per_100g_mad !== 'number') { s.price_per_100g_mad = 0; }
+                        });
+                        sweets = data; initializeApp();
                     })
                     .catch(error => {
-                        console.error("ERROR loading or parsing sweet data:", error);
-                        errorMessageContainer.find('p').first().html(`<strong>${error.message || "We couldn't load the delicacy data."}</strong> Please ensure 'sweets.json' exists, is valid JSON, and is accessible in the same directory, then refresh the page.`);
-                        errorMessageContainer.show();
-                        wizardContainer.hide();
-                        hideLoadingOverlay(); // Ensure loading overlay is hidden on error
+                        console.error("Sweet Data Load/Parse ERROR:", error);
+                        $errorMessage.find('p').first().html(`<strong>${error.message}</strong><br>Ensure 'sweets.json' is valid and prices are correct. Image paths should be like 'img/New img/your_image.jpg'. Refresh page.`);
+                        $errorMessage.show(); $wizardContainer.hide(); $cardLoadingOverlay.removeClass('visible');
                     });
-
-            }); // End document ready
-        } catch (error) { // --- Fallback Error Handling ---
-             console.error("CRITICAL ERROR during script initialization:", error);
-             // Simple alert as a fallback if DOM isn't ready
-             alert('Oops! A critical problem occurred setting up the page. Check console (F12) & Refresh.');
-             // Optionally try to display a message if body exists
-             const body = document.body;
-             if (body) {
-                const errorDiv = document.createElement('div');
-                errorDiv.style.position = 'fixed'; errorDiv.style.top = '0'; errorDiv.style.left = '0'; errorDiv.style.width = '100%';
-                errorDiv.style.padding = '15px'; errorDiv.style.backgroundColor = '#dc3545'; errorDiv.style.color = 'white';
-                errorDiv.style.textAlign = 'center'; errorDiv.style.zIndex = '9999'; errorDiv.style.fontSize = '1em';
-                errorDiv.innerHTML = '<strong>Oops! A critical problem occurred setting up the page.</strong><br>Please check the console (Press F12) for details and try refreshing.';
-                body.prepend(errorDiv);
-             }
-        }
+            });
+        } catch (error) { console.error("CRITICAL SCRIPT ERROR:", error); alert('Critical error. Check console (F12) & Refresh.'); }
     </script>
-
 </body>
 </html>

@@ -3,53 +3,150 @@
     "id": "sw001",
     "name": "Chebakia",
     "description": "Classic Moroccan sesame and honey cookie, fried and coated in syrup. A Ramadan staple.",
-    "img": "img/1.jpg",
-    "images": ["img/1.jpg", "img/1_detail.jpg"],
-    "variations": ["With Almonds", "Classic Sesame"]
+    "img": "img/New_img/chebakia_main.jpg",
+    "images": ["img/New_img/chebakia_main.jpg", "img/New_img/chebakia_detail_1.jpg", "img/New_img/chebakia_on_plate.jpg"],
+    "variations": ["With Almonds", "Classic Sesame"],
+    "price_per_unit_mad": 5,
+    "price_per_100g_mad": 45
   },
   {
     "id": "sw002",
     "name": "Kaab el Ghzal",
     "description": "Delicate crescent-shaped pastries filled with almond paste and flavored with orange blossom water.",
-    "img": "img/2.jpg",
-    "images": ["img/2.jpg"]
+    "img": "img/New_img/kaab_ghzal_main.jpg",
+    "images": ["img/New_img/kaab_ghzal_main.jpg", "img/New_img/kaab_ghzal_close_up.jpg", "img/New_img/kaab_ghzal_bite.jpg"],
+    "variations": [],
+    "price_per_unit_mad": 7,
+    "price_per_100g_mad": 65
   },
   {
     "id": "sw003",
-    "name": "Briouat",
-    "description": "Crispy fried or baked triangles of phyllo dough filled with sweet almond paste or other fillings, often soaked in honey.",
-    "img": "img/3.jpg",
-    "images": ["img/3.jpg"],
-     "variations": ["Almond", "Peanut", "Coconut"]
+    "name": "Briouat (Almond)",
+    "description": "Crispy fried or baked triangles of phyllo dough filled with sweet almond paste, often soaked in honey.",
+    "img": "img/New_img/briouat_almond_main.jpg",
+    "images": ["img/New_img/briouat_almond_main.jpg", "img/New_img/briouat_assortment.jpg"],
+     "variations": ["Almond", "Peanut", "Coconut"],
+     "price_per_unit_mad": 4,
+     "price_per_100g_mad": 40
   },
    {
     "id": "sw004",
     "name": "Ghriba Bahla",
     "description": "Cracked Moroccan shortbread cookies, known for their sandy texture and melt-in-your-mouth quality.",
-    "img": "img/4.jpg",
-    "images": ["img/4.jpg"]
+    "img": "img/New_img/ghriba_bahla_main.jpg",
+    "images": ["img/New_img/ghriba_bahla_main.jpg", "img/New_img/ghriba_bahla_stack.jpg"],
+    "variations": [],
+    "price_per_unit_mad": 3,
+    "price_per_100g_mad": 30
    },
    {
     "id": "sw005",
-    "name": "Assorted Mix",
-    "description": "A delightful selection of various traditional Moroccan sweets.",
-    "img": "img/5.jpg",
-    "images": ["img/5.jpg", "img/6.jpg"]
+    "name": "Assorted Moroccan Sweets Tray",
+    "description": "A delightful tray showcasing a variety of traditional Moroccan sweets. Price based on selection and weight.",
+    "img": "img/New_img/assorted_tray_1.jpg",
+    "images": ["img/New_img/assorted_tray_1.jpg", "img/New_img/assorted_tray_2.jpg", "img/New_img/assorted_tray_large.jpg"],
+    "variations": [],
+    "price_per_unit_mad": 0, 
+    "price_per_100g_mad": 55 
    },
    {
     "id": "sw007",
-    "name": "Fekkas",
+    "name": "Fekkas (Moroccan Biscotti)",
     "description": "Twice-baked Moroccan biscotti, often flavored with almonds, anise seeds, and sesame seeds.",
-    "img": "img/7.jpg",
-    "images": ["img/7.jpg"],
-     "variations": ["Almond & Sesame", "Anise Seed"]
+    "img": "img/New_img/fekkas_main.jpg",
+    "images": ["img/New_img/fekkas_main.jpg", "img/New_img/fekkas_slices.jpg"],
+     "variations": ["Almond & Sesame", "Anise Seed"],
+     "price_per_unit_mad": 2.5,
+     "price_per_100g_mad": 35
    },
    {
     "id": "sw008",
     "name": "M'hencha (Snake Cake)",
     "description": "A visually stunning coiled pastry made with almond paste wrapped in phyllo dough, baked until golden and often drizzled with honey.",
-    "img": "img/8.jpg",
-    "images": ["img/8.jpg", "img/8_slice.jpg"]
-   }
-
+    "img": "img/New_img/mhencha_main.jpg",
+    "images": ["img/New_img/mhencha_main.jpg", "img/New_img/mhencha_slice.jpg", "img/New_img/mhencha_detail_rose.jpg"],
+    "variations": [],
+    "price_per_unit_mad": 60, 
+    "price_per_100g_mad": 70 
+   },
+   {
+    "id": "sw009",
+    "name": "Ghriba (Almond & Walnut)",
+    "description": "Chewy almond cookies, delightfully cracked, often topped with a walnut or almond and dusted with powdered sugar.",
+    "img": "img/New_img/ghriba_almond_walnut_main.jpg",
+    "images": ["img/New_img/ghriba_almond_walnut_main.jpg", "img/New_img/ghriba_almond_top.jpg", "img/New_img/ghriba_walnut_top.jpg"],
+    "variations": ["Almond Topping", "Walnut Topping"],
+    "price_per_unit_mad": 4.5,
+    "price_per_100g_mad": 50
+  },
+  {
+    "id": "sw010",
+    "name": "Rechbond (Coconut Snowballs)",
+    "description": "Soft and chewy coconut macaroons, resembling delicate snowballs, offering a rich tropical flavor.",
+    "img": "img/New_img/ghriba_coconut_main.jpg",
+    "images": ["img/New_img/ghriba_coconut_main.jpg", "img/New_img/ghriba_coconut_tray.jpg", "img/New_img/ghriba_coconut_close.jpg"],
+    "variations": [],
+    "price_per_unit_mad": 3.5,
+    "price_per_100g_mad": 40
+  },
+  {
+    "id": "sw011",
+    "name": "Ghriba (Sesame & Jam Filled)",
+    "description": "Sesame-coated cookies with a sweet, vibrant jam-filled center, offering a delightful texture and taste contrast.",
+    "img": "img/New_img/ghriba_jam_main.jpg",
+    "images": ["img/New_img/ghriba_jam_main.jpg", "img/New_img/ghriba_jam_bowl.jpg", "img/New_img/ghriba_jam_apricot.jpg"],
+    "variations": ["Apricot Jam", "Strawberry Jam", "Fig Jam"],
+    "price_per_unit_mad": 3,
+    "price_per_100g_mad": 35
+  },
+  {
+    "id": "sw012",
+    "name": "Makrout (Date-Filled Semolina Cookies)",
+    "description": "Semolina cookies beautifully shaped and filled with rich date paste, sometimes fried and soaked in honey.",
+    "img": "img/New_img/makrout_date_main.jpg",
+    "images": ["img/New_img/makrout_date_main.jpg", "img/New_img/makrout_date_patterned.jpg"],
+    "variations": ["Honey Glazed", "Plain Baked"],
+    "price_per_unit_mad": 4,
+    "price_per_100g_mad": 45
+  },
+  {
+    "id": "sw013",
+    "name": "Ka'ak (Anise Ring Cookies)",
+    "description": "Crisp, slightly sweet ring-shaped cookies, often flavored with anise or sesame and perfect with tea.",
+    "img": "img/New_img/kaak_anise_main.jpg",
+    "images": ["img/New_img/kaak_anise_main.jpg", "img/New_img/kaak_anise_stack.jpg"],
+    "variations": ["Powdered Sugar Coated", "Plain"],
+    "price_per_unit_mad": 2,
+    "price_per_100g_mad": 25
+  },
+  {
+    "id": "sw014",
+    "name": "Cornes de Gazelle (Almond Cones)",
+    "description": "Elegant cone-shaped pastries filled with almond paste, with the ends often dipped in chopped nuts for added texture and flavor.",
+    "img": "img/New_img/cornes_gazelle_cones_main.jpg",
+    "images": ["img/New_img/cornes_gazelle_cones_main.jpg", "img/New_img/cornes_gazelle_cones_tray.jpg"],
+    "variations": ["Pistachio Dipped", "Almond Dipped", "Plain"],
+    "price_per_unit_mad": 8,
+    "price_per_100g_mad": 75
+  },
+  {
+    "id": "sw015",
+    "name": "Chocolate Marbled Nut Bars",
+    "description": "Rich layered bars featuring a nutty or biscuit base, topped with a beautiful marbled chocolate layer for an elegant finish.",
+    "img": "img/New_img/chocolate_marbled_main.jpg",
+    "images": ["img/New_img/chocolate_marbled_main.jpg", "img/New_img/chocolate_marbled_stack.jpg", "img/New_img/chocolate_marbled_pink_flower.jpg"],
+    "variations": ["Dark & White Chocolate", "Milk & White Chocolate"],
+    "price_per_unit_mad": 6, 
+    "price_per_100g_mad": 60
+  },
+  {
+    "id": "sw016",
+    "name": "Almond Diamonds (Baklava Style)",
+    "description": "Diamond-shaped layered pastries with a rich almond filling, soaked in fragrant syrup, similar to baklava.",
+    "img": "img/New_img/almond_diamonds_main.jpg",
+    "images": ["img/New_img/almond_diamonds_main.jpg", "img/New_img/almond_diamonds_stack.jpg", "img/New_img/almond_diamonds_close.jpg"],
+    "variations": ["With Pistachio Garnish", "Classic Almond"],
+    "price_per_unit_mad": 5.5,
+    "price_per_100g_mad": 60
+  }
 ]

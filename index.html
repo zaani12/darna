@@ -39,7 +39,7 @@
         #landing .carousel-item img { object-fit: cover; height: 100%; width: 100%; background-color: #555; }
         .landing-overlay-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; background: rgba(0, 0, 0, 0.35); color: var(--brand-cream); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 1rem; }
         .landing-overlay-content .display-3 { font-family: 'Clicker Script', cursive; font-weight: bold; color: var(--brand-gold); margin-bottom: 1rem; font-size: 3.5rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
-        .landing-overlay-content p { font-size: 1.1rem; color: var(--brand-cream); /* Adjusted color for better contrast */ max-width: 600px; margin-bottom: 1.2rem; font-weight: 400; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        .landing-overlay-content p { font-size: 1.1rem; color: var(--brand-cream); max-width: 600px; margin-bottom: 1.2rem; font-weight: 400; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
         .landing-overlay-content .material-symbols-outlined { color: var(--brand-crimson); font-variation-settings: 'FILL' 1, 'wght' 700; vertical-align: middle; font-size: 1.4em; margin: 0 0.2em; }
         .animated-text { opacity: 0; transform: translateY(25px); animation: fadeInUp 1.5s ease forwards; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
@@ -49,20 +49,30 @@
         /* Navbar */
         .navbar { z-index: 1030; transition: background-color 0.4s ease; padding: 0.6rem 1rem; background-color: rgba(0, 0, 0, 0.4) !important; min-height: var(--navbar-height); }
         .navbar-scrolled { background-color: var(--brand-dark-bg) !important; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        .navbar .navbar-brand img { max-width: 110px; height: auto; }
+        .navbar .navbar-brand img { max-width: 130px; height: auto; } /* Increased from 110px for slightly larger logo */
         .navbar .nav-link { color: var(--brand-light-text) !important; font-weight: 500; margin: 0 0.5rem; transition: color 0.3s ease; text-transform: uppercase; font-size: 0.9em; letter-spacing: 0.5px; }
         .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--brand-gold) !important; }
         .navbar-toggler { border-color: rgba(255, 255, 255, 0.3); padding: 0.25rem 0.5rem; }
         .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28248, 249, 250, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); width: 1.2em; height: 1.2em; }
-        @media (max-width: 991.98px) { .navbar-collapse { background-color: rgba(var(--bs-dark-rgb), 0.97); border-radius: 0 0 8px 8px; padding: 0.5rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); } .navbar-nav { text-align: center; width: 100%;} .navbar-nav .nav-item { border-bottom: 1px solid rgba(255,255,255,0.1); width: 100%; } .navbar-nav .nav-item:last-child { border-bottom: none; } .navbar-nav .nav-link { display: block; width: 100%; padding: 0.8rem 1.5rem; } }
+        @media (max-width: 991.98px) { .navbar-collapse { background-color: rgba(var(--bs-dark-rgb), 0.98); border-radius: 0 0 8px 8px; padding: 0.5rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); } .navbar-nav { text-align: center; width: 100%;} .navbar-nav .nav-item { border-bottom: 1px solid rgba(255,255,255,0.1); width: 100%; } .navbar-nav .nav-item:last-child { border-bottom: none; } .navbar-nav .nav-link { display: block; width: 100%; padding: 0.8rem 1.5rem; } }
         #landing .carousel-control-prev-icon, #landing .carousel-control-next-icon { background-color: rgba(0, 0, 0, 0.3); border-radius: 50%; padding: 1rem; background-size: 40%; }
+         /* Navbar Brand Fallback Text */
+        .navbar-brand-text-fallback {
+            color: var(--brand-gold);
+            font-family: 'Clicker Script', cursive;
+            font-size: 2em; /* Adjust as needed */
+            font-weight: bold;
+            display: inline-block;
+            line-height: 1;
+            padding: 5px 0;
+        }
 
         /* Content Sections */
         #offers, #sweets, #initiatives, #contact { padding-top: 3.5rem; padding-bottom: 3.5rem; }
         #offers h2, #sweets h2, #initiatives h2, #contact h2 { color: var(--brand-dark-brown); font-weight: bold; margin-bottom: 2.5rem !important; font-family: 'Clicker Script', cursive; font-size: 2.8rem; }
 
         /* Offer & Sweet Cards */
-        .offer-card, .sweet-card { /* Combined common styles */
+        .offer-card, .sweet-card {
             cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; border: none;
             background-color: #fff; border-radius: 8px; overflow: hidden; height: 100%;
         }
@@ -71,24 +81,20 @@
         .offer-card .card-body, .sweet-card .card-body { text-align: center; padding: 1rem; display: flex; flex-direction: column; }
         .offer-card .card-title, .sweet-card .card-title { color: var(--brand-dark-brown); font-weight: bold; margin-bottom: 0.4rem; font-size: 1.1rem; }
         .offer-card .card-text, .sweet-card .card-text { color: #555; margin-bottom: 0.6rem; font-size: 0.85em; flex-grow: 1; }
-        /* Specific Offer Card Text */
         .offer-card .card-text.fw-bold { color: var(--brand-dark-brown); font-size: 1em; margin-bottom: 1rem; flex-grow: 0; }
-        /* Offer Button - VISUALLY present but functionally inactive (modal trigger is the card) */
         .offer-card .btn.order-btn {
             background-color: var(--brand-dark-brown); color: var(--brand-cream); border: none;
             border-radius: 20px; padding: 7px 22px; transition: background-color 0.3s ease, transform 0.2s ease;
             font-weight: 500; width: 90%; margin-left: auto; margin-right: auto; margin-top: auto;
-            font-size: 0.9em; text-decoration: none; display: inline-block; cursor: pointer; /* Still looks clickable */
-            pointer-events: none; /* Make button itself non-interactive, click falls through to card */
+            font-size: 0.9em; text-decoration: none; display: inline-block; cursor: pointer;
+            pointer-events: none;
         }
-         .offer-card:hover .btn.order-btn { /* Style change on card hover */
+         .offer-card:hover .btn.order-btn {
              background-color: var(--brand-gold); color: var(--brand-cream); transform: scale(1.03);
         }
-        /* Sweet Card Specifics */
-         .sweet-card .card-body { min-height: 150px; /* Ensure space for text */ }
-         .sweet-card .text-muted { font-size: 0.8em; } /* Styling for "Click to view details" */
+         .sweet-card .card-body { min-height: 150px; }
+         .sweet-card .text-muted { font-size: 0.8em; }
 
-        /* Sweets List Loading/Error */
         #sweets-list .loading-text, #sweets-list .error-text { color: #6c757d; font-style: italic; font-size: 1em; text-align: center; width: 100%; padding: 1.5rem 0; }
         #sweets-list .error-text { color: var(--brand-crimson); font-weight: bold; }
 
@@ -110,14 +116,14 @@
         #productDetailModal .btn-close:hover { opacity: 1; transform: scale(1.1); filter: brightness(0) invert(1) opacity(1);}
         #productDetailModal .modal-body { background-color: var(--brand-cream); padding: 2rem; }
         #productDetailModal .carousel-item img { max-height: 380px; width: 100%; object-fit: contain; background-color: #ffffff; border-radius: 10px; border: 1px solid #eee; }
-        #productDetailModal #modalSweetDescription { font-size: 1em; color: #222; margin-top: 0; line-height: 1.7; margin-bottom: 0.5rem; /* Added margin */ }
-        #productDetailModal #modalSweetVariations { /* This section now shows box details or sweet variations */
-            font-size: 0.9em; color: #444; /* Slightly darker text */ line-height: 1.5; border-top: 1px solid #eee; padding-top: 1rem; margin-top: 1rem;
+        #productDetailModal #modalSweetDescription { font-size: 1em; color: #222; margin-top: 0; line-height: 1.7; margin-bottom: 0.5rem; }
+        #productDetailModal #modalSweetVariations {
+            font-size: 0.9em; color: #444; line-height: 1.5; border-top: 1px solid #eee; padding-top: 1rem; margin-top: 1rem;
         }
         #productDetailModal #modalSweetVariations p { margin-bottom: 0.3rem; }
-        #productDetailModal #modalSweetVariations ul { padding-left: 0.5rem; margin-bottom: 0.5rem; }
+        #productDetailModal #modalSweetVariations ul { padding-left: 0.5rem; margin-bottom: 0.5rem; list-style-type: none; } /* Removed default bullets */
         #productDetailModal #modalSweetVariations li { margin-bottom: 0.2rem; }
-        #productDetailModal #modalSweetVariations i { font-size: 0.8em; /* Adjust icon size */ vertical-align: baseline; }
+        #productDetailModal #modalSweetVariations i { font-size: 0.8em; vertical-align: baseline; margin-right: 0.3em; } /* Added margin for icon */
 
         #modalImageCarousel { box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-radius: 10px; overflow:hidden; }
         #modalImageCarousel .carousel-control-prev, #modalImageCarousel .carousel-control-next { opacity: 0.7; transition: opacity 0.3s ease; }
@@ -125,7 +131,7 @@
         #modalImageCarousel .carousel-control-prev-icon, #modalImageCarousel .carousel-control-next-icon { background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; height: 3rem; width: 3rem; background-size: 50%; }
         #modalImageCarousel .carousel-indicators [data-bs-target] { background-color: rgba(0, 0, 0, 0.3); height: 10px; width: 10px; border-radius: 50%; margin: 0 5px; border: none; transition: background-color 0.3s ease, transform 0.3s ease; }
         #modalImageCarousel .carousel-indicators .active { background-color: var(--brand-gold); transform: scale(1.2); }
-        #modalActionButtons { margin-top: 1.5rem; } /* Space above button */
+        #modalActionButtons { margin-top: 1.5rem; }
         #modalActionButtons .btn { width: 100%; max-width: 300px; padding: 0.7rem 1rem; font-size: 1em; margin-top: 0.5rem; border-radius: 50px; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-decoration: none; display: inline-block;}
         #modalActionButtons .btn:hover { box-shadow: 0 6px 15px rgba(0,0,0,0.15); transform: translateY(-2px); }
         #modalActionButtons .btn i { margin-right: 0.5rem; }
@@ -135,7 +141,6 @@
         #modalActionButtons .btn-offer:hover { background: linear-gradient(90deg, var(--brand-dark-brown), var(--brand-gold)); }
 
 
-        /* Other Sections */
         #initiatives { background-color: #fdfaf6; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
         #initiatives p { color: #444; line-height: 1.8; max-width: 700px; margin-left: auto; margin-right: auto; font-size: 0.95em; }
         #contact p { font-size: 1em; color: #333; margin-bottom: 0.8rem; }
@@ -145,14 +150,21 @@
         #contact .social-icons a { color: var(--brand-dark-brown); font-size: 1.6rem; margin: 0 0.6rem; text-decoration: none; transition: color 0.3s ease, transform 0.2s ease; display: inline-block; }
         #contact .social-icons a:hover { color: var(--brand-gold); transform: scale(1.1); }
 
-        /* Footer */
         .footer { background-color: var(--brand-dark-bg); color: rgba(255, 255, 255, 0.7); padding: 1.2rem 0; }
         .footer p { margin: 0; font-size: 0.85em; }
         .footer .social-icons { margin-bottom: 0.8rem !important; }
         .footer .social-icons a { color: rgba(255, 255, 255, 0.7); font-size: 1.4rem; margin: 0 0.6rem; text-decoration: none; transition: color 0.3s ease, transform 0.2s ease; display: inline-block; }
         .footer .social-icons a:hover { color: var(--brand-gold); transform: scale(1.1); }
+         .footer .contact-info a { /* Specific styling for contact email in footer */
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: normal; /* Ensure it's not bold like other 'a' tags in contact */
+        }
+        .footer .contact-info a:hover {
+            color: var(--brand-gold);
+        }
+         .footer .contact-info { margin-bottom: 0.5rem; } /* Space between contact and copyright */
 
-        /* Larger Screen Adjustments */
+
         @media (min-width: 768px) {
             body { font-size: 16px; }
             #landing { height: calc(100vh - var(--navbar-height)); margin-top: calc(-1 * var(--navbar-height));}
@@ -166,32 +178,33 @@
             .offer-card .card-title, .sweet-card .card-title { font-size: 1.25rem; }
             .offer-card .card-text, .sweet-card .card-text { font-size: 0.9em; }
              .sweet-card .card-body { min-height: 170px; }
-            .offer-card .btn.order-btn { padding: 9px 28px; font-size: 1em;} /* Button size adjusted */
+            .offer-card .btn.order-btn { padding: 9px 28px; font-size: 1em;}
             #productDetailModal .modal-dialog { max-width: 750px; }
             #productDetailModal .carousel-item img { max-height: 450px; }
             #productDetailModal #modalSweetName { font-size: 2.5rem; }
             #productDetailModal #modalSweetDescription { font-size: 1em; }
-            #productDetailModal #modalSweetVariations { font-size: 0.95em; /* Slightly larger */ }
+            #productDetailModal #modalSweetVariations { font-size: 0.95em; }
             #contact .social-icons a { font-size: 1.8rem; }
             .footer { padding: 1.5rem 0; }
             .footer p { font-size: 0.9em; }
             .footer .social-icons a { font-size: 1.6rem; }
-            .navbar .navbar-brand img { max-width: 130px; }
+            /* .navbar .navbar-brand img already adjusted */
         }
 
     </style>
 </head>
 <body>
 
-    <!-- Navbar - Fixed Top -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top w-100">
          <div class="container">
-            <a class="navbar-brand" href="#landing"><img src="img/logo-no-background.png" alt="Darna Logo" onerror="this.src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='; console.error('Logo Error')"></a>
+            <a class="navbar-brand" href="#landing">
+                <img src="img/logo-no-background.png" alt="Darna Logo"
+                     onerror="this.style.display='none'; const el = document.createElement('span'); el.className='navbar-brand-text-fallback'; el.textContent='Darna'; this.parentNode.insertBefore(el, this.nextSibling); console.error('Logo Error: img/logo-no-background.png')">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link active" href="#landing">Home</a></li>
-                    <!-- Link Offerings nav item to the custom order page -->
                     <li class="nav-item"><a class="nav-link" href="custom-order.html">Offerings</a></li>
                     <li class="nav-item"><a class="nav-link" href="#initiatives">Initiatives</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
@@ -200,16 +213,16 @@
         </div>
     </nav>
 
-    <!-- Landing Section -->
     <section id="landing">
-        <div id="sweetSlideshow" class="carousel slide" data-bs-ride="carousel"> <!-- Changed ride to carousel -->
+        <div id="sweetSlideshow" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active"><img src="img/1.jpg" class="d-block w-100" alt="Chebakia" onerror="this.onerror=null; this.src='img/placeholder-sweet.png';"></div>
-                <div class="carousel-item"><img src="img/2.jpg" class="d-block w-100" alt="Kaab el Ghzal" onerror="this.onerror=null; this.src='img/placeholder-sweet.png';"></div>
-                <div class="carousel-item"><img src="img/3.jpg" class="d-block w-100" alt="Briouat" onerror="this.onerror=null; this.src='img/placeholder-sweet.png';"></div>
+                <div class="carousel-item"><img src="img/gettyimages-2156187804-612x612.jpg" class="d-block w-100" alt="Kaab el Ghzal" onerror="this.onerror=null; this.src='img/placeholder-sweet.png';"></div>
+                <div class="carousel-item"><img src="img/gettyimages-689087120-612x612.jpg" class="d-block w-100" alt="Briouat" onerror="this.onerror=null; this.src='img/placeholder-sweet.png';"></div>
                 <div class="carousel-item"><img src="img/7.jpg" class="d-block w-100" alt="Fekkas" onerror="this.onerror=null; this.src='img/placeholder-sweet.png';"></div>
-                <div class="carousel-item"><img src="img/8.jpg" class="d-block w-100" alt="M'hencha" onerror="this.onerror=null; this.src='img/placeholder-sweet.png';"></div>
+                <div class="carousel-item"><img src="img/gettyimages-1177725658-612x612.jpg" class="d-block w-100" alt="M'hencha" onerror="this.onerror=null; this.src='img/placeholder-sweet.png';"></div>
                 <div class="carousel-item"><img src="img/4.jpg" class="d-block w-100" alt="Ghriba Bahla" onerror="this.onerror=null; this.src='img/placeholder-sweet.png';"></div>
+                 <div class="carousel-item"><img src="img/gettyimages-1346580295-612x612.jpg" class="d-block w-100" alt="Assorted Sweets" onerror="this.onerror=null; this.src='img/placeholder-sweet.png';"></div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#sweetSlideshow" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Prev</span></button>
             <button class="carousel-control-next" type="button" data-bs-target="#sweetSlideshow" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></button>
@@ -221,12 +234,9 @@
         </div>
     </section>
 
-    <!-- Special Offers Section -->
     <section id="offers" class="container my-5">
         <h2 class="text-center">Special Offers</h2>
-        <div class="row justify-content-center g-4"> <!-- Added g-4 for gap -->
-            <!-- Offer Card 1 -->
-            <!-- Added clickable-card class and data-card-type -->
+        <div class="row justify-content-center g-4">
             <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch clickable-card" data-sweet-id="sw005" data-card-type="offer">
                 <div class="card offer-card shadow w-100">
                     <img src="img/5.jpg" class="card-img-top" alt="Sweet Starter Box" onerror="this.onerror=null; this.src='img/placeholder-sweet.png';">
@@ -234,35 +244,28 @@
                         <h5 class="card-title">Sweet Starter Box</h5>
                         <p class="card-text">A delightful mix of 10 traditional pieces.</p>
                         <p class="card-text fw-bold">$15</p>
-                        <!-- Button is now visually present but non-interactive -->
                         <a href="#" class="btn order-btn mt-auto" aria-hidden="true" tabindex="-1">Order via WhatsApp</a>
                     </div>
                 </div>
             </div>
-            <!-- Offer Card 2 -->
-            <!-- Added clickable-card class and data-card-type -->
-            <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch clickable-card" data-sweet-id="sw001" data-card-type="offer">
+            <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch clickable-card" data-sweet-id="sw001" data-card-type="offer"> <!-- Using sw001 (Chebakia) as representative image source -->
                 <div class="card offer-card shadow w-100">
                     <img src="img/1.jpg" class="card-img-top" alt="Family Delight Box" onerror="this.onerror=null; this.src='img/placeholder-sweet.png';">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Family Delight Box</h5>
                         <p class="card-text">Generous assortment of 25 favourite pieces.</p>
                         <p class="card-text fw-bold">$35</p>
-                        <!-- Button is now visually present but non-interactive -->
                         <a href="#" class="btn order-btn mt-auto" aria-hidden="true" tabindex="-1">Order via WhatsApp</a>
                     </div>
                 </div>
             </div>
-             <!-- Offer Card 3 -->
-             <!-- Added clickable-card class and data-card-type -->
-            <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch clickable-card" data-sweet-id="sw008" data-card-type="offer">
+            <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch clickable-card" data-sweet-id="sw008" data-card-type="offer"> <!-- Using sw008 (M'hencha) as representative image source -->
                 <div class="card offer-card shadow w-100">
                     <img src="img/8.jpg" class="card-img-top" alt="Celebration Pack" onerror="this.onerror=null; this.src='img/placeholder-sweet.png';">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Celebration Pack</h5>
                         <p class="card-text">Perfect for events: 50 pieces (Free Delivery!).</p>
                         <p class="card-text fw-bold">$60</p>
-                        <!-- Button is now visually present but non-interactive -->
                          <a href="#" class="btn order-btn mt-auto" aria-hidden="true" tabindex="-1">Order via WhatsApp</a>
                     </div>
                 </div>
@@ -270,23 +273,19 @@
         </div>
     </section>
 
-    <!-- Our Sweets Section -->
     <section id="sweets" class="container my-5">
         <h2 class="text-center">Our Sweets Selection</h2>
         <div class="row g-3 g-sm-4" id="sweets-list">
-            <!-- Sweets will be loaded here by JavaScript -->
             <div class="col-12 loading-text">
                  <p>Loading...</p>
                  <div class="spinner-border text-secondary"><span class="visually-hidden">.</span></div>
             </div>
         </div>
         <div class="text-center mt-5">
-             <!-- Button linking to the custom order page -->
              <a href="custom-order.html" class="btn btn-lg btn-outline-secondary animate-btn" style="background: var(--brand-dark-brown); color: var(--brand-cream); border-color: var(--brand-dark-brown);">View All & Build Your Custom Box</a>
         </div>
     </section>
 
-     <!-- Initiatives Section -->
      <section id="initiatives" class="container-fluid py-5 bg-light">
          <div class="container">
             <h2 class="text-center">Our Commitment</h2>
@@ -299,31 +298,31 @@
          </div>
      </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="container text-center my-5">
         <h2>Get In Touch</h2>
         <p>Questions, special requests, or catering inquiries?</p>
-        <p>Email: <a href="mailto:info@moroccansweets.com">info@moroccansweets.com</a></p>
-        <p>Or message us via WhatsApp using the button in the product details!</p> <!-- Updated text -->
+        <p>Email: <a href="mailto:darnapatisserie@gmail.com">darnapatisserie@gmail.com</a></p>
+        <p>Or message us via WhatsApp using the button in the product details!</p>
         <div class="social-icons">
             <p class="mb-2">Follow us:</p>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"> <i class="bi bi-instagram"></i> </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"> <i class="bi bi-facebook"></i> </a>
+            <a href="https://www.instagram.com/darna_patisserie?igsh=MTRwcTNtcWkyM3Q4OA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"> <i class="bi bi-instagram"></i> </a>
+            <a href="https://www.facebook.com/profile.php?id=61575057266959" target="_blank" rel="noopener noreferrer" aria-label="Facebook"> <i class="bi bi-facebook"></i> </a>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer text-center py-3">
         <div class="container">
             <div class="social-icons mb-3">
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"> <i class="bi bi-instagram"></i> </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"> <i class="bi bi-facebook"></i> </a>
+                <a href="https://www.instagram.com/darna_patisserie?igsh=MTRwcTNtcWkyM3Q4OA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"> <i class="bi bi-instagram"></i> </a>
+                <a href="https://www.facebook.com/profile.php?id=61575057266959" target="_blank" rel="noopener noreferrer" aria-label="Facebook"> <i class="bi bi-facebook"></i> </a>
             </div>
-            <p>© <span id="currentYear"></span> Darna Moroccan Sweets. Crafted with Love.</p>
+             <div class="contact-info mb-2"> <!-- Added contact info here as well for consistency -->
+                 <a href="mailto:darnapatisserie@gmail.com"><i class="bi bi-envelope-fill me-1"></i> darnapatisserie@gmail.com</a>
+            </div>
+            <p>© <span id="currentYear"></span> Darna Patisserie. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Product Detail Modal -->
     <div class="modal fade" id="productDetailModal" tabindex="-1" aria-labelledby="productDetailModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -337,7 +336,6 @@
                      <div id="modalImageCarousel" class="carousel slide mb-3 mb-md-0" data-bs-ride="false">
                         <div class="carousel-indicators" id="modalCarouselIndicators"></div>
                         <div class="carousel-inner bg-light rounded" id="modalCarouselInner">
-                            <!-- Default loading state for carousel -->
                             <div class="carousel-item active">
                                 <div class="d-flex justify-content-center align-items-center h-100" style="min-height: 300px;">
                                     <div class="spinner-border text-secondary"><span class="visually-hidden">Loading images...</span></div>
@@ -348,16 +346,13 @@
                         <button class="carousel-control-next" type="button" data-bs-target="#modalImageCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></button>
                     </div>
                 </div>
-                <div class="col-md-5 modal-animate-item modal-details-col d-flex flex-column"> <!-- Added flex classes -->
-                    <div class="flex-grow-1"> <!-- Make text content take available space -->
+                <div class="col-md-5 modal-animate-item modal-details-col d-flex flex-column">
+                    <div class="flex-grow-1">
                         <p id="modalSweetDescription" class="modal-description">Description loading...</p>
                         <div id="modalSweetVariations" class="modal-variations" style="display: none;">
-                            <!-- Content (box details or variations) added by JS -->
                         </div>
                     </div>
-                     <!-- Action Button Placeholder - JS will populate this -->
                     <div id="modalActionButtons" class="mt-3 text-center">
-                         <!-- Button content dynamically added by JavaScript -->
                          <p class="small text-muted">Loading action...</p>
                     </div>
                 </div>
@@ -366,68 +361,43 @@
         </div>
       </div>
     </div>
-    <!-- End Product Detail Modal -->
 
-
-    <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        let sweetsData = []; // Global store for sweets data
-        const placeholderImg = 'img/placeholder-sweet.png'; // Make sure this image exists in img/ folder
+        let sweetsData = [];
+        const placeholderImg = 'img/placeholder-sweet.png';
+        const WHATSAPP_NUMBER = "212708898226";
 
-        // !!! YOUR WHATSAPP NUMBER IS INSERTED HERE !!!
-        const WHATSAPP_NUMBER = "212708898226"; // Your specific number
-
-        // Predefined Offer Details (mapping sweet ID used on offer card to offer info)
          const offerDetailsMap = {
-            'sw005': { // Corresponds to data-sweet-id="sw005" card
+            'sw005': {
                 name: 'Sweet Starter Box',
-                description: 'A delightful mix of 10 traditional pieces.', // Base description
+                description: 'A delightful mix of 10 traditional pieces.',
                 price: '$15',
-                typicalIncludes: [ // NEW: Array describing typical contents
-                    "Examples include:",
-                    "Chebakia",
-                    "Ghriba Bahla",
-                    "Kaab el Ghzal (small)",
-                    "Briouat (Almond)"
+                typicalIncludes: [
+                    "Examples include:", "Chebakia", "Ghriba Bahla", "Kaab el Ghzal (small)", "Briouat (Almond)"
                 ]
             },
-            'sw001': { // Corresponds to data-sweet-id="sw001" card
+            'sw001': {
                 name: 'Family Delight Box',
                 description: 'Generous assortment of 25 favourite pieces.',
                 price: '$35',
                 typicalIncludes: [
-                    "A wider variety, typically including:",
-                    "Multiple Chebakia",
-                    "Multiple Kaab el Ghzal",
-                    "Ghriba (various types)",
-                    "Briouat (Almond/Peanut)",
-                    "Fekkas"
+                    "A wider variety, typically including:", "Multiple Chebakia", "Multiple Kaab el Ghzal", "Ghriba (various types)", "Briouat (Almond/Peanut)", "Fekkas"
                 ]
             },
-            'sw008': { // Corresponds to data-sweet-id="sw008" card
+            'sw008': {
                 name: 'Celebration Pack',
-                description: 'Perfect for events: 50 pieces (+ Free Delivery!).', // Use "+" for readability in message
+                description: 'Perfect for events: 50 pieces (+ Free Delivery!).',
                 price: '$60',
                 typicalIncludes: [
-                    "Our largest variety & quantity:",
-                    "Multiple pieces of most sweets like:",
-                    "Chebakia, Kaab el Ghzal",
-                    "Ghriba (various types)",
-                    "Briouat (various fillings)",
-                    "Fekkas, M'hencha (slices)",
-                    "May include seasonal specials"
+                    "Our largest variety & quantity:", "Multiple pieces of most sweets like:", "Chebakia, Kaab el Ghzal", "Ghriba (various types)", "Briouat (various fillings)", "Fekkas, M'hencha (slices)", "May include seasonal specials"
                 ]
             }
-            // Key (e.g., 'sw005') MUST match the data-sweet-id on the corresponding offer card in HTML
         };
 
-
-        // --- Load Sweets Data (from sweets.json) ---
         async function loadSweetsData() {
-            if (sweetsData.length > 0) return sweetsData; // Return cached data
+            if (sweetsData.length > 0) return sweetsData;
             try {
-                // Ensure sweets.json is in the same directory or provide the correct path
                 const response = await fetch('sweets.json');
                 if (!response.ok) throw new Error(`HTTP error ${response.status}. Could not fetch sweets.json.`);
                 const data = await response.json();
@@ -441,44 +411,36 @@
                 if (container) {
                      container.innerHTML = `<p class="col-12 error-text">Couldn't load sweets data. Please check console or try refreshing.<br><small>(${error.message})</small></p>`;
                 }
-                return []; // Return empty array on error
+                return [];
             }
         }
 
-        // --- Display Sweets on Page ---
         function displaySweets(sweets) {
             const container = document.getElementById('sweets-list');
             const loading = container.querySelector('.loading-text');
-            if (loading) loading.remove(); // Remove loading indicator
+            if (loading) loading.remove();
 
             if (!sweets || sweets.length === 0) {
-                 if (!container.querySelector('.error-text')) { // Avoid duplicate messages
+                 if (!container.querySelector('.error-text')) {
                     container.innerHTML = `<p class="col-12 error-text">No sweets to display right now.</p>`;
                  }
                  return;
             }
-
-            container.innerHTML = ''; // Clear previous content or loading/error messages
+            container.innerHTML = '';
             sweets.forEach(sweet => {
                 if (!sweet || !sweet.id) {
                     console.warn("Skipping invalid sweet data item:", sweet);
-                    return; // Skip items without an ID
+                    return;
                 }
                 const name = sweet.name || 'Unnamed Sweet';
                 let desc = sweet.description || 'A delicious Moroccan sweet.';
-                // Shorten description for card view
-                if (desc.length > 90) {
-                    desc = desc.substring(0, 90) + '...';
-                }
-                // Use provided image, fallback to placeholder if empty or missing
+                if (desc.length > 90) { desc = desc.substring(0, 90) + '...'; }
                 const img = sweet.img?.trim() ? sweet.img : placeholderImg;
 
                 const col = document.createElement('div');
-                // Add clickable-card class here for the listener
                 col.className = 'col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex align-items-stretch clickable-card';
-                // Add data attributes to identify the sweet and card type
                 col.dataset.sweetId = sweet.id;
-                col.dataset.cardType = 'sweet'; // Identify these as individual sweet cards
+                col.dataset.cardType = 'sweet';
 
                 col.innerHTML = `
                     <div class="card sweet-card w-100 shadow-sm">
@@ -486,7 +448,6 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">${name}</h5>
                             <p class="card-text">${desc}</p>
-                            <!-- Info text indicating clickability -->
                             <small class="text-muted mt-auto text-center pt-2">Click to view details</small>
                         </div>
                     </div>`;
@@ -494,105 +455,73 @@
             });
         }
 
-         // --- Show Product Detail Modal (UPDATED with Box Details) ---
         async function showProductModal(sweetId, cardType = 'sweet') {
-            console.log(`Showing modal for ID: ${sweetId}, Type: ${cardType}`); // Debug log
-            // Ensure sweets data is loaded (needed for images/details even for offers)
+            console.log(`Showing modal for ID: ${sweetId}, Type: ${cardType}`);
             const allSweets = await loadSweetsData();
             const sweet = allSweets.find(s => s.id === sweetId);
 
-            // Allow offers even if the representative sweet isn't perfectly found in sweets.json,
-            // but log a warning. We primarily need the ID for the offerDetailsMap.
             if (!sweet && cardType === 'sweet') {
-                console.error("Sweet data not found in sweets.json for ID:", sweetId);
-                alert("Sorry, details for this item could not be found in our data.");
+                console.error("Sweet data not found for ID:", sweetId);
+                alert("Details for this item could not be found.");
                 return;
             }
              if (!sweet && cardType === 'offer') {
-                console.warn("Sweet data for representative image/details (ID:", sweetId, ") not found in sweets.json, but proceeding with Offer details from map.");
+                console.warn("Representative sweet (ID:", sweetId, ") not found, proceeding with Offer map details.");
             }
-
 
             const modalElement = document.getElementById('productDetailModal');
             const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
-
-            // Get modal elements
             const titleEl = document.getElementById('modalSweetName');
             const descEl = document.getElementById('modalSweetDescription');
-            const varsEl = document.getElementById('modalSweetVariations'); // This will show box details or sweet variations
+            const varsEl = document.getElementById('modalSweetVariations');
             const carouselInnerEl = document.getElementById('modalCarouselInner');
             const carouselIndicatorsEl = document.getElementById('modalCarouselIndicators');
             const actionButtonsContainer = document.getElementById('modalActionButtons');
-            const carouselCol = modalElement.querySelector('.modal-carousel-col');
-            const detailsCol = modalElement.querySelector('.modal-details-col');
+            const modalAnimatedItems = modalElement.querySelectorAll('.modal-animate-item');
 
-            // Reset animations
-             [titleEl, carouselCol, detailsCol].forEach(el => {
-                if(el) {
-                    el.classList.remove('animate-in');
-                    el.style.animationDelay = ''; // Clear previous delay
-                }
-             });
+            modalAnimatedItems.forEach(el => { el.classList.remove('animate-in'); el.style.animationDelay = ''; });
 
-             // --- Populate Modal Content ---
              let displayName, displayDesc, images = [placeholderImg];
-             varsEl.innerHTML = ''; // Clear variations/box details initially
-             varsEl.style.display = 'none'; // Hide initially
+             varsEl.innerHTML = ''; varsEl.style.display = 'none';
 
              if (cardType === 'offer') {
                  const offerDetails = offerDetailsMap[sweetId];
                  if (offerDetails) {
                      displayName = offerDetails.name;
-                     // Display base description + price in the main description area
                      displayDesc = offerDetails.description + (offerDetails.price ? ` (${offerDetails.price})` : '');
-
-                     // --- Display Box Contents in Variations Area ---
                      if (offerDetails.typicalIncludes?.length) {
                          let contentsHTML = '<p class="fw-bold mt-3 mb-1">Typical Box Contents:</p><ul class="list-unstyled small ms-2">';
                          offerDetails.typicalIncludes.forEach(item => {
-                             // Use a simple bullet or an icon if you prefer
-                             contentsHTML += `<li><i class="bi bi-check-lg text-secondary me-1"></i>${item}</li>`;
+                             contentsHTML += `<li><i class="bi bi-check-lg text-secondary"></i>${item}</li>`;
                          });
-                         contentsHTML += '</ul><p class="small text-muted fst-italic ms-2 mt-2">(Exact mix may vary slightly based on availability)</p>';
+                         contentsHTML += '</ul><p class="small text-muted fst-italic ms-2 mt-2">(Exact mix may vary slightly)</p>';
                          varsEl.innerHTML = contentsHTML;
-                         varsEl.style.display = 'block'; // Show the details section
+                         varsEl.style.display = 'block';
                      }
-                     // --- End Box Contents ---
-
                  } else {
-                     displayName = "Offer Details";
-                     displayDesc = "Details for this offer could not be loaded.";
-                     console.error("Offer details missing in offerDetailsMap for sweetId:", sweetId);
+                     displayName = "Offer Details"; displayDesc = "Details for this offer could not be loaded.";
+                     console.error("Offer details missing in map for sweetId:", sweetId);
                  }
-                 // Use the representative sweet's image if available, otherwise placeholder
                  images = (sweet && Array.isArray(sweet.images) && sweet.images.length) ? sweet.images : (sweet?.img ? [sweet.img] : [placeholderImg]);
-
-             } else if (sweet) { // 'sweet' card type
+             } else if (sweet) {
                  displayName = sweet.name || 'Sweet Details';
                  displayDesc = sweet.description || 'No description available.';
-                 // Display variations if they exist
                  if (sweet.variations?.length) {
                      varsEl.innerHTML = `<p class="fw-bold mt-3 mb-1">Available Variations:</p><p class="mb-0">${sweet.variations.join(', ')}</p>`;
-                     varsEl.style.display = 'block'; // Show the details section
+                     varsEl.style.display = 'block';
                  }
                  images = (Array.isArray(sweet.images) && sweet.images.length) ? sweet.images : (sweet.img ? [sweet.img] : [placeholderImg]);
              } else {
-                 // Fallback if something went wrong (should have been caught earlier)
-                 displayName = "Error";
-                 displayDesc = "Could not load item details.";
+                 displayName = "Error"; displayDesc = "Could not load item details.";
              }
 
-            // Set main title and description
             titleEl.textContent = displayName;
             descEl.textContent = displayDesc;
 
-
-            // Populate Carousel
-            carouselInnerEl.innerHTML = ''; // Clear previous images
-            carouselIndicatorsEl.innerHTML = ''; // Clear previous indicators
+            carouselInnerEl.innerHTML = ''; carouselIndicatorsEl.innerHTML = '';
             images.forEach((src, i) => {
                 const activeClass = i === 0 ? 'active' : '';
-                const safeSrc = src?.trim() ? src : placeholderImg; // Fallback for each image
+                const safeSrc = src?.trim() ? src : placeholderImg;
                 carouselInnerEl.insertAdjacentHTML('beforeend', `
                     <div class="carousel-item ${activeClass}">
                         <img src="${safeSrc}" class="d-block w-100" alt="${displayName} image ${i + 1}" onerror="this.onerror=null; this.src='${placeholderImg}'; this.alt='Image failed to load';">
@@ -602,150 +531,90 @@
                         <button type="button" data-bs-target="#modalImageCarousel" data-bs-slide-to="${i}" class="${activeClass}" ${activeClass ? 'aria-current="true"' : ''} aria-label="Slide ${i + 1}"></button>`);
                 }
             });
-            carouselIndicatorsEl.style.display = images.length > 1 ? '' : 'none'; // Show indicators only if multiple images
+            carouselIndicatorsEl.style.display = images.length > 1 ? '' : 'none';
 
-            // Re-initialize carousel instance
             const carouselElement = document.getElementById('modalImageCarousel');
             if (carouselElement) {
                 let instance = bootstrap.Carousel.getInstance(carouselElement);
-                if (instance) { instance.dispose(); } // Dispose existing instance to reset properly
-                new bootstrap.Carousel(carouselElement, { interval: false, ride: false }); // Initialize new one without auto-play
+                if (instance) { instance.dispose(); }
+                new bootstrap.Carousel(carouselElement, { interval: false, ride: false });
             }
 
-            // --- Generate Action Button(s) based on cardType ---
-            actionButtonsContainer.innerHTML = ''; // Clear previous buttons/text
-            const isWhatsAppConfigured = WHATSAPP_NUMBER && WHATSAPP_NUMBER !== "YOUR_PHONE_NUMBER"; // Check if it's NOT the placeholder
+            actionButtonsContainer.innerHTML = '';
+            const isWhatsAppConfigured = WHATSAPP_NUMBER && WHATSAPP_NUMBER !== "YOUR_PHONE_NUMBER";
 
             if (cardType === 'offer') {
                 const offerDetails = offerDetailsMap[sweetId];
                 if (offerDetails && isWhatsAppConfigured) {
                     let message = `Hello Darna! I'm interested in ordering the ${offerDetails.name}`;
-                    // Add description and price to message for clarity
-                    if (offerDetails.description) message += ` (${offerDetails.description.replace('(Free Delivery!)', '+ Free Delivery')})`; // Use text friendly version
+                    if (offerDetails.description) message += ` (${offerDetails.description.replace('(Free Delivery!)', '+ Free Delivery')})`;
                     if (offerDetails.price) message += ` - ${offerDetails.price}`;
                     message += ".";
                     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-                    actionButtonsContainer.innerHTML = `
-                        <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
-                            <i class="bi bi-whatsapp"></i> Order Offer via WhatsApp
-                        </a>`;
+                    actionButtonsContainer.innerHTML = `<a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp"><i class="bi bi-whatsapp"></i> Order Offer via WhatsApp</a>`;
                 } else if (!offerDetails) {
-                     actionButtonsContainer.innerHTML = `<p class="text-warning small">Offer details configuration missing.</p>`;
-                } else { // WhatsApp not configured
-                    actionButtonsContainer.innerHTML = `<p class="text-danger small">WhatsApp ordering is currently unavailable.</p>`;
-                     console.warn("WhatsApp number not configured. Cannot generate order button.");
+                     actionButtonsContainer.innerHTML = `<p class="text-warning small">Offer details missing.</p>`;
+                } else {
+                    actionButtonsContainer.innerHTML = `<p class="text-danger small">WhatsApp ordering unavailable.</p>`;
                 }
-
-            } else { // 'sweet' card type
+            } else {
                  actionButtonsContainer.innerHTML = `
-                    <a href="custom-order.html" class="btn btn-offer">
-                        <i class="bi bi-box-seam"></i> Add to Custom Box
-                    </a>
+                    <a href="custom-order.html" class="btn btn-offer"><i class="bi bi-box-seam"></i> Add to Custom Box</a>
                      ${isWhatsAppConfigured ? `
                      <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello Darna! I have a question about the ${sweet?.name || 'sweet'}.`)}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp mt-2">
                          <i class="bi bi-whatsapp"></i> Inquire on WhatsApp
-                     </a>` : '<p class="text-muted small mt-2">WhatsApp inquiry unavailable.</p>'}
-                    `; // Add both Customize and optional Inquire buttons
+                     </a>` : '<p class="text-muted small mt-2">WhatsApp inquiry unavailable.</p>'}`;
             }
 
-            // Add event listener to trigger animations AFTER modal is shown
-            modalElement.removeEventListener('shown.bs.modal', applyModalAnimations); // Remove previous listener if any
-            modalElement.addEventListener('shown.bs.modal', applyModalAnimations, { once: true }); // Ensure listener only runs once per show
-
-            // Show the modal
+            modalElement.removeEventListener('shown.bs.modal', applyModalAnimations);
+            modalElement.addEventListener('shown.bs.modal', applyModalAnimations, { once: true });
             modal.show();
         }
 
-
-        // Helper function for modal animations
         function applyModalAnimations() {
             const modalElement = document.getElementById('productDetailModal');
-            const titleEl = modalElement.querySelector('#modalSweetName');
-            const carouselCol = modalElement.querySelector('.modal-carousel-col');
-            const detailsCol = modalElement.querySelector('.modal-details-col');
-
-             if (titleEl) { titleEl.classList.add('animate-in'); titleEl.style.animationDelay = '0.1s'; }
-             if (carouselCol) { carouselCol.classList.add('animate-in'); carouselCol.style.animationDelay = '0.2s'; }
-             if (detailsCol) { detailsCol.classList.add('animate-in'); detailsCol.style.animationDelay = '0.3s'; }
+            const animatedItems = modalElement.querySelectorAll('.modal-animate-item');
+            animatedItems.forEach((el, i) => {
+                el.style.animationDelay = `${0.1 + i * 0.1}s`;
+                el.classList.add('animate-in');
+            });
         }
 
-
-        // --- DOM Ready ---
         document.addEventListener("DOMContentLoaded", async () => {
-
-            // --- Initialize Landing Carousel ---
             const landingCarouselElement = document.getElementById('sweetSlideshow');
             if (landingCarouselElement && typeof bootstrap?.Carousel === 'function') {
-                try {
-                    // Initialize with auto-play
-                    new bootstrap.Carousel(landingCarouselElement, { interval: 5000, ride: 'carousel', pause: 'hover' });
-                    console.log("Landing Carousel initialized.");
-                } catch (e) {
-                    console.error("Landing Carousel initialization error:", e);
-                }
-            } else {
-                console.warn("Landing Carousel element or Bootstrap Carousel JS not found.");
+                try { new bootstrap.Carousel(landingCarouselElement, { interval: 5000, ride: 'carousel', pause: 'hover' }); }
+                catch (e) { console.error("Landing Carousel init error:", e); }
             }
 
-            // --- Load and Display Sweets ---
             const sweets = await loadSweetsData();
             displaySweets(sweets);
 
-            // --- Navbar Scroll Effect ---
             const nav = document.querySelector('.navbar.fixed-top');
             if (nav) {
-                const handleScroll = () => {
-                    nav.classList.toggle('navbar-scrolled', window.scrollY > 50);
-                };
-                window.addEventListener('scroll', handleScroll);
-                 handleScroll(); // Check initial state in case page loads scrolled
+                const handleScroll = () => nav.classList.toggle('navbar-scrolled', window.scrollY > 50);
+                window.addEventListener('scroll', handleScroll); handleScroll();
             }
 
-            // --- Footer Year ---
             const yearSpan = document.getElementById('currentYear');
-            if (yearSpan) {
-                yearSpan.textContent = new Date().getFullYear();
-            }
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-            // --- Landing Page Animations (Trigger) ---
-            document.querySelectorAll(".animated-text").forEach((el, i) => {
-                el.style.animationDelay = `${0.5 + i * 0.3}s`;
-            });
+            document.querySelectorAll(".animated-text").forEach((el, i) => el.style.animationDelay = `${0.5 + i * 0.3}s`);
 
-            // --- Centralized Event Listener for Card Clicks (Modal Trigger) ---
-            // This listener handles clicks on ALL cards with the 'clickable-card' class.
             document.body.addEventListener('click', (event) => {
-                // Find the closest ancestor that is a .clickable-card
                 const card = event.target.closest('.clickable-card');
-
                 if (card) {
-                    // Check if the click originated from within an interactive element *inside* the card
-                    // that we might want to ignore (though currently, offer buttons are pointer-events: none)
-                    // For now, any click on the card area triggers the modal.
                      const sweetId = card.dataset.sweetId;
-                     const cardType = card.dataset.cardType || 'sweet'; // Default to 'sweet'
-
-                     if (sweetId) {
-                         console.log(`Card clicked - ID: ${sweetId}, Type: ${cardType}`); // Debug log
-                         showProductModal(sweetId, cardType);
-                     } else {
-                         console.warn("Clicked card is missing data-sweet-id attribute:", card);
-                     }
+                     const cardType = card.dataset.cardType || 'sweet';
+                     if (sweetId) showProductModal(sweetId, cardType);
+                     else console.warn("Card missing data-sweet-id:", card);
                 }
             });
 
-             // --- Check WhatsApp Number Configuration ---
-             if (!WHATSAPP_NUMBER || WHATSAPP_NUMBER === "YOUR_PHONE_NUMBER") { // Check against the placeholder
-                 console.warn("********************************************");
-                 console.warn("WARNING: WhatsApp number may still be the placeholder!");
-                 console.warn("Please ensure 'YOUR_PHONE_NUMBER' was replaced in the script.");
-                 console.warn("********************************************");
-             } else {
-                 console.log("WhatsApp number configured:", WHATSAPP_NUMBER);
-             }
-
-        }); // End DOMContentLoaded
+             if (!WHATSAPP_NUMBER || WHATSAPP_NUMBER === "YOUR_PHONE_NUMBER") {
+                 console.warn("WARNING: WhatsApp number needs configuration in index.html script.");
+             } else { console.log("WhatsApp configured:", WHATSAPP_NUMBER); }
+        });
     </script>
 
 </body>
